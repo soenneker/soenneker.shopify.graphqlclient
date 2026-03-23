@@ -40,7 +40,13 @@ public sealed partial class InventoryMoveQuantityTerminalInput
     public string? LedgerDocumentUri { get; init; }
 
     /// <summary>
-    /// The quantity to compare against before applying the move. For more information, refer to the [Compare and Swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
+    /// The quantity currently expected at this location, before the move is applied.
+    /// 
+    /// This field enables a compare-and-swap (CAS) safety check. If the location’s current quantity doesn't match the value you provide, then the mutation fails with a `CHANGE_FROM_QUANTITY_STALE` error. This helps prevent unintended overwrites when the request is based on stale inventory data.
+    /// 
+    /// To skip the CAS check, pass `null`. This is appropriate when your system is the source of truth for inventory at this location and you don’t need to guard against concurrent updates.
+    /// 
+    /// For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
     /// </summary>
     [JsonPropertyName("changeFromQuantity")]
     public int? ChangeFromQuantity { get; init; }

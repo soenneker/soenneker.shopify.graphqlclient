@@ -29,12 +29,6 @@ public sealed partial class ProductVariantSetInput
     public string? Price { get; init; }
 
     /// <summary>
-    /// The compare-at price of the variant.
-    /// </summary>
-    [JsonPropertyName("compareAtPrice")]
-    public string? CompareAtPrice { get; init; }
-
-    /// <summary>
     /// The SKU for the variant. Case-sensitive string.
     /// </summary>
     [JsonPropertyName("sku")]
@@ -69,6 +63,12 @@ public sealed partial class ProductVariantSetInput
     /// </summary>
     [JsonPropertyName("metafields")]
     public List<MetafieldInput>? Metafields { get; init; }
+
+    /// <summary>
+    /// The compare-at price of the variant.
+    /// </summary>
+    [JsonPropertyName("compareAtPrice")]
+    public string? CompareAtPrice { get; init; }
 
     /// <summary>
     /// Whether a product variant requires components. The default value is `false`.

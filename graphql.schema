@@ -32501,7 +32501,13 @@ input InventoryChangeInput {
   """
   delta: Int!
   """
-  The quantity to compare against before applying the delta. For more information, refer to the [Compare and Swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
+  The quantity currently expected at this location, before the delta is applied.
+  
+  This field enables a compare-and-swap (CAS) safety check. If the location’s current quantity doesn't equal the value you provide, then the mutation fails with a `CHANGE_FROM_QUANTITY_STALE` error. This prevents accidental overwrites when the client is operating on stale inventory data.
+  
+  To skip the CAS check, pass `null`. This is appropriate when your system is the source of truth for inventory at this location and you don’t need protection against concurrent updates.
+  
+  For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
   """
   changeFromQuantity: Int
   """
@@ -33046,7 +33052,13 @@ input InventoryMoveQuantityTerminalInput {
   """
   ledgerDocumentUri: String
   """
-  The quantity to compare against before applying the move. For more information, refer to the [Compare and Swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
+  The quantity currently expected at this location, before the move is applied.
+  
+  This field enables a compare-and-swap (CAS) safety check. If the location’s current quantity doesn't match the value you provide, then the mutation fails with a `CHANGE_FROM_QUANTITY_STALE` error. This helps prevent unintended overwrites when the request is based on stale inventory data.
+  
+  To skip the CAS check, pass `null`. This is appropriate when your system is the source of truth for inventory at this location and you don’t need to guard against concurrent updates.
+  
+  For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
   """
   changeFromQuantity: Int
 }
@@ -33112,11 +33124,13 @@ input InventoryQuantityInput {
   """
   compareQuantity: Int @deprecated(reason: "Use \u0060changeFromQuantity\u0060 instead. This will be removed in 2026-04.")
   """
-  The current quantity to be compared against the persisted quantity.
-  Explicitly passing in `null` to this field opts out of the quantity comparison check.
-  Explicitly passing in any value (be it `null` or an integer) to `changeFromQuantity` will cause the values
-  passed into the `compareQuantity` and `InventorySetQuantitiesInput.ignoreCompareQuantity` fields to be
-  ignored in favour of the `changeFromQuantity` value. For more information, refer to the [Compare and Swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
+  The quantity currently expected at this location, before setting the new quantity.
+  
+  This field enables a compare-and-swap (CAS) safety check. If the location’s current quantity doesn't match the value you provide, then the mutation fails with a `CHANGE_FROM_QUANTITY_STALE` error. This helps prevent unintended overwrites when the request is based on stale inventory data.
+  
+  To skip the CAS check, pass `null`. This is appropriate when your system is the source of truth for inventory at this location and you don’t need to guard against concurrent updates.
+  
+  For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
   """
   changeFromQuantity: Int
 }
@@ -62701,10 +62715,6 @@ input ProductVariantSetInput {
   """
   price: Money
   """
-  The compare-at price of the variant.
-  """
-  compareAtPrice: Money
-  """
   The SKU for the variant. Case-sensitive string.
   """
   sku: String
@@ -62730,6 +62740,10 @@ input ProductVariantSetInput {
   Complexity cost: 0.4 per variant metafield.
   """
   metafields: [MetafieldInput!]
+  """
+  The compare-at price of the variant.
+  """
+  compareAtPrice: Money
   """
   Whether a product variant requires components. The default value is `false`.
   If `true`, then the product variant can only be purchased as a parent bundle with components and it will be omitted

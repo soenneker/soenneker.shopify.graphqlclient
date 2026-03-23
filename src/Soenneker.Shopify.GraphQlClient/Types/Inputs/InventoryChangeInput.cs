@@ -16,7 +16,13 @@ public sealed partial class InventoryChangeInput
     public int Delta { get; init; }
 
     /// <summary>
-    /// The quantity to compare against before applying the delta. For more information, refer to the [Compare and Swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
+    /// The quantity currently expected at this location, before the delta is applied.
+    /// 
+    /// This field enables a compare-and-swap (CAS) safety check. If the location’s current quantity doesn't equal the value you provide, then the mutation fails with a `CHANGE_FROM_QUANTITY_STALE` error. This prevents accidental overwrites when the client is operating on stale inventory data.
+    /// 
+    /// To skip the CAS check, pass `null`. This is appropriate when your system is the source of truth for inventory at this location and you don’t need protection against concurrent updates.
+    /// 
+    /// For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
     /// </summary>
     [JsonPropertyName("changeFromQuantity")]
     public int? ChangeFromQuantity { get; init; }
