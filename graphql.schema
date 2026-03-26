@@ -4219,7 +4219,7 @@ enum BulkOperationStatus {
   """
   FAILED
   """
-  The bulk operation is runnning.
+  The bulk operation is running.
   """
   RUNNING
 }

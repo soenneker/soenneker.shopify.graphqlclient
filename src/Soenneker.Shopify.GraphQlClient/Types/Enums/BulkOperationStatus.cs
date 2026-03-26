@@ -40,7 +40,7 @@ public enum BulkOperationStatus
     FAILED,
 
     /// <summary>
-    /// The bulk operation is runnning.
+    /// The bulk operation is running.
     /// </summary>
     RUNNING
 
