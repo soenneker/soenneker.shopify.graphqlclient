@@ -4337,6 +4337,10 @@ enum BulkProductResourceFeedbackCreateUserErrorCode {
   """
   PRODUCT_NOT_FOUND
   """
+  The channel was not found or does not belong to this app.
+  """
+  NOT_FOUND
+  """
   The input value is invalid.
   """
   INVALID
@@ -46657,7 +46661,7 @@ type Mutation {
   
   Learn more about [checkout styling](https://shopify.dev/docs/apps/checkout/styling).
   """
-  checkoutBrandingUpsert(checkoutProfileId: ID!, checkoutBrandingInput: CheckoutBrandingInput): CheckoutBrandingUpsertPayload
+  checkoutBrandingUpsert(checkoutProfileId: ID!, checkoutBrandingInput: CheckoutBrandingInput): CheckoutBrandingUpsertPayload @deprecated(reason: "Use \u0060checkoutAndAccountsConfigurationUpdate\u0060 instead.")
   """
   Adds multiple products to an existing collection in a single operation. This mutation provides an efficient way to bulk-manage collection membership without individual product updates.
   
@@ -49897,11 +49901,14 @@ type Mutation {
   
   ## Sending feedback on a shop
   
-  You can send resource feedback on a shop to let the merchant know what steps they need to take to make sure that your app is set up correctly. Feedback can have one of two states: `requires_action` or `success`. You need to send a `requires_action` feedback request for each step that the merchant is required to complete.
+  You can send resource feedback on a shop to let the merchant know what steps they need to take to make sure that your app is set up correctly. Feedback can have one of two states: `REQUIRES_ACTION` or `ACCEPTED`. You need to send a `REQUIRES_ACTION` feedback request for each step that the merchant is required to complete.
   
-  If there are multiple set-up steps that require merchant action, then send feedback with a state of `requires_action` as merchants complete prior steps. And to remove the feedback message from the Shopify admin, send a `success` feedback request.
+  If there are multiple set-up steps that require merchant action, then send feedback with a state of `REQUIRES_ACTION` as merchants complete prior steps. When all required actions are resolved, send an `ACCEPTED` feedback request to clear the active feedback signal.
   
-  #### Important
+  ### Clearing feedback with ACCEPTED
+  Sending `state: ACCEPTED` removes the active feedback entry. After this mutation succeeds, reading `channel.resourceFeedback`, `app.feedback`, or the `feedback` field on this payload may return `null`—this is expected behavior, not a mutation failure. A `null` result means no outstanding feedback exists for the channel.
+  
+  ### Important
   Sending feedback replaces previously sent feedback for the shop. Send a new `shopResourceFeedbackCreate` mutation to push the latest state of a shop or its resources to Shopify.
   """
   shopResourceFeedbackCreate(input: ResourceFeedbackCreateInput!): ShopResourceFeedbackCreatePayload
@@ -64815,15 +64822,15 @@ type QueryRoot {
   
   To update checkout branding settings, use the [`checkoutBrandingUpsert`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/checkoutBrandingUpsert) mutation. Learn more about [customizing checkout's appearance](https://shopify.dev/docs/apps/build/checkout/styling).
   """
-  checkoutBranding(checkoutProfileId: ID!): CheckoutBranding
+  checkoutBranding(checkoutProfileId: ID!): CheckoutBranding @deprecated(reason: "Use \u0060checkoutAndAccountsConfiguration\u0060 instead.")
   """
   Returns a [`CheckoutProfile`](https://shopify.dev/docs/api/admin-graphql/latest/objects/CheckoutProfile). Checkout profiles define the branding settings and UI extensions for a store's checkout experience. Stores can have one published profile that renders on their live checkout and multiple draft profiles for testing customizations in the checkout editor.
   """
-  checkoutProfile(id: ID!): CheckoutProfile
+  checkoutProfile(id: ID!): CheckoutProfile @deprecated(reason: "Use \u0060checkoutAndAccountsConfiguration\u0060 instead.")
   """
   List of checkout profiles on a shop.
   """
-  checkoutProfiles(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: CheckoutProfileSortKeys = UPDATED_AT, query: String): CheckoutProfileConnection!
+  checkoutProfiles(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: CheckoutProfileSortKeys = UPDATED_AT, query: String): CheckoutProfileConnection! @deprecated(reason: "Use \u0060checkoutAndAccountsConfigurations\u0060 instead.")
   """
   Returns a [code discount](https://help.shopify.com/manual/discounts/discount-types#discount-codes) resource by ID.
   """
@@ -73514,7 +73521,7 @@ Return type for `shopResourceFeedbackCreate` mutation.
 """
 type ShopResourceFeedbackCreatePayload {
   """
-  The shop feedback that's created.
+  The shop feedback that's created. Returns `null` when `state: ACCEPTED` is used, because setting state to `ACCEPTED` clears the active feedback signal. A `null` value here indicates success, not an error.
   """
   feedback: AppFeedback
   """

@@ -11,7 +11,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class ShopResourceFeedbackCreatePayload
 {
     /// <summary>
-    /// The shop feedback that's created.
+    /// The shop feedback that's created. Returns `null` when `state: ACCEPTED` is used, because setting state to `ACCEPTED` clears the active feedback signal. A `null` value here indicates success, not an error.
     /// </summary>
     [JsonPropertyName("feedback")]
     public AppFeedback? Feedback { get; init; }

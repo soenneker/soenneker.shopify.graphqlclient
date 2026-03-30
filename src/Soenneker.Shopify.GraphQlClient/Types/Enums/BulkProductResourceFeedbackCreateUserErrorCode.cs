@@ -23,6 +23,11 @@ public enum BulkProductResourceFeedbackCreateUserErrorCode
     PRODUCTNOTFOUND,
 
     /// <summary>
+    /// The channel was not found or does not belong to this app.
+    /// </summary>
+    NOTFOUND,
+
+    /// <summary>
     /// The input value is invalid.
     /// </summary>
     INVALID,
