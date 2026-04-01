@@ -334,13 +334,13 @@ public sealed partial class QueryRoot
     public Count? CatalogsCount { get; init; }
 
     /// <summary>
-    /// Returns a `Channel` resource by ID.
+    /// Returns a [`Channel`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Channel) by ID. The channel must belong to the calling application.
     /// </summary>
     [JsonPropertyName("channel")]
     public Channel? Channel { get; init; }
 
     /// <summary>
-    /// The channels established on the target shop by the calling application.
+    /// The list of [`Channel`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Channel) objects on the shop. When the calling application supports multi-channel, only channels established by the calling application are returned. Each channel represents an authenticated connection to an external selling platform such as a marketplace, social media platform, online store, or point-of-sale system.
     /// </summary>
     [JsonPropertyName("channels")]
     public ChannelConnection Channels { get; init; } = null!;
