@@ -178,26 +178,6 @@ public enum ShopifyPaymentsTransactionType
     TAXADJUSTMENTCREDITREVERSAL,
 
     /// <summary>
-    /// The agentic_fee_tax_debit transaction type.
-    /// </summary>
-    AGENTICFEETAXDEBIT,
-
-    /// <summary>
-    /// The agentic_fee_tax_debit_reversal transaction type.
-    /// </summary>
-    AGENTICFEETAXDEBITREVERSAL,
-
-    /// <summary>
-    /// The agentic_fee_tax_credit transaction type.
-    /// </summary>
-    AGENTICFEETAXCREDIT,
-
-    /// <summary>
-    /// The agentic_fee_tax_credit_reversal transaction type.
-    /// </summary>
-    AGENTICFEETAXCREDITREVERSAL,
-
-    /// <summary>
     /// The billing_debit transaction type.
     /// </summary>
     BILLINGDEBIT,

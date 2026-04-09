@@ -75266,22 +75266,6 @@ enum ShopifyPaymentsTransactionType {
   """
   TAX_ADJUSTMENT_CREDIT_REVERSAL
   """
-  The agentic_fee_tax_debit transaction type.
-  """
-  AGENTIC_FEE_TAX_DEBIT
-  """
-  The agentic_fee_tax_debit_reversal transaction type.
-  """
-  AGENTIC_FEE_TAX_DEBIT_REVERSAL
-  """
-  The agentic_fee_tax_credit transaction type.
-  """
-  AGENTIC_FEE_TAX_CREDIT
-  """
-  The agentic_fee_tax_credit_reversal transaction type.
-  """
-  AGENTIC_FEE_TAX_CREDIT_REVERSAL
-  """
   The billing_debit transaction type.
   """
   BILLING_DEBIT
