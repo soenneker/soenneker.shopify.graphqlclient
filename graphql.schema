@@ -48055,7 +48055,7 @@ type Mutation {
   
   Learn more about [editing fulfillment service locations](https://shopify.dev/docs/apps/build/orders-fulfillment/fulfillment-service-apps/build-for-fulfillment-services#step-2-edit-locations).
   """
-  fulfillmentServiceUpdate(id: ID!, name: String, callbackUrl: URL, trackingSupport: Boolean, fulfillmentOrdersOptIn: Boolean @deprecated(reason: "Migration period has ended."), permitsSkuSharing: Boolean @deprecated(reason: "Fulfillment services are all migrating to permit SKU sharing.\nIn the next version, all new fulfillment services will support SKU sharing by default.\nAs of API version \u00602026-04\u0060 this argument will be removed.\n"), inventoryManagement: Boolean, requiresShippingMethod: Boolean = true): FulfillmentServiceUpdatePayload
+  fulfillmentServiceUpdate(id: ID!, name: String, callbackUrl: URL, trackingSupport: Boolean, fulfillmentOrdersOptIn: Boolean @deprecated(reason: "Migration period has ended."), permitsSkuSharing: Boolean @deprecated(reason: "Fulfillment services are all migrating to permit SKU sharing.\nSetting \u0060permitsSkuSharing\u0060 to false is no longer supported.\nAs of API version \u00602026-04\u0060 this argument will be removed.\n"), inventoryManagement: Boolean, requiresShippingMethod: Boolean = true): FulfillmentServiceUpdatePayload
   """
   Updates tracking information for a fulfillment, including the carrier name, tracking numbers, and tracking URLs. You can provide either single or multiple tracking numbers for shipments with multiple packages.
   
