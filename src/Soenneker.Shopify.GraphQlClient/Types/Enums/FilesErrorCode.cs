@@ -145,6 +145,11 @@ public enum FilesErrorCode
     /// <summary>
     /// Invalid duplicate resolution mode provided.
     /// </summary>
-    INVALIDDUPLICATERESOLUTIONMODE
+    INVALIDDUPLICATERESOLUTIONMODE,
+
+    /// <summary>
+    /// Media cannot be modified. It is currently being modified by another operation.
+    /// </summary>
+    MEDIACANNOTBEMODIFIED
 
 }

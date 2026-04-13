@@ -893,7 +893,7 @@ public sealed partial class QueryRoot
     public FinanceAppAccessPolicy FinanceAppAccessPolicy { get; init; } = null!;
 
     /// <summary>
-    /// Returns the KYC information for the shop's Shopify Payments account, used in embedded finance apps.
+    /// Returns Know Your Customer (KYC) information for the shop's Shopify Payments account. KYC data includes verified identity and business details collected during onboarding. This is primarily used by embedded finance apps (e.g., Shopify Balance, Bill Pay) that need to verify the merchant's identity without requiring a separate KYC process.
     /// </summary>
     [JsonPropertyName("financeKycInformation")]
     public FinanceKycInformation? FinanceKycInformation { get; init; }

@@ -103,6 +103,11 @@ public enum ShopPayPaymentRequestReceiptProcessingStatusErrorCode
     UNSUPPORTEDFEATURE,
 
     /// <summary>
+    /// Too many failed CVV verification attempts.
+    /// </summary>
+    CVVATTEMPTSEXCEEDED,
+
+    /// <summary>
     /// There was an unknown error with processing the payment.
     /// </summary>
     GENERICERROR,

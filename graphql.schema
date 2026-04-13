@@ -27491,6 +27491,10 @@ enum FilesErrorCode {
   Invalid duplicate resolution mode provided.
   """
   INVALID_DUPLICATE_RESOLUTION_MODE
+  """
+  Media cannot be modified. It is currently being modified by another operation.
+  """
+  MEDIA_CANNOT_BE_MODIFIED
 }
 
 """
@@ -65223,7 +65227,7 @@ type QueryRoot {
   """
   financeAppAccessPolicy: FinanceAppAccessPolicy!
   """
-  Returns the KYC information for the shop's Shopify Payments account, used in embedded finance apps.
+  Returns Know Your Customer (KYC) information for the shop's Shopify Payments account. KYC data includes verified identity and business details collected during onboarding. This is primarily used by embedded finance apps (e.g., Shopify Balance, Bill Pay) that need to verify the merchant's identity without requiring a separate KYC process.
   """
   financeKycInformation: FinanceKycInformation
   """
@@ -73270,6 +73274,10 @@ enum ShopPayPaymentRequestReceiptProcessingStatusErrorCode {
   The gateway or merchant configuration doesn't support a feature, such as network tokenization.
   """
   UNSUPPORTED_FEATURE
+  """
+  Too many failed CVV verification attempts.
+  """
+  CVV_ATTEMPTS_EXCEEDED
   """
   There was an unknown error with processing the payment.
   """
