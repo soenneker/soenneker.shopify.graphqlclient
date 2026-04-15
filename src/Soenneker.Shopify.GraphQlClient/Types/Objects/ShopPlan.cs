@@ -22,7 +22,7 @@ public sealed partial class ShopPlan
     public bool PartnerDevelopment { get; init; }
 
     /// <summary>
-    /// The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Shopify Finance, Staff Business, Starter, and Trial.
+    /// The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Staff Business, Starter, and Trial.
     /// </summary>
     [JsonPropertyName("publicDisplayName")]
     public string PublicDisplayName { get; init; } = null!;

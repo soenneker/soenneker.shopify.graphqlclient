@@ -218,7 +218,7 @@ public sealed partial class OrderCreateOrderInput
     public List<OrderCreateOrderTransactionInput>? Transactions { get; init; }
 
     /// <summary>
-    /// The ID of the user logged into Shopify POS who processed the order, if applicable.
+    /// The ID of the user who processed the order, if applicable.
     /// </summary>
     [JsonPropertyName("userId")]
     public string? UserId { get; init; }

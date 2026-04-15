@@ -52813,7 +52813,7 @@ input OrderCreateOrderInput {
   """
   transactions: [OrderCreateOrderTransactionInput!]
   """
-  The ID of the user logged into Shopify POS who processed the order, if applicable.
+  The ID of the user who processed the order, if applicable.
   """
   userId: ID
 }
@@ -73385,7 +73385,7 @@ type ShopPlan {
   """
   partnerDevelopment: Boolean!
   """
-  The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Shopify Finance, Staff Business, Starter, and Trial.
+  The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Staff Business, Starter, and Trial.
   """
   publicDisplayName: String!
   """
