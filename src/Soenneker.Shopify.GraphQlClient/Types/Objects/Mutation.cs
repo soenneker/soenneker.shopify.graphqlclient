@@ -932,7 +932,7 @@ public sealed partial class Mutation
     public CustomerPaymentMethodCreditCardCreatePayload? CustomerPaymentMethodCreditCardCreate { get; init; }
 
     /// <summary>
-    /// Updates the credit card payment method for a customer.
+    /// Updates an existing vaulted credit card payment method for a customer, including billing address and card details. Requires a valid cardserver session from a PCI-compliant environment. Use this when a customer's card details have changed (e.g., new expiration date or replacement card) and ongoing subscriptions or saved payment methods need to be updated.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodCreditCardUpdate")]
     public CustomerPaymentMethodCreditCardUpdatePayload? CustomerPaymentMethodCreditCardUpdate { get; init; }
@@ -954,13 +954,13 @@ public sealed partial class Mutation
     public CustomerPaymentMethodGetUpdateUrlPayload? CustomerPaymentMethodGetUpdateUrl { get; init; }
 
     /// <summary>
-    /// Creates a PayPal billing agreement for a customer.
+    /// Creates a vaulted PayPal billing agreement for a customer, enabling recurring charges through PayPal. The billing agreement ID (starting with 'B-') must be obtained from PayPal. Once created, this payment method can be used for subscription billing or future order payments without requiring the customer to re-authenticate with PayPal.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodPaypalBillingAgreementCreate")]
     public CustomerPaymentMethodPaypalBillingAgreementCreatePayload? CustomerPaymentMethodPaypalBillingAgreementCreate { get; init; }
 
     /// <summary>
-    /// Updates a PayPal billing agreement for a customer.
+    /// Updates the billing address associated with a customer's vaulted PayPal billing agreement. Use this when a customer's billing information has changed and their PayPal payment method record in Shopify needs to be updated accordingly.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodPaypalBillingAgreementUpdate")]
     public CustomerPaymentMethodPaypalBillingAgreementUpdatePayload? CustomerPaymentMethodPaypalBillingAgreementUpdate { get; init; }
@@ -976,13 +976,13 @@ public sealed partial class Mutation
     public CustomerPaymentMethodRemoteCreatePayload? CustomerPaymentMethodRemoteCreate { get; init; }
 
     /// <summary>
-    /// Revokes a customer's payment method.
+    /// Revokes a customer's vaulted payment method, preventing it from being used for future charges such as subscriptions, draft orders, or other payments. Revocation will fail if the payment method has active subscription contracts. Use this when a customer requests removal of their stored payment information or when a payment method is no longer valid.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodRevoke")]
     public CustomerPaymentMethodRevokePayload? CustomerPaymentMethodRevoke { get; init; }
 
     /// <summary>
-    /// Sends a link to the customer so they can update a specific payment method.
+    /// Sends an email to a customer containing a secure link to update a specific vaulted payment method. This is commonly used when a customer's credit card is expiring or has been declined, and they need to provide updated payment details for ongoing subscriptions. The email can be customized with sender and BCC fields.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodSendUpdateEmail")]
     public CustomerPaymentMethodSendUpdateEmailPayload? CustomerPaymentMethodSendUpdateEmail { get; init; }

@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CustomerPaymentMethodSendUpdateEmailData
 {
     /// <summary>
-    /// Sends a link to the customer so they can update a specific payment method.
+    /// Sends an email to a customer containing a secure link to update a specific vaulted payment method. This is commonly used when a customer's credit card is expiring or has been declined, and they need to provide updated payment details for ongoing subscriptions. The email can be customized with sender and BCC fields.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodSendUpdateEmail")]
     public CustomerPaymentMethodSendUpdateEmailPayload? CustomerPaymentMethodSendUpdateEmail { get; init; }

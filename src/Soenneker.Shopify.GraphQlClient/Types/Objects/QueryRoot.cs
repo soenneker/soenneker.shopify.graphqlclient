@@ -618,7 +618,7 @@ public sealed partial class QueryRoot
     public CustomerMergePreview CustomerMergePreview { get; init; } = null!;
 
     /// <summary>
-    /// Returns a CustomerPaymentMethod resource by its ID.
+    /// Returns a vaulted customer payment method by its ID, including the instrument type (credit card, PayPal, etc.), billing address, and current status. Optionally includes revoked payment methods. Use this to look up a specific saved payment method for a customer — for example, to check whether a subscription's payment method is still valid or to display stored payment details.
     /// </summary>
     [JsonPropertyName("customerPaymentMethod")]
     public CustomerPaymentMethod? CustomerPaymentMethod { get; init; }

@@ -47111,7 +47111,7 @@ type Mutation {
   """
   customerPaymentMethodCreditCardCreate(customerId: ID!, billingAddress: MailingAddressInput!, sessionId: String!): CustomerPaymentMethodCreditCardCreatePayload
   """
-  Updates the credit card payment method for a customer.
+  Updates an existing vaulted credit card payment method for a customer, including billing address and card details. Requires a valid cardserver session from a PCI-compliant environment. Use this when a customer's card details have changed (e.g., new expiration date or replacement card) and ongoing subscriptions or saved payment methods need to be updated.
   """
   customerPaymentMethodCreditCardUpdate(id: ID!, billingAddress: MailingAddressInput!, sessionId: String!): CustomerPaymentMethodCreditCardUpdatePayload
   """
@@ -47127,11 +47127,11 @@ type Mutation {
   """
   customerPaymentMethodGetUpdateUrl(customerPaymentMethodId: ID!): CustomerPaymentMethodGetUpdateUrlPayload
   """
-  Creates a PayPal billing agreement for a customer.
+  Creates a vaulted PayPal billing agreement for a customer, enabling recurring charges through PayPal. The billing agreement ID (starting with 'B-') must be obtained from PayPal. Once created, this payment method can be used for subscription billing or future order payments without requiring the customer to re-authenticate with PayPal.
   """
   customerPaymentMethodPaypalBillingAgreementCreate(customerId: ID!, billingAddress: MailingAddressInput, billingAgreementId: String!, inactive: Boolean = false): CustomerPaymentMethodPaypalBillingAgreementCreatePayload
   """
-  Updates a PayPal billing agreement for a customer.
+  Updates the billing address associated with a customer's vaulted PayPal billing agreement. Use this when a customer's billing information has changed and their PayPal payment method record in Shopify needs to be updated accordingly.
   """
   customerPaymentMethodPaypalBillingAgreementUpdate(id: ID!, billingAddress: MailingAddressInput!): CustomerPaymentMethodPaypalBillingAgreementUpdatePayload
   """
@@ -47143,11 +47143,11 @@ type Mutation {
   """
   customerPaymentMethodRemoteCreate(customerId: ID!, remoteReference: CustomerPaymentMethodRemoteInput!): CustomerPaymentMethodRemoteCreatePayload
   """
-  Revokes a customer's payment method.
+  Revokes a customer's vaulted payment method, preventing it from being used for future charges such as subscriptions, draft orders, or other payments. Revocation will fail if the payment method has active subscription contracts. Use this when a customer requests removal of their stored payment information or when a payment method is no longer valid.
   """
   customerPaymentMethodRevoke(customerPaymentMethodId: ID!): CustomerPaymentMethodRevokePayload
   """
-  Sends a link to the customer so they can update a specific payment method.
+  Sends an email to a customer containing a secure link to update a specific vaulted payment method. This is commonly used when a customer's credit card is expiring or has been declined, and they need to provide updated payment details for ongoing subscriptions. The email can be customized with sender and BCC fields.
   """
   customerPaymentMethodSendUpdateEmail(customerPaymentMethodId: ID!, email: EmailInput): CustomerPaymentMethodSendUpdateEmailPayload
   """
@@ -54667,18 +54667,24 @@ type OrderTransaction implements Node {
   """
   test: Boolean!
   """
-  Specifies the available amount to capture on the gateway.
-  Only available when an amount is capturable or manually mark as paid.
+  The amount of the original authorization that remains unsettled.
+  During a pending capture, this reflects the full outstanding balance including the pending amount.
+  When no capture is pending, this equals the capturable amount.
+  Only available when an amount is capturable or manually marked as paid.
   """
   totalUnsettled: Money @deprecated(reason: "Use \u0060totalUnsettledSet\u0060 instead.")
   """
-  Specifies the available amount with currency to capture on the gateway in shop and presentment currencies.
-  Only available when an amount is capturable or manually mark as paid.
+  The amount of the original authorization that remains unsettled, in shop and presentment currencies.
+  During a pending capture, this reflects the full outstanding balance including the pending amount.
+  When no capture is pending, this equals the capturable amount.
+  Only available when an amount is capturable or manually marked as paid.
   """
   totalUnsettledSet: MoneyBag
   """
-  Specifies the available amount with currency to capture on the gateway.
-  Only available when an amount is capturable or manually mark as paid.
+  The amount with currency of the original authorization that remains unsettled.
+  During a pending capture, this reflects the full outstanding balance including the pending amount.
+  When no capture is pending, this equals the capturable amount.
+  Only available when an amount is capturable or manually marked as paid.
   """
   totalUnsettledV2: MoneyV2 @deprecated(reason: "Use \u0060totalUnsettledSet\u0060 instead.")
   """
@@ -65028,7 +65034,7 @@ type QueryRoot {
   """
   customerMergePreview(customerOneId: ID!, customerTwoId: ID!, overrideFields: CustomerMergeOverrideFields): CustomerMergePreview!
   """
-  Returns a CustomerPaymentMethod resource by its ID.
+  Returns a vaulted customer payment method by its ID, including the instrument type (credit card, PayPal, etc.), billing address, and current status. Optionally includes revoked payment methods. Use this to look up a specific saved payment method for a customer — for example, to check whether a subscription's payment method is still valid or to display stored payment details.
   """
   customerPaymentMethod(id: ID!, showRevoked: Boolean = false): CustomerPaymentMethod
   """

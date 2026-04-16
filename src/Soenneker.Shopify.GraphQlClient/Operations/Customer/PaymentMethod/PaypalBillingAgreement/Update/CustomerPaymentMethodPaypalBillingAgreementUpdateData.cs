@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CustomerPaymentMethodPaypalBillingAgreementUpdateData
 {
     /// <summary>
-    /// Updates a PayPal billing agreement for a customer.
+    /// Updates the billing address associated with a customer's vaulted PayPal billing agreement. Use this when a customer's billing information has changed and their PayPal payment method record in Shopify needs to be updated accordingly.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodPaypalBillingAgreementUpdate")]
     public CustomerPaymentMethodPaypalBillingAgreementUpdatePayload? CustomerPaymentMethodPaypalBillingAgreementUpdate { get; init; }

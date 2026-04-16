@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CustomerPaymentMethodCreditCardUpdateData
 {
     /// <summary>
-    /// Updates the credit card payment method for a customer.
+    /// Updates an existing vaulted credit card payment method for a customer, including billing address and card details. Requires a valid cardserver session from a PCI-compliant environment. Use this when a customer's card details have changed (e.g., new expiration date or replacement card) and ongoing subscriptions or saved payment methods need to be updated.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodCreditCardUpdate")]
     public CustomerPaymentMethodCreditCardUpdatePayload? CustomerPaymentMethodCreditCardUpdate { get; init; }

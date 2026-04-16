@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CustomerPaymentMethodRevokeData
 {
     /// <summary>
-    /// Revokes a customer's payment method.
+    /// Revokes a customer's vaulted payment method, preventing it from being used for future charges such as subscriptions, draft orders, or other payments. Revocation will fail if the payment method has active subscription contracts. Use this when a customer requests removal of their stored payment information or when a payment method is no longer valid.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodRevoke")]
     public CustomerPaymentMethodRevokePayload? CustomerPaymentMethodRevoke { get; init; }

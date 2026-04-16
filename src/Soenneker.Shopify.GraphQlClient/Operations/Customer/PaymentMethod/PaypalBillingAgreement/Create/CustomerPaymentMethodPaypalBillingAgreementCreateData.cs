@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CustomerPaymentMethodPaypalBillingAgreementCreateData
 {
     /// <summary>
-    /// Creates a PayPal billing agreement for a customer.
+    /// Creates a vaulted PayPal billing agreement for a customer, enabling recurring charges through PayPal. The billing agreement ID (starting with 'B-') must be obtained from PayPal. Once created, this payment method can be used for subscription billing or future order payments without requiring the customer to re-authenticate with PayPal.
     /// </summary>
     [JsonPropertyName("customerPaymentMethodPaypalBillingAgreementCreate")]
     public CustomerPaymentMethodPaypalBillingAgreementCreatePayload? CustomerPaymentMethodPaypalBillingAgreementCreate { get; init; }
