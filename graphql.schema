@@ -69682,6 +69682,10 @@ Specifies the type of resources to be returned from a search.
 enum SearchResultType {
   CUSTOMER
   DRAFT_ORDER
+  """
+  An inventory transfer.
+  """
+  INVENTORY_TRANSFER
   PRODUCT
   COLLECTION
   """

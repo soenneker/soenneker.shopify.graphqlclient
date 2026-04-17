@@ -11,6 +11,11 @@ public enum SearchResultType
 
     DRAFTORDER,
 
+    /// <summary>
+    /// An inventory transfer.
+    /// </summary>
+    INVENTORYTRANSFER,
+
     PRODUCT,
 
     COLLECTION,
