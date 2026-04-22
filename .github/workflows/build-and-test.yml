@@ -38,7 +38,7 @@ jobs:
         run: dotnet build test/Soenneker.Shopify.GraphQlClient.Tests/Soenneker.Shopify.GraphQlClient.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Shopify.GraphQlClient.Tests/Soenneker.Shopify.GraphQlClient.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
+        run: dotnet test --project test/Soenneker.Shopify.GraphQlClient.Tests/Soenneker.Shopify.GraphQlClient.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
 
       - name: Pack
         run: dotnet pack src/Soenneker.Shopify.GraphQlClient/Soenneker.Shopify.GraphQlClient.csproj --configuration Release --no-build --no-restore --output . --verbosity minimal
