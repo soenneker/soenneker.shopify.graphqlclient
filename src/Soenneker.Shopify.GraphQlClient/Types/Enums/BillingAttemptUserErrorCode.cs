@@ -75,6 +75,11 @@ public enum BillingAttemptUserErrorCode
     /// <summary>
     /// Billing attempt rate limit exceeded - try later.
     /// </summary>
-    THROTTLED
+    THROTTLED,
+
+    /// <summary>
+    /// Failed to process the billing attempt.
+    /// </summary>
+    PROCESSINGFAILED
 
 }

@@ -3600,6 +3600,10 @@ enum BillingAttemptUserErrorCode {
   Billing attempt rate limit exceeded - try later.
   """
   THROTTLED
+  """
+  Failed to process the billing attempt.
+  """
+  PROCESSING_FAILED
 }
 
 """
