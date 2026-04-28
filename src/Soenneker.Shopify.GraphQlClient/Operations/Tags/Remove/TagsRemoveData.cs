@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class TagsRemoveData
 {
     /// <summary>
-    /// Removes tags from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), [`DraftOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder), [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer), [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), or [`Article`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Article).
+    /// Removes tags from a resource. If the resource type doesn't support tagging, the `id` argument returns a resource-not-found error.
     /// 
     /// Tags are searchable keywords that help organize and filter these resources.
     /// </summary>

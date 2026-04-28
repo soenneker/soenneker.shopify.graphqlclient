@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class TagsAddData
 {
     /// <summary>
-    /// Adds tags to a resource in the store. Supported resources include [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), [`DraftOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder), [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer), [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), and [`Article`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Article).
+    /// Adds tags to a resource. If the resource type doesn't support tagging, the `id` argument returns a resource-not-found error.
     /// 
     /// Tags help merchants organize and filter resources. See the [`tags`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/tagsAdd#arguments-tags) argument for supported input formats.
     /// 

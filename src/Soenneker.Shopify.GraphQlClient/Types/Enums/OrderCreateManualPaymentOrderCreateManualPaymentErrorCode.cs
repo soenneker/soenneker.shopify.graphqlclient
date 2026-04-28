@@ -35,6 +35,11 @@ public enum OrderCreateManualPaymentOrderCreateManualPaymentErrorCode
     /// <summary>
     /// Indicates that the processedAt field is invalid, such as when it references a future date.
     /// </summary>
-    PROCESSEDATINVALID
+    PROCESSEDATINVALID,
+
+    /// <summary>
+    /// The currency of the amount doesn't match the presentment currency of the order.
+    /// </summary>
+    CURRENCYMISMATCH
 
 }

@@ -4720,7 +4720,7 @@ public sealed partial class Mutation
     public SubscriptionDraftUpdatePayload? SubscriptionDraftUpdate { get; init; }
 
     /// <summary>
-    /// Adds tags to a resource in the store. Supported resources include [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), [`DraftOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder), [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer), [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), and [`Article`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Article).
+    /// Adds tags to a resource. If the resource type doesn't support tagging, the `id` argument returns a resource-not-found error.
     /// 
     /// Tags help merchants organize and filter resources. See the [`tags`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/tagsAdd#arguments-tags) argument for supported input formats.
     /// 
@@ -4730,7 +4730,7 @@ public sealed partial class Mutation
     public TagsAddPayload? TagsAdd { get; init; }
 
     /// <summary>
-    /// Removes tags from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order), [`DraftOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DraftOrder), [`Customer`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Customer), [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), or [`Article`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Article).
+    /// Removes tags from a resource. If the resource type doesn't support tagging, the `id` argument returns a resource-not-found error.
     /// 
     /// Tags are searchable keywords that help organize and filter these resources.
     /// </summary>
