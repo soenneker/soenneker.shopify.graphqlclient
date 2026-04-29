@@ -1528,7 +1528,7 @@ public sealed partial class Mutation
     public DiscountRedeemCodeBulkAddPayload? DiscountRedeemCodeBulkAdd { get; init; }
 
     /// <summary>
-    /// Updates a dispute evidence.
+    /// Updates the evidence package for a Shopify Payments dispute. Merchants submit evidence — such as shipping confirmations, customer communications, and refund policies — to contest a dispute filed by a cardholder. This mutation updates the evidence fields.
     /// </summary>
     [JsonPropertyName("disputeEvidenceUpdate")]
     public DisputeEvidenceUpdatePayload? DisputeEvidenceUpdate { get; init; }

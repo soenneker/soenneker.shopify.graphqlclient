@@ -771,7 +771,7 @@ public sealed partial class QueryRoot
     public ShopifyPaymentsDisputeEvidence? DisputeEvidence { get; init; }
 
     /// <summary>
-    /// All disputes related to the Shop.
+    /// Returns a paginated list of all Shopify Payments disputes for the shop. Disputes occur when a buyer files a complaint with their payments provider, and the merchant must provide evidence to contest it. Each dispute includes the status, amount, reason, and associated order. Use this to monitor and manage open chargebacks and track dispute resolution outcomes.
     /// </summary>
     [JsonPropertyName("disputes")]
     public ShopifyPaymentsDisputeConnection Disputes { get; init; } = null!;
