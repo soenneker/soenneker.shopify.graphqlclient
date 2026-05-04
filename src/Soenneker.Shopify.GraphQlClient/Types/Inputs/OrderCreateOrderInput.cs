@@ -141,7 +141,7 @@ public sealed partial class OrderCreateOrderInput
     public CurrencyCode? PresentmentCurrency { get; init; }
 
     /// <summary>
-    /// The date and time ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format) when an order was processed. This value is the date that appears on your orders and that's used in the analytic reports. If you're importing orders from an app or another platform, then you can set processed_at to a date and time in the past to match when the original order was created.
+    /// The date and time ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format) when an order was processed. This value is the date that appears on your orders and that's used in the analytic reports. If you're importing orders from an app or another platform, then you can set processed_at to a date and time in the past to match when the original order was created. As of API version 2026-07, values in the future are clamped to the current time. In earlier versions, future values return a `PROCESSED_AT_INVALID` error.
     /// </summary>
     [JsonPropertyName("processedAt")]
     public DateTimeOffset? ProcessedAt { get; init; }
