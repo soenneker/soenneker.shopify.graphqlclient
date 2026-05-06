@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class PaymentCustomizationCreateData
 {
     /// <summary>
-    /// Creates a payment customization.
+    /// Creates a new payment customization for the shop. Payment customizations let apps modify the payment methods shown at checkout — hiding, reordering, or renaming options based on cart contents, customer attributes, or other business logic.
     /// </summary>
     [JsonPropertyName("paymentCustomizationCreate")]
     public PaymentCustomizationCreatePayload? PaymentCustomizationCreate { get; init; }

@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class PaymentCustomizationUpdateData
 {
     /// <summary>
-    /// Updates a payment customization.
+    /// Updates an existing payment customization, modifying its configuration for how payment methods are displayed at checkout. Use this to change the customization's title or enabled state. The customization's function can't be changed once set; create a new payment customization to use a different function.
     /// </summary>
     [JsonPropertyName("paymentCustomizationUpdate")]
     public PaymentCustomizationUpdatePayload? PaymentCustomizationUpdate { get; init; }

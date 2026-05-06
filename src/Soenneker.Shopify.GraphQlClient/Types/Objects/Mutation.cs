@@ -3180,25 +3180,25 @@ public sealed partial class Mutation
     public PageUpdatePayload? PageUpdate { get; init; }
 
     /// <summary>
-    /// Activates and deactivates payment customizations.
+    /// Activates or deactivates payment customizations for the shop. Payment customizations allow apps to hide, reorder, or rename payment methods at checkout based on cart contents, customer attributes, or other conditions. Use this to toggle customizations on or off without deleting them.
     /// </summary>
     [JsonPropertyName("paymentCustomizationActivation")]
     public PaymentCustomizationActivationPayload? PaymentCustomizationActivation { get; init; }
 
     /// <summary>
-    /// Creates a payment customization.
+    /// Creates a new payment customization for the shop. Payment customizations let apps modify the payment methods shown at checkout — hiding, reordering, or renaming options based on cart contents, customer attributes, or other business logic.
     /// </summary>
     [JsonPropertyName("paymentCustomizationCreate")]
     public PaymentCustomizationCreatePayload? PaymentCustomizationCreate { get; init; }
 
     /// <summary>
-    /// Deletes a payment customization.
+    /// Permanently deletes a payment customization. Once deleted, the customization will no longer affect which payment methods appear at checkout.
     /// </summary>
     [JsonPropertyName("paymentCustomizationDelete")]
     public PaymentCustomizationDeletePayload? PaymentCustomizationDelete { get; init; }
 
     /// <summary>
-    /// Updates a payment customization.
+    /// Updates an existing payment customization, modifying its configuration for how payment methods are displayed at checkout. Use this to change the customization's title or enabled state. The customization's function can't be changed once set; create a new payment customization to use a different function.
     /// </summary>
     [JsonPropertyName("paymentCustomizationUpdate")]
     public PaymentCustomizationUpdatePayload? PaymentCustomizationUpdate { get; init; }

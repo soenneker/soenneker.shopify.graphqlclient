@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class PaymentCustomizationDeleteData
 {
     /// <summary>
-    /// Deletes a payment customization.
+    /// Permanently deletes a payment customization. Once deleted, the customization will no longer affect which payment methods appear at checkout.
     /// </summary>
     [JsonPropertyName("paymentCustomizationDelete")]
     public PaymentCustomizationDeletePayload? PaymentCustomizationDelete { get; init; }

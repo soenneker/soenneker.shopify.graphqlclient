@@ -1861,13 +1861,13 @@ public sealed partial class QueryRoot
     public List<ShopLocale> ShopLocales { get; init; } = [];
 
     /// <summary>
-    /// Returns a Shop Pay payment request receipt.
+    /// Returns a single Shop Pay payment request receipt by its ID. Payment request receipts document completed Shop Pay transactions, including the amount, customer details, and payment status. Use this to look up a specific Shop Pay transaction for order reconciliation or customer support.
     /// </summary>
     [JsonPropertyName("shopPayPaymentRequestReceipt")]
     public ShopPayPaymentRequestReceipt? ShopPayPaymentRequestReceipt { get; init; }
 
     /// <summary>
-    /// Returns a list of Shop Pay payment request receipts.
+    /// Returns a paginated list of Shop Pay payment request receipts for the shop. Each receipt documents a completed Shop Pay transaction. Use this to review Shop Pay transaction history, generate reports, or audit Shop Pay payment activity.
     /// </summary>
     [JsonPropertyName("shopPayPaymentRequestReceipts")]
     public ShopPayPaymentRequestReceiptConnection? ShopPayPaymentRequestReceipts { get; init; }

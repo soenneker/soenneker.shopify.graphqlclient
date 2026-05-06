@@ -48917,19 +48917,19 @@ type Mutation {
   """
   pageUpdate(id: ID!, page: PageUpdateInput!): PageUpdatePayload
   """
-  Activates and deactivates payment customizations.
+  Activates or deactivates payment customizations for the shop. Payment customizations allow apps to hide, reorder, or rename payment methods at checkout based on cart contents, customer attributes, or other conditions. Use this to toggle customizations on or off without deleting them.
   """
   paymentCustomizationActivation(ids: [ID!]!, enabled: Boolean!): PaymentCustomizationActivationPayload
   """
-  Creates a payment customization.
+  Creates a new payment customization for the shop. Payment customizations let apps modify the payment methods shown at checkout — hiding, reordering, or renaming options based on cart contents, customer attributes, or other business logic.
   """
   paymentCustomizationCreate(paymentCustomization: PaymentCustomizationInput!): PaymentCustomizationCreatePayload
   """
-  Deletes a payment customization.
+  Permanently deletes a payment customization. Once deleted, the customization will no longer affect which payment methods appear at checkout.
   """
   paymentCustomizationDelete(id: ID!): PaymentCustomizationDeletePayload
   """
-  Updates a payment customization.
+  Updates an existing payment customization, modifying its configuration for how payment methods are displayed at checkout. Use this to change the customization's title or enabled state. The customization's function can't be changed once set; create a new payment customization to use a different function.
   """
   paymentCustomizationUpdate(id: ID!, paymentCustomization: PaymentCustomizationInput!): PaymentCustomizationUpdatePayload
   """
@@ -65975,11 +65975,11 @@ type QueryRoot {
   """
   shopLocales(published: Boolean = false): [ShopLocale!]!
   """
-  Returns a Shop Pay payment request receipt.
+  Returns a single Shop Pay payment request receipt by its ID. Payment request receipts document completed Shop Pay transactions, including the amount, customer details, and payment status. Use this to look up a specific Shop Pay transaction for order reconciliation or customer support.
   """
   shopPayPaymentRequestReceipt(token: String!): ShopPayPaymentRequestReceipt
   """
-  Returns a list of Shop Pay payment request receipts.
+  Returns a paginated list of Shop Pay payment request receipts for the shop. Each receipt documents a completed Shop Pay transaction. Use this to review Shop Pay transaction history, generate reports, or audit Shop Pay payment activity.
   """
   shopPayPaymentRequestReceipts(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: ShopPayPaymentRequestReceiptsSortKeys = ID, query: String): ShopPayPaymentRequestReceiptConnection
   """

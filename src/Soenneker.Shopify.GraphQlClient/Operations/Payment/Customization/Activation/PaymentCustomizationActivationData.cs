@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class PaymentCustomizationActivationData
 {
     /// <summary>
-    /// Activates and deactivates payment customizations.
+    /// Activates or deactivates payment customizations for the shop. Payment customizations allow apps to hide, reorder, or rename payment methods at checkout based on cart contents, customer attributes, or other conditions. Use this to toggle customizations on or off without deleting them.
     /// </summary>
     [JsonPropertyName("paymentCustomizationActivation")]
     public PaymentCustomizationActivationPayload? PaymentCustomizationActivation { get; init; }
