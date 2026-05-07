@@ -13,7 +13,7 @@ public enum InventoryTransferRemoveItemsUserErrorCode
     TRANSFERNOTFOUND,
 
     /// <summary>
-    /// A ready to ship transfer must have at least one item.
+    /// A `READY_TO_SHIP` transfer must have at least one line item; you cannot remove every line item from one. To empty a `READY_TO_SHIP` transfer, cancel it instead.
     /// </summary>
     CANTREMOVEALLITEMSFROMREADYTOSHIPTRANSFER,
 
@@ -23,12 +23,12 @@ public enum InventoryTransferRemoveItemsUserErrorCode
     ITEMNOTFOUND,
 
     /// <summary>
-    /// The item cannot have its shippable quantity removed if all of its quantity is fully allocated in one or more shipments.
+    /// The item cannot be removed because all of its quantity is fully allocated to one or more shipments (including draft shipments where the item has been picked). The error name refers to the underlying allocation check; it triggers regardless of whether the shipments have actually shipped.
     /// </summary>
     ALLQUANTITYSHIPPED,
 
     /// <summary>
-    /// The item cannot be removed because it exists in a draft shipment with zero quantity.
+    /// The line item cannot be removed because it appears on a draft shipment with quantity `0`.
     /// </summary>
     ITEMPRESENTONDRAFTSHIPMENTWITHZEROQUANTITY,
 

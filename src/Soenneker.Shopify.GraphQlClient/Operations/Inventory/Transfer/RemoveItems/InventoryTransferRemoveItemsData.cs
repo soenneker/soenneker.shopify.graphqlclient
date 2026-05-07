@@ -10,8 +10,20 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class InventoryTransferRemoveItemsData
 {
     /// <summary>
-    /// This mutation allows removing the shippable quantities of line items on a Transfer.
-    /// It removes all quantities of the item from the transfer that are not associated with shipments.
+    /// This mutation removes [`InventoryTransferLineItem`s](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryTransferLineItem),
+    /// or portions of them, from a `DRAFT` or `READY_TO_SHIP` Transfer.
+    /// 
+    /// For each referenced line item, if its entire quantity is still unallocated to a
+    /// shipment, the line item is removed; otherwise the line item remains on the
+    /// transfer with its quantity reduced to the allocated portion. Quantity allocated
+    /// to a shipment (whether the shipment is in draft, in transit, or already
+    /// received) is preserved.
+    /// 
+    /// On `READY_TO_SHIP` transfers, removing items also returns the affected reserved
+    /// quantity to available inventory at the origin location.
+    /// 
+    /// To change the quantity of a line item without removing it, use
+    /// [`inventoryTransferSetItems`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/inventoryTransferSetItems).
     /// </summary>
     [JsonPropertyName("inventoryTransferRemoveItems")]
     public InventoryTransferRemoveItemsPayload? InventoryTransferRemoveItems { get; init; }

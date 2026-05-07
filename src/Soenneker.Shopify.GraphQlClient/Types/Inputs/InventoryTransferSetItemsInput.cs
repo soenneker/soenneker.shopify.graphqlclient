@@ -17,7 +17,7 @@ public sealed partial class InventoryTransferSetItemsInput
     public string Id { get; init; } = null!;
 
     /// <summary>
-    /// The line items to be set on the Transfer.
+    /// The line items to set on the Transfer. Only the items included in this list are affected; items already on the transfer that aren't referenced here will stay unchanged. Each inventory item may appear at most once in this list; duplicate `inventoryItemId` entries are rejected.
     /// </summary>
     [JsonPropertyName("lineItems")]
     public List<InventoryTransferLineItemInput> LineItems { get; init; } = [];

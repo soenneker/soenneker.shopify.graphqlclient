@@ -10,7 +10,27 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class InventoryTransferSetItemsData
 {
     /// <summary>
-    /// This mutation allows for the setting of line items on a Transfer. Will replace the items already set, if any.
+    /// This mutation sets the quantity for one or more line items on a Transfer.
+    /// 
+    /// Only the items you include in the `lineItems` field are updated. Items already on
+    /// the transfer but not referenced in your update will stay unchanged. Each inventory
+    /// item may appear at most once in `lineItems`; duplicate `inventoryItemId` entries
+    /// are rejected.
+    /// 
+    /// For each entry in `lineItems`:
+    /// - If the inventory item isn't yet on the transfer, a new line item is added with
+    ///   the provided quantity.
+    /// - If the inventory item is already on the transfer, the provided quantity
+    ///   replaces the line item's [`processableQuantity`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryTransferLineItem#field-InventoryTransferLineItem.fields.processableQuantity).
+    ///   Any quantity outside the processable portion (for example, already shipped or
+    ///   picked for shipment) is preserved, so the resulting total quantity equals the
+    ///   preserved portion plus the provided quantity.
+    /// 
+    /// Passing a quantity of `0` is only allowed for transfers in `DRAFT` status; on
+    /// `READY_TO_SHIP` or `IN_PROGRESS` transfers it returns an `INVALID_QUANTITY` error.
+    /// On `DRAFT` transfers, `quantity: 0` leaves a zero-quantity line item on the
+    /// transfer; it does not remove the item. To remove a line item from a transfer, use
+    /// [`inventoryTransferRemoveItems`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/inventoryTransferRemoveItems).
     /// 
     /// &gt; Caution:
     /// &gt; As of 2026-01, this mutation supports an optional idempotency key using the `@idempotent` directive.
