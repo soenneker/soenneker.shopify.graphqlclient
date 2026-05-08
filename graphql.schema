@@ -49750,9 +49750,6 @@ type Mutation {
   - Creates a [reverse fulfillment order](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-fulfillment-orders),
   and enables you to create a [reverse delivery](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-deliveries)
   for the reverse fulfillment order
-  - Creates a sales agreement with a `RETURN` reason, which links to all sales created for the return or exchange
-  - Generates sales records that reverse the sales records for the items being returned
-  - Generates sales records for any exchange line items
   
   After you've created a return, use the
   [`return`](https://shopify.dev/docs/api/admin-graphql/latest/queries/return) query to retrieve the
