@@ -21173,7 +21173,7 @@ input DiscountAutomaticAppInput {
   enable customers to purchase products
   on a recurring basis.
   """
-  appliesOnSubscription: Boolean = false
+  appliesOnSubscription: Boolean = true
   """
   Whether the discount applies on one-time purchases.
   """
@@ -22252,7 +22252,7 @@ input DiscountCodeAppInput {
   """
   Whether the discount applies to subscriptions items.
   """
-  appliesOnSubscription: Boolean = false
+  appliesOnSubscription: Boolean = true
   """
   Whether the discount applies on regular one-time-purchase items.
   """
