@@ -2126,7 +2126,7 @@ public sealed partial class Mutation
     public GiftCardCreatePayload? GiftCardCreate { get; init; }
 
     /// <summary>
-    /// Credit a gift card.
+    /// Adds funds to an existing gift card, increasing its available balance. Use this when a merchant wants to top up a customer's gift card — for example, as a promotional bonus, a customer service gesture, or to reload a reusable gift card.
     /// </summary>
     [JsonPropertyName("giftCardCredit")]
     public GiftCardCreditPayload? GiftCardCredit { get; init; }
@@ -2139,25 +2139,25 @@ public sealed partial class Mutation
     public GiftCardDeactivatePayload? GiftCardDeactivate { get; init; }
 
     /// <summary>
-    /// Debit a gift card.
+    /// Removes funds from a gift card, decreasing its available balance. Use this for manual balance adjustments — for example, correcting an accidental over-credit or applying a fee.
     /// </summary>
     [JsonPropertyName("giftCardDebit")]
     public GiftCardDebitPayload? GiftCardDebit { get; init; }
 
     /// <summary>
-    /// Send notification to the customer of a gift card.
+    /// Sends a notification to the customer who purchased a gift card, including the gift card details and code. The notification is delivered using the customer's available contact method. Use this to resend the purchase confirmation or remind the purchaser about a gift card they bought.
     /// </summary>
     [JsonPropertyName("giftCardSendNotificationToCustomer")]
     public GiftCardSendNotificationToCustomerPayload? GiftCardSendNotificationToCustomer { get; init; }
 
     /// <summary>
-    /// Send notification to the recipient of a gift card.
+    /// Sends a notification to the designated recipient of a gift card, delivering the gift card code and redemption instructions. The notification is delivered using the recipient's available contact method. Use this to deliver or re-deliver the gift card to the intended recipient.
     /// </summary>
     [JsonPropertyName("giftCardSendNotificationToRecipient")]
     public GiftCardSendNotificationToRecipientPayload? GiftCardSendNotificationToRecipient { get; init; }
 
     /// <summary>
-    /// Update a gift card.
+    /// Updates the properties of an existing gift card, such as its expiration date, note, or template suffix. Use this to modify gift card details — for example, extending an expiration date for a loyal customer or adding an internal note for tracking purposes.
     /// </summary>
     [JsonPropertyName("giftCardUpdate")]
     public GiftCardUpdatePayload? GiftCardUpdate { get; init; }

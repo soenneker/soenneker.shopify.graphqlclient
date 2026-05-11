@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class GiftCardCreditData
 {
     /// <summary>
-    /// Credit a gift card.
+    /// Adds funds to an existing gift card, increasing its available balance. Use this when a merchant wants to top up a customer's gift card — for example, as a promotional bonus, a customer service gesture, or to reload a reusable gift card.
     /// </summary>
     [JsonPropertyName("giftCardCredit")]
     public GiftCardCreditPayload? GiftCardCredit { get; init; }

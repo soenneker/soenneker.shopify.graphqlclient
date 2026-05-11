@@ -967,7 +967,7 @@ public sealed partial class QueryRoot
     public GiftCardConnection GiftCards { get; init; } = null!;
 
     /// <summary>
-    /// The total number of gift cards issued for the shop. Limited to a maximum of 10000 by default.
+    /// Returns the total count of gift cards that have been issued by the shop. Use this for dashboard summaries or to understand the scale of a merchant's gift card program. The count includes all gift cards regardless of status (active, disabled, or fully redeemed). Limited to a maximum of 10000 by default.
     /// </summary>
     [JsonPropertyName("giftCardsCount")]
     public Count? GiftCardsCount { get; init; }

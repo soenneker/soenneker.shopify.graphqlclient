@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class GiftCardUpdateData
 {
     /// <summary>
-    /// Update a gift card.
+    /// Updates the properties of an existing gift card, such as its expiration date, note, or template suffix. Use this to modify gift card details — for example, extending an expiration date for a loyal customer or adding an internal note for tracking purposes.
     /// </summary>
     [JsonPropertyName("giftCardUpdate")]
     public GiftCardUpdatePayload? GiftCardUpdate { get; init; }

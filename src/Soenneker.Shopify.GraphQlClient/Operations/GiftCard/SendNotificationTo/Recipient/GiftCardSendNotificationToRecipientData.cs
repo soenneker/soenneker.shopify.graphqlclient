@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class GiftCardSendNotificationToRecipientData
 {
     /// <summary>
-    /// Send notification to the recipient of a gift card.
+    /// Sends a notification to the designated recipient of a gift card, delivering the gift card code and redemption instructions. The notification is delivered using the recipient's available contact method. Use this to deliver or re-deliver the gift card to the intended recipient.
     /// </summary>
     [JsonPropertyName("giftCardSendNotificationToRecipient")]
     public GiftCardSendNotificationToRecipientPayload? GiftCardSendNotificationToRecipient { get; init; }

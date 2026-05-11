@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class GiftCardDebitData
 {
     /// <summary>
-    /// Debit a gift card.
+    /// Removes funds from a gift card, decreasing its available balance. Use this for manual balance adjustments — for example, correcting an accidental over-credit or applying a fee.
     /// </summary>
     [JsonPropertyName("giftCardDebit")]
     public GiftCardDebitPayload? GiftCardDebit { get; init; }
