@@ -338,10 +338,11 @@ public sealed partial class Product : HasEvents, HasMetafieldDefinitions, HasMet
     public string ProductType { get; init; } = null!;
 
     /// <summary>
-    /// The number of
+    /// The total number of
     /// [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-    /// that a resource is published to, without
+    /// that a resource is published to, including publications with
     /// [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+    /// To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
     /// </summary>
     [JsonPropertyName("publicationCount")]
     public int PublicationCount { get; init; }
@@ -417,10 +418,11 @@ public sealed partial class Product : HasEvents, HasMetafieldDefinitions, HasMet
     public ResourcePublicationConnection ResourcePublications { get; init; } = null!;
 
     /// <summary>
-    /// The number of
+    /// The total number of
     /// [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-    /// that a resource is published to, without
+    /// that a resource is published to, including publications with
     /// [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+    /// To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
     /// </summary>
     [JsonPropertyName("resourcePublicationsCount")]
     public Count? ResourcePublicationsCount { get; init; }

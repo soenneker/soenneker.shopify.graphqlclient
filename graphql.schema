@@ -9705,10 +9705,11 @@ type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields &
   """
   productsCount: Count
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   publicationCount(onlyPublished: Boolean = true): Int! @deprecated(reason: "Use \u0060resourcePublicationsCount\u0060 instead.")
   """
@@ -9742,10 +9743,11 @@ type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields &
   """
   resourcePublications(onlyPublished: Boolean = true, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationConnection!
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   resourcePublicationsCount(onlyPublished: Boolean = true): Count
   """
@@ -58968,10 +58970,11 @@ type Product implements HasEvents & HasMetafieldDefinitions & HasMetafields & Ha
   """
   productType: String!
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   publicationCount(onlyPublished: Boolean = true): Int! @deprecated(reason: "Use \u0060resourcePublicationsCount\u0060 instead.")
   """
@@ -59025,10 +59028,11 @@ type Product implements HasEvents & HasMetafieldDefinitions & HasMetafields & Ha
   """
   resourcePublications(onlyPublished: Boolean = true, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationConnection!
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   resourcePublicationsCount(onlyPublished: Boolean = true): Count
   """
@@ -63905,10 +63909,11 @@ interface Publishable {
   """
   availablePublicationsCount: Count
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   publicationCount(onlyPublished: Boolean = true): Int! @deprecated(reason: "Use \u0060resourcePublicationsCount\u0060 instead.")
   """
@@ -63938,10 +63943,11 @@ interface Publishable {
   """
   resourcePublications(onlyPublished: Boolean = true, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationConnection!
   """
-  The number of
+  The total number of
   [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-  that a resource is published to, without
+  that a resource is published to, including publications with
   [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+  To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
   """
   resourcePublicationsCount(onlyPublished: Boolean = true): Count
   """

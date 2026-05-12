@@ -17,10 +17,11 @@ public interface Publishable
     Count? AvailablePublicationsCount { get; }
 
     /// <summary>
-    /// The number of
+    /// The total number of
     /// [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-    /// that a resource is published to, without
+    /// that a resource is published to, including publications with
     /// [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+    /// To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
     /// </summary>
     int PublicationCount { get; }
 
@@ -56,10 +57,11 @@ public interface Publishable
     ResourcePublicationConnection ResourcePublications { get; }
 
     /// <summary>
-    /// The number of
+    /// The total number of
     /// [publications](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication)
-    /// that a resource is published to, without
+    /// that a resource is published to, including publications with
     /// [feedback errors](https://shopify.dev/docs/api/admin-graphql/latest/objects/ResourceFeedback).
+    /// To get a count that excludes publications with feedback errors, use `availablePublicationsCount`.
     /// </summary>
     Count? ResourcePublicationsCount { get; }
 
