@@ -79760,6 +79760,10 @@ enum SubscriptionDraftErrorCode {
   """
   STALE_CONTRACT
   """
+  The contract draft has too many lines.
+  """
+  TOO_MANY_LINES
+  """
   Currency is not enabled.
   """
   CURRENCY_NOT_ENABLED

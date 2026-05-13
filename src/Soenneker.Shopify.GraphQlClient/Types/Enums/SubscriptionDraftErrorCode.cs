@@ -103,6 +103,11 @@ public enum SubscriptionDraftErrorCode
     STALECONTRACT,
 
     /// <summary>
+    /// The contract draft has too many lines.
+    /// </summary>
+    TOOMANYLINES,
+
+    /// <summary>
     /// Currency is not enabled.
     /// </summary>
     CURRENCYNOTENABLED,
