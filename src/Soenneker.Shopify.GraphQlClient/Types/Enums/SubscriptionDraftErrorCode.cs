@@ -108,6 +108,11 @@ public enum SubscriptionDraftErrorCode
     TOOMANYLINES,
 
     /// <summary>
+    /// The contract draft has too many discounts.
+    /// </summary>
+    TOOMANYDISCOUNTS,
+
+    /// <summary>
     /// Currency is not enabled.
     /// </summary>
     CURRENCYNOTENABLED,

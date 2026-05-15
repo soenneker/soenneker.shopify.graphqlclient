@@ -41147,9 +41147,9 @@ type MarketingEngagement {
   """
   impressionsCount: Int
   """
-  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative is strongly preferred, and support for cumulative metrics may be deprecated in the future.
+  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
   """
-  isCumulative: Boolean!
+  isCumulative: Boolean! @deprecated(reason: "Cumulative metrics are being phased out. Send non-cumulative engagement metrics instead (values aggregated over the single day indicated in \u0060occurredOn\u0060, with \u0060isCumulative: false\u0060). Existing activities that have been sending cumulative metrics can migrate to non-cumulative at any time.")
   """
   The marketing activity object related to this engagement. This corresponds to the marketingActivityId passed in on creation of the engagement.
   """
@@ -41283,7 +41283,7 @@ input MarketingEngagementInput {
   """
   adSpend: MoneyInput
   """
-  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative is strongly preferred, and support for cumulative metrics may be deprecated in the future.
+  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
   """
   isCumulative: Boolean!
   """
@@ -79763,6 +79763,10 @@ enum SubscriptionDraftErrorCode {
   The contract draft has too many lines.
   """
   TOO_MANY_LINES
+  """
+  The contract draft has too many discounts.
+  """
+  TOO_MANY_DISCOUNTS
   """
   Currency is not enabled.
   """
