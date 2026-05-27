@@ -117,7 +117,7 @@ public sealed partial class App : Node
 
     /// <summary>
     /// Corresponding AppInstallation for this shop and App.
-    /// Returns null if the App is not installed.
+    /// Returns null if the App isn't installed.
     /// </summary>
     [JsonPropertyName("installation")]
     public AppInstallation? Installation { get; init; }
