@@ -47,7 +47,7 @@ public sealed partial class MetafieldInput
     public string? Value { get; init; }
 
     /// <summary>
-    /// The type of data that is stored in the metafield.
+    /// The type of data that's stored in the metafield.
     /// Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
     /// 
     /// Required when creating or updating a metafield without a definition.

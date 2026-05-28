@@ -12,7 +12,7 @@ public sealed partial class MetafieldDefinitionUpdateInput
 {
     /// <summary>
     /// The container for a group of metafields that the metafield definition is associated with. Used to help identify
-    /// the metafield definition, but cannot be updated itself. If omitted, the app-reserved namespace will be used.
+    /// the metafield definition, but can't be updated itself. If omitted, the app-reserved namespace will be used.
     /// </summary>
     [JsonPropertyName("namespace")]
     public string? @Namespace { get; init; }

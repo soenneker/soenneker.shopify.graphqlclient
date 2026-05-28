@@ -31,12 +31,12 @@ type AbandonedCheckout implements Navigable & Node {
   abandonedCheckoutUrl: URL!
   """
   The billing address provided by the buyer.
-  Null if the user did not provide a billing address.
+  Null if the user didn't provide a billing address.
   """
   billingAddress: MailingAddress
   """
   The date and time when the buyer completed the checkout.
-  Null if the checkout has not been completed.
+  Null if the checkout hasn't been completed.
   """
   completedAt: DateTime
   """
@@ -82,7 +82,7 @@ type AbandonedCheckout implements Navigable & Node {
   note: String!
   """
   The shipping address to where the line items will be shipped.
-  Null if the user did not provide a shipping address.
+  Null if the user didn't provide a shipping address.
   """
   shippingAddress: MailingAddress
   """
@@ -12083,8 +12083,7 @@ type CompanyContactRole implements Node {
   """
   id: ID!
   """
-  The name of a role.
-  For example, `admin` or `buyer`.
+  The name of a role. For example, `admin` or `buyer`.
   """
   name: String!
   """
@@ -43835,7 +43834,7 @@ The input fields required to update a metafield definition.
 input MetafieldDefinitionUpdateInput {
   """
   The container for a group of metafields that the metafield definition is associated with. Used to help identify
-  the metafield definition, but cannot be updated itself. If omitted, the app-reserved namespace will be used.
+  the metafield definition, but can't be updated itself. If omitted, the app-reserved namespace will be used.
   """
   namespace: String
   """
@@ -44172,7 +44171,7 @@ input MetafieldInput {
   """
   value: String
   """
-  The type of data that is stored in the metafield.
+  The type of data that's stored in the metafield.
   Refer to the list of [supported types](https://shopify.dev/apps/metafields/types).
   
   Required when creating or updating a metafield without a definition.
@@ -44502,10 +44501,10 @@ input MetafieldsSetInput {
   """
   compareDigest: String
   """
-  The type of data that is stored in the metafield.
+  The type of data that's stored in the metafield.
   The type must be one of the [supported types](https://shopify.dev/apps/metafields/types).
   
-  Required when there is no corresponding definition for the given `namespace`, `key`, and
+  Required when there's no corresponding definition for the given `namespace`, `key`, and
   owner resource type (derived from `ownerId`).
   """
   type: String

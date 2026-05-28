@@ -16,8 +16,7 @@ public sealed partial class CompanyContactRole : Node
     public string Id { get; init; } = null!;
 
     /// <summary>
-    /// The name of a role.
-    /// For example, `admin` or `buyer`.
+    /// The name of a role. For example, `admin` or `buyer`.
     /// </summary>
     [JsonPropertyName("name")]
     public string Name { get; init; } = null!;
