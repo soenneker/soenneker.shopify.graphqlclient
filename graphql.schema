@@ -25176,7 +25176,7 @@ type DraftOrderDiscountNotAppliedWarning implements DraftOrderWarning {
   """
   The price rule that can't be applied.
   """
-  priceRule: PriceRule
+  priceRule: PriceRule @deprecated(reason: "This field is deprecated.")
 }
 
 """
