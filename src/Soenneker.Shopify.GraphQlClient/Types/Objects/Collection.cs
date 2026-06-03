@@ -211,6 +211,10 @@ public sealed partial class Collection : HasEvents, HasMetafieldDefinitions, Has
     /// <summary>
     /// The list of resources that are either published or staged to be published to a
     /// [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+    /// By default, only publications to `APP` catalog types are returned.
+    /// For `Product` and `ProductVariant`, use the `catalogType` argument to retrieve
+    /// publications for other catalog types, such as `COMPANY_LOCATION` (B2B) or `MARKET`.
+    /// `Collection` only supports publications to `APP` catalog types.
     /// </summary>
     [JsonPropertyName("resourcePublicationsV2")]
     public ResourcePublicationV2Connection ResourcePublicationsV2 { get; init; } = null!;

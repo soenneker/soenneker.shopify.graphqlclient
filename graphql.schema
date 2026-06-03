@@ -9753,6 +9753,10 @@ type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields &
   """
   The list of resources that are either published or staged to be published to a
   [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+  By default, only publications to `APP` catalog types are returned.
+  For `Product` and `ProductVariant`, use the `catalogType` argument to retrieve
+  publications for other catalog types, such as `COMPANY_LOCATION` (B2B) or `MARKET`.
+  `Collection` only supports publications to `APP` catalog types.
   """
   resourcePublicationsV2(onlyPublished: Boolean = true, catalogType: CatalogType, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationV2Connection!
   """
@@ -59039,6 +59043,10 @@ type Product implements HasEvents & HasMetafieldDefinitions & HasMetafields & Ha
   """
   The list of resources that are either published or staged to be published to a
   [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+  By default, only publications to `APP` catalog types are returned.
+  For `Product` and `ProductVariant`, use the `catalogType` argument to retrieve
+  publications for other catalog types, such as `COMPANY_LOCATION` (B2B) or `MARKET`.
+  `Collection` only supports publications to `APP` catalog types.
   """
   resourcePublicationsV2(onlyPublished: Boolean = true, catalogType: CatalogType, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationV2Connection!
   """
@@ -63954,6 +63962,10 @@ interface Publishable {
   """
   The list of resources that are either published or staged to be published to a
   [publication](https://shopify.dev/docs/api/admin-graphql/latest/objects/Publication).
+  By default, only publications to `APP` catalog types are returned.
+  For `Product` and `ProductVariant`, use the `catalogType` argument to retrieve
+  publications for other catalog types, such as `COMPANY_LOCATION` (B2B) or `MARKET`.
+  `Collection` only supports publications to `APP` catalog types.
   """
   resourcePublicationsV2(onlyPublished: Boolean = true, catalogType: CatalogType, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationV2Connection!
   """
