@@ -634,6 +634,11 @@ public enum WebhookSubscriptionTopic
     LOCALESDESTROY,
 
     /// <summary>
+    /// The webhook topic for `machine_translation_batch/completed` events. Occurs when a whole-shop machine translation batch completes.
+    /// </summary>
+    MACHINETRANSLATIONBATCHCOMPLETED,
+
+    /// <summary>
     /// The webhook topic for `domains/create` events. Occurs whenever a domain is created.
     /// </summary>
     DOMAINSCREATE,
