@@ -39777,6 +39777,10 @@ enum MarketUserErrorCode {
   """
   GENERIC_ERROR
   """
+  Another modification to this market is in progress.
+  """
+  MARKET_UPDATE_CONCURRENT_MODIFICATION
+  """
   Invalid combination of status and enabled.
   """
   INVALID_STATUS_AND_ENABLED_COMBINATION
@@ -84905,6 +84909,10 @@ enum WebhookSubscriptionTopic {
   The webhook topic for `locales/destroy` events. Occurs whenever a shop locale is destroyed Requires the `read_locales` scope.
   """
   LOCALES_DESTROY
+  """
+  The webhook topic for `machine_translation_batch/completed` events. Occurs when a whole-shop machine translation batch completes.
+  """
+  MACHINE_TRANSLATION_BATCH_COMPLETED
   """
   The webhook topic for `domains/create` events. Occurs whenever a domain is created.
   """

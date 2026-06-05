@@ -233,6 +233,11 @@ public enum MarketUserErrorCode
     GENERICERROR,
 
     /// <summary>
+    /// Another modification to this market is in progress.
+    /// </summary>
+    MARKETUPDATECONCURRENTMODIFICATION,
+
+    /// <summary>
     /// Invalid combination of status and enabled.
     /// </summary>
     INVALIDSTATUSANDENABLEDCOMBINATION,
