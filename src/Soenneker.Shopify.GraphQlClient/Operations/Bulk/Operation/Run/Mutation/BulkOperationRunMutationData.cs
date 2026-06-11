@@ -12,7 +12,7 @@ public sealed partial class BulkOperationRunMutationData
     /// <summary>
     /// Creates and runs a [bulk operation](https://shopify.dev/docs/api/admin-graphql/latest/objects/BulkOperation) to import data asynchronously. This mutation executes a specified GraphQL mutation multiple times using input data from a [JSONL](http://jsonlines.org/) file that you've uploaded to Shopify.
     /// 
-    /// The operation processes each line in your JSONL file as a separate mutation execution. The operation delivers results in a JSONL file when it completes. You can run one bulk mutation operation at a time per shop, though a [`bulkOperationRunQuery`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/bulkoperationrunquery) operation can run simultaneously.
+    /// The operation processes each line in your JSONL file as a separate mutation execution. The operation delivers results in a JSONL file when it completes. Bulk mutation operations and [`bulkOperationRunQuery`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/bulkoperationrunquery) operations can run at the same time per shop. The number of concurrent operations that an app can run depends on the API version. For the applicable concurrency limits, refer to the [bulk operations guide](https://shopify.dev/docs/api/usage/bulk-operations/imports).
     /// 
     /// Learn more about [bulk importing data](https://shopify.dev/docs/api/usage/bulk-operations/imports).
     /// </summary>
