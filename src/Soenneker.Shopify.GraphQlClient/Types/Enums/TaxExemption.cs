@@ -28,6 +28,16 @@ public enum TaxExemption
     CASKRESELLEREXEMPTION,
 
     /// <summary>
+    /// This customer is exempt from VPT (Vapour Products Tax) for holding a valid VPT_RESELLER_EXEMPTION in Saskatchewan.
+    /// </summary>
+    CASKVPTRESELLEREXEMPTION,
+
+    /// <summary>
+    /// This customer is exempt from VPT (Vapour Products Tax) for holding a valid VPT_RESELLER_EXEMPTION in Newfoundland and Labrador.
+    /// </summary>
+    CANLVPTRESELLEREXEMPTION,
+
+    /// <summary>
     /// This customer is exempt from specific taxes for holding a valid DIPLOMAT_EXEMPTION in Canada.
     /// </summary>
     CADIPLOMATEXEMPTION,
