@@ -51186,7 +51186,7 @@ type Order implements CommentEventSubject & HasEvents & HasLocalizationExtension
   Details about the sales channel that created the order, such as the [channel app type](https://shopify.dev/docs/api/admin-graphql/latest/objects/channel#field-Channel.fields.channelType)
   and [channel name](https://shopify.dev/docs/api/admin-graphql/latest/objects/ChannelDefinition#field-ChannelDefinition.fields.channelName), which helps to track order sources.
   """
-  channelInformation: ChannelInformation
+  channelInformation: ChannelInformation @deprecated(reason: "Use \u0060attribution\u0060 instead.")
   """
   The IP address of the customer who placed the order. Useful for fraud detection and geographic analysis.
   """
