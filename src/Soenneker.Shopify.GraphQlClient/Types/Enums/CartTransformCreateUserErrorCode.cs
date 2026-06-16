@@ -28,6 +28,11 @@ public enum CartTransformCreateUserErrorCode
     FUNCTIONDOESNOTIMPLEMENT,
 
     /// <summary>
+    /// Shop must be on a Shopify Plus plan to activate functions from a custom app.
+    /// </summary>
+    CUSTOMAPPFUNCTIONNOTELIGIBLE,
+
+    /// <summary>
     /// Could not create or update metafields.
     /// </summary>
     INVALIDMETAFIELDS,

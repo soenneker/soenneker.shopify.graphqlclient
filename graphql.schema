@@ -5864,6 +5864,10 @@ enum CartTransformCreateUserErrorCode {
   """
   FUNCTION_DOES_NOT_IMPLEMENT
   """
+  Shop must be on a Shopify Plus plan to activate functions from a custom app.
+  """
+  CUSTOM_APP_FUNCTION_NOT_ELIGIBLE
+  """
   Could not create or update metafields.
   """
   INVALID_METAFIELDS
@@ -38406,7 +38410,7 @@ type MailingAddress implements Node {
   """
   timeZone: String
   """
-  The validation status that is leveraged by the address validation feature in the Shopify Admin.
+  The validation status that's leveraged by the address validation feature in the Shopify Admin.
   See ["Validating addresses in your Shopify admin"](https://help.shopify.com/manual/fulfillment/managing-orders/validating-order-address) for more details.
   """
   validationResultSummary: MailingAddressValidationResult
