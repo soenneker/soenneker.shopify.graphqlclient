@@ -22,8 +22,6 @@ public sealed partial class CollectionAddProductsData
     /// 
     /// The mutation processes multiple product additions and returns success status along with any errors encountered during the operation. Products are added to the collection while preserving existing collection settings.
     /// 
-    /// This operation only works with manual collections where merchants explicitly choose which products to include. It will return an error if used with smart collections that automatically include products based on conditions.
-    /// 
     /// Learn more about [collection management](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
     /// </summary>
     [JsonPropertyName("collectionAddProducts")]

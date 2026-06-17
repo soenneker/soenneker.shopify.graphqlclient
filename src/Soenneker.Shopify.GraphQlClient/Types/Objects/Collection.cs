@@ -13,11 +13,6 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// [online stores](https://shopify.dev/docs/apps/build/online-store),
 /// [sales channels](https://shopify.dev/docs/apps/build/sales-channels), and marketing campaigns.
 /// 
-/// There are two types of collections:
-/// 
-/// - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You specify the products to include in a collection.
-/// - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You define rules, and products matching those rules are automatically included in the collection.
-/// 
 /// The `Collection` object provides information to:
 /// 
 /// - Organize products by category, season, or promotion.
@@ -36,7 +31,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// for unique layouts. They also support advanced features like translated content, resource feedback,
 /// and contextual publication for location-based catalogs.
 /// 
-/// Learn about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+/// Learn about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
 /// </summary>
 public sealed partial class Collection : HasEvents, HasMetafieldDefinitions, HasMetafields, HasPublishedTranslations, Node, Publishable
 {
@@ -220,7 +215,7 @@ public sealed partial class Collection : HasEvents, HasMetafieldDefinitions, Has
     public ResourcePublicationV2Connection ResourcePublicationsV2 { get; init; } = null!;
 
     /// <summary>
-    /// For a smart (automated) collection, specifies the rules that determine whether a product is included.
+    /// Specifies the rules that determine whether a product is included.
     /// </summary>
     [JsonPropertyName("ruleSet")]
     public CollectionRuleSet? RuleSet { get; init; }

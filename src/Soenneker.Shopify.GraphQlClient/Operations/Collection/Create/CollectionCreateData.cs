@@ -16,24 +16,35 @@ public sealed partial class CollectionCreateData
     /// other [sales channels](https://shopify.dev/docs/apps/build/sales-channels).
     /// For example, an athletics store might create different collections for running attire, shoes, and accessories.
     /// 
-    /// There are two types of collections:
-    /// 
-    /// - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You specify the products to include in a collection.
-    /// - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You define rules, and products matching those rules are automatically
-    /// included in the collection.
-    /// 
     /// Use the `collectionCreate` mutation when you need to:
     /// 
     /// - Create a new collection for a product launch or campaign
     /// - Organize products by category, season, or promotion
-    /// - Automate product grouping using rules (for example, by tag, type, or price)
+    /// - Automate product grouping using conditions (for example, by tag, type, or price)
+    /// 
+    /// Collections can include products manually and can also include products automatically based on rules, sources,
+    /// or conditions.
+    /// 
+    /// **Defining a collection's membership**
+    /// 
+    /// Define membership with `sources` on the `collection` argument
+    /// ([`CollectionCreateInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionCreateInput)).
+    /// Each source adds products through `conditions` (such as product tag, title, or metafield—see
+    /// [`CollectionSourceInclusionConditionInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionSourceInclusionConditionInput)
+    /// for the full list) and through manual `selections`.
+    /// 
+    /// &gt; Note:
+    /// &gt; The `input` argument and its `ruleSet` field are deprecated. Existing integrations should migrate to
+    /// `collection` and `sources` — a `ruleSet` rule maps to an equivalent source `condition` (for example, a
+    /// tag rule becomes a `productTag` condition). If both `collection` and `input` are provided, `collection`
+    /// is used.
     /// 
     /// &gt; Note:
     /// &gt; The created collection is unpublished by default. To make it available to customers,
     /// use the [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish)
     /// mutation after creation.
     /// 
-    /// Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+    /// Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
     /// </summary>
     [JsonPropertyName("collectionCreate")]
     public CollectionCreatePayload? CollectionCreate { get; init; }

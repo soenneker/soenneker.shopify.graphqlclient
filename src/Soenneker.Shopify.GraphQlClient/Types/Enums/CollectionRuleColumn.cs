@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// Specifies the attribute of a product being used to populate the smart collection.
+/// Specifies the attribute of a product being used to populate the collection.
 /// </summary>
 public enum CollectionRuleColumn
 {
@@ -28,13 +28,13 @@ public enum CollectionRuleColumn
     PRODUCTTAXONOMYNODEID,
 
     /// <summary>
-    /// This rule type is designed to dynamically include products in a smart collection based on their category id.
+    /// This rule type is designed to dynamically include products in a collection based on their category id.
     /// When a specific product category is set as a condition, this rule will match products that are directly assigned to the specified category.
     /// </summary>
     PRODUCTCATEGORYID,
 
     /// <summary>
-    /// This rule type is designed to dynamically include products in a smart collection based on their category id.
+    /// This rule type is designed to dynamically include products in a collection based on their category id.
     /// When a specific product category is set as a condition, this rule will not only match products that are
     /// directly assigned to the specified category but also include any products categorized under any descendant of that category.
     /// </summary>

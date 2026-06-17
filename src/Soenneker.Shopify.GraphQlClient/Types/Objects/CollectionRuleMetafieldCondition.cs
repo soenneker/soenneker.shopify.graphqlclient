@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// Identifies a metafield definition used as a rule for the smart collection.
+/// Identifies a metafield definition used as a rule for the collection.
 /// </summary>
 public sealed partial class CollectionRuleMetafieldCondition
 {

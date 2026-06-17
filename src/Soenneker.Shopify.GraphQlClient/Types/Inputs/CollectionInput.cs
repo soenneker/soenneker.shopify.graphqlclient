@@ -35,7 +35,7 @@ public sealed partial class CollectionInput
     public ImageInput? Image { get; init; }
 
     /// <summary>
-    /// Initial list of collection products. Only valid with `collectionCreate` and without rules.
+    /// Initial list of collection products. Only valid with `collectionCreate`.
     /// </summary>
     [JsonPropertyName("products")]
     public List<string>? Products { get; init; }
@@ -47,7 +47,8 @@ public sealed partial class CollectionInput
     public List<CollectionPublicationInput>? Publications { get; init; }
 
     /// <summary>
-    /// The rules used to assign products to the collection.
+    /// The rules used to assign products to the collection. This is the legacy smart-collection model;
+    /// use `sources` with `conditions` instead. Each `ruleSet` rule has an equivalent `condition`.
     /// </summary>
     [JsonPropertyName("ruleSet")]
     public CollectionRuleSetInput? RuleSet { get; init; }

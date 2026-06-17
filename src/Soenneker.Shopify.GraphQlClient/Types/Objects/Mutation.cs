@@ -382,8 +382,6 @@ public sealed partial class Mutation
     /// 
     /// The mutation processes multiple product additions and returns success status along with any errors encountered during the operation. Products are added to the collection while preserving existing collection settings.
     /// 
-    /// This operation only works with manual collections where merchants explicitly choose which products to include. It will return an error if used with smart collections that automatically include products based on conditions.
-    /// 
     /// Learn more about [collection management](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
     /// </summary>
     [JsonPropertyName("collectionAddProducts")]
@@ -407,24 +405,35 @@ public sealed partial class Mutation
     /// other [sales channels](https://shopify.dev/docs/apps/build/sales-channels).
     /// For example, an athletics store might create different collections for running attire, shoes, and accessories.
     /// 
-    /// There are two types of collections:
-    /// 
-    /// - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You specify the products to include in a collection.
-    /// - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You define rules, and products matching those rules are automatically
-    /// included in the collection.
-    /// 
     /// Use the `collectionCreate` mutation when you need to:
     /// 
     /// - Create a new collection for a product launch or campaign
     /// - Organize products by category, season, or promotion
-    /// - Automate product grouping using rules (for example, by tag, type, or price)
+    /// - Automate product grouping using conditions (for example, by tag, type, or price)
+    /// 
+    /// Collections can include products manually and can also include products automatically based on rules, sources,
+    /// or conditions.
+    /// 
+    /// **Defining a collection's membership**
+    /// 
+    /// Define membership with `sources` on the `collection` argument
+    /// ([`CollectionCreateInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionCreateInput)).
+    /// Each source adds products through `conditions` (such as product tag, title, or metafield—see
+    /// [`CollectionSourceInclusionConditionInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionSourceInclusionConditionInput)
+    /// for the full list) and through manual `selections`.
+    /// 
+    /// &gt; Note:
+    /// &gt; The `input` argument and its `ruleSet` field are deprecated. Existing integrations should migrate to
+    /// `collection` and `sources` — a `ruleSet` rule maps to an equivalent source `condition` (for example, a
+    /// tag rule becomes a `productTag` condition). If both `collection` and `input` are provided, `collection`
+    /// is used.
     /// 
     /// &gt; Note:
     /// &gt; The created collection is unpublished by default. To make it available to customers,
     /// use the [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish)
     /// mutation after creation.
     /// 
-    /// Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+    /// Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
     /// </summary>
     [JsonPropertyName("collectionCreate")]
     public CollectionCreatePayload? CollectionCreate { get; init; }
@@ -468,7 +477,7 @@ public sealed partial class Mutation
     public CollectionPublishPayload? CollectionPublish { get; init; }
 
     /// <summary>
-    /// Removes multiple products from a collection in a single operation. This mutation can process large product sets (up to 250 products) and may take significant time to complete for collections with many products.
+    /// Removes multiple manually included products from a collection in a single operation. This mutation can process large product sets (up to 250 products) and may take significant time to complete for collections with many products.
     /// 
     /// For example, when ending a seasonal promotion, merchants can remove all sale items from a "Summer Clearance" collection at once rather than editing each product individually.
     /// 
@@ -523,21 +532,19 @@ public sealed partial class Mutation
     /// 
     /// - Updating collection details, like title, description, or image
     /// - Modifying SEO metadata for better search visibility
-    /// - Changing which products are included (using rule updates for smart collections)
-    /// - Publishing or unpublishing collections across different sales channels
+    /// - Changing which products are included in a collection by updating its rules, sources, or conditions
     /// - Updating custom data using [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields)
     /// 
-    /// There are two types of collections with different update capabilities:
-    /// 
-    /// - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You can update collection properties, but rule sets can't be modified since products are manually selected.
-    /// - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You can update both collection properties and the rules that automatically determine which products are included.
-    /// When updating [rule sets](https://shopify.dev/docs/api/admin-graphql/latest/objects/CollectionRuleConditions) for smart collections, the operation might be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object that you can use to track the progress of the update.
+    /// Collections can include products manually and can also include products automatically based on rules, sources,
+    /// or conditions. When product membership is updated through rules, sources, or conditions, the operation might
+    /// be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object
+    /// that you can use to track the progress of the update.
     /// 
     /// To publish or unpublish collections to specific sales channels, use the dedicated
     /// [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish) and
     /// [`publishableUnpublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishableUnpublish) mutations.
     /// 
-    /// Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+    /// Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
     /// </summary>
     [JsonPropertyName("collectionUpdate")]
     public CollectionUpdatePayload? CollectionUpdate { get; init; }

@@ -20,21 +20,19 @@ public sealed partial class CollectionUpdateData
     /// 
     /// - Updating collection details, like title, description, or image
     /// - Modifying SEO metadata for better search visibility
-    /// - Changing which products are included (using rule updates for smart collections)
-    /// - Publishing or unpublishing collections across different sales channels
+    /// - Changing which products are included in a collection by updating its rules, sources, or conditions
     /// - Updating custom data using [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields)
     /// 
-    /// There are two types of collections with different update capabilities:
-    /// 
-    /// - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You can update collection properties, but rule sets can't be modified since products are manually selected.
-    /// - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You can update both collection properties and the rules that automatically determine which products are included.
-    /// When updating [rule sets](https://shopify.dev/docs/api/admin-graphql/latest/objects/CollectionRuleConditions) for smart collections, the operation might be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object that you can use to track the progress of the update.
+    /// Collections can include products manually and can also include products automatically based on rules, sources,
+    /// or conditions. When product membership is updated through rules, sources, or conditions, the operation might
+    /// be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object
+    /// that you can use to track the progress of the update.
     /// 
     /// To publish or unpublish collections to specific sales channels, use the dedicated
     /// [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish) and
     /// [`publishableUnpublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishableUnpublish) mutations.
     /// 
-    /// Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+    /// Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
     /// </summary>
     [JsonPropertyName("collectionUpdate")]
     public CollectionUpdatePayload? CollectionUpdate { get; init; }

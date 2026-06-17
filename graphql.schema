@@ -9608,11 +9608,6 @@ Collections serve as the primary way to categorize and display products across
 [online stores](https://shopify.dev/docs/apps/build/online-store),
 [sales channels](https://shopify.dev/docs/apps/build/sales-channels), and marketing campaigns.
 
-There are two types of collections:
-
-- **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You specify the products to include in a collection.
-- **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You define rules, and products matching those rules are automatically included in the collection.
-
 The `Collection` object provides information to:
 
 - Organize products by category, season, or promotion.
@@ -9631,7 +9626,7 @@ and can be customized with [template suffixes](https://shopify.dev/docs/storefro
 for unique layouts. They also support advanced features like translated content, resource feedback,
 and contextual publication for location-based catalogs.
 
-Learn about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+Learn about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
 """
 type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields & HasPublishedTranslations & Node & Publishable {
   """
@@ -9764,7 +9759,7 @@ type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields &
   """
   resourcePublicationsV2(onlyPublished: Boolean = true, catalogType: CatalogType, first: Int, after: String, last: Int, before: String, reverse: Boolean = false): ResourcePublicationV2Connection!
   """
-  For a smart (automated) collection, specifies the rules that determine whether a product is included.
+  Specifies the rules that determine whether a product is included.
   """
   ruleSet: CollectionRuleSet
   """
@@ -10075,7 +10070,7 @@ input CollectionInput {
   """
   image: ImageInput
   """
-  Initial list of collection products. Only valid with `collectionCreate` and without rules.
+  Initial list of collection products. Only valid with `collectionCreate`.
   """
   products: [ID!]
   """
@@ -10083,7 +10078,8 @@ input CollectionInput {
   """
   publications: [CollectionPublicationInput!] @deprecated(reason: "Use PublishablePublish instead.")
   """
-  The rules used to assign products to the collection.
+  The rules used to assign products to the collection. This is the legacy smart-collection model;
+  use `sources` with `conditions` instead. Each `ruleSet` rule has an equivalent `condition`.
   """
   ruleSet: CollectionRuleSetInput
   """
@@ -10350,7 +10346,7 @@ type CollectionRuleCategoryCondition {
 }
 
 """
-Specifies the attribute of a product being used to populate the smart collection.
+Specifies the attribute of a product being used to populate the collection.
 """
 enum CollectionRuleColumn {
   """
@@ -10370,12 +10366,12 @@ enum CollectionRuleColumn {
   """
   PRODUCT_TAXONOMY_NODE_ID
   """
-  This rule type is designed to dynamically include products in a smart collection based on their category id.
+  This rule type is designed to dynamically include products in a collection based on their category id.
   When a specific product category is set as a condition, this rule will match products that are directly assigned to the specified category.
   """
   PRODUCT_CATEGORY_ID
   """
-  This rule type is designed to dynamically include products in a smart collection based on their category id.
+  This rule type is designed to dynamically include products in a collection based on their category id.
   When a specific product category is set as a condition, this rule will not only match products that are
   directly assigned to the specified category but also include any products categorized under any descendant of that category.
   """
@@ -10426,19 +10422,19 @@ Specifies object for the condition of the rule.
 union CollectionRuleConditionObject = CollectionRuleCategoryCondition | CollectionRuleMetafieldCondition | CollectionRuleProductCategoryCondition | CollectionRuleTextCondition
 
 """
-Defines the available columns and relationships that can be used when creating rules for smart collections. This provides the schema for building automated collection logic based on product attributes.
+Defines the available columns and relationships that can be used when creating rules for collections. This provides the schema for building automated collection logic based on product attributes.
 
 For example, merchants can create rules like "product type equals 'Shirts'" or "vendor contains 'Nike'" using the conditions defined in this object to automatically populate collections.
 
 Use `CollectionRuleConditions` to:
-- Discovering valid field options for smart collection rule interfaces
+- Discovering valid field options for collection rule interfaces
 - Understanding which conditions are available for automated collections
 - Exploring available product attributes for collection automation
 - Learning about proper field relationships for rule implementation
 
-The conditions define which product fields can be used in smart collection rules and what types of comparisons are allowed for each field.
+The conditions define which product fields can be used in collection rules and what types of comparisons are allowed for each field.
 
-Learn more about [smart collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
+Learn more about [collections with conditions](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
 """
 type CollectionRuleConditions {
   """
@@ -10488,7 +10484,7 @@ input CollectionRuleInput {
 }
 
 """
-Identifies a metafield definition used as a rule for the smart collection.
+Identifies a metafield definition used as a rule for the collection.
 """
 type CollectionRuleMetafieldCondition {
   """
@@ -46702,11 +46698,9 @@ type Mutation {
   
   The mutation processes multiple product additions and returns success status along with any errors encountered during the operation. Products are added to the collection while preserving existing collection settings.
   
-  This operation only works with manual collections where merchants explicitly choose which products to include. It will return an error if used with smart collections that automatically include products based on conditions.
-  
   Learn more about [collection management](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
   """
-  collectionAddProducts(id: ID!, productIds: [ID!]!): CollectionAddProductsPayload
+  collectionAddProducts(id: ID!, productIds: [ID!]!): CollectionAddProductsPayload @deprecated(reason: "Use \u0060collectionUpdate\u0060 with inclusion.selectionsToAdd instead.")
   """
   Adds products to a [`Collection`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection) asynchronously and returns a [`Job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) to track the operation's progress. This mutation handles large product sets efficiently by processing them in the background.
   
@@ -46715,7 +46709,7 @@ type Mutation {
   > Note:
   > This mutation adds products in the order specified in the [`productIds`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/collectionAddProducts#arguments-productIds) argument.
   """
-  collectionAddProductsV2(id: ID!, productIds: [ID!]!): CollectionAddProductsV2Payload
+  collectionAddProductsV2(id: ID!, productIds: [ID!]!): CollectionAddProductsV2Payload @deprecated(reason: "Use \u0060collectionUpdate\u0060 with inclusion.selectionsToAdd instead.")
   """
   Creates a [collection](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection)
   to group [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) together
@@ -46723,24 +46717,35 @@ type Mutation {
   other [sales channels](https://shopify.dev/docs/apps/build/sales-channels).
   For example, an athletics store might create different collections for running attire, shoes, and accessories.
   
-  There are two types of collections:
-  
-  - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You specify the products to include in a collection.
-  - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You define rules, and products matching those rules are automatically
-  included in the collection.
-  
   Use the `collectionCreate` mutation when you need to:
   
   - Create a new collection for a product launch or campaign
   - Organize products by category, season, or promotion
-  - Automate product grouping using rules (for example, by tag, type, or price)
+  - Automate product grouping using conditions (for example, by tag, type, or price)
+  
+  Collections can include products manually and can also include products automatically based on rules, sources,
+  or conditions.
+  
+  **Defining a collection's membership**
+  
+  Define membership with `sources` on the `collection` argument
+  ([`CollectionCreateInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionCreateInput)).
+  Each source adds products through `conditions` (such as product tag, title, or metafield—see
+  [`CollectionSourceInclusionConditionInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CollectionSourceInclusionConditionInput)
+  for the full list) and through manual `selections`.
+  
+  > Note:
+  > The `input` argument and its `ruleSet` field are deprecated. Existing integrations should migrate to
+  `collection` and `sources` — a `ruleSet` rule maps to an equivalent source `condition` (for example, a
+  tag rule becomes a `productTag` condition). If both `collection` and `input` are provided, `collection`
+  is used.
   
   > Note:
   > The created collection is unpublished by default. To make it available to customers,
   use the [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish)
   mutation after creation.
   
-  Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+  Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
   """
   collectionCreate(input: CollectionInput!): CollectionCreatePayload
   """
@@ -46776,7 +46781,7 @@ type Mutation {
   """
   collectionPublish(input: CollectionPublishInput!): CollectionPublishPayload @deprecated(reason: "Use \u0060publishablePublish\u0060 instead.")
   """
-  Removes multiple products from a collection in a single operation. This mutation can process large product sets (up to 250 products) and may take significant time to complete for collections with many products.
+  Removes multiple manually included products from a collection in a single operation. This mutation can process large product sets (up to 250 products) and may take significant time to complete for collections with many products.
   
   For example, when ending a seasonal promotion, merchants can remove all sale items from a "Summer Clearance" collection at once rather than editing each product individually.
   
@@ -46789,7 +46794,7 @@ type Mutation {
   
   Learn more about [collection management](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection).
   """
-  collectionRemoveProducts(id: ID!, productIds: [ID!]!): CollectionRemoveProductsPayload
+  collectionRemoveProducts(id: ID!, productIds: [ID!]!): CollectionRemoveProductsPayload @deprecated(reason: "Use \u0060collectionUpdate\u0060 with inclusions.selectionsToRemove instead.")
   """
   Asynchronously reorders products within a specified collection. Instead of returning an updated collection, this mutation returns a job, which should be [polled](https://shopify.dev/api/admin-graphql/latest/queries/job). The [`Collection.sortOrder`](https://shopify.dev/api/admin-graphql/latest/objects/Collection#field-collection-sortorder) must be `MANUAL`.
   
@@ -46825,21 +46830,19 @@ type Mutation {
   
   - Updating collection details, like title, description, or image
   - Modifying SEO metadata for better search visibility
-  - Changing which products are included (using rule updates for smart collections)
-  - Publishing or unpublishing collections across different sales channels
+  - Changing which products are included in a collection by updating its rules, sources, or conditions
   - Updating custom data using [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields)
   
-  There are two types of collections with different update capabilities:
-  
-  - **[Custom (manual) collections](https://help.shopify.com/manual/products/collections/manual-shopify-collection)**: You can update collection properties, but rule sets can't be modified since products are manually selected.
-  - **[Smart (automated) collections](https://help.shopify.com/manual/products/collections/automated-collections)**: You can update both collection properties and the rules that automatically determine which products are included.
-  When updating [rule sets](https://shopify.dev/docs/api/admin-graphql/latest/objects/CollectionRuleConditions) for smart collections, the operation might be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object that you can use to track the progress of the update.
+  Collections can include products manually and can also include products automatically based on rules, sources,
+  or conditions. When product membership is updated through rules, sources, or conditions, the operation might
+  be processed asynchronously. In these cases, the mutation returns a [`job`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Job) object
+  that you can use to track the progress of the update.
   
   To publish or unpublish collections to specific sales channels, use the dedicated
   [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish) and
   [`publishableUnpublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishableUnpublish) mutations.
   
-  Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+  Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
   """
   collectionUpdate(input: CollectionInput!): CollectionUpdatePayload
   """
@@ -64967,7 +64970,7 @@ type QueryRoot {
   """
   collectionByIdentifier(identifier: CollectionIdentifierInput!): Collection
   """
-  Lists all rules that can be used to create smart collections.
+  Lists all rules that can be used to create collections.
   """
   collectionRulesConditions: [CollectionRuleConditions!]!
   """
@@ -64986,8 +64989,6 @@ type QueryRoot {
   - Build a browsing interface for a store's product groupings.
   - Create collection searching, sorting, and filtering experiences (for example, by title, type, or published status).
   - Sync collection data with external systems.
-  - Manage both custom ([manual](https://help.shopify.com/manual/products/collections/manual-shopify-collection))
-  and smart ([automated](https://help.shopify.com/manual/products/collections/automated-collections)) collections.
   
   The `collections` query supports [pagination](https://shopify.dev/docs/api/usage/pagination-graphql)
   for large catalogs and [saved searches](https://shopify.dev/docs/api/admin-graphql/latest/queries/collections#arguments-savedSearchId)
@@ -64998,11 +64999,11 @@ type QueryRoot {
   - Basic collection information (title, description, handle, and type)
   - Collection image and SEO metadata
   - Product count and product relationships
-  - Collection rules (for smart collections)
+  - Collection rules or conditions
   - Publishing status and publication details
   - Metafields and custom attributes
   
-  Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+  Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
   """
   collections(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: CollectionSortKeys = ID, query: String, savedSearchId: ID): CollectionConnection!
   """

@@ -437,7 +437,7 @@ public sealed partial class QueryRoot
     public Collection? CollectionByIdentifier { get; init; }
 
     /// <summary>
-    /// Lists all rules that can be used to create smart collections.
+    /// Lists all rules that can be used to create collections.
     /// </summary>
     [JsonPropertyName("collectionRulesConditions")]
     public List<CollectionRuleConditions> CollectionRulesConditions { get; init; } = [];
@@ -460,8 +460,6 @@ public sealed partial class QueryRoot
     /// - Build a browsing interface for a store's product groupings.
     /// - Create collection searching, sorting, and filtering experiences (for example, by title, type, or published status).
     /// - Sync collection data with external systems.
-    /// - Manage both custom ([manual](https://help.shopify.com/manual/products/collections/manual-shopify-collection))
-    /// and smart ([automated](https://help.shopify.com/manual/products/collections/automated-collections)) collections.
     /// 
     /// The `collections` query supports [pagination](https://shopify.dev/docs/api/usage/pagination-graphql)
     /// for large catalogs and [saved searches](https://shopify.dev/docs/api/admin-graphql/latest/queries/collections#arguments-savedSearchId)
@@ -472,11 +470,11 @@ public sealed partial class QueryRoot
     /// - Basic collection information (title, description, handle, and type)
     /// - Collection image and SEO metadata
     /// - Product count and product relationships
-    /// - Collection rules (for smart collections)
+    /// - Collection rules or conditions
     /// - Publishing status and publication details
     /// - Metafields and custom attributes
     /// 
-    /// Learn more about [using metafields with smart collections](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
+    /// Learn more about [using metafields with collection conditions](https://shopify.dev/docs/apps/build/custom-data/metafields/use-metafield-capabilities).
     /// </summary>
     [JsonPropertyName("collections")]
     public CollectionConnection Collections { get; init; } = null!;
