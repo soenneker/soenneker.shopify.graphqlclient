@@ -111,6 +111,7 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * Sendle
     ///   * SF Express
     ///   * SFC Fulfillment
+    ///   * ShipBob
     ///   * SHREE NANDAN COURIER
     ///   * Singapore Post
     ///   * Southwest Air Cargo

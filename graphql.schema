@@ -30653,6 +30653,7 @@ type FulfillmentTrackingInfo {
     * Sendle
     * SF Express
     * SFC Fulfillment
+    * ShipBob
     * SHREE NANDAN COURIER
     * Singapore Post
     * Southwest Air Cargo
@@ -48485,7 +48486,7 @@ type Mutation {
   """
   Creates a new external marketing activity.
   """
-  marketingActivityCreateExternal(input: MarketingActivityCreateExternalInput!): MarketingActivityCreateExternalPayload
+  marketingActivityCreateExternal(input: MarketingActivityCreateExternalInput!): MarketingActivityCreateExternalPayload @deprecated(reason: "Use \u0060marketingActivityUpsertExternal\u0060 instead.")
   """
   Deletes an external marketing activity.
   """
