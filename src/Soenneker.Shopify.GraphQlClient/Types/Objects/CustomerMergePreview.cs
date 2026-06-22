@@ -6,7 +6,8 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// A preview of the results of a customer merge request.
+/// A preview of the results of a customer merge request. Use `resultingCustomerId` to check which customer
+/// would be kept before running `customerMerge`.
 /// </summary>
 public sealed partial class CustomerMergePreview
 {
@@ -35,7 +36,7 @@ public sealed partial class CustomerMergePreview
     public CustomerMergePreviewDefaultFields? DefaultFields { get; init; }
 
     /// <summary>
-    /// The resulting customer ID if the two customers are merged.
+    /// The ID of the customer that would be kept if the two customers were merged.
     /// </summary>
     [JsonPropertyName("resultingCustomerId")]
     public string? ResultingCustomerId { get; init; }

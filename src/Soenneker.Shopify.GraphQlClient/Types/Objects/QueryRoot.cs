@@ -611,6 +611,16 @@ public sealed partial class QueryRoot
 
     /// <summary>
     /// Returns a preview of a customer merge request.
+    /// 
+    /// The `customerOneId` and `customerTwoId` arguments don't guarantee which customer is kept. Shopify
+    /// selects the resulting customer in this order:
+    /// 1. If `overrideFields.customerIdOfEmailToKeep` is provided and valid, then the selected customer is kept.
+    /// 2. If exactly one customer has an email address, then that customer is kept.
+    /// 3. If both customers have email addresses, then account state and email marketing consent determine
+    ///    the customer that's kept: an `enabled` account wins over other account states; otherwise, an
+    ///    `invited` account can win when consent doesn't already prefer `subscribed` or `pending`; otherwise
+    ///    the consent result is used. If those rules don't prefer either customer, then `customerTwoId` is kept.
+    /// 4. If neither customer has an email address, then `customerTwoId` is kept.
     /// </summary>
     [JsonPropertyName("customerMergePreview")]
     public CustomerMergePreview CustomerMergePreview { get; init; } = null!;

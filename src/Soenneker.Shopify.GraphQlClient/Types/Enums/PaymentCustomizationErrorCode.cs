@@ -58,6 +58,11 @@ public enum PaymentCustomizationErrorCode
     INVALIDMETAFIELDS,
 
     /// <summary>
+    /// The maximum number of payment customizations per shop has been reached.
+    /// </summary>
+    MAXIMUMPAYMENTCUSTOMIZATIONS,
+
+    /// <summary>
     /// Function ID cannot be changed.
     /// </summary>
     FUNCTIONIDCANNOTBECHANGED,

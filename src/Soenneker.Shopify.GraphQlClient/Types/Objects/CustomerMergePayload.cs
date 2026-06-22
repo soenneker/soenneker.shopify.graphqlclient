@@ -17,7 +17,7 @@ public sealed partial class CustomerMergePayload
     public Job? Job { get; init; }
 
     /// <summary>
-    /// The ID of the customer resulting from the merge.
+    /// The ID of the customer that's kept after the merge. Treat this ID as authoritative.
     /// </summary>
     [JsonPropertyName("resultingCustomerId")]
     public string? ResultingCustomerId { get; init; }

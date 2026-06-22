@@ -38,6 +38,11 @@ public enum CartTransformCreateUserErrorCode
     INVALIDMETAFIELDS,
 
     /// <summary>
+    /// The maximum number of cart transforms per shop has been reached.
+    /// </summary>
+    MAXIMUMCARTTRANSFORMS,
+
+    /// <summary>
     /// Only one of function_id or function_handle can be provided, not both.
     /// </summary>
     MULTIPLEFUNCTIONIDENTIFIERS,

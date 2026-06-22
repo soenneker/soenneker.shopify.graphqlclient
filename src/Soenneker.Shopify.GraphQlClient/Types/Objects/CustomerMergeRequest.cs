@@ -23,7 +23,7 @@ public sealed partial class CustomerMergeRequest
     public string? JobId { get; init; }
 
     /// <summary>
-    /// The ID of the customer resulting from the merge.
+    /// The ID of the customer that was kept after the merge. Treat this ID as authoritative.
     /// </summary>
     [JsonPropertyName("resultingCustomerId")]
     public string ResultingCustomerId { get; init; } = null!;
