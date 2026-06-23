@@ -34975,6 +34975,10 @@ enum InventoryTransferCreateAsReadyToShipUserErrorCode {
   """
   TAG_EXCEEDS_MAX_LENGTH
   """
+  One or more tags are not valid.
+  """
+  INVALID_TAG
+  """
   A location is required for this operation.
   """
   LOCATION_REQUIRED
@@ -35102,6 +35106,10 @@ enum InventoryTransferCreateUserErrorCode {
   The tag exceeds the maximum length.
   """
   TAG_EXCEEDS_MAX_LENGTH
+  """
+  One or more tags are not valid.
+  """
+  INVALID_TAG
   """
   This request is currently in progress, please try again.
   """
@@ -35346,6 +35354,10 @@ enum InventoryTransferEditUserErrorCode {
   The tag exceeds the maximum length.
   """
   TAG_EXCEEDS_MAX_LENGTH
+  """
+  One or more tags are not valid.
+  """
+  INVALID_TAG
 }
 
 """
@@ -64785,7 +64797,7 @@ type QueryRoot {
   """
   Returns a `DiscountAutomaticNode` resource by ID.
   """
-  automaticDiscountNode(id: ID!): DiscountAutomaticNode
+  automaticDiscountNode(id: ID!): DiscountAutomaticNode @deprecated(reason: "Use \u0060discountNode\u0060 instead.")
   """
   Returns a list of [automatic discounts](https://help.shopify.com/manual/discounts/discount-types#automatic-discounts).
   """

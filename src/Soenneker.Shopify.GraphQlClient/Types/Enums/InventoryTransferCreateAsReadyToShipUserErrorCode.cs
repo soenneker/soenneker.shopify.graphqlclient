@@ -43,6 +43,11 @@ public enum InventoryTransferCreateAsReadyToShipUserErrorCode
     TAGEXCEEDSMAXLENGTH,
 
     /// <summary>
+    /// One or more tags are not valid.
+    /// </summary>
+    INVALIDTAG,
+
+    /// <summary>
     /// A location is required for this operation.
     /// </summary>
     LOCATIONREQUIRED,

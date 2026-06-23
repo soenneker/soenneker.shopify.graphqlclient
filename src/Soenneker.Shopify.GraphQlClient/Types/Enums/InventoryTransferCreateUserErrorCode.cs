@@ -33,6 +33,11 @@ public enum InventoryTransferCreateUserErrorCode
     TAGEXCEEDSMAXLENGTH,
 
     /// <summary>
+    /// One or more tags are not valid.
+    /// </summary>
+    INVALIDTAG,
+
+    /// <summary>
     /// This request is currently in progress, please try again.
     /// </summary>
     IDEMPOTENCYCONCURRENTREQUEST,

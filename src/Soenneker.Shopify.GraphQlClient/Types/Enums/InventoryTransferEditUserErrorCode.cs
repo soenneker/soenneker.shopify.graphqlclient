@@ -45,6 +45,11 @@ public enum InventoryTransferEditUserErrorCode
     /// <summary>
     /// The tag exceeds the maximum length.
     /// </summary>
-    TAGEXCEEDSMAXLENGTH
+    TAGEXCEEDSMAXLENGTH,
+
+    /// <summary>
+    /// One or more tags are not valid.
+    /// </summary>
+    INVALIDTAG
 
 }
