@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The input fields configuring the deposit for a B2B buyer.
+/// The input fields configuring the deposit requirement.
 /// </summary>
 public sealed partial class DepositInput
 {

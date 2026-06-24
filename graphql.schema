@@ -20707,7 +20707,7 @@ Configuration of the deposit.
 union DepositConfiguration = DepositPercentage
 
 """
-The input fields configuring the deposit for a B2B buyer.
+The input fields configuring the deposit requirement.
 """
 input DepositInput {
   """
@@ -64951,7 +64951,7 @@ type QueryRoot {
   """
   Returns a [code discount](https://help.shopify.com/manual/discounts/discount-types#discount-codes) resource by ID.
   """
-  codeDiscountNode(id: ID!): DiscountCodeNode
+  codeDiscountNode(id: ID!): DiscountCodeNode @deprecated(reason: "Use \u0060discountNode\u0060 instead.")
   """
   Retrieves a [code discount](https://help.shopify.com/manual/discounts/discount-types#discount-codes) by its discount code. The search is case-insensitive, enabling you to find discounts regardless of how customers enter the code.
   
