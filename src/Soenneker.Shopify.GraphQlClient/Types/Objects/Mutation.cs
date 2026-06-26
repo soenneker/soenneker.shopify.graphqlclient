@@ -4936,19 +4936,25 @@ public sealed partial class Mutation
     public UrlRedirectUpdatePayload? UrlRedirectUpdate { get; init; }
 
     /// <summary>
-    /// Creates a validation.
+    /// Creates a cart and checkout validation: a server-side rule enforced before a customer can complete checkout. Each validation is powered by a cart and checkout validation function that you provide using `functionId` or `functionHandle`.
+    /// 
+    /// Use `validationCreate` to apply custom rules at checkout, such as limiting item quantities, enforcing order minimums or maximums, or blocking checkout for restricted shipping addresses. Validations run on Shopify's servers and are enforced throughout checkout, so they can't be bypassed by the client.
+    /// 
+    /// Validation errors always block checkout progress. The `blockOnFailure` field controls whether runtime exceptions, such as timeouts, also block checkout.
     /// </summary>
     [JsonPropertyName("validationCreate")]
     public ValidationCreatePayload? ValidationCreate { get; init; }
 
     /// <summary>
-    /// Deletes a validation.
+    /// Deletes a cart and checkout validation, removing its rule from the shop's checkout. Once deleted, its cart and checkout validation function no longer runs during checkout.
     /// </summary>
     [JsonPropertyName("validationDelete")]
     public ValidationDeletePayload? ValidationDelete { get; init; }
 
     /// <summary>
-    /// Update a validation.
+    /// Updates a cart and checkout validation. Use `validationUpdate` to rename it, toggle whether it's enabled at checkout, change its `blockOnFailure` behavior, or update its metafields.
+    /// 
+    /// Validation errors always block checkout progress. The `blockOnFailure` field controls whether runtime exceptions, such as timeouts, also block checkout.
     /// </summary>
     [JsonPropertyName("validationUpdate")]
     public ValidationUpdatePayload? ValidationUpdate { get; init; }

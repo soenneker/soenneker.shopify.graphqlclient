@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class ValidationDeleteData
 {
     /// <summary>
-    /// Deletes a validation.
+    /// Deletes a cart and checkout validation, removing its rule from the shop's checkout. Once deleted, its cart and checkout validation function no longer runs during checkout.
     /// </summary>
     [JsonPropertyName("validationDelete")]
     public ValidationDeletePayload? ValidationDelete { get; init; }

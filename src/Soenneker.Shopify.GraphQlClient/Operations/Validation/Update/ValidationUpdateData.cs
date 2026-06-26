@@ -10,7 +10,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class ValidationUpdateData
 {
     /// <summary>
-    /// Update a validation.
+    /// Updates a cart and checkout validation. Use `validationUpdate` to rename it, toggle whether it's enabled at checkout, change its `blockOnFailure` behavior, or update its metafields.
+    /// 
+    /// Validation errors always block checkout progress. The `blockOnFailure` field controls whether runtime exceptions, such as timeouts, also block checkout.
     /// </summary>
     [JsonPropertyName("validationUpdate")]
     public ValidationUpdatePayload? ValidationUpdate { get; init; }
