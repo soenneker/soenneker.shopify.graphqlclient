@@ -25329,14 +25329,8 @@ input DraftOrderInput {
   """
   purchasingEntity: PurchasingEntityInput
   """
-  The source of the checkout.
-  To use this field for sales attribution, you must register the channels that your app is managing.
-  You can register the channels that your app is managing by completing
-  [this Google Form](https://docs.google.com/forms/d/e/1FAIpQLScmVTZRQNjOJ7RD738mL1lGeFjqKVe_FM2tO9xsm21QEo5Ozg/viewform?usp=sf_link).
-  After you've submitted your request, you need to wait for your request to be processed by Shopify.
-  You can find a list of your channels in the Partner Dashboard, in your app's Marketplace extension.
-  You need to specify the handle as the `source_name` value in your request.
-  The handle is the channel that the order was placed from.
+  The source channel that the order is attributed to. Set this to the handle of an order attribution definition configured for your sales channel app, such as `youtube` or `channel:amazon-us`.
+  To set up order attribution for your app, follow the [order attribution guide](https://shopify.dev/docs/apps/build/sales-channels/order-attribution).
   """
   sourceName: String
   """
@@ -39913,6 +39907,10 @@ enum MarketUserErrorCode {
   """
   MANAGED_MARKETS_CATALOG_NOT_ALLOWED
   """
+  Resources created by Managed Markets cannot be added to a market.
+  """
+  MANAGED_MARKETS_RESOURCE_NOT_ALLOWED
+  """
   Retail location currency must be local.
   """
   RETAIL_LOCATION_CURRENCY_MUST_BE_LOCAL
@@ -52880,7 +52878,7 @@ input OrderCreateOrderInput {
   """
   sourceIdentifier: String
   """
-  The source of the checkout. To use this field for sales attribution, you must register the channels that your app is managing. You can register the channels that your app is managing by completing [this Google Form](https://docs.google.com/forms/d/e/1FAIpQLScmVTZRQNjOJ7RD738mL1lGeFjqKVe_FM2tO9xsm21QEo5Ozg/viewform?usp=sf_link). After you've submited your request, you need to wait for your request to be processed by Shopify. You can find a list of your channels in the Partner Dashboard, in your app's Marketplace extension. You can specify a handle as the source_name value in your request.
+  The source channel that the order is attributed to. Set this to the handle of an order attribution definition configured for your sales channel app, such as `youtube` or `channel:amazon-us`. To set up order attribution for your app, follow the [order attribution guide](https://shopify.dev/docs/apps/build/sales-channels/order-attribution).
   """
   sourceName: String
   """
@@ -65159,7 +65157,7 @@ type QueryRoot {
   """
   List of the shop's customer saved searches.
   """
-  customerSavedSearches(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: CustomerSavedSearchSortKeys = ID, query: String): SavedSearchConnection!
+  customerSavedSearches(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: CustomerSavedSearchSortKeys = ID, query: String): SavedSearchConnection! @deprecated(reason: "Use \u0060segments\u0060 instead.")
   """
   A paginated list of customers that belong to an individual [`Segment`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Segment). Segments group customers based on criteria defined through [ShopifyQL queries](https://shopify.dev/docs/api/shopifyql/segment-query-language-reference). Access segment members with their profile information and purchase summary data. The connection includes statistics for analyzing segment attributes (such as average and sum calculations) and a total count of all members.
   The maximum page size is 1000.
@@ -66039,7 +66037,7 @@ type QueryRoot {
   """
   A list of a shop's segment migrations.
   """
-  segmentMigrations(savedSearchId: ID, first: Int, after: String, last: Int, before: String): SegmentMigrationConnection!
+  segmentMigrations(savedSearchId: ID, first: Int, after: String, last: Int, before: String): SegmentMigrationConnection! @deprecated(reason: "Use the migrated segment ID and query \u0060segment\u0060 directly.")
   """
   The list of suggested values corresponding to a particular filter for a segment. A segment is a group of members, such as customers, that meet specific criteria.
   """
@@ -67654,6 +67652,10 @@ enum ReturnErrorCode {
   A required feature is not enabled.
   """
   FEATURE_NOT_ENABLED
+  """
+  The requested configuration cannot be applied to this standard return policy which is managed for you in compliance with relevant regulations.
+  """
+  INCOMPATIBLE_WITH_STANDARD_POLICY
   """
   A resource was not in the correct state for the operation to succeed.
   """

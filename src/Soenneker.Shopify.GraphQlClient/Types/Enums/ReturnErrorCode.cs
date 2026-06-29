@@ -108,6 +108,11 @@ public enum ReturnErrorCode
     FEATURENOTENABLED,
 
     /// <summary>
+    /// The requested configuration cannot be applied to this standard return policy which is managed for you in compliance with relevant regulations.
+    /// </summary>
+    INCOMPATIBLEWITHSTANDARDPOLICY,
+
+    /// <summary>
     /// A resource was not in the correct state for the operation to succeed.
     /// </summary>
     INVALIDSTATE,

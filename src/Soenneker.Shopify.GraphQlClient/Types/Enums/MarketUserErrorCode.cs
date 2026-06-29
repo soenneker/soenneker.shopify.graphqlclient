@@ -378,6 +378,11 @@ public enum MarketUserErrorCode
     MANAGEDMARKETSCATALOGNOTALLOWED,
 
     /// <summary>
+    /// Resources created by Managed Markets cannot be added to a market.
+    /// </summary>
+    MANAGEDMARKETSRESOURCENOTALLOWED,
+
+    /// <summary>
     /// Retail location currency must be local.
     /// </summary>
     RETAILLOCATIONCURRENCYMUSTBELOCAL,
