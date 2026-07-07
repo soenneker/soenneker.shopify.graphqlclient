@@ -53,6 +53,11 @@ public enum StandardMetafieldDefinitionEnableUserErrorCode
     OWNERTYPELIMITEXCEEDEDFORUSEASADMINFILTERS,
 
     /// <summary>
+    /// The associated standard metaobject definition template is not valid for the metafield definition and prevented enabling it.
+    /// </summary>
+    INVALIDSTANDARDMETAOBJECT,
+
+    /// <summary>
     /// The metafield definition does not support pinning.
     /// </summary>
     UNSUPPORTEDPINNING,

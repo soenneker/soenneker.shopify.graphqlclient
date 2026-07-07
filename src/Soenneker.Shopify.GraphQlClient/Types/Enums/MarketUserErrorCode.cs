@@ -415,6 +415,11 @@ public enum MarketUserErrorCode
     /// <summary>
     /// Can't add selected responders to a province driven market.
     /// </summary>
-    INVALIDRESPONDERFORPROVINCEDRIVENMARKET
+    INVALIDRESPONDERFORPROVINCEDRIVENMARKET,
+
+    /// <summary>
+    /// Global-e pricing configurations can only be edited by Global-e.
+    /// </summary>
+    GLOBALEPRICINGSTRATEGYNOTPERMITTED
 
 }

@@ -39938,6 +39938,10 @@ enum MarketUserErrorCode {
   Can't add selected responders to a province driven market.
   """
   INVALID_RESPONDER_FOR_PROVINCE_DRIVEN_MARKET @deprecated(reason: "No longer used")
+  """
+  Global-e pricing configurations can only be edited by Global-e.
+  """
+  GLOBAL_E_PRICING_STRATEGY_NOT_PERMITTED
 }
 
 """
@@ -76534,6 +76538,10 @@ enum StandardMetafieldDefinitionEnableUserErrorCode {
   You have reached the maximum allowed definitions to be used as admin filters.
   """
   OWNER_TYPE_LIMIT_EXCEEDED_FOR_USE_AS_ADMIN_FILTERS
+  """
+  The associated standard metaobject definition template is not valid for the metafield definition and prevented enabling it.
+  """
+  INVALID_STANDARD_METAOBJECT
   """
   The metafield definition does not support pinning.
   """
