@@ -43,6 +43,11 @@ public enum InventoryTransferCreateUserErrorCode
     IDEMPOTENCYCONCURRENTREQUEST,
 
     /// <summary>
+    /// A previous request with this idempotency key failed. Retry with a new idempotency key.
+    /// </summary>
+    IDEMPOTENCYPREVIOUSATTEMPTFAILED,
+
+    /// <summary>
     /// The same idempotency key cannot be used with different operation parameters.
     /// </summary>
     IDEMPOTENCYKEYPARAMETERMISMATCH,
