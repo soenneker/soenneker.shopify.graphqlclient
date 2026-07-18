@@ -24,7 +24,7 @@ public sealed partial class FileUpdateInput
 
     /// <summary>
     /// The source from which to update a media image or generic file.
-    /// An external URL (for images only) or a
+    /// This can be an external URL or a
     /// [staged upload URL](https://shopify.dev/api/admin-graphql/latest/mutations/stageduploadscreate).
     /// </summary>
     [JsonPropertyName("originalSource")]

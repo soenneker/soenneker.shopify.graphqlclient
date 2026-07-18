@@ -3196,11 +3196,11 @@ type AvailableChannelDefinitionsByChannel {
   """
   The channel definitions for channels installed on a shop.
   """
-  channelDefinitions: [ChannelDefinition!]!
+  channelDefinitions: [ChannelDefinition!]! @deprecated(reason: "Use [\u0060QueryRoot.orderAttributionDefinitions\u0060](https://shopify.dev/docs/api/admin-graphql/latest/queries/orderAttributionDefinitions) and select \u0060id\u0060, \u0060handle\u0060, \u0060displayName\u0060, and \u0060icon\u0060 instead.")
   """
   The name of the channel.
   """
-  channelName: String!
+  channelName: String! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.displayName\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.displayName) instead.")
 }
 
 """
@@ -6782,27 +6782,27 @@ type ChannelDefinition implements Node {
   """
   Name of the channel that this sub channel belongs to.
   """
-  channelName: String!
+  channelName: String! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.displayName\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.displayName) instead.")
   """
   Unique string used as a public identifier for the channel definition.
   """
-  handle: String!
+  handle: String! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.handle\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.handle) instead.")
   """
   The unique ID for the channel definition.
   """
-  id: ID!
+  id: ID! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.id\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.id) instead.")
   """
   Whether this channel definition represents a marketplace.
   """
-  isMarketplace: Boolean!
+  isMarketplace: Boolean! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.handle\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.handle) instead.")
   """
   Name of the sub channel (e.g. Online Store, Instagram Shopping, TikTok Live).
   """
-  subChannelName: String!
+  subChannelName: String! @deprecated(reason: "Use [\u0060OrderAttributionDefinition.displayName\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.displayName) instead.")
   """
   Icon displayed when showing the channel in admin.
   """
-  svgIcon: String @deprecated(reason: "Use App.icon instead")
+  svgIcon: String @deprecated(reason: "Use [\u0060OrderAttributionDefinition.icon\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttributionDefinition#field-OrderAttributionDefinition.fields.icon) instead.")
 }
 
 """
@@ -6828,23 +6828,23 @@ type ChannelInformation implements Node {
   """
   The app associated with the channel.
   """
-  app: App!
+  app: App! @deprecated(reason: "Use [\u0060Order.attribution\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.attribution) for order attribution, or [\u0060Order.app\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.app) and [\u0060Order.publication\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.publication) for app and sales channel details.")
   """
   The channel definition associated with the channel.
   """
-  channelDefinition: ChannelDefinition
+  channelDefinition: ChannelDefinition @deprecated(reason: "Use [\u0060QueryRoot.orderAttributionDefinitions\u0060](https://shopify.dev/docs/api/admin-graphql/latest/queries/orderAttributionDefinitions) and select \u0060id\u0060, \u0060handle\u0060, \u0060displayName\u0060, and \u0060icon\u0060 instead.")
   """
   The unique ID for the channel.
   """
-  channelId: ID!
+  channelId: ID! @deprecated(reason: "Use [\u0060Order.attribution.handle\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttribution#field-OrderAttribution.fields.handle) instead.")
   """
   The publishing destination display name or channel name.
   """
-  displayName: String
+  displayName: String @deprecated(reason: "Use [\u0060Order.attribution.displayName\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttribution#field-OrderAttribution.fields.displayName) instead.")
   """
   A globally-unique ID.
   """
-  id: ID!
+  id: ID! @deprecated(reason: "Use [\u0060Order.attribution.handle\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttribution#field-OrderAttribution.fields.handle) instead.")
 }
 
 """
@@ -27025,7 +27025,8 @@ input FileCreateInput {
   """
   duplicateResolutionMode: FileCreateInputDuplicateResolutionMode = APPEND_UUID
   """
-  An external URL (for images only) or a
+  The source URL of the file. An external URL can be used for images, generic files, or external videos.
+  Videos and 3D models require a
   [staged upload URL](https://shopify.dev/api/admin-graphql/latest/mutations/stageduploadscreate).
   """
   originalSource: String!
@@ -27274,7 +27275,8 @@ input FileSetInput {
   """
   id: ID
   """
-  An external URL (for images only) or a
+  The source URL of the file. An external URL can be used for images, generic files, or external videos.
+  Videos and 3D models require a
   [staged upload URL](https://shopify.dev/api/admin-graphql/latest/mutations/stageduploadscreate).
   """
   originalSource: String
@@ -27347,7 +27349,7 @@ input FileUpdateInput {
   alt: String
   """
   The source from which to update a media image or generic file.
-  An external URL (for images only) or a
+  This can be an external URL or a
   [staged upload URL](https://shopify.dev/api/admin-graphql/latest/mutations/stageduploadscreate).
   """
   originalSource: String
@@ -28698,7 +28700,7 @@ type FulfillmentOrder implements Node {
   """
   ID of the channel that created the order.
   """
-  channelId: ID
+  channelId: ID @deprecated(reason: "Use [\u0060order.attribution.handle\u0060](https://shopify.dev/docs/api/admin-graphql/latest/objects/OrderAttribution#field-OrderAttribution.fields.handle) instead.")
   """
   Date and time when the fulfillment order was created.
   """
@@ -72444,7 +72446,7 @@ type Shop implements HasMetafieldDefinitions & HasMetafields & HasPublishedTrans
   """
   List of all channel definitions associated with a shop.
   """
-  channelDefinitionsForInstalledChannels: [AvailableChannelDefinitionsByChannel!]!
+  channelDefinitionsForInstalledChannels: [AvailableChannelDefinitionsByChannel!]! @deprecated(reason: "Use [\u0060QueryRoot.orderAttributionDefinitions\u0060](https://shopify.dev/docs/api/admin-graphql/latest/queries/orderAttributionDefinitions) and select \u0060id\u0060, \u0060handle\u0060, \u0060displayName\u0060, and \u0060icon\u0060 instead.")
   """
   List of the shop's active sales channels.
   """

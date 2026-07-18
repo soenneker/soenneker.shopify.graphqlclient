@@ -41,7 +41,8 @@ public sealed partial class FileSetInput
     public string? Id { get; init; }
 
     /// <summary>
-    /// An external URL (for images only) or a
+    /// The source URL of the file. An external URL can be used for images, generic files, or external videos.
+    /// Videos and 3D models require a
     /// [staged upload URL](https://shopify.dev/api/admin-graphql/latest/mutations/stageduploadscreate).
     /// </summary>
     [JsonPropertyName("originalSource")]
