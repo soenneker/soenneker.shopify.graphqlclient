@@ -18,11 +18,8 @@ public sealed partial class ProductDuplicateData
     /// [locations](https://shopify.dev/api/admin-graphql/latest/input-objects/InventoryLevelInput),
     /// you might encounter timeout errors.
     /// 
-    /// To avoid these timeout errors, you can instead duplicate the product asynchronously.
-    /// 
-    /// In API version 2024-10 and higher, include `synchronous: false` argument in this mutation to perform the duplication asynchronously.
-    /// 
-    /// In API version 2024-07 and lower, use the asynchronous [`ProductDuplicateAsyncV2`](https://shopify.dev/api/admin-graphql/2024-07/mutations/productDuplicateAsyncV2).
+    /// To avoid these timeout errors, include the `synchronous: false` argument in this mutation to perform
+    /// the duplication asynchronously.
     /// 
     /// Metafield values are not duplicated if the unique values capability is enabled.
     /// </summary>

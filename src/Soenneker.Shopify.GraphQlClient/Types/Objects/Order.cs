@@ -536,6 +536,7 @@ public sealed partial class Order : CommentEventSubject, HasEvents, HasLocalizat
     /// The note associated with the order.
     /// Contains additional information or instructions added by merchants or customers during the order process.
     /// Commonly used for special delivery instructions, gift messages, or internal processing notes.
+    /// The maximum length is 5000 characters.
     /// </summary>
     [JsonPropertyName("note")]
     public string? Note { get; init; }

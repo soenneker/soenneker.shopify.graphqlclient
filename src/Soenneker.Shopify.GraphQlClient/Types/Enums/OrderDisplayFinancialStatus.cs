@@ -28,8 +28,7 @@ public enum OrderDisplayFinancialStatus
     PARTIALLYREFUNDED,
 
     /// <summary>
-    /// Displayed as **Voided**. An unpaid (payment authorized but not captured) order was manually
-    ///          canceled.
+    /// Displayed as **Voided**. An authorized but uncaptured payment was voided, releasing the hold on the funds. This is the payment's financial status and is distinct from the order's status: an order can remain open even when its payment is voided.
     /// </summary>
     VOIDED,
 
