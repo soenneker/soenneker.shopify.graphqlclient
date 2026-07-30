@@ -5,18 +5,18 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The input fields to create a fact on an order risk assessment.
+/// The input fields for a risk assessment fact.
 /// </summary>
 public sealed partial class OrderRiskAssessmentFactInput
 {
     /// <summary>
-    /// Indicates whether the fact is a negative, neutral or positive contributor with regards to risk.
+    /// Indicates whether the fact contributes negatively, neutrally, or positively to risk.
     /// </summary>
     [JsonPropertyName("sentiment")]
     public RiskFactSentiment Sentiment { get; init; }
 
     /// <summary>
-    /// A description of the fact. Large values are truncated to 256 characters.
+    /// Descriptions longer than 256 characters are truncated.
     /// </summary>
     [JsonPropertyName("description")]
     public string Description { get; init; } = null!;

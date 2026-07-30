@@ -11,7 +11,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class OrderRiskAssessmentCreatePayload
 {
     /// <summary>
-    /// The order risk assessment created.
+    /// The created risk assessment.
     /// </summary>
     [JsonPropertyName("orderRiskAssessment")]
     public OrderRiskAssessment? OrderRiskAssessment { get; init; }

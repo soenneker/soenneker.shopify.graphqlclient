@@ -49000,7 +49000,7 @@ type Mutation {
   """
   orderOpen(input: OrderOpenInput!): OrderOpenPayload
   """
-  Creates a fraud risk assessment for a specific order, evaluating the likelihood that the order is fraudulent based on various risk signals. Use this to trigger risk analysis on orders that need manual review or to integrate custom risk scoring into order processing workflows.
+  Creates a risk assessment for a specific order using the provided risk level and facts. Shopify sends an `orders/risk_assessment_changed` webhook when the assessment is created.
   """
   orderRiskAssessmentCreate(orderRiskAssessmentInput: OrderRiskAssessmentCreateInput!): OrderRiskAssessmentCreatePayload
   """
@@ -54252,13 +54252,13 @@ type OrderRisk {
 }
 
 """
-The risk assessments for an order.
+A risk assessment for an order.
 
-See the [example query "Retrieves a list of all order risks for an order"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=Retrieves+a+list+of+all+order+risks+for+an+order).
+See the [example query "Retrieve order risk assessments"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=retrieve-order-risk-assessments).
 """
 type OrderRiskAssessment {
   """
-  Optional facts used to describe the risk assessment. The values in here are specific to the provider.
+  Facts included with the risk assessment. Fact values are specific to the provider.
   See the [examples for the mutation orderRiskAssessmentCreate](https://shopify.dev/api/admin-graphql/unstable/mutations/orderRiskAssessmentCreate#section-examples).
   """
   facts: [RiskFact!]!
@@ -54267,25 +54267,25 @@ type OrderRiskAssessment {
   """
   provider: App
   """
-  The likelihood that the order is fraudulent, based on this risk assessment.
+  The risk level assigned to the order.
   """
   riskLevel: RiskAssessmentResult!
 }
 
 """
-The input fields for an order risk assessment.
+The input fields for creating an order risk assessment.
 """
 input OrderRiskAssessmentCreateInput {
   """
-  The ID of the order receiving the fraud assessment.
+  The ID of the order to assess.
   """
   orderId: ID!
   """
-  The risk level of the fraud assessment.
+  The risk level assigned to the order.
   """
   riskLevel: RiskAssessmentResult!
   """
-  The list of facts used to determine the fraud assessment.
+  Facts to include with the risk assessment. Up to 20 facts can be provided.
   """
   facts: [OrderRiskAssessmentFactInput!]!
 }
@@ -54295,7 +54295,7 @@ Return type for `orderRiskAssessmentCreate` mutation.
 """
 type OrderRiskAssessmentCreatePayload {
   """
-  The order risk assessment created.
+  The created risk assessment.
   """
   orderRiskAssessment: OrderRiskAssessment
   """
@@ -54327,11 +54327,11 @@ Possible error codes that can be returned by `OrderRiskAssessmentCreateUserError
 """
 enum OrderRiskAssessmentCreateUserErrorCode {
   """
-  Too many facts were provided for the risk assessment.
+  More than 20 facts were provided for the order risk assessment.
   """
   TOO_MANY_FACTS
   """
-  The order is marked as fulfilled and can no longer accept new risk assessments.
+  The order is marked as fulfilled and can no longer accept new order risk assessments.
   """
   ORDER_ALREADY_FULFILLED
   """
@@ -54345,15 +54345,15 @@ enum OrderRiskAssessmentCreateUserErrorCode {
 }
 
 """
-The input fields to create a fact on an order risk assessment.
+The input fields for a risk assessment fact.
 """
 input OrderRiskAssessmentFactInput {
   """
-  Indicates whether the fact is a negative, neutral or positive contributor with regards to risk.
+  Indicates whether the fact contributes negatively, neutrally, or positively to risk.
   """
   sentiment: RiskFactSentiment!
   """
-  A description of the fact. Large values are truncated to 256 characters.
+  Descriptions longer than 256 characters are truncated.
   """
   description: String!
 }
@@ -54380,7 +54380,7 @@ enum OrderRiskLevel {
 }
 
 """
-List of possible values for an OrderRiskRecommendation recommendation.
+Possible recommendations for an order.
 """
 enum OrderRiskRecommendationResult {
   """
@@ -54404,15 +54404,15 @@ enum OrderRiskRecommendationResult {
 """
 Summary of risk characteristics for an order.
 
-See the [example query "Retrieves a list of all order risks for an order"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=Retrieves+a+list+of+all+order+risks+for+an+order).
+See the [example query "Retrieve order risk assessments"](https://shopify.dev/docs/api/admin-graphql/unstable/queries/order?example=retrieve-order-risk-assessments).
 """
 type OrderRiskSummary {
   """
-  The list of risk assessments for the order.
+  The risk assessments for the order.
   """
   assessments: [OrderRiskAssessment!]!
   """
-  The recommendation for the order based on the results of the risk assessments. This suggests the action the merchant should take with regards to its risk of fraud.
+  The recommended action for the order based on its risk assessments.
   """
   recommendation: OrderRiskRecommendationResult!
 }
@@ -69060,7 +69060,7 @@ enum ReverseFulfillmentOrderThirdPartyConfirmationStatus {
 }
 
 """
-List of possible values for a RiskAssessment result.
+Possible risk levels for an order risk assessment.
 """
 enum RiskAssessmentResult {
   """
@@ -69086,21 +69086,21 @@ enum RiskAssessmentResult {
 }
 
 """
-A risk fact belongs to a single risk assessment and serves to provide additional context for an assessment. Risk facts are not necessarily tied to the result of the recommendation.
+Additional context provided with an order risk assessment. Facts may not affect the order's risk recommendation.
 """
 type RiskFact {
   """
-  A description of the fact.
+  Descriptions longer than 256 characters are truncated.
   """
   description: String!
   """
-  Indicates whether the fact is a negative, neutral or positive contributor with regards to risk.
+  Indicates whether the fact contributes negatively, neutrally, or positively to risk.
   """
   sentiment: RiskFactSentiment!
 }
 
 """
-List of possible values for a RiskFact sentiment.
+Possible sentiments for a risk fact.
 """
 enum RiskFactSentiment {
   """
@@ -69108,7 +69108,7 @@ enum RiskFactSentiment {
   """
   POSITIVE
   """
-  A neutral contributor with regards to risk.
+  A neutral contributor with regard to risk.
   """
   NEUTRAL
   """

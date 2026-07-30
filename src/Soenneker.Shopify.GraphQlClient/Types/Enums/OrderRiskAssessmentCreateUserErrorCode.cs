@@ -8,12 +8,12 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum OrderRiskAssessmentCreateUserErrorCode
 {
     /// <summary>
-    /// Too many facts were provided for the risk assessment.
+    /// More than 20 facts were provided for the order risk assessment.
     /// </summary>
     TOOMANYFACTS,
 
     /// <summary>
-    /// The order is marked as fulfilled and can no longer accept new risk assessments.
+    /// The order is marked as fulfilled and can no longer accept new order risk assessments.
     /// </summary>
     ORDERALREADYFULFILLED,
 

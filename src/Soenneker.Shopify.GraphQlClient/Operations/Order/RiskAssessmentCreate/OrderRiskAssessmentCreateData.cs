@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class OrderRiskAssessmentCreateData
 {
     /// <summary>
-    /// Creates a fraud risk assessment for a specific order, evaluating the likelihood that the order is fraudulent based on various risk signals. Use this to trigger risk analysis on orders that need manual review or to integrate custom risk scoring into order processing workflows.
+    /// Creates a risk assessment for a specific order using the provided risk level and facts. Shopify sends an `orders/risk_assessment_changed` webhook when the assessment is created.
     /// </summary>
     [JsonPropertyName("orderRiskAssessmentCreate")]
     public OrderRiskAssessmentCreatePayload? OrderRiskAssessmentCreate { get; init; }

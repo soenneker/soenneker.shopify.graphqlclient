@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// List of possible values for a RiskFact sentiment.
+/// Possible sentiments for a risk fact.
 /// </summary>
 public enum RiskFactSentiment
 {
@@ -13,7 +13,7 @@ public enum RiskFactSentiment
     POSITIVE,
 
     /// <summary>
-    /// A neutral contributor with regards to risk.
+    /// A neutral contributor with regard to risk.
     /// </summary>
     NEUTRAL,
 

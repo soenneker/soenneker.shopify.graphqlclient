@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// List of possible values for an OrderRiskRecommendation recommendation.
+/// Possible recommendations for an order.
 /// </summary>
 public enum OrderRiskRecommendationResult
 {

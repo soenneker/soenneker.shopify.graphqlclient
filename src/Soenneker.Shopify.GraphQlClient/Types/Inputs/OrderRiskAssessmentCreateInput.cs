@@ -6,24 +6,24 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The input fields for an order risk assessment.
+/// The input fields for creating an order risk assessment.
 /// </summary>
 public sealed partial class OrderRiskAssessmentCreateInput
 {
     /// <summary>
-    /// The ID of the order receiving the fraud assessment.
+    /// The ID of the order to assess.
     /// </summary>
     [JsonPropertyName("orderId")]
     public string OrderId { get; init; } = null!;
 
     /// <summary>
-    /// The risk level of the fraud assessment.
+    /// The risk level assigned to the order.
     /// </summary>
     [JsonPropertyName("riskLevel")]
     public RiskAssessmentResult RiskLevel { get; init; }
 
     /// <summary>
-    /// The list of facts used to determine the fraud assessment.
+    /// Facts to include with the risk assessment. Up to 20 facts can be provided.
     /// </summary>
     [JsonPropertyName("facts")]
     public List<OrderRiskAssessmentFactInput> Facts { get; init; } = [];

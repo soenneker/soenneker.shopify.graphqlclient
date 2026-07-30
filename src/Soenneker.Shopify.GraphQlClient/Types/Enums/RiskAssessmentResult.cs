@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// List of possible values for a RiskAssessment result.
+/// Possible risk levels for an order risk assessment.
 /// </summary>
 public enum RiskAssessmentResult
 {
