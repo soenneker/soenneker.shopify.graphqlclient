@@ -388,6 +388,11 @@ public enum MarketUserErrorCode
     RETAILLOCATIONCURRENCYMUSTBELOCAL,
 
     /// <summary>
+    /// A Managed Market must use currencies that correspond to all of its countries.
+    /// </summary>
+    MANAGEDMARKETCURRENCYMUSTMATCHCOUNTRY,
+
+    /// <summary>
     /// Catalogs with volume pricing or quantity rules are not supported for the specified condition types.
     /// </summary>
     CATALOGSWITHVOLUMEPRICINGORQUANTITYRULESNOTSUPPORTED,
