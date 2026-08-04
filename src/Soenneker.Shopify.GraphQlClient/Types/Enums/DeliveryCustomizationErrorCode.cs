@@ -38,6 +38,11 @@ public enum DeliveryCustomizationErrorCode
     MAXIMUMACTIVEDELIVERYCUSTOMIZATIONS,
 
     /// <summary>
+    /// The maximum number of delivery customizations per shop has been reached.
+    /// </summary>
+    MAXIMUMDELIVERYCUSTOMIZATIONS,
+
+    /// <summary>
     /// Shop must be on a Shopify Plus plan to activate functions from a custom app.
     /// </summary>
     CUSTOMAPPFUNCTIONNOTELIGIBLE,

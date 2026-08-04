@@ -19408,6 +19408,10 @@ enum DeliveryCustomizationErrorCode {
   """
   MAXIMUM_ACTIVE_DELIVERY_CUSTOMIZATIONS
   """
+  The maximum number of delivery customizations per shop has been reached.
+  """
+  MAXIMUM_DELIVERY_CUSTOMIZATIONS
+  """
   Shop must be on a Shopify Plus plan to activate functions from a custom app.
   """
   CUSTOM_APP_FUNCTION_NOT_ELIGIBLE
@@ -33796,7 +33800,7 @@ type InventoryShipment implements Node {
   """
   totalAcceptedQuantity: Int!
   """
-  The total quantity of items received (both accepted and rejected) across all line items in this shipment.
+  The total quantity of items accepted, rejected, or marked as canceled across all line items in this shipment.
   """
   totalReceivedQuantity: Int!
   """
@@ -34244,7 +34248,7 @@ type InventoryShipmentLineItem implements Node {
   """
   rejectedQuantity: Int!
   """
-  The total quantity of units that haven't been received (neither accepted or rejected) in this shipment line item.
+  The total quantity of units that haven't been accepted, rejected, or marked as canceled in this shipment line item.
   """
   unreceivedQuantity: Int!
 }
@@ -34815,7 +34819,7 @@ type InventoryTransfer implements CommentEventSubject & HasEvents & HasMetafield
   """
   origin: LocationSnapshot
   """
-  The total quantity of items received in the transfer.
+  The total quantity of items accepted, rejected, or marked as canceled in the transfer.
   """
   receivedQuantity: Int!
   """
@@ -44816,7 +44820,7 @@ enum MetaobjectAdminAccess {
   """
   The merchant and other apps have no access.
   """
-  PRIVATE
+  PRIVATE @deprecated(reason: "Use MERCHANT_READ instead. Removed in API version 2027-01.")
   """
   The merchant has read-only access. No other apps have access.
   """
@@ -44828,7 +44832,7 @@ enum MetaobjectAdminAccess {
   """
   The merchant and other apps have read-only access.
   """
-  PUBLIC_READ
+  PUBLIC_READ @deprecated(reason: "Use MERCHANT_READ instead. Removed in API version 2027-01.")
   """
   The merchant and other apps have read and write access.
   """

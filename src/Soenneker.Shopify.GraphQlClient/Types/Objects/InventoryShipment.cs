@@ -71,7 +71,7 @@ public sealed partial class InventoryShipment : Node
     public int TotalAcceptedQuantity { get; init; }
 
     /// <summary>
-    /// The total quantity of items received (both accepted and rejected) across all line items in this shipment.
+    /// The total quantity of items accepted, rejected, or marked as canceled across all line items in this shipment.
     /// </summary>
     [JsonPropertyName("totalReceivedQuantity")]
     public int TotalReceivedQuantity { get; init; }

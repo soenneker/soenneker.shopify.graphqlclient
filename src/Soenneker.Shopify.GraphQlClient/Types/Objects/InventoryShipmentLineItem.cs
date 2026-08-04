@@ -40,7 +40,7 @@ public sealed partial class InventoryShipmentLineItem : Node
     public int RejectedQuantity { get; init; }
 
     /// <summary>
-    /// The total quantity of units that haven't been received (neither accepted or rejected) in this shipment line item.
+    /// The total quantity of units that haven't been accepted, rejected, or marked as canceled in this shipment line item.
     /// </summary>
     [JsonPropertyName("unreceivedQuantity")]
     public int UnreceivedQuantity { get; init; }

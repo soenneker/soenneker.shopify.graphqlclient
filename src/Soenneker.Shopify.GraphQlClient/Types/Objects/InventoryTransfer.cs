@@ -95,7 +95,7 @@ public sealed partial class InventoryTransfer : CommentEventSubject, HasEvents, 
     public LocationSnapshot? Origin { get; init; }
 
     /// <summary>
-    /// The total quantity of items received in the transfer.
+    /// The total quantity of items accepted, rejected, or marked as canceled in the transfer.
     /// </summary>
     [JsonPropertyName("receivedQuantity")]
     public int ReceivedQuantity { get; init; }
