@@ -65516,7 +65516,7 @@ type QueryRoot {
   
   Returns only active locations by default. Use the [`includeInactive`](https://shopify.dev/docs/api/admin-graphql/latest/queries/locations#arguments-includeInactive) argument to retrieve deactivated locations that can no longer stock inventory or fulfill orders. Use the [`includeLegacy`](https://shopify.dev/docs/api/admin-graphql/latest/queries/locations#arguments-includeLegacy) argument to include locations that [`FulfillmentService`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentService) apps manage. Use the [`query`](https://shopify.dev/docs/api/admin-graphql/latest/queries/locations#arguments-query) argument to filter by location attributes like name, address, and whether local pickup is enabled.
   """
-  locations(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: LocationSortKeys = NAME, query: String, includeLegacy: Boolean = false, includeInactive: Boolean = false): LocationConnection!
+  locations(includeLegacy: Boolean = false, includeInactive: Boolean = false, first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: LocationSortKeys = NAME, query: String): LocationConnection!
   """
   Returns a list of all origin locations available for a delivery profile.
   """
