@@ -40,6 +40,11 @@ public enum StoreCreditSystemEvent
     /// <summary>
     /// Tax finalization affected the store credit payment.
     /// </summary>
-    TAXFINALIZATION
+    TAXFINALIZATION,
+
+    /// <summary>
+    /// Store credit was used as payment for a recurring order.
+    /// </summary>
+    RECURRINGPAYMENT
 
 }

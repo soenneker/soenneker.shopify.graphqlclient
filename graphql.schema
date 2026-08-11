@@ -77249,6 +77249,10 @@ enum StoreCreditSystemEvent {
   Tax finalization affected the store credit payment.
   """
   TAX_FINALIZATION
+  """
+  Store credit was used as payment for a recurring order.
+  """
+  RECURRING_PAYMENT
 }
 
 """
