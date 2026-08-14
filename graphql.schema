@@ -66328,7 +66328,7 @@ type QueryRoot {
   
   Building an app? If you only use app-specific webhooks, you won't need this. App-specific webhook subscriptions specified in your `shopify.app.toml` may be easier. They are automatically kept up to date by Shopify & require less maintenance. Please read [About managing webhook subscriptions](https://shopify.dev/docs/apps/build/webhooks/subscribe).
   """
-  webhookSubscriptions(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: WebhookSubscriptionSortKeys = CREATED_AT, query: String, callbackUrl: URL @deprecated(reason: "Use \u0060uri\u0060 instead."), uri: String, format: WebhookSubscriptionFormat, topics: [WebhookSubscriptionTopic!]): WebhookSubscriptionConnection!
+  webhookSubscriptions(callbackUrl: URL @deprecated(reason: "Use \u0060uri\u0060 instead."), uri: String, format: WebhookSubscriptionFormat, topics: [WebhookSubscriptionTopic!], first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: WebhookSubscriptionSortKeys = CREATED_AT, query: String): WebhookSubscriptionConnection!
   """
   The count of webhook subscriptions.
   
