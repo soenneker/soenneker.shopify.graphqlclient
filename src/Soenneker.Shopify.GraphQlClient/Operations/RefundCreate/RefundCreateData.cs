@@ -38,7 +38,7 @@ public sealed partial class RefundCreateData
     /// 
     /// &gt; Note:
     /// &gt; The refunding behavior of the `refundCreate` mutation is similar to the
-    /// [`refundReturn`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/returnRefund)
+    /// [`returnRefund`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/returnRefund)
     /// mutation. The key difference is that the `refundCreate` mutation lets you to specify restocking behavior
     /// for line items, whereas the `returnRefund` mutation focuses solely on handling the financial refund without
     /// any restocking input.
