@@ -13,6 +13,11 @@ public enum InventoryTransferDuplicateUserErrorCode
     TRANSFERNOTFOUND,
 
     /// <summary>
+    /// The quantity is invalid.
+    /// </summary>
+    INVALIDQUANTITY,
+
+    /// <summary>
     /// This request is currently in progress, please try again.
     /// </summary>
     IDEMPOTENCYCONCURRENTREQUEST,

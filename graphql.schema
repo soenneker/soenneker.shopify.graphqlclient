@@ -35275,6 +35275,10 @@ enum InventoryTransferDuplicateUserErrorCode {
   """
   TRANSFER_NOT_FOUND
   """
+  The quantity is invalid.
+  """
+  INVALID_QUANTITY
+  """
   This request is currently in progress, please try again.
   """
   IDEMPOTENCY_CONCURRENT_REQUEST
