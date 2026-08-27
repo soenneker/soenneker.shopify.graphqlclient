@@ -10,6 +10,41 @@ public enum CollectionDuplicateUserErrorCode
     /// <summary>
     /// The collection was not found. Please check the collection ID and try again.
     /// </summary>
-    COLLECTIONNOTFOUND
+    COLLECTIONNOTFOUND,
+
+    /// <summary>
+    /// The collection title must not be blank.
+    /// </summary>
+    BLANK,
+
+    /// <summary>
+    /// The collection title or URL handle is too long.
+    /// </summary>
+    TOOLONG,
+
+    /// <summary>
+    /// The URL handle generated from the new title is already in use. Please choose a different title.
+    /// </summary>
+    TAKEN,
+
+    /// <summary>
+    /// The duplicated collection isn't valid.
+    /// </summary>
+    INVALID,
+
+    /// <summary>
+    /// The shop has reached its limit of collections with sub-collection inclusions.
+    /// </summary>
+    TOOMANYSUBCOLLECTIONINCLUSIONCOLLECTIONS,
+
+    /// <summary>
+    /// The shop has reached its limit of collections with sub-collection exclusions.
+    /// </summary>
+    TOOMANYSUBCOLLECTIONEXCLUSIONCOLLECTIONS,
+
+    /// <summary>
+    /// The shop has reached its limit of collection sources with conditions.
+    /// </summary>
+    TOOMANYCONDITIONBACKEDSOURCES
 
 }

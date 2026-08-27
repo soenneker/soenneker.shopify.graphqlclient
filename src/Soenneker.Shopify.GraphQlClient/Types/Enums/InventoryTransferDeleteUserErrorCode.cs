@@ -8,13 +8,13 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryTransferDeleteUserErrorCode
 {
     /// <summary>
-    /// The transfer was not found.
-    /// </summary>
-    TRANSFERNOTFOUND,
-
-    /// <summary>
     /// Current transfer status does not support this operation.
     /// </summary>
-    INVALIDTRANSFERSTATUS
+    INVALIDTRANSFERSTATUS,
+
+    /// <summary>
+    /// The transfer was not found.
+    /// </summary>
+    TRANSFERNOTFOUND
 
 }
