@@ -76763,7 +76763,7 @@ type StandardMetaobjectDefinitionFieldTemplate {
   """
   Whether metafields for the definition are by default visible using the Storefront API.
   """
-  visibleToStorefrontApi: Boolean!
+  visibleToStorefrontApi: Boolean! @deprecated(reason: "Access control at the metaobject field definition level is deprecated and will be removed in 2027-01. Use the access field on the definition instead.")
 }
 
 """
