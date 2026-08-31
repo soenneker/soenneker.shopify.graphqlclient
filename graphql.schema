@@ -10066,7 +10066,7 @@ type CollectionEdge {
 """
 The input fields for identifying a collection.
 """
-input CollectionIdentifierInput {
+input CollectionIdentifierInput @oneOf {
   """
   The ID of the collection.
   """
@@ -16237,7 +16237,7 @@ type CustomerGenerateAccountActivationUrlPayload {
 """
 The input fields for identifying a customer.
 """
-input CustomerIdentifierInput {
+input CustomerIdentifierInput @oneOf {
   """
   The ID of the customer.
   """
@@ -17880,7 +17880,7 @@ enum CustomerSendAccountInviteEmailUserErrorCode {
 """
 The input fields required to identify a customer.
 """
-input CustomerSetIdentifiers {
+input CustomerSetIdentifiers @oneOf {
   """
   ID of customer to update.
   """
@@ -23354,7 +23354,7 @@ union DiscountContext = DiscountBuyerSelectionAll | DiscountCustomerSegments | D
 """
 The input fields for the buyers who can use this discount.
 """
-input DiscountContextInput {
+input DiscountContextInput @oneOf {
   """
   All buyers are eligible for this discount.
   """
@@ -26488,7 +26488,7 @@ input ExchangeLineItemAppliedDiscountInput {
 The input value for an applied discount on a calculated exchange line item.
 Can either specify the value as a fixed amount or a percentage.
 """
-input ExchangeLineItemAppliedDiscountValueInput {
+input ExchangeLineItemAppliedDiscountValueInput @oneOf {
   """
   The value of the discount as a fixed amount.
   """
@@ -38281,7 +38281,7 @@ enum LocationEditUserErrorCode {
 """
 The input fields for identifying a location.
 """
-input LocationIdentifierInput {
+input LocationIdentifierInput @oneOf {
   """
   The ID of the location.
   """
@@ -38932,7 +38932,7 @@ type MarketConditions {
 """
 The input fields required to create or update a company location market condition.
 """
-input MarketConditionsCompanyLocationsInput {
+input MarketConditionsCompanyLocationsInput @oneOf {
   """
   A list of company location IDs to include in the market condition.
   """
@@ -38964,7 +38964,7 @@ input MarketConditionsInput {
 """
 The input fields required to create or update a location market condition.
 """
-input MarketConditionsLocationsInput {
+input MarketConditionsLocationsInput @oneOf {
   """
   A list of location IDs to include in the market condition.
   """
@@ -38988,7 +38988,7 @@ input MarketConditionsRegionInput {
 """
 The input fields required to create or update a region market condition.
 """
-input MarketConditionsRegionsInput {
+input MarketConditionsRegionsInput @oneOf {
   """
   A list of market region IDs to include in the market condition.
   """
@@ -46146,7 +46146,7 @@ input MobilePlatformApplicationCreateAppleInput {
 """
 The input fields for a mobile application platform type.
 """
-input MobilePlatformApplicationCreateInput {
+input MobilePlatformApplicationCreateInput @oneOf {
   """
   Android based mobile platform application.
   """
@@ -46246,7 +46246,7 @@ input MobilePlatformApplicationUpdateAppleInput {
 """
 The input fields for the mobile platform application platform type.
 """
-input MobilePlatformApplicationUpdateInput {
+input MobilePlatformApplicationUpdateInput @oneOf {
   """
   Android based Mobile Platform Application.
   """
@@ -52182,7 +52182,7 @@ enum OrderCancelReason {
 """
 The input fields used to specify the refund method for an order cancellation.
 """
-input OrderCancelRefundMethodInput {
+input OrderCancelRefundMethodInput @oneOf {
   """
   Whether to refund to the original payment method.
   """
@@ -52439,7 +52439,7 @@ input OrderCreateCustomerAddressInput {
 """
 The input fields for a customer to associate with an order. Allows creation of a new customer or specifying an existing one.
 """
-input OrderCreateCustomerInput {
+input OrderCreateCustomerInput @oneOf {
   """
   An existing customer to associate with the order, specified by ID.
   """
@@ -53983,7 +53983,7 @@ enum OrderEditUpdateShippingLineUserErrorCode {
 """
 The input fields for identifying a order.
 """
-input OrderIdentifierInput {
+input OrderIdentifierInput @oneOf {
   """
   The ID of the order.
   """
@@ -60473,7 +60473,7 @@ enum ProductFullSyncUserErrorCode {
 """
 The input fields for identifying a product.
 """
-input ProductIdentifierInput {
+input ProductIdentifierInput @oneOf {
   """
   The ID of the product.
   """
@@ -61595,7 +61595,7 @@ type ProductSale implements Sale {
 """
 The input fields required to identify a resource.
 """
-input ProductSetIdentifiers {
+input ProductSetIdentifiers @oneOf {
   """
   ID of product to update.
   """
@@ -62633,7 +62633,7 @@ input ProductVariantGroupRelationshipInput {
 """
 The input fields for identifying a product variant.
 """
-input ProductVariantIdentifierInput {
+input ProductVariantIdentifierInput @oneOf {
   """
   The ID of the product variant.
   """
@@ -66804,7 +66804,7 @@ enum RefundMethodAllocation {
 """
 The input fields for processing the financial outcome of a refund.
 """
-input RefundMethodInput {
+input RefundMethodInput @oneOf {
   """
   The details of the refund to store credit.
   """
@@ -68028,7 +68028,7 @@ input ReturnProcessExchangeLineItemInput {
 """
 The input fields for the financial transfer for the return.
 """
-input ReturnProcessFinancialTransferInput {
+input ReturnProcessFinancialTransferInput @oneOf {
   """
   Issue a refund for the return.
   """
