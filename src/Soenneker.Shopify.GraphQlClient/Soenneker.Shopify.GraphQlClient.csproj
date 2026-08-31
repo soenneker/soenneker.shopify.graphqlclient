@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Description>A Shopify .NET client generated from the Shopify GraphQL schema, updated daily</Description>
+        <Description>Generated, strongly typed .NET client for Shopify Admin GraphQL mutations.</Description>
         <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Shopify.GraphQlClient</AssemblyName>
