@@ -14,6 +14,8 @@ public sealed partial class SubscriptionContractUpdateData
     /// 
     /// Changes remain in draft state and don't affect the live contract until committed. After you've made all necessary changes to the draft, commit it using [`subscriptionDraftCommit`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/subscriptionDraftCommit) to apply the updates to the original contract.
     /// 
+    /// This mutation and the draft-based edit flow are deprecated in favor of the [SubscriptionContractCalculation API](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/migrate-to-subscription-calculation-api).
+    /// 
     /// Learn more about [updating subscription contracts](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/update-a-subscription-contract#step-2-create-a-draft-of-an-existing-contract).
     /// </summary>
     [JsonPropertyName("subscriptionContractUpdate")]

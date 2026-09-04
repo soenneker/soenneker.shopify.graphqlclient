@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Shopify.GraphQlClient;
 
-/// <inheritdoc cref="IGraphQlClient" />
 public sealed class GraphQlHttpClient : IGraphQlClient
 {
     private readonly HttpClient _httpClient;

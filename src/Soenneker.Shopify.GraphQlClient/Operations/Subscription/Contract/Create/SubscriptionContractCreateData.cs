@@ -16,6 +16,8 @@ public sealed partial class SubscriptionContractCreateData
     /// 
     /// After you create the draft, you can either modify it with the [`subscriptionDraftUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/subscriptionDraftUpdate) mutation or finalize and create the active subscription contract with [`subscriptionDraftCommit`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/subscriptionDraftCommit).
     /// 
+    /// This mutation and the draft-based flow are deprecated in favor of the [SubscriptionContractCalculation API](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/migrate-to-subscription-calculation-api).
+    /// 
     /// Learn more about [building subscription contracts](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/build-a-subscription-contract).
     /// </summary>
     [JsonPropertyName("subscriptionContractCreate")]
