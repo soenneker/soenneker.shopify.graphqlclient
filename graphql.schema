@@ -23384,7 +23384,7 @@ type DiscountCountries {
   """
   Whether the discount is applicable to countries that haven't been defined in the shop's shipping zones.
   """
-  includeRestOfWorld: Boolean!
+  includeRestOfWorld: Boolean! @deprecated(reason: "This field is being retired. Discounts that set \u0060includeRestOfWorld: true\u0060 will be converted to an explicit list of countries, and \u0060countries\u0060 will then return every country where the discount applies.")
 }
 
 """
@@ -23402,7 +23402,7 @@ input DiscountCountriesInput {
   """
   Whether the discount code is applicable to countries that haven't been defined in the shop's shipping zones.
   """
-  includeRestOfWorld: Boolean = false
+  includeRestOfWorld: Boolean = false @deprecated(reason: "This field is being retired. Use \u0060add\u0060 to specify each country where the discount should apply.")
 }
 
 """
@@ -57662,7 +57662,7 @@ type PriceRuleShippingLineEntitlements {
   """
   Whether the price rule is applicable to countries that haven't been defined in the shop's shipping zones.
   """
-  includeRestOfWorld: Boolean!
+  includeRestOfWorld: Boolean! @deprecated(reason: "This field is being retired. Price rules that set \u0060includeRestOfWorld: true\u0060 will be converted to an explicit list of countries, and \u0060countryCodes\u0060 will then return every country where the price rule applies.")
   """
   Whether the price rule applies to all shipping lines.
   """
