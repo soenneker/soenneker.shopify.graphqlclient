@@ -135,7 +135,7 @@ public sealed partial class ProductUpdateInput
     /// Whether the product can only be purchased with
     /// a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/selling-plans).
     /// Products that are sold on subscription (`requiresSellingPlan: true`) can be updated only for online stores.
-    /// If you update a product to be subscription-only (`requiresSellingPlan:false`), then the product is unpublished from all channels except the online store.
+    /// If you update a product to be subscription-only (`requiresSellingPlan: true`), then the product is unpublished from all channels except the online store.
     /// </summary>
     [JsonPropertyName("requiresSellingPlan")]
     public bool? RequiresSellingPlan { get; init; }
