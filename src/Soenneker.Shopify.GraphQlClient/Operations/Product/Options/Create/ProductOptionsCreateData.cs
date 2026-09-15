@@ -10,10 +10,10 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class ProductOptionsCreateData
 {
     /// <summary>
-    /// Creates one or more [options](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOption)
-    /// on a [product](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product),
+    /// Creates one or more [options](https://shopify.dev/docs/api/admin-graphql/current/objects/ProductOption)
+    /// on a [product](https://shopify.dev/docs/api/admin-graphql/current/objects/Product),
     /// such as size, color, or material. Each option includes a name, position, and a list of values. The combination
-    /// of a product option and value creates a [product variant](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant).
+    /// of a product option and value creates a [product variant](https://shopify.dev/docs/api/admin-graphql/current/objects/ProductVariant).
     /// 
     /// Use the `productOptionsCreate` mutation for the following use cases:
     /// 
@@ -32,16 +32,23 @@ public sealed partial class ProductOptionsCreateData
     /// &gt; Note:
     /// &gt; The `productOptionsCreate` mutation enforces strict data integrity for product options and variants.
     /// All option positions must be sequential, and every option should be used by at least one variant.
-    /// If you use the [`CREATE` variant strategy](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productOptionsCreate#arguments-variantStrategy.enums.CREATE), consider the maximum allowed number of variants for each product is 2048.
+    /// If you use the [`CREATE` variant strategy](https://shopify.dev/docs/api/admin-graphql/current/mutations/productOptionsCreate#arguments-variantStrategy.enums.CREATE), consider the maximum allowed number of variants for each product is 2048.
+    /// 
+    /// If the product already has an option with the same name, then the mutation returns an
+    /// `OPTION_ALREADY_EXISTS` error. A product that has only its default variant is the exception,
+    /// because its implicit `Title` option is a placeholder that the mutation replaces.
+    /// To declare the complete set of options and variants that a product
+    /// should have, and let Shopify create, update, or remove them to match, use the
+    /// [`productSet`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productSet) mutation instead.
     /// 
     /// After you create product options, you can further manage a product's configuration using related mutations:
     /// 
-    /// - [`productOptionUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productOptionUpdate)
-    /// - [`productOptionsReorder`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productOptionsReorder)
-    /// - [`productOptionsDelete`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productOptionsDelete)
-    /// - [`productVariantsBulkCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productVariantsBulkCreate)
-    /// - [`productVariantsBulkUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productVariantsBulkUpdate)
-    /// - [`productSet`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productSet)
+    /// - [`productOptionUpdate`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productOptionUpdate)
+    /// - [`productOptionsReorder`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productOptionsReorder)
+    /// - [`productOptionsDelete`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productOptionsDelete)
+    /// - [`productVariantsBulkCreate`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productVariantsBulkCreate)
+    /// - [`productVariantsBulkUpdate`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productVariantsBulkUpdate)
+    /// - [`productSet`](https://shopify.dev/docs/api/admin-graphql/current/mutations/productSet)
     /// 
     /// Learn more about the [product model](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model)
     /// and [adding product data](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model/add-data).
