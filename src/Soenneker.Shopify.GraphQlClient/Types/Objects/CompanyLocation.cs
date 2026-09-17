@@ -104,7 +104,7 @@ public sealed partial class CompanyLocation : CommentEventSubject, HasEvents, Ha
     public string? Locale { get; init; }
 
     /// <summary>
-    /// The market that includes the location's shipping address. If the shipping address is empty, then the value is the shop's primary market.
+    /// The market that applies to the location's shipping address country. In cases where multiple markets match, this returns the most-specific country region market. If the shipping address is empty, then the value is the shop's backup region market.
     /// </summary>
     [JsonPropertyName("market")]
     public Market Market { get; init; } = null!;

@@ -12515,7 +12515,7 @@ type CompanyLocation implements CommentEventSubject & HasEvents & HasMetafieldDe
   """
   locale: String
   """
-  The market that includes the location's shipping address. If the shipping address is empty, then the value is the shop's primary market.
+  The market that applies to the location's shipping address country. In cases where multiple markets match, this returns the most-specific country region market. If the shipping address is empty, then the value is the shop's backup region market.
   """
   market: Market! @deprecated(reason: "This \u0060market\u0060 field will be removed in a future version of the API.")
   """
@@ -15408,7 +15408,7 @@ type Customer implements CommentEventSubject & HasEvents & HasMetafieldDefinitio
   """
   locale: String!
   """
-  The market that includes the customer’s default address.
+  The market that applies to the customer’s default address country. In cases where multiple markets match, this returns the most-specific country region market.
   """
   market: Market @deprecated(reason: "This \u0060market\u0060 field will be removed in a future version of the API.")
   """

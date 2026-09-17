@@ -162,7 +162,7 @@ public sealed partial class Customer : CommentEventSubject, HasEvents, HasMetafi
     public string Locale { get; init; } = null!;
 
     /// <summary>
-    /// The market that includes the customer’s default address.
+    /// The market that applies to the customer’s default address country. In cases where multiple markets match, this returns the most-specific country region market.
     /// </summary>
     [JsonPropertyName("market")]
     public Market? Market { get; init; }
