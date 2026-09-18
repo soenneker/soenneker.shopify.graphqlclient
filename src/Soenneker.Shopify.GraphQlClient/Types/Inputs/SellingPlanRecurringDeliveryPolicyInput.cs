@@ -29,7 +29,7 @@ public sealed partial class SellingPlanRecurringDeliveryPolicyInput
     public List<SellingPlanAnchorInput>? Anchors { get; init; }
 
     /// <summary>
-    /// A buffer period for orders to be included in a cycle.
+    /// Number of days which represent a buffer period for orders to be included in a cycle.
     /// </summary>
     [JsonPropertyName("cutoff")]
     public int? Cutoff { get; init; }

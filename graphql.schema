@@ -64913,7 +64913,7 @@ type QueryRoot {
   """
   Returns a list of automatic discounts that are applied in the cart and at checkout without requiring a discount code.
   """
-  automaticDiscounts(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: AutomaticDiscountSortKeys = CREATED_AT, query: String, savedSearchId: ID): DiscountAutomaticConnection! @deprecated(reason: "Use \u0060automaticDiscountNodes\u0060 instead.")
+  automaticDiscounts(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: AutomaticDiscountSortKeys = CREATED_AT, query: String, savedSearchId: ID): DiscountAutomaticConnection! @deprecated(reason: "Use \u0060automaticDiscountNodes\u0060 instead. This will be removed in 2027-01.")
   """
   The geographic regions that you can set as the [`Shop`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Shop)'s backup region. The backup region serves as a fallback when the system can't determine a buyer's actual location.
   """
@@ -70952,7 +70952,7 @@ input SellingPlanFixedDeliveryPolicyInput {
   """
   fulfillmentExactTime: DateTime
   """
-  A buffer period for orders to be included in a cycle.
+  Number of days which represent a buffer period for orders to be included in a cycle.
   """
   cutoff: Int
   """
@@ -71911,7 +71911,7 @@ input SellingPlanRecurringDeliveryPolicyInput {
   """
   anchors: [SellingPlanAnchorInput!]
   """
-  A buffer period for orders to be included in a cycle.
+  Number of days which represent a buffer period for orders to be included in a cycle.
   """
   cutoff: Int
   """
