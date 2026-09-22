@@ -48564,7 +48564,7 @@ type Mutation {
   """
   Updates currency settings of a market.
   """
-  marketCurrencySettingsUpdate(marketId: ID!, input: MarketCurrencySettingsUpdateInput!): MarketCurrencySettingsUpdatePayload @deprecated(reason: "This will be removed in a future version. Use \u0060marketCreate\u0060 and \u0060marketUpdate\u0060 for creating and updating\nmarket currency settings, respectively.\n")
+  marketCurrencySettingsUpdate(marketId: ID!, input: MarketCurrencySettingsUpdateInput!): MarketCurrencySettingsUpdatePayload @deprecated(reason: "Use \u0060marketCreate\u0060 and \u0060marketUpdate\u0060 for creating and updating\nmarket currency settings, respectively. Removed in API version 2027-01.\n")
   """
   Deletes a market definition.
   """
@@ -75930,7 +75930,7 @@ type ShopifyqlTableDataColumn {
   """
   name: String!
   """
-  The sub type of an array column.
+  The element type of an array column or DAY_DURATION for a range column.
   """
   subType: ColumnDataType
 }

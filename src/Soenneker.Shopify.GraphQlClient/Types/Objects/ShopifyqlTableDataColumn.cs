@@ -28,7 +28,7 @@ public sealed partial class ShopifyqlTableDataColumn
     public string Name { get; init; } = null!;
 
     /// <summary>
-    /// The sub type of an array column.
+    /// The element type of an array column or DAY_DURATION for a range column.
     /// </summary>
     [JsonPropertyName("subType")]
     public ColumnDataType? SubType { get; init; }
