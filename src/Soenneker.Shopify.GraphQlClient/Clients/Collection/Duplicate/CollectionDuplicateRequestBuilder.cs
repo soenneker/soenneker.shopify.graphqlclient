@@ -22,7 +22,7 @@ public sealed partial class CollectionDuplicateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<CollectionDuplicateData>> Execute(CollectionDuplicateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation CollectionDuplicate($input: CollectionDuplicateInput!) { collectionDuplicate(input: $input) { collection { activeOperations { id } availablePublicationsCount { count precision } descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } job { done id query { nodes } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation CollectionDuplicate($input: CollectionDuplicateInput!) { collectionDuplicate(input: $input) { collection { activeOperations { id } availablePublicationsCount { count precision } createdAt descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } job { done id query { nodes } } userErrors { code field message } } }";
         return _graphQlClient.Execute<CollectionDuplicateData>(gqlQuery, request, cancellationToken);
     }
 

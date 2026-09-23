@@ -51,6 +51,12 @@ public sealed partial class Collection : HasEvents, HasMetafieldDefinitions, Has
     public Count? AvailablePublicationsCount { get; init; }
 
     /// <summary>
+    /// The date and time when the collection was created.
+    /// </summary>
+    [JsonPropertyName("createdAt")]
+    public DateTimeOffset CreatedAt { get; init; }
+
+    /// <summary>
     /// A single-line, text-only description of the collection, stripped of any HTML tags and formatting that were included in the description.
     /// </summary>
     [JsonPropertyName("description")]

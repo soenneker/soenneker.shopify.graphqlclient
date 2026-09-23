@@ -22,7 +22,7 @@ public sealed partial class CollectionAddProductsRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<CollectionAddProductsData>> Execute(CollectionAddProductsVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation CollectionAddProducts($id: ID!, $productIds: [ID!]!) { collectionAddProducts(id: $id, productIds: $productIds) { collection { activeOperations { id } availablePublicationsCount { count precision } descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } userErrors { field message } } }";
+        const string gqlQuery = @"mutation CollectionAddProducts($id: ID!, $productIds: [ID!]!) { collectionAddProducts(id: $id, productIds: $productIds) { collection { activeOperations { id } availablePublicationsCount { count precision } createdAt descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } userErrors { field message } } }";
         return _graphQlClient.Execute<CollectionAddProductsData>(gqlQuery, request, cancellationToken);
     }
 

@@ -22,7 +22,7 @@ public sealed partial class CollectionUpdateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<CollectionUpdateData>> Execute(CollectionUpdateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation CollectionUpdate($input: CollectionInput!) { collectionUpdate(input: $input) { collection { activeOperations { id } availablePublicationsCount { count precision } descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } job { done id query { nodes } } userErrors { field message } } }";
+        const string gqlQuery = @"mutation CollectionUpdate($input: CollectionInput!) { collectionUpdate(input: $input) { collection { activeOperations { id } availablePublicationsCount { count precision } createdAt descriptionHtml feedback { summary } handle id legacyResourceId productsCount { count precision } publishedOnCurrentChannel publishedOnCurrentPublication ruleSet { appliedDisjunctively } seo { description title } sortOrder storefrontId templateSuffix title updatedAt } job { done id query { nodes } } userErrors { field message } } }";
         return _graphQlClient.Execute<CollectionUpdateData>(gqlQuery, request, cancellationToken);
     }
 

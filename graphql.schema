@@ -9645,6 +9645,10 @@ type Collection implements HasEvents & HasMetafieldDefinitions & HasMetafields &
   """
   availablePublicationsCount: Count
   """
+  The date and time when the collection was created.
+  """
+  createdAt: DateTime!
+  """
   A single-line, text-only description of the collection, stripped of any HTML tags and formatting that were included in the description.
   """
   description(truncateAt: Int): String!
