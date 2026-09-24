@@ -14650,6 +14650,10 @@ enum CurrencyCode {
   """
   CVE
   """
+  Caribbean Guilder (XCG).
+  """
+  XCG
+  """
   Cayman Dollars (KYD).
   """
   KYD

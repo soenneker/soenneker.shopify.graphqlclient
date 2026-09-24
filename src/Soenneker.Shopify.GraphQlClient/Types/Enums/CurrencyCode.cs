@@ -165,6 +165,11 @@ public enum CurrencyCode
     CVE,
 
     /// <summary>
+    /// Caribbean Guilder (XCG).
+    /// </summary>
+    XCG,
+
+    /// <summary>
     /// Cayman Dollars (KYD).
     /// </summary>
     KYD,
