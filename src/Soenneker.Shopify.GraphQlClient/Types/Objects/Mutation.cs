@@ -2164,7 +2164,15 @@ public sealed partial class Mutation
     public GiftCardDebitPayload? GiftCardDebit { get; init; }
 
     /// <summary>
-    /// Sends a notification to the customer who purchased a gift card, including the gift card details and code. The notification is delivered using the customer's available contact method. Use this to resend the purchase confirmation or remind the purchaser about a gift card they bought.
+    /// Sends a gift card notification. If the gift card has a designated recipient,
+    /// a purchase confirmation is sent instead. Both default email templates include the gift card code.
+    /// 
+    /// By default, gift card notifications use the linked order's contact details, with the assigned customer's
+    /// details as a fallback. Purchase confirmations use the assigned customer's contact details.
+    /// 
+    /// The gift card must have an assigned customer with an email address or phone number.
+    /// Returns an error without sending if the selected contact source has no contact information.
+    /// When both an email address and a phone number are available, the notification is sent by email.
     /// </summary>
     [JsonPropertyName("giftCardSendNotificationToCustomer")]
     public GiftCardSendNotificationToCustomerPayload? GiftCardSendNotificationToCustomer { get; init; }
