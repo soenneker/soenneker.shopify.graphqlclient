@@ -981,9 +981,11 @@ public sealed partial class QueryRoot
     public Count? GiftCardsCount { get; init; }
 
     /// <summary>
-    /// Returns an
-    /// [InventoryItem](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem)
-    /// object by ID.
+    /// Retrieves an [inventory item](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) by its ID. An inventory item represents the inventory for a [product variant](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant), and holds the stock keeping unit (SKU), whether quantities are tracked, shipping requirements, and customs information.
+    /// 
+    /// Use the [`inventoryLevels`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem#field-InventoryItem.fields.inventoryLevels) field to get the [inventory level](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel) for each location that stocks the item, and the level's [`quantities`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel#field-InventoryLevel.fields.quantities) field to read its inventory quantities by name.
+    /// 
+    /// Learn more about [inventory object relationships](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#inventory-object-relationships).
     /// </summary>
     [JsonPropertyName("inventoryItem")]
     public InventoryItem? InventoryItem { get; init; }
@@ -995,9 +997,11 @@ public sealed partial class QueryRoot
     public InventoryItemConnection InventoryItems { get; init; } = null!;
 
     /// <summary>
-    /// Returns an
-    /// [InventoryLevel](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel)
-    /// object by ID.
+    /// Retrieves an [inventory level](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel) by its ID. An inventory level exists for an inventory item at each location that stocks it. Each inventory level has a [`quantities`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel#field-InventoryLevel.fields.quantities) field to read the inventory quantity by name. Quantity names represent the [inventory states](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states) that merchants use to track inventory.
+    /// 
+    /// The [`InventoryItem`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem) and [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects each have an `inventoryLevels` field. Use it to find the ID of an inventory level.
+    /// 
+    /// Learn more about [inventory object relationships](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#inventory-object-relationships).
     /// </summary>
     [JsonPropertyName("inventoryLevel")]
     public InventoryLevel? InventoryLevel { get; init; }

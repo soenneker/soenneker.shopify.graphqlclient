@@ -6,7 +6,9 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// A [product variant's](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) inventory information across all locations. The inventory item connects the product variant to its [inventory levels](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel) at different locations, tracking stock keeping unit (SKU), whether quantities are tracked, shipping requirements, and customs information for the product.
+/// An inventory item represents the inventory for a [product variant](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant). It holds the stock keeping unit (SKU), whether quantities are tracked, shipping requirements, and customs information.
+/// 
+/// Use the [`inventoryLevels`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryItem#field-InventoryItem.fields.inventoryLevels) field to get the [inventory level](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel) for each location that stocks the item, and the level's [`quantities`](https://shopify.dev/docs/api/admin-graphql/latest/objects/InventoryLevel#field-InventoryLevel.fields.quantities) field to read its inventory quantities by name. Quantity names represent the [inventory states](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states) that merchants use to track inventory.
 /// 
 /// Learn more about [inventory object relationships](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#inventory-object-relationships).
 /// </summary>
@@ -91,7 +93,7 @@ public sealed partial class InventoryItem : LegacyInteroperability, Node
     public string? ProvinceCodeOfOrigin { get; init; }
 
     /// <summary>
-    /// Whether the inventory item requires shipping.
+    /// Whether a customer needs to provide a shipping address when placing an order containing the inventory item.
     /// </summary>
     [JsonPropertyName("requiresShipping")]
     public bool RequiresShipping { get; init; }
@@ -115,7 +117,7 @@ public sealed partial class InventoryItem : LegacyInteroperability, Node
     public EditableProperty TrackedEditable { get; init; } = null!;
 
     /// <summary>
-    /// Unit cost associated with the inventory item. Note: the user must have "View product costs" permission granted in order to access this field once product granular permissions are enabled.
+    /// Unit cost associated with the inventory item. The shop's currency is used. Note: the user must have "View product costs" permission granted in order to access this field once product granular permissions are enabled.
     /// </summary>
     [JsonPropertyName("unitCost")]
     public MoneyV2? UnitCost { get; init; }
