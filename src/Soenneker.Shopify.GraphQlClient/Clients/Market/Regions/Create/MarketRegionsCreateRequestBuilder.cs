@@ -22,7 +22,7 @@ public sealed partial class MarketRegionsCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketRegionsCreateData>> Execute(MarketRegionsCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketRegionsCreate($marketId: ID!, $regions: [MarketRegionCreateInput!]!) { marketRegionsCreate(marketId: $marketId, regions: $regions) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketRegionsCreate($marketId: ID!, $regions: [MarketRegionCreateInput!]!) { marketRegionsCreate(marketId: $marketId, regions: $regions) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { createdAt currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketRegionsCreateData>(gqlQuery, request, cancellationToken);
     }
 

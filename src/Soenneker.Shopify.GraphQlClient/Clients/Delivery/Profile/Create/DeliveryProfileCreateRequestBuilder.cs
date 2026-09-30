@@ -22,7 +22,7 @@ public sealed partial class DeliveryProfileCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<DeliveryProfileCreateData>> Execute(DeliveryProfileCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation DeliveryProfileCreate($profile: DeliveryProfileInput!) { deliveryProfileCreate(profile: $profile) { profile { activeMethodDefinitionsCount default id legacyMode locationsWithoutRatesCount name originLocationCount productVariantsCount { count precision } productVariantsCountV2 { capped count } unassignedLocations { activatable addressVerified createdAt deactivatable deactivatedAt deletable fulfillsOnlineOrders hasActiveInventory hasUnfulfilledOrders id isActive isFulfillmentService isPrimary legacyResourceId name shipsInventory updatedAt } version zoneCountryCount } userErrors { field message } } }";
+        const string gqlQuery = @"mutation DeliveryProfileCreate($profile: DeliveryProfileInput!) { deliveryProfileCreate(profile: $profile) { profile { activeMethodDefinitionsCount createdAt default id legacyMode locationsWithoutRatesCount name originLocationCount productVariantsCount { count precision } productVariantsCountV2 { capped count } unassignedLocations { activatable addressVerified createdAt deactivatable deactivatedAt deletable fulfillsOnlineOrders hasActiveInventory hasUnfulfilledOrders id isActive isFulfillmentService isPrimary legacyResourceId name shipsInventory updatedAt } version zoneCountryCount } userErrors { field message } } }";
         return _graphQlClient.Execute<DeliveryProfileCreateData>(gqlQuery, request, cancellationToken);
     }
 

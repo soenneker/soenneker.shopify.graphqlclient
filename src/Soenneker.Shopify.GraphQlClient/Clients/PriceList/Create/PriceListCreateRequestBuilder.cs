@@ -22,7 +22,7 @@ public sealed partial class PriceListCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<PriceListCreateData>> Execute(PriceListCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation PriceListCreate($input: PriceListCreateInput!) { priceListCreate(input: $input) { priceList { catalog { id status title } currency fixedPricesCount id name parent { id } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation PriceListCreate($input: PriceListCreateInput!) { priceListCreate(input: $input) { priceList { catalog { id status title } createdAt currency fixedPricesCount id name parent { id } } userErrors { code field message } } }";
         return _graphQlClient.Execute<PriceListCreateData>(gqlQuery, request, cancellationToken);
     }
 

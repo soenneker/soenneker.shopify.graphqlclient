@@ -22,7 +22,7 @@ public sealed partial class MarketUpdateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketUpdateData>> Execute(MarketUpdateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketUpdate($id: ID!, $input: MarketUpdateInput!) { marketUpdate(id: $id, input: $input) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketUpdate($id: ID!, $input: MarketUpdateInput!) { marketUpdate(id: $id, input: $input) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { createdAt currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketUpdateData>(gqlQuery, request, cancellationToken);
     }
 

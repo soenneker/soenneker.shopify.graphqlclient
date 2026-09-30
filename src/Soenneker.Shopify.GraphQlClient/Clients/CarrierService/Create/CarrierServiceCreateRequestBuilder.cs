@@ -22,7 +22,7 @@ public sealed partial class CarrierServiceCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<CarrierServiceCreateData>> Execute(CarrierServiceCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation CarrierServiceCreate($input: DeliveryCarrierServiceCreateInput!) { carrierServiceCreate(input: $input) { carrierService { active callbackUrl formattedName icon { altText height id originalSrc src thumbhash width } id name supportsServiceDiscovery } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation CarrierServiceCreate($input: DeliveryCarrierServiceCreateInput!) { carrierServiceCreate(input: $input) { carrierService { active callbackUrl createdAt formattedName icon { altText height id originalSrc src thumbhash width } id name supportsServiceDiscovery } userErrors { code field message } } }";
         return _graphQlClient.Execute<CarrierServiceCreateData>(gqlQuery, request, cancellationToken);
     }
 

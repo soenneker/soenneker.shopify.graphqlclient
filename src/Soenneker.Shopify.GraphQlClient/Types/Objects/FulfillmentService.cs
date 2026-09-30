@@ -85,6 +85,12 @@ public sealed partial class FulfillmentService
     public Uri? CallbackUrl { get; init; }
 
     /// <summary>
+    /// The date and time when the fulfillment service was created.
+    /// </summary>
+    [JsonPropertyName("createdAt")]
+    public DateTimeOffset CreatedAt { get; init; }
+
+    /// <summary>
     /// Whether the fulfillment service uses the [fulfillment order based workflow](https://shopify.dev/apps/fulfillment/fulfillment-service-apps/manage-fulfillments) for managing fulfillments.
     /// 
     /// As the migration is now finished, the `fulfillmentOrdersOptIn` property is [deprecated](

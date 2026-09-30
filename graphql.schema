@@ -5576,6 +5576,10 @@ type CardPaymentDetails implements BasePaymentDetails {
   """
   company: String
   """
+  The date and time when the card payment details were created.
+  """
+  createdAt: DateTime!
+  """
   The response code from the credit card company indicating whether the customer entered the card security code, or card verification value, correctly. The code is a single letter or empty string.
   """
   cvvResultCode: String
@@ -14928,7 +14932,7 @@ enum CurrencyCode {
   """
   Netherlands Antillean Guilder.
   """
-  ANG
+  ANG @deprecated(reason: "Use \u0060XCG\u0060 instead.")
   """
   New Zealand Dollars (NZD).
   """
@@ -19013,6 +19017,10 @@ type DeliveryCarrierService implements Node {
   """
   callbackUrl: URL
   """
+  The date and time when the carrier service was created.
+  """
+  createdAt: DateTime!
+  """
   The properly formatted name of the shipping service provider, ready to display.
   """
   formattedName: String
@@ -20096,6 +20104,10 @@ type DeliveryProfile implements Node {
   The number of active shipping rates for the profile.
   """
   activeMethodDefinitionsCount: Int!
+  """
+  The date and time when the delivery profile was created.
+  """
+  createdAt: DateTime!
   """
   Whether this is the default profile.
   """
@@ -24102,6 +24114,10 @@ type DiscountRedeemCode {
   """
   code: String!
   """
+  The date and time when the discount redeem code was created.
+  """
+  createdAt: DateTime!
+  """
   The application that created the discount redeem code.
   """
   createdBy: App
@@ -24568,6 +24584,10 @@ enum DistanceUnit {
 A unique string that represents the address of a Shopify store on the Internet.
 """
 type Domain implements Node {
+  """
+  The date and time when the domain was created.
+  """
+  createdAt: DateTime!
   """
   The host name of the domain. For example, `example.com`.
   """
@@ -28495,6 +28515,10 @@ A line item from an [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/
 """
 type FulfillmentLineItem implements Node {
   """
+  The date and time when the fulfillment line item was created.
+  """
+  createdAt: DateTime!
+  """
   The total price after discounts are applied.
   """
   discountedTotal: Money! @deprecated(reason: "Use \u0060discountedTotalSet\u0060 instead.")
@@ -30438,6 +30462,10 @@ type FulfillmentService {
   """
   callbackUrl: URL
   """
+  The date and time when the fulfillment service was created.
+  """
+  createdAt: DateTime!
+  """
   Whether the fulfillment service uses the [fulfillment order based workflow](https://shopify.dev/apps/fulfillment/fulfillment-service-apps/manage-fulfillments) for managing fulfillments.
   
   As the migration is now finished, the `fulfillmentOrdersOptIn` property is [deprecated](
@@ -31039,7 +31067,7 @@ type GiftCard implements Node {
   """
   createdAt: DateTime!
   """
-  The customer who will receive the gift card.
+  The customer that the gift card was sold or issued to, as opposed to the gift recipient. This customer can be reassigned.
   """
   customer: Customer
   """
@@ -31079,7 +31107,7 @@ type GiftCard implements Node {
   """
   order: Order
   """
-  The recipient who will receive the gift card.
+  The recipient of the gift card and the details sent with it: preferred name, message, and send time.
   """
   recipientAttributes: GiftCardRecipient
   """
@@ -31142,7 +31170,7 @@ input GiftCardCreateInput {
   """
   code: String
   """
-  The ID of the customer who will receive the gift card. Requires `write_customers` access_scope.
+  The ID of the customer the gift card is issued to, as opposed to the gift recipient. Requires `write_customers` access_scope.
   """
   customerId: ID
   """
@@ -31793,7 +31821,7 @@ input GiftCardUpdateInput {
   """
   expiresOn: Date
   """
-  The ID of the customer who will receive the gift card. The ID can't be changed if the gift card already has an assigned customer ID.
+  The ID of the customer the gift card is issued to, as opposed to the gift recipient. Replaces the current customer, if any. Requires `write_customers` access_scope.
   """
   customerId: ID
   """
@@ -36562,6 +36590,10 @@ type LineItem implements Node {
   The subscription contract associated with this line item.
   """
   contract: SubscriptionContract
+  """
+  The date and time when the line item was created.
+  """
+  createdAt: DateTime!
   """
   The number of units ordered, excluding refunded and removed units.
   """
@@ -42394,6 +42426,10 @@ Menus can be designated as default navigation elements (like main menu or footer
 Each menu contains menu items that can link to various resource types. This flexibility lets merchants create navigation experiences that guide customers through their store.
 """
 type Menu implements HasPublishedTranslations & Node {
+  """
+  The date and time when the menu was created.
+  """
+  createdAt: DateTime!
   """
   The menu's handle.
   """
@@ -56540,6 +56576,10 @@ type PriceList implements Node {
   """
   catalog: Catalog
   """
+  The date and time when the price list was created.
+  """
+  createdAt: DateTime!
+  """
   The currency for fixed prices associated with this price list.
   """
   currency: CurrencyCode!
@@ -60766,6 +60806,10 @@ A product attribute that customers can choose from, such as "Size", "Color", or 
 The option includes its display position, associated values, and optional [`LinkedMetafield`](https://shopify.dev/docs/api/admin-graphql/latest/objects/LinkedMetafield) for structured data. Options support translations for international selling and track which [`ProductOptionValue`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOptionValue) objects that variants actively use versus unused values that exist without associated variants.
 """
 type ProductOption implements HasPublishedTranslations & Node {
+  """
+  The date and time when the product option was created.
+  """
+  createdAt: DateTime!
   """
   A globally-unique ID.
   """
@@ -82262,6 +82306,10 @@ type TransactionFee implements Node {
   """
   amount: MoneyV2!
   """
+  The date and time when the transaction fee was created.
+  """
+  createdAt: DateTime!
+  """
   Flat rate charge for a transaction.
   """
   flatFee: MoneyV2!
@@ -83198,6 +83246,10 @@ input UpdateMediaInput {
 The URL redirect for the online store.
 """
 type UrlRedirect implements Node {
+  """
+  The date and time when the URL redirect was created.
+  """
+  createdAt: DateTime!
   """
   The ID of the URL redirect.
   """

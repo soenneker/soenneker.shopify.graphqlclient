@@ -210,6 +210,12 @@ public sealed partial class DeliveryCarrierService : Node
     public Uri? CallbackUrl { get; init; }
 
     /// <summary>
+    /// The date and time when the carrier service was created.
+    /// </summary>
+    [JsonPropertyName("createdAt")]
+    public DateTimeOffset CreatedAt { get; init; }
+
+    /// <summary>
     /// The properly formatted name of the shipping service provider, ready to display.
     /// </summary>
     [JsonPropertyName("formattedName")]

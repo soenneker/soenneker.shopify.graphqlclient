@@ -22,7 +22,7 @@ public sealed partial class MenuUpdateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MenuUpdateData>> Execute(MenuUpdateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MenuUpdate($id: ID!, $title: String!, $handle: String, $items: [MenuItemUpdateInput!]!) { menuUpdate(id: $id, title: $title, handle: $handle, items: $items) { menu { handle id isDefault title } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MenuUpdate($id: ID!, $title: String!, $handle: String, $items: [MenuItemUpdateInput!]!) { menuUpdate(id: $id, title: $title, handle: $handle, items: $items) { menu { createdAt handle id isDefault title } userErrors { code field message } } }";
         return _graphQlClient.Execute<MenuUpdateData>(gqlQuery, request, cancellationToken);
     }
 

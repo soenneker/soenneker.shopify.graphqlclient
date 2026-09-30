@@ -22,7 +22,7 @@ public sealed partial class UrlRedirectCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<UrlRedirectCreateData>> Execute(UrlRedirectCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation UrlRedirectCreate($urlRedirect: UrlRedirectInput!) { urlRedirectCreate(urlRedirect: $urlRedirect) { urlRedirect { id path target } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation UrlRedirectCreate($urlRedirect: UrlRedirectInput!) { urlRedirectCreate(urlRedirect: $urlRedirect) { urlRedirect { createdAt id path target } userErrors { code field message } } }";
         return _graphQlClient.Execute<UrlRedirectCreateData>(gqlQuery, request, cancellationToken);
     }
 

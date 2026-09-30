@@ -23,7 +23,7 @@ public sealed partial class GiftCardUpdateInput
     public DateOnly? ExpiresOn { get; init; }
 
     /// <summary>
-    /// The ID of the customer who will receive the gift card. The ID can't be changed if the gift card already has an assigned customer ID.
+    /// The ID of the customer the gift card is issued to, as opposed to the gift recipient. Replaces the current customer, if any. Requires `write_customers` access_scope.
     /// </summary>
     [JsonPropertyName("customerId")]
     public string? CustomerId { get; init; }

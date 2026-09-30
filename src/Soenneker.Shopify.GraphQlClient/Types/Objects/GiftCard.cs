@@ -27,7 +27,7 @@ public sealed partial class GiftCard : Node
     public DateTimeOffset CreatedAt { get; init; }
 
     /// <summary>
-    /// The customer who will receive the gift card.
+    /// The customer that the gift card was sold or issued to, as opposed to the gift recipient. This customer can be reassigned.
     /// </summary>
     [JsonPropertyName("customer")]
     public Customer? Customer { get; init; }
@@ -87,7 +87,7 @@ public sealed partial class GiftCard : Node
     public Order? Order { get; init; }
 
     /// <summary>
-    /// The recipient who will receive the gift card.
+    /// The recipient of the gift card and the details sent with it: preferred name, message, and send time.
     /// </summary>
     [JsonPropertyName("recipientAttributes")]
     public GiftCardRecipient? RecipientAttributes { get; init; }

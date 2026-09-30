@@ -22,7 +22,7 @@ public sealed partial class MarketRegionDeleteRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketRegionDeleteData>> Execute(MarketRegionDeleteVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketRegionDelete($id: ID!) { marketRegionDelete(id: $id) { deletedId market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketRegionDelete($id: ID!) { marketRegionDelete(id: $id) { deletedId market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { createdAt currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketRegionDeleteData>(gqlQuery, request, cancellationToken);
     }
 

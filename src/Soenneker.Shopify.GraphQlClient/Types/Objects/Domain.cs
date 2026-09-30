@@ -11,6 +11,12 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class Domain : Node
 {
     /// <summary>
+    /// The date and time when the domain was created.
+    /// </summary>
+    [JsonPropertyName("createdAt")]
+    public DateTimeOffset CreatedAt { get; init; }
+
+    /// <summary>
     /// The host name of the domain. For example, `example.com`.
     /// </summary>
     [JsonPropertyName("host")]

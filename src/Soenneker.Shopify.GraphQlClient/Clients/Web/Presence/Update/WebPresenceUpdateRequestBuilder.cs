@@ -22,7 +22,7 @@ public sealed partial class WebPresenceUpdateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<WebPresenceUpdateData>> Execute(WebPresenceUpdateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation WebPresenceUpdate($id: ID!, $input: WebPresenceUpdateInput!) { webPresenceUpdate(id: $id, input: $input) { userErrors { code field message } webPresence { alternateLocales { locale name primary published } defaultLocale { locale name primary published } domain { host id sslEnabled url } id market { enabled handle id name primary status type } rootUrls { locale url } subfolderSuffix } } }";
+        const string gqlQuery = @"mutation WebPresenceUpdate($id: ID!, $input: WebPresenceUpdateInput!) { webPresenceUpdate(id: $id, input: $input) { userErrors { code field message } webPresence { alternateLocales { locale name primary published } defaultLocale { locale name primary published } domain { createdAt host id sslEnabled url } id market { enabled handle id name primary status type } rootUrls { locale url } subfolderSuffix } } }";
         return _graphQlClient.Execute<WebPresenceUpdateData>(gqlQuery, request, cancellationToken);
     }
 

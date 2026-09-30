@@ -22,7 +22,7 @@ public sealed partial class ReverseFulfillmentOrderDisposeRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<ReverseFulfillmentOrderDisposeData>> Execute(ReverseFulfillmentOrderDisposeVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation ReverseFulfillmentOrderDispose($dispositionInputs: [ReverseFulfillmentOrderDisposeInput!]!) { reverseFulfillmentOrderDispose(dispositionInputs: $dispositionInputs) { reverseFulfillmentOrderLineItems { dispositions { createdAt id quantity type } fulfillmentLineItem { discountedTotal id originalTotal quantity } id totalQuantity } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation ReverseFulfillmentOrderDispose($dispositionInputs: [ReverseFulfillmentOrderDisposeInput!]!) { reverseFulfillmentOrderDispose(dispositionInputs: $dispositionInputs) { reverseFulfillmentOrderLineItems { dispositions { createdAt id quantity type } fulfillmentLineItem { createdAt discountedTotal id originalTotal quantity } id totalQuantity } userErrors { code field message } } }";
         return _graphQlClient.Execute<ReverseFulfillmentOrderDisposeData>(gqlQuery, request, cancellationToken);
     }
 

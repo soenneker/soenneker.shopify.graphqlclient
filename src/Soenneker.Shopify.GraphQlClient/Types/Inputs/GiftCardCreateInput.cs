@@ -24,7 +24,7 @@ public sealed partial class GiftCardCreateInput
     public string? Code { get; init; }
 
     /// <summary>
-    /// The ID of the customer who will receive the gift card. Requires `write_customers` access_scope.
+    /// The ID of the customer the gift card is issued to, as opposed to the gift recipient. Requires `write_customers` access_scope.
     /// </summary>
     [JsonPropertyName("customerId")]
     public string? CustomerId { get; init; }

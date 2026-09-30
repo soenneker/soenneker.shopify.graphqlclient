@@ -22,7 +22,7 @@ public sealed partial class MarketWebPresenceUpdateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketWebPresenceUpdateData>> Execute(MarketWebPresenceUpdateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketWebPresenceUpdate($webPresenceId: ID!, $webPresence: MarketWebPresenceUpdateInput!) { marketWebPresenceUpdate(webPresenceId: $webPresenceId, webPresence: $webPresence) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketWebPresenceUpdate($webPresenceId: ID!, $webPresence: MarketWebPresenceUpdateInput!) { marketWebPresenceUpdate(webPresenceId: $webPresenceId, webPresence: $webPresence) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { createdAt currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketWebPresenceUpdateData>(gqlQuery, request, cancellationToken);
     }
 

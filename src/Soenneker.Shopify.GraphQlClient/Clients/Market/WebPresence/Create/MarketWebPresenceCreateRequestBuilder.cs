@@ -22,7 +22,7 @@ public sealed partial class MarketWebPresenceCreateRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketWebPresenceCreateData>> Execute(MarketWebPresenceCreateVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketWebPresenceCreate($marketId: ID!, $webPresence: MarketWebPresenceCreateInput!) { marketWebPresenceCreate(marketId: $marketId, webPresence: $webPresence) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketWebPresenceCreate($marketId: ID!, $webPresence: MarketWebPresenceCreateInput!) { marketWebPresenceCreate(marketId: $marketId, webPresence: $webPresence) { market { catalogsCount { count precision } conditions { conditionTypes } currencySettings { localCurrencies roundingEnabled } enabled handle id name priceInclusions { inclusiveDutiesPricingStrategy inclusiveTaxPricingStrategy } priceList { createdAt currency fixedPricesCount id name } primary status type webPresence { id subfolderSuffix } } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketWebPresenceCreateData>(gqlQuery, request, cancellationToken);
     }
 
