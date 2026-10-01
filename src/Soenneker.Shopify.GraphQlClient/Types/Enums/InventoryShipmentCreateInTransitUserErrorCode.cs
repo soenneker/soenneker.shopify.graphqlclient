@@ -8,6 +8,16 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryShipmentCreateInTransitUserErrorCode
 {
     /// <summary>
+    /// This barcode is already assigned to another shipment.
+    /// </summary>
+    BARCODEDUPLICATE,
+
+    /// <summary>
+    /// Barcode must be 255 characters or less.
+    /// </summary>
+    BARCODETOOLONG,
+
+    /// <summary>
     /// A single item can't be listed twice.
     /// </summary>
     DUPLICATEITEM,

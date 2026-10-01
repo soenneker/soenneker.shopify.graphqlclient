@@ -34031,6 +34031,14 @@ Possible error codes that can be returned by `InventoryShipmentCreateInTransitUs
 """
 enum InventoryShipmentCreateInTransitUserErrorCode {
   """
+  This barcode is already assigned to another shipment.
+  """
+  BARCODE_DUPLICATE
+  """
+  Barcode must be 255 characters or less.
+  """
+  BARCODE_TOO_LONG
+  """
   A single item can't be listed twice.
   """
   DUPLICATE_ITEM
