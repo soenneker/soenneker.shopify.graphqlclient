@@ -42176,7 +42176,7 @@ type MediaImage implements File & HasMetafields & HasPublishedTranslations & Med
   """
   metafields(namespace: String, keys: [String!], first: Int, after: String, last: Int, before: String, reverse: Boolean = false): MetafieldConnection! @deprecated(reason: "No longer supported. Use metaobjects instead.")
   """
-  The MIME type of the image.
+  The MIME type of the image, derived from the file extension of the image's filename.
   """
   mimeType: String
   """
@@ -72202,6 +72202,10 @@ type ShippingLine {
   A reference to the shipping method.
   """
   code: String
+  """
+  The date and time when the shipping line was created.
+  """
+  createdAt: DateTime!
   """
   The current shipping price after applying refunds, after applying discounts. If the parent `order.taxesIncluded`` field is true, then this price includes taxes. Otherwise, this field is the pre-tax price.
   """

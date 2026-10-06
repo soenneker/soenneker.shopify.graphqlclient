@@ -104,7 +104,7 @@ public sealed partial class MediaImage : File, HasMetafields, HasPublishedTransl
     public MetafieldConnection Metafields { get; init; } = null!;
 
     /// <summary>
-    /// The MIME type of the image.
+    /// The MIME type of the image, derived from the file extension of the image's filename.
     /// </summary>
     [JsonPropertyName("mimeType")]
     public string? MimeType { get; init; }
