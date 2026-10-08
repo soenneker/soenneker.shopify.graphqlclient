@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CheckoutBrandingFooterContent
 {
     /// <summary>
-    /// The visibility settings for footer content.
+    /// The visibility of the footer content. Shopify reserves the right to add required legal notices to the footer and prevent them from being modified or hidden. This setting doesn't control the visibility of those notices.
     /// </summary>
     [JsonPropertyName("visibility")]
     public CheckoutBrandingVisibility? Visibility { get; init; }

@@ -8279,7 +8279,7 @@ The footer content customizations.
 """
 type CheckoutBrandingFooterContent {
   """
-  The visibility settings for footer content.
+  The visibility of the footer content. Shopify reserves the right to add required legal notices to the footer and prevent them from being modified or hidden. This setting doesn't control the visibility of those notices.
   """
   visibility: CheckoutBrandingVisibility
 }
@@ -8289,7 +8289,7 @@ The input fields for footer content customizations.
 """
 input CheckoutBrandingFooterContentInput {
   """
-  The visibility settings for footer content.
+  The visibility of the footer content. Shopify reserves the right to add required legal notices to the footer and prevent them from being modified or hidden. This setting doesn't control the visibility of those notices.
   """
   visibility: CheckoutBrandingVisibility
 }
@@ -73127,7 +73127,7 @@ type ShopFeatures {
   """
   Whether a shop is eligible for Unified Markets.
   """
-  unifiedMarkets: Boolean!
+  unifiedMarkets: Boolean! @deprecated(reason: "Unified Markets is enabled for all shops. Remove checks against this field.")
   """
   Whether a shop is using Shopify Balance.
   """
