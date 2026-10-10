@@ -72515,11 +72515,11 @@ type Shop implements HasMetafieldDefinitions & HasMetafields & HasPublishedTrans
   """
   alerts: [ShopAlert!]!
   """
-  A list of the shop's product categories. Limit: 1000 product categories.
+  A list of the shop's product categories. Limit: 500 product categories.
   """
   allProductCategories: [ProductCategory!]! @deprecated(reason: "Use \u0060allProductCategoriesList\u0060 instead.")
   """
-  A list of the shop's product categories. Limit: 1000 product categories.
+  A list of the shop's product categories. Limit: 500 product categories.
   """
   allProductCategoriesList: [TaxonomyCategory!]!
   """

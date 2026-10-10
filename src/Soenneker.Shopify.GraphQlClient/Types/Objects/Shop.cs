@@ -26,13 +26,13 @@ public sealed partial class Shop : HasMetafieldDefinitions, HasMetafields, HasPu
     public List<ShopAlert> Alerts { get; init; } = [];
 
     /// <summary>
-    /// A list of the shop's product categories. Limit: 1000 product categories.
+    /// A list of the shop's product categories. Limit: 500 product categories.
     /// </summary>
     [JsonPropertyName("allProductCategories")]
     public List<ProductCategory> AllProductCategories { get; init; } = [];
 
     /// <summary>
-    /// A list of the shop's product categories. Limit: 1000 product categories.
+    /// A list of the shop's product categories. Limit: 500 product categories.
     /// </summary>
     [JsonPropertyName("allProductCategoriesList")]
     public List<TaxonomyCategory> AllProductCategoriesList { get; init; } = [];
