@@ -10,8 +10,15 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class InventorySetQuantitiesData
 {
     /// <summary>
-    /// Set quantities of specified name using absolute values. This mutation supports compare-and-set functionality to handle
-    /// concurrent requests properly. If `ignoreCompareQuantity` is not set to true,
+    /// Set quantities of specified name using absolute values. This mutation supports compare-and-swap (CAS) functionality to handle
+    /// concurrent requests properly.
+    /// 
+    /// As of 2026-04, each quantity in `quantities` must include a `changeFromQuantity` value. The mutation only updates the
+    /// quantity if the persisted quantity matches `changeFromQuantity`, and otherwise returns a `CHANGE_FROM_QUANTITY_STALE` error.
+    /// In order to opt out of the check for a quantity, explicitly pass `null` as its `changeFromQuantity`. Omitting
+    /// `changeFromQuantity` returns an error.
+    /// 
+    /// Before 2026-04, if `ignoreCompareQuantity` is not set to true,
     /// the mutation will only update the quantity if the persisted quantity matches the `compareQuantity` value.
     /// If the `compareQuantity` value does not match the persisted value, the mutation will return an error. In order to opt out
     /// of the `compareQuantity` check, the `ignoreCompareQuantity` argument can be set to true.
@@ -21,9 +28,11 @@ public sealed partial class InventorySetQuantitiesData
     /// &gt; otherwise please consider using the [inventoryAdjustQuantities](https://shopify.dev/api/admin-graphql/latest/mutations/inventoryAdjustQuantities) mutation.
     /// &gt;
     /// &gt;
-    /// &gt; Opting out of the `compareQuantity` check can lead to inaccurate inventory quantities if multiple requests are made concurrently.
-    /// &gt; It is recommended to always include the `compareQuantity` value to ensure the accuracy of the inventory quantities and to opt out
-    /// &gt; of the check using `ignoreCompareQuantity` only when necessary.
+    /// &gt; Opting out of the compare-and-swap check can lead to inaccurate inventory quantities if multiple requests are made concurrently.
+    /// &gt; It is recommended to always pass the expected current quantity as `changeFromQuantity` (or `compareQuantity` before 2026-04)
+    /// &gt; to ensure the accuracy of the inventory quantities, and to opt out of the check (with a `null` `changeFromQuantity`, or
+    /// &gt; `ignoreCompareQuantity` before 2026-04) only when necessary.
+    /// &gt; For more information, refer to the [compare and swap documentation](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps/manage-quantities-states#compare-and-swap).
     /// 
     /// &gt; Caution:
     /// &gt; As of 2026-01, this mutation supports an optional idempotency key using the `@idempotent` directive.

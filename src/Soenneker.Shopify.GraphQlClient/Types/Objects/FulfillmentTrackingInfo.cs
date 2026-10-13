@@ -66,6 +66,7 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * Estes
     ///   * Evri
     ///   * FedEx
+    ///   * FedEx Freight
     ///   * First Global Logistics
     ///   * First Line
     ///   * FSC
