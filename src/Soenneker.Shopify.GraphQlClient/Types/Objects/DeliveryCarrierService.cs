@@ -17,7 +17,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// Your app's request to create a carrier service will fail unless the store installing your carrier service meets one of the following requirements:
 /// * It's on the Advanced Shopify plan or higher.
 /// * It's on the Shopify plan with yearly billing, or the carrier service feature has been added to the store for a monthly fee. For more information, contact [Shopify Support](https://help.shopify.com/questions).
-/// * It's a development store.
+/// * It's a development store that isn't on the Basic plan.
 /// 
 /// &gt; Note:
 /// &gt; If a store changes its Shopify plan, then the store's association with a carrier service is deactivated if the store no long meets one of the requirements above.
@@ -187,7 +187,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// * destination address
 /// * item weights and signatures
 /// 
-/// If any of these fields differ, or if the cache has expired since the original request, then new shipping rates are requested. The cache expires 15 minutes after rates are successfully returned. If an error occurs, then the cache expires after 30 seconds.
+/// If any of these fields differ, or if the cache has expired since the original request, then new shipping rates are requested. The cache expires 15 minutes after rates are successfully returned. If an error occurs, then the cache expires after 30 seconds. The fields and cache duration are subject to change without notice.
 /// </summary>
 public sealed partial class DeliveryCarrierService : Node
 {

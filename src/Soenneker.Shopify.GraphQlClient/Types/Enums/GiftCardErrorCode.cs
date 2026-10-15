@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum GiftCardErrorCode
 {
     /// <summary>
+    /// The input value is too big.
+    /// </summary>
+    TOOBIG,
+
+    /// <summary>
     /// The input value is too long.
     /// </summary>
     TOOLONG,

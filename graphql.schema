@@ -18831,7 +18831,7 @@ To access the CarrierService resource, add the `write_shipping` permission to yo
 Your app's request to create a carrier service will fail unless the store installing your carrier service meets one of the following requirements:
 * It's on the Advanced Shopify plan or higher.
 * It's on the Shopify plan with yearly billing, or the carrier service feature has been added to the store for a monthly fee. For more information, contact [Shopify Support](https://help.shopify.com/questions).
-* It's a development store.
+* It's a development store that isn't on the Basic plan.
 
 > Note:
 > If a store changes its Shopify plan, then the store's association with a carrier service is deactivated if the store no long meets one of the requirements above.
@@ -19001,7 +19001,7 @@ Shopify provides server-side caching to reduce the number of requests it makes. 
 * destination address
 * item weights and signatures
 
-If any of these fields differ, or if the cache has expired since the original request, then new shipping rates are requested. The cache expires 15 minutes after rates are successfully returned. If an error occurs, then the cache expires after 30 seconds.
+If any of these fields differ, or if the cache has expired since the original request, then new shipping rates are requested. The cache expires 15 minutes after rates are successfully returned. If an error occurs, then the cache expires after 30 seconds. The fields and cache duration are subject to change without notice.
 """
 type DeliveryCarrierService implements Node {
   """
@@ -24505,6 +24505,10 @@ enum DisputeEvidenceUpdateUserErrorCode {
   Evidence past due date.
   """
   EVIDENCE_PAST_DUE_DATE
+  """
+  The provider is reviewing the dispute.
+  """
+  EVIDENCE_UNDER_REVIEW
   """
   Combined files size is too large.
   """
@@ -31410,6 +31414,10 @@ type GiftCardEdge {
 Possible error codes that can be returned by `GiftCardUserError`.
 """
 enum GiftCardErrorCode {
+  """
+  The input value is too big.
+  """
+  TOO_BIG
   """
   The input value is too long.
   """
@@ -50286,6 +50294,8 @@ type Mutation {
   subscriptionBillingCycleCharge(subscriptionContractId: ID!, billingCycleSelector: SubscriptionBillingCycleSelector!, inventoryPolicy: SubscriptionBillingAttemptInventoryPolicy = PRODUCT_VARIANT_INVENTORY_POLICY): SubscriptionBillingCycleChargePayload
   """
   Commits the updates of a Subscription Billing Cycle Contract draft.
+  
+  Commits are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't commit. Wait before you retry.
   """
   subscriptionBillingCycleContractDraftCommit(draftId: ID!): SubscriptionBillingCycleContractDraftCommitPayload
   """
@@ -50354,6 +50364,8 @@ type Mutation {
   subscriptionContractPause(subscriptionContractId: ID!): SubscriptionContractPausePayload
   """
   Allows for the easy change of a Product in a Contract or a Product price change.
+  
+  Changes are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't change the contract. Wait before you retry.
   """
   subscriptionContractProductChange(subscriptionContractId: ID!, lineId: ID!, input: SubscriptionContractProductChangeInput!): SubscriptionContractProductChangePayload
   """
@@ -50375,6 +50387,8 @@ type Mutation {
   subscriptionContractUpdate(contractId: ID!): SubscriptionContractUpdatePayload @deprecated(reason: "Use [\u0060subscriptionContractUpdateCalculate\u0060](https://shopify.dev/docs/api/admin-graphql/latest/mutations/subscriptionContractUpdateCalculate) instead.")
   """
   Commits the updates of a Subscription Contract draft.
+  
+  Commits are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't commit. Wait before you retry.
   """
   subscriptionDraftCommit(draftId: ID!): SubscriptionDraftCommitPayload @deprecated(reason: "Use the [SubscriptionContractCalculation API](https://shopify.dev/docs/apps/build/purchase-options/subscriptions/contracts/migrate-to-subscription-calculation-api) instead.")
   """
@@ -71567,6 +71581,10 @@ enum SellingPlanGroupUserErrorCode {
   """
   RESOURCE_LIST_CONTAINS_INVALID_IDS
   """
+  The selling plan group list provided is empty.
+  """
+  RESOURCE_LIST_IS_EMPTY
+  """
   Product variant does not exist.
   """
   PRODUCT_VARIANT_DOES_NOT_EXIST
@@ -71686,6 +71704,10 @@ enum SellingPlanGroupUserErrorCode {
   A fixed delivery policy's anchors must be present when the fulfillment_trigger is ANCHOR.
   """
   SELLING_PLAN_ANCHORS_REQUIRED
+  """
+  A fixed delivery policy with an ANCHOR fulfillment_trigger must have exactly one anchor.
+  """
+  MUST_HAVE_EXACTLY_ONE_ANCHOR
   """
   A selling plan can't have both fixed and recurring billing policies.
   """

@@ -11,6 +11,8 @@ public sealed partial class SubscriptionContractProductChangeData
 {
     /// <summary>
     /// Allows for the easy change of a Product in a Contract or a Product price change.
+    /// 
+    /// Changes are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't change the contract. Wait before you retry.
     /// </summary>
     [JsonPropertyName("subscriptionContractProductChange")]
     public SubscriptionContractProductChangePayload? SubscriptionContractProductChange { get; init; }

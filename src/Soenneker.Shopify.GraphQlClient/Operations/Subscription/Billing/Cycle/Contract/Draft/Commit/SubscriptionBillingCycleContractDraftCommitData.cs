@@ -11,6 +11,8 @@ public sealed partial class SubscriptionBillingCycleContractDraftCommitData
 {
     /// <summary>
     /// Commits the updates of a Subscription Billing Cycle Contract draft.
+    /// 
+    /// Commits are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't commit. Wait before you retry.
     /// </summary>
     [JsonPropertyName("subscriptionBillingCycleContractDraftCommit")]
     public SubscriptionBillingCycleContractDraftCommitPayload? SubscriptionBillingCycleContractDraftCommit { get; init; }

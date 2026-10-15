@@ -23,6 +23,11 @@ public enum DisputeEvidenceUpdateUserErrorCode
     EVIDENCEPASTDUEDATE,
 
     /// <summary>
+    /// The provider is reviewing the dispute.
+    /// </summary>
+    EVIDENCEUNDERREVIEW,
+
+    /// <summary>
     /// Combined files size is too large.
     /// </summary>
     FILESSIZEEXCEEDEDLIMIT,

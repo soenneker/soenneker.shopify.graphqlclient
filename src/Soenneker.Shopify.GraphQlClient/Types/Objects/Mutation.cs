@@ -4594,6 +4594,8 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Commits the updates of a Subscription Billing Cycle Contract draft.
+    /// 
+    /// Commits are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't commit. Wait before you retry.
     /// </summary>
     [JsonPropertyName("subscriptionBillingCycleContractDraftCommit")]
     public SubscriptionBillingCycleContractDraftCommitPayload? SubscriptionBillingCycleContractDraftCommit { get; init; }
@@ -4692,6 +4694,8 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Allows for the easy change of a Product in a Contract or a Product price change.
+    /// 
+    /// Changes are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't change the contract. Wait before you retry.
     /// </summary>
     [JsonPropertyName("subscriptionContractProductChange")]
     public SubscriptionContractProductChangePayload? SubscriptionContractProductChange { get; init; }
@@ -4719,6 +4723,8 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Commits the updates of a Subscription Contract draft.
+    /// 
+    /// Commits are rate limited per subscription contract across all apps on the store. If you exceed the limit, then the mutation returns a top-level `THROTTLED` error and doesn't commit. Wait before you retry.
     /// </summary>
     [JsonPropertyName("subscriptionDraftCommit")]
     public SubscriptionDraftCommitPayload? SubscriptionDraftCommit { get; init; }

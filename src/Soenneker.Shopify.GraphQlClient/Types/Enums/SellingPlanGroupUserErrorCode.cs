@@ -148,6 +148,11 @@ public enum SellingPlanGroupUserErrorCode
     RESOURCELISTCONTAINSINVALIDIDS,
 
     /// <summary>
+    /// The selling plan group list provided is empty.
+    /// </summary>
+    RESOURCELISTISEMPTY,
+
+    /// <summary>
     /// Product variant does not exist.
     /// </summary>
     PRODUCTVARIANTDOESNOTEXIST,
@@ -296,6 +301,11 @@ public enum SellingPlanGroupUserErrorCode
     /// A fixed delivery policy's anchors must be present when the fulfillment_trigger is ANCHOR.
     /// </summary>
     SELLINGPLANANCHORSREQUIRED,
+
+    /// <summary>
+    /// A fixed delivery policy with an ANCHOR fulfillment_trigger must have exactly one anchor.
+    /// </summary>
+    MUSTHAVEEXACTLYONEANCHOR,
 
     /// <summary>
     /// A selling plan can't have both fixed and recurring billing policies.
