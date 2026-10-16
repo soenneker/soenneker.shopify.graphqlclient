@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum BlogCreateUserErrorCode
 {
     /// <summary>
+    /// The input value is blank.
+    /// </summary>
+    BLANK,
+
+    /// <summary>
     /// The input value is invalid.
     /// </summary>
     INVALID,

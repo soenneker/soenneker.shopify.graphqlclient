@@ -23,6 +23,11 @@ public enum PageCreateUserErrorCode
     TOOLONG,
 
     /// <summary>
+    /// The input value is too short.
+    /// </summary>
+    TOOSHORT,
+
+    /// <summary>
     /// The input value is too big.
     /// </summary>
     TOOBIG,

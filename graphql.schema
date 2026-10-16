@@ -2802,6 +2802,10 @@ enum ArticleCreateUserErrorCode {
   """
   TOO_LONG
   """
+  The input value is too short.
+  """
+  TOO_SHORT
+  """
   The input value is already taken.
   """
   TAKEN
@@ -3765,6 +3769,10 @@ type BlogCreateUserError implements DisplayableError {
 Possible error codes that can be returned by `BlogCreateUserError`.
 """
 enum BlogCreateUserErrorCode {
+  """
+  The input value is blank.
+  """
+  BLANK
   """
   The input value is invalid.
   """
@@ -55407,6 +55415,10 @@ enum PageCreateUserErrorCode {
   The input value is too long.
   """
   TOO_LONG
+  """
+  The input value is too short.
+  """
+  TOO_SHORT
   """
   The input value is too big.
   """

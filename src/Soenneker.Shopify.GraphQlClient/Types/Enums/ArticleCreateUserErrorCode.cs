@@ -58,6 +58,11 @@ public enum ArticleCreateUserErrorCode
     TOOLONG,
 
     /// <summary>
+    /// The input value is too short.
+    /// </summary>
+    TOOSHORT,
+
+    /// <summary>
     /// The input value is already taken.
     /// </summary>
     TAKEN,
