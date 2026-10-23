@@ -10,9 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class MarketingEngagementsDeleteData
 {
     /// <summary>
-    /// Marks channel-level engagement data such that it no longer appears in reports.
-    ///           Activity-level data cannot be deleted directly, instead the MarketingActivity itself should be deleted to
-    ///           hide it from reports.
+    /// Marks engagement data for a channel so it no longer appears in reports. Activity-level data cannot be deleted directly; delete the MarketingActivity instead.
     /// </summary>
     [JsonPropertyName("marketingEngagementsDelete")]
     public MarketingEngagementsDeletePayload? MarketingEngagementsDelete { get; init; }

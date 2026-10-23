@@ -32436,7 +32436,7 @@ type InventoryAdjustmentGroup implements Node {
   """
   A freeform URI that represents why the inventory change happened. This can be the entity adjusting inventory
   quantities or the Shopify resource that's associated with the inventory adjustment. For example, a unit in a
-  draft order might have been previously reserved, and a merchant later creates an order from the draft order.
+  draft order might have been previously committed, and a merchant later creates an order from the draft order.
   In this case, the `referenceDocumentUri` for the inventory adjustment is a URI referencing the order ID.
   """
   referenceDocumentUri: String
@@ -33196,7 +33196,7 @@ type InventoryProperties {
 
 """
 The `InventoryQuantity` object lets you manage and track inventory quantities for specific [states](https://shopify.dev/docs/apps/fulfillment/inventory-management-apps#inventory-states).
-Inventory quantities represent different states of items such as available for purchase, committed to orders, reserved for drafts, incoming from suppliers, or set aside for quality control or safety stock.
+Inventory quantities represent different states of items such as available for purchase, committed to orders, draft orders, transfers, or shipments, reserved by the merchant, incoming from suppliers, or set aside for quality control or safety stock.
 
 You can use [inventory levels](https://shopify.dev/docs/api/admin-graphql/latest/objects/inventorylevel) to manage where inventory items are stocked. You can also [make inventory adjustments](https://shopify.dev/docs/api/admin-graphql/latest/mutations/inventoryAdjustQuantities) to apply changes to inventory quantities.
 
@@ -34975,10 +34975,6 @@ Possible error codes that can be returned by `InventoryTransferCancelUserError`.
 """
 enum InventoryTransferCancelUserErrorCode {
   """
-  The transfer was not found.
-  """
-  TRANSFER_NOT_FOUND
-  """
   Current transfer status does not support this operation.
   """
   INVALID_TRANSFER_STATUS
@@ -34986,6 +34982,10 @@ enum InventoryTransferCancelUserErrorCode {
   Shipment already exists for the transfer.
   """
   SHIPMENT_EXISTS
+  """
+  The transfer was not found.
+  """
+  TRANSFER_NOT_FOUND
 }
 
 """
@@ -41298,7 +41298,7 @@ enum MarketingChannel {
 }
 
 """
-Marketing engagement represents customer activity taken on a marketing activity or a marketing channel.
+Marketing engagement represents customer activity taken on a marketing activity.
 """
 type MarketingEngagement {
   """
@@ -41310,9 +41310,9 @@ type MarketingEngagement {
   """
   allConversions: Decimal
   """
-  The unique string identifier of the channel to which the engagement metrics are being provided. This should be set when and only when providing channel-level engagements. This should be nil when providing activity-level engagements. For the correct handle for your channel, contact your partner manager.
+  The unique string identifier of the channel to which the engagement metrics are being provided.
   """
-  channelHandle: String
+  channelHandle: String @deprecated(reason: "Channel-level engagements are deprecated. Provide engagement metrics on a marketing activity using \u0060marketingActivityId\u0060 or \u0060remoteId\u0060 instead.")
   """
   The total number of interactions, such as a button press or a screen touch, that occurred on the marketing content.
   """
@@ -41408,7 +41408,7 @@ Return type for `marketingEngagementCreate` mutation.
 """
 type MarketingEngagementCreatePayload {
   """
-  The marketing engagement that was created. This represents customer activity taken on a marketing activity or a marketing channel.
+  The marketing engagement that was created. This represents customer activity taken on a marketing activity.
   """
   marketingEngagement: MarketingEngagement
   """
@@ -42193,7 +42193,7 @@ type MediaImage implements File & HasMetafields & HasPublishedTranslations & Med
   """
   metafields(namespace: String, keys: [String!], first: Int, after: String, last: Int, before: String, reverse: Boolean = false): MetafieldConnection! @deprecated(reason: "No longer supported. Use metaobjects instead.")
   """
-  The MIME type of the image, derived from the file extension of the image's filename.
+  The MIME type of the image.
   """
   mimeType: String
   """
@@ -47855,7 +47855,7 @@ type Mutation {
   - Select a specific payment gateway.
   
   > Note:
-  > When completing a draft order, inventory is [reserved](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
+  > When completing a draft order, inventory is [committed](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
   for the items in the order. This means the items will no longer be available for other customers to purchase.
   Make sure to verify inventory availability before completing the draft order.
   """
@@ -48722,15 +48722,13 @@ type Mutation {
   """
   marketingActivityUpsertExternal(input: MarketingActivityUpsertExternalInput!): MarketingActivityUpsertExternalPayload
   """
-  Creates a new marketing engagement for a marketing activity or a marketing channel.
+  Creates a new marketing engagement for a marketing activity.
   """
-  marketingEngagementCreate(marketingActivityId: ID, remoteId: String, channelHandle: String, marketingEngagement: MarketingEngagementInput!): MarketingEngagementCreatePayload
+  marketingEngagementCreate(marketingActivityId: ID, remoteId: String, channelHandle: String @deprecated(reason: "Channel-level engagements are deprecated. Provide engagement metrics on a marketing activity using \u0060marketingActivityId\u0060 or \u0060remoteId\u0060 instead."), marketingEngagement: MarketingEngagementInput!): MarketingEngagementCreatePayload
   """
-  Marks channel-level engagement data such that it no longer appears in reports.
-            Activity-level data cannot be deleted directly, instead the MarketingActivity itself should be deleted to
-            hide it from reports.
+  Marks engagement data for a channel so it no longer appears in reports. Activity-level data cannot be deleted directly; delete the MarketingActivity instead.
   """
-  marketingEngagementsDelete(channelHandle: String, deleteEngagementsForAllChannels: Boolean = false): MarketingEngagementsDeletePayload
+  marketingEngagementsDelete(channelHandle: String @deprecated(reason: "Channel-level engagements are deprecated. Activity-level engagement data cannot be deleted directly; delete the MarketingActivity instead."), deleteEngagementsForAllChannels: Boolean = false @deprecated(reason: "Channel-level engagements are deprecated. Activity-level engagement data cannot be deleted directly; delete the MarketingActivity instead.")): MarketingEngagementsDeletePayload @deprecated(reason: "Channel-level engagements are deprecated. Activity-level engagement data cannot be deleted directly; delete the MarketingActivity instead.")
   """
   Creates a navigation [`Menu`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Menu) for the online store. Menus organize links that help customers navigate to [collections](https://shopify.dev/docs/api/admin-graphql/latest/objects/Collection), [products](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product), [pages](https://shopify.dev/docs/api/admin-graphql/latest/objects/Page), [blogs](https://shopify.dev/docs/api/admin-graphql/latest/objects/Blog), and custom URLs.
   
@@ -74864,9 +74862,9 @@ input ShopifyPaymentsDisputeEvidenceUpdateInput {
   """
   serviceDocumentationFile: ShopifyPaymentsDisputeFileUploadUpdateInput
   """
-  Whether to submit the evidence.
+  This field is deprecated and has no effect.
   """
-  submitEvidence: Boolean = false
+  submitEvidence: Boolean = false @deprecated(reason: "Dispute evidence can\u0027t be submitted through the API. Submissions go directly to the bank and are final, so merchants must confirm them in the Shopify admin.")
 }
 
 """

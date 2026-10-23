@@ -28,7 +28,7 @@ public sealed partial class DraftOrderCompleteData
     /// - Select a specific payment gateway.
     /// 
     /// &gt; Note:
-    /// &gt; When completing a draft order, inventory is [reserved](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
+    /// &gt; When completing a draft order, inventory is [committed](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
     /// for the items in the order. This means the items will no longer be available for other customers to purchase.
     /// Make sure to verify inventory availability before completing the draft order.
     /// </summary>

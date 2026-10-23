@@ -8,11 +8,6 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryTransferCancelUserErrorCode
 {
     /// <summary>
-    /// The transfer was not found.
-    /// </summary>
-    TRANSFERNOTFOUND,
-
-    /// <summary>
     /// Current transfer status does not support this operation.
     /// </summary>
     INVALIDTRANSFERSTATUS,
@@ -20,6 +15,11 @@ public enum InventoryTransferCancelUserErrorCode
     /// <summary>
     /// Shipment already exists for the transfer.
     /// </summary>
-    SHIPMENTEXISTS
+    SHIPMENTEXISTS,
+
+    /// <summary>
+    /// The transfer was not found.
+    /// </summary>
+    TRANSFERNOTFOUND
 
 }

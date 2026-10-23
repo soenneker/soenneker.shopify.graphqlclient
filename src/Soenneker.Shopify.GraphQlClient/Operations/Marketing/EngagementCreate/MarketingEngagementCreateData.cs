@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class MarketingEngagementCreateData
 {
     /// <summary>
-    /// Creates a new marketing engagement for a marketing activity or a marketing channel.
+    /// Creates a new marketing engagement for a marketing activity.
     /// </summary>
     [JsonPropertyName("marketingEngagementCreate")]
     public MarketingEngagementCreatePayload? MarketingEngagementCreate { get; init; }

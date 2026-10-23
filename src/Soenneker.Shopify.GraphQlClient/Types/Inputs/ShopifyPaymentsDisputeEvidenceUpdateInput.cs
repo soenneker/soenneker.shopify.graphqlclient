@@ -106,7 +106,7 @@ public sealed partial class ShopifyPaymentsDisputeEvidenceUpdateInput
     public ShopifyPaymentsDisputeFileUploadUpdateInput? ServiceDocumentationFile { get; init; }
 
     /// <summary>
-    /// Whether to submit the evidence.
+    /// This field is deprecated and has no effect.
     /// </summary>
     [JsonPropertyName("submitEvidence")]
     public bool? SubmitEvidence { get; init; }

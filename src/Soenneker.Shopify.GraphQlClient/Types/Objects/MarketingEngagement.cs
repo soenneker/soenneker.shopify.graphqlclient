@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// Marketing engagement represents customer activity taken on a marketing activity or a marketing channel.
+/// Marketing engagement represents customer activity taken on a marketing activity.
 /// </summary>
 public sealed partial class MarketingEngagement
 {
@@ -23,7 +23,7 @@ public sealed partial class MarketingEngagement
     public decimal? AllConversions { get; init; }
 
     /// <summary>
-    /// The unique string identifier of the channel to which the engagement metrics are being provided. This should be set when and only when providing channel-level engagements. This should be nil when providing activity-level engagements. For the correct handle for your channel, contact your partner manager.
+    /// The unique string identifier of the channel to which the engagement metrics are being provided.
     /// </summary>
     [JsonPropertyName("channelHandle")]
     public string? ChannelHandle { get; init; }

@@ -1597,7 +1597,7 @@ public sealed partial class Mutation
     /// - Select a specific payment gateway.
     /// 
     /// &gt; Note:
-    /// &gt; When completing a draft order, inventory is [reserved](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
+    /// &gt; When completing a draft order, inventory is [committed](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states)
     /// for the items in the order. This means the items will no longer be available for other customers to purchase.
     /// Make sure to verify inventory availability before completing the draft order.
     /// </summary>
@@ -2678,15 +2678,13 @@ public sealed partial class Mutation
     public MarketingActivityUpsertExternalPayload? MarketingActivityUpsertExternal { get; init; }
 
     /// <summary>
-    /// Creates a new marketing engagement for a marketing activity or a marketing channel.
+    /// Creates a new marketing engagement for a marketing activity.
     /// </summary>
     [JsonPropertyName("marketingEngagementCreate")]
     public MarketingEngagementCreatePayload? MarketingEngagementCreate { get; init; }
 
     /// <summary>
-    /// Marks channel-level engagement data such that it no longer appears in reports.
-    ///           Activity-level data cannot be deleted directly, instead the MarketingActivity itself should be deleted to
-    ///           hide it from reports.
+    /// Marks engagement data for a channel so it no longer appears in reports. Activity-level data cannot be deleted directly; delete the MarketingActivity instead.
     /// </summary>
     [JsonPropertyName("marketingEngagementsDelete")]
     public MarketingEngagementsDeletePayload? MarketingEngagementsDelete { get; init; }
