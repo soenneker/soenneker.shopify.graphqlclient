@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum ProductMediaSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `id` value.
     /// </summary>
     ID,

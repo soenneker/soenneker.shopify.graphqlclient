@@ -69,6 +69,11 @@ public enum LocationDeactivateUserErrorCode
     HASOPENPURCHASEORDERSERROR,
 
     /// <summary>
+    /// Location could not be deactivated because it has active inventory transfers.
+    /// </summary>
+    HASACTIVETRANSFERSERROR,
+
+    /// <summary>
     /// Failed to relocate active inventories to the destination location.
     /// </summary>
     FAILEDTORELOCATEACTIVEINVENTORIES,
@@ -82,6 +87,11 @@ public enum LocationDeactivateUserErrorCode
     /// Failed to relocate incoming movements to the destination location.
     /// </summary>
     FAILEDTORELOCATEINCOMINGMOVEMENTS,
+
+    /// <summary>
+    /// Failed to relocate incoming transfers to the destination location.
+    /// </summary>
+    FAILEDTORELOCATEINCOMINGTRANSFERS,
 
     /// <summary>
     /// At least one location must fulfill online orders.

@@ -76,7 +76,7 @@ public sealed partial class UnverifiedReturnLineItem : Node, ReturnLineItemType
     public MoneyV2 UnitPrice { get; init; } = null!;
 
     /// <summary>
-    /// The quantity that has't been processed.
+    /// The quantity that hasn't been processed.
     /// </summary>
     [JsonPropertyName("unprocessedQuantity")]
     public int UnprocessedQuantity { get; init; }

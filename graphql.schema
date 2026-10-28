@@ -34639,6 +34639,10 @@ enum InventoryShipmentRemoveItemsUserErrorCode {
   The location selected is not active.
   """
   LOCATION_NOT_ACTIVE
+  """
+  The quantity is invalid.
+  """
+  INVALID_QUANTITY
 }
 
 """
@@ -38072,6 +38076,10 @@ enum LocationDeactivateUserErrorCode {
   """
   HAS_OPEN_PURCHASE_ORDERS_ERROR
   """
+  Location could not be deactivated because it has active inventory transfers.
+  """
+  HAS_ACTIVE_TRANSFERS_ERROR
+  """
   Failed to relocate active inventories to the destination location.
   """
   FAILED_TO_RELOCATE_ACTIVE_INVENTORIES
@@ -38083,6 +38091,10 @@ enum LocationDeactivateUserErrorCode {
   Failed to relocate incoming movements to the destination location.
   """
   FAILED_TO_RELOCATE_INCOMING_MOVEMENTS
+  """
+  Failed to relocate incoming transfers to the destination location.
+  """
+  FAILED_TO_RELOCATE_INCOMING_TRANSFERS
   """
   At least one location must fulfill online orders.
   """
@@ -42902,7 +42914,7 @@ type Metafield implements HasCompareDigest & LegacyInteroperability & Node {
   """
   jsonValue: JSON!
   """
-  The unique identifier for the metafield within its namespace.
+  The unique identifier for the metafield within its namespace. If the metafield was requested with a combined `namespace.key` value, such as through the `keys` argument, this field returns the combined value.
   """
   key: String!
   """
@@ -60799,6 +60811,10 @@ The set of valid sort keys for the ProductMedia query.
 """
 enum ProductMediaSortKeys {
   """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
+  """
   Sort by the `id` value.
   """
   ID
@@ -67975,7 +67991,7 @@ type ReturnLineItem implements Node & ReturnLineItemType {
   """
   totalWeight: Weight
   """
-  The quantity that has't been processed.
+  The quantity that hasn't been processed.
   """
   unprocessedQuantity: Int!
   """
@@ -68089,7 +68105,7 @@ interface ReturnLineItemType implements Node {
   """
   returnReasonNote: String!
   """
-  The quantity that has't been processed.
+  The quantity that hasn't been processed.
   """
   unprocessedQuantity: Int!
 }
@@ -83271,7 +83287,7 @@ type UnverifiedReturnLineItem implements Node & ReturnLineItemType {
   """
   unitPrice: MoneyV2!
   """
-  The quantity that has't been processed.
+  The quantity that hasn't been processed.
   """
   unprocessedQuantity: Int!
 }

@@ -92,7 +92,7 @@ public sealed partial class ReturnLineItem : Node, ReturnLineItemType
     public Weight? TotalWeight { get; init; }
 
     /// <summary>
-    /// The quantity that has't been processed.
+    /// The quantity that hasn't been processed.
     /// </summary>
     [JsonPropertyName("unprocessedQuantity")]
     public int UnprocessedQuantity { get; init; }

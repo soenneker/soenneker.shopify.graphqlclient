@@ -50,7 +50,7 @@ public sealed partial class Metafield : HasCompareDigest, LegacyInteroperability
     public string JsonValue { get; init; } = null!;
 
     /// <summary>
-    /// The unique identifier for the metafield within its namespace.
+    /// The unique identifier for the metafield within its namespace. If the metafield was requested with a combined `namespace.key` value, such as through the `keys` argument, this field returns the combined value.
     /// </summary>
     [JsonPropertyName("key")]
     public string Key { get; init; } = null!;

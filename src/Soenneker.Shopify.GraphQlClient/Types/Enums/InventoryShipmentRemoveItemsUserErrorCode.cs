@@ -35,6 +35,11 @@ public enum InventoryShipmentRemoveItemsUserErrorCode
     /// <summary>
     /// The location selected is not active.
     /// </summary>
-    LOCATIONNOTACTIVE
+    LOCATIONNOTACTIVE,
+
+    /// <summary>
+    /// The quantity is invalid.
+    /// </summary>
+    INVALIDQUANTITY
 
 }

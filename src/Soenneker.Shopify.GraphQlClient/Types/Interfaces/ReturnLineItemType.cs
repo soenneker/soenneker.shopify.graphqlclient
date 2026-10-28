@@ -58,7 +58,7 @@ public interface ReturnLineItemType
     string ReturnReasonNote { get; }
 
     /// <summary>
-    /// The quantity that has't been processed.
+    /// The quantity that hasn't been processed.
     /// </summary>
     int UnprocessedQuantity { get; }
 
