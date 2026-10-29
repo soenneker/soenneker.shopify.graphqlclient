@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum BusinessCustomerErrorCode
 {
     /// <summary>
+    /// This company location is managed by an app and can only be edited by that app.
+    /// </summary>
+    MANAGEDBYAPP,
+
+    /// <summary>
     /// An internal error occurred.
     /// </summary>
     INTERNALERROR,

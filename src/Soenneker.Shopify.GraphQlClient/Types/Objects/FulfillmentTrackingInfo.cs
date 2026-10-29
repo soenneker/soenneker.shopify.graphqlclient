@@ -18,8 +18,8 @@ public sealed partial class FulfillmentTrackingInfo
     /// which will make the tracking numbers clickable in the interface. This doesn't mean
     /// that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
     /// 
-    /// For tracking companies whose `shipment_status` field is updated automatically, see the
-    /// [Shipping Carriers help page](https://help.shopify.com/manual/shipping/understanding-shipping/shipping-carriers#integrated-shipping-carriers).
+    /// For tracking companies whose `shipment_status` field is updated automatically, see
+    /// [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
     /// 
     /// ### Supported tracking companies
     /// 
@@ -72,6 +72,7 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * FSC
     ///   * Fulfilla
     ///   * GLS
+    ///   * GOFO
     ///   * Guangdong Weisuyi Information Technology (WSE)
     ///   * Heppner Internationale Spedition GmbH &amp; Co.
     ///   * Iceland Post
@@ -87,6 +88,7 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * Logisters
     ///   * Lone Star Overnight
     ///   * M3 Logistics
+    ///   * Mayple
     ///   * Meteor Space
     ///   * Mondial Relay
     ///   * New Zealand Post
@@ -129,6 +131,7 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * Uni Uni
     ///   * UPS
     ///   * USPS
+    ///   * Veho
     ///   * Venipak
     ///   * We Post
     ///   * Whistl
@@ -165,6 +168,33 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * **Turkey**: PTT, Yurtiçi Kargo, Aras Kargo, Sürat Kargo
     ///   * **United States**: GLS, Alliance Air Freight, Pilot Freight, LSO, Old Dominion, Pandion, R+L Carriers, Southwest Air Cargo
     ///   * **South Africa**: Fastway, Skynet.
+    /// 
+    /// ### Tracking companies with automatic tracking updates
+    /// 
+    /// Shopify receives tracking updates for the following tracking companies and automatically updates
+    /// the fulfillment's `shipment_status` field:
+    /// 
+    ///   * Australia Post
+    ///   * Better Trucks
+    ///   * Canada Post
+    ///   * CDL Last Mile
+    ///   * Deutsche Post
+    ///   * DHL eCommerce
+    ///   * DHL Express
+    ///   * FedEx
+    ///   * GLS
+    ///   * GOFO
+    ///   * Lasership
+    ///   * Lone Star Overnight
+    ///   * Mayple
+    ///   * OnTrac
+    ///   * Royal Mail
+    ///   * ShipBob
+    ///   * TForce Final Mile
+    ///   * United Delivery Service
+    ///   * UPS
+    ///   * USPS
+    ///   * Veho.
     /// </summary>
     [JsonPropertyName("company")]
     public string? Company { get; init; }

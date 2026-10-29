@@ -60,8 +60,8 @@ public sealed partial class OrderCreateFulfillmentInput
     /// that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
     /// The same tracking company will be applied to all tracking numbers specified.
     /// 
-    /// For tracking companies whose `shipment_status` field is updated automatically, see the
-    /// [Shipping Carriers help page](https://help.shopify.com/manual/shipping/understanding-shipping/shipping-carriers#integrated-shipping-carriers).
+    /// For tracking companies whose `shipment_status` field is updated automatically, see
+    /// [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
     /// 
     /// &gt; Note:
     /// &gt; Send the tracking company name exactly as written in

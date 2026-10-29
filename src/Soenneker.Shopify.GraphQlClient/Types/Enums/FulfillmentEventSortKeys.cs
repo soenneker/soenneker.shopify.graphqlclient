@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum FulfillmentEventSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `happened_at` value.
     /// </summary>
     HAPPENEDAT,

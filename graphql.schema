@@ -4412,6 +4412,10 @@ Possible error codes that can be returned by `BusinessCustomerUserError`.
 """
 enum BusinessCustomerErrorCode {
   """
+  This company location is managed by an app and can only be edited by that app.
+  """
+  MANAGED_BY_APP
+  """
   An internal error occurred.
   """
   INTERNAL_ERROR
@@ -6219,6 +6223,10 @@ enum CashTrackingSessionsSortKeys {
   Sort by the `closing_time_desc` value.
   """
   CLOSING_TIME_DESC
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -28359,6 +28367,10 @@ The set of valid sort keys for the FulfillmentEvent query.
 """
 enum FulfillmentEventSortKeys {
   """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
+  """
   Sort by the `happened_at` value.
   """
   HAPPENED_AT
@@ -30641,8 +30653,8 @@ type FulfillmentTrackingInfo {
   which will make the tracking numbers clickable in the interface. This doesn't mean
   that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
   
-  For tracking companies whose `shipment_status` field is updated automatically, see the
-  [Shipping Carriers help page](https://help.shopify.com/manual/shipping/understanding-shipping/shipping-carriers#integrated-shipping-carriers).
+  For tracking companies whose `shipment_status` field is updated automatically, see
+  [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
   
   ### Supported tracking companies
   
@@ -30695,6 +30707,7 @@ type FulfillmentTrackingInfo {
     * FSC
     * Fulfilla
     * GLS
+    * GOFO
     * Guangdong Weisuyi Information Technology (WSE)
     * Heppner Internationale Spedition GmbH & Co.
     * Iceland Post
@@ -30710,6 +30723,7 @@ type FulfillmentTrackingInfo {
     * Logisters
     * Lone Star Overnight
     * M3 Logistics
+    * Mayple
     * Meteor Space
     * Mondial Relay
     * New Zealand Post
@@ -30752,6 +30766,7 @@ type FulfillmentTrackingInfo {
     * Uni Uni
     * UPS
     * USPS
+    * Veho
     * Venipak
     * We Post
     * Whistl
@@ -30788,6 +30803,33 @@ type FulfillmentTrackingInfo {
     * **Turkey**: PTT, Yurtiçi Kargo, Aras Kargo, Sürat Kargo
     * **United States**: GLS, Alliance Air Freight, Pilot Freight, LSO, Old Dominion, Pandion, R+L Carriers, Southwest Air Cargo
     * **South Africa**: Fastway, Skynet.
+  
+  ### Tracking companies with automatic tracking updates
+  
+  Shopify receives tracking updates for the following tracking companies and automatically updates
+  the fulfillment's `shipment_status` field:
+  
+    * Australia Post
+    * Better Trucks
+    * Canada Post
+    * CDL Last Mile
+    * Deutsche Post
+    * DHL eCommerce
+    * DHL Express
+    * FedEx
+    * GLS
+    * GOFO
+    * Lasership
+    * Lone Star Overnight
+    * Mayple
+    * OnTrac
+    * Royal Mail
+    * ShipBob
+    * TForce Final Mile
+    * United Delivery Service
+    * UPS
+    * USPS
+    * Veho.
   """
   company: String
   """
@@ -30897,8 +30939,8 @@ input FulfillmentTrackingInput {
   that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
   The same tracking company will be applied to all tracking numbers specified.
   
-  For tracking companies whose `shipment_status` field is updated automatically, see the
-  [Shipping Carriers help page](https://help.shopify.com/manual/shipping/understanding-shipping/shipping-carriers#integrated-shipping-carriers).
+  For tracking companies whose `shipment_status` field is updated automatically, see
+  [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
   
   > Note:
   > Send the tracking company name exactly as written in
@@ -41661,6 +41703,10 @@ type MarketingEventEdge {
 The set of valid sort keys for the MarketingEvent query.
 """
 enum MarketingEventSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -52691,8 +52737,8 @@ input OrderCreateFulfillmentInput {
   that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
   The same tracking company will be applied to all tracking numbers specified.
   
-  For tracking companies whose `shipment_status` field is updated automatically, see the
-  [Shipping Carriers help page](https://help.shopify.com/manual/shipping/understanding-shipping/shipping-carriers#integrated-shipping-carriers).
+  For tracking companies whose `shipment_status` field is updated automatically, see
+  [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
   
   > Note:
   > Send the tracking company name exactly as written in
@@ -76347,6 +76393,10 @@ type StaffMemberPrivateData {
 The set of valid sort keys for the StaffMembers query.
 """
 enum StaffMembersSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `email` value.
   """

@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum StaffMembersSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `email` value.
     /// </summary>
     EMAIL,

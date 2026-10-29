@@ -18,6 +18,11 @@ public enum CashTrackingSessionsSortKeys
     CLOSINGTIMEDESC,
 
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `id` value.
     /// </summary>
     ID,
