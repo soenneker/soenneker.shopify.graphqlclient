@@ -8,9 +8,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryTransferRemoveItemsUserErrorCode
 {
     /// <summary>
-    /// The transfer was not found.
+    /// The item cannot be removed because all of its quantity is fully allocated to one or more shipments (including draft shipments where the item has been picked). The error name refers to the underlying allocation check; it triggers regardless of whether the shipments have actually shipped.
     /// </summary>
-    TRANSFERNOTFOUND,
+    ALLQUANTITYSHIPPED,
 
     /// <summary>
     /// A `READY_TO_SHIP` transfer must have at least one line item; you cannot remove every line item from one. To empty a `READY_TO_SHIP` transfer, cancel it instead.
@@ -18,14 +18,14 @@ public enum InventoryTransferRemoveItemsUserErrorCode
     CANTREMOVEALLITEMSFROMREADYTOSHIPTRANSFER,
 
     /// <summary>
+    /// Current transfer status does not support this operation.
+    /// </summary>
+    INVALIDTRANSFERSTATUS,
+
+    /// <summary>
     /// The item was not found.
     /// </summary>
     ITEMNOTFOUND,
-
-    /// <summary>
-    /// The item cannot be removed because all of its quantity is fully allocated to one or more shipments (including draft shipments where the item has been picked). The error name refers to the underlying allocation check; it triggers regardless of whether the shipments have actually shipped.
-    /// </summary>
-    ALLQUANTITYSHIPPED,
 
     /// <summary>
     /// The line item cannot be removed because it appears on a draft shipment with quantity `0`.
@@ -33,13 +33,13 @@ public enum InventoryTransferRemoveItemsUserErrorCode
     ITEMPRESENTONDRAFTSHIPMENTWITHZEROQUANTITY,
 
     /// <summary>
-    /// Current transfer status does not support this operation.
-    /// </summary>
-    INVALIDTRANSFERSTATUS,
-
-    /// <summary>
     /// The location selected can't be found.
     /// </summary>
-    LOCATIONNOTFOUND
+    LOCATIONNOTFOUND,
+
+    /// <summary>
+    /// The transfer was not found.
+    /// </summary>
+    TRANSFERNOTFOUND
 
 }

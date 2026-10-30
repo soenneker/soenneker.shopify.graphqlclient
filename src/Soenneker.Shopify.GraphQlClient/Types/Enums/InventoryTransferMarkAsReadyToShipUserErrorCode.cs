@@ -8,14 +8,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryTransferMarkAsReadyToShipUserErrorCode
 {
     /// <summary>
-    /// The transfer was not found.
+    /// One or more items are not valid.
     /// </summary>
-    TRANSFERNOTFOUND,
-
-    /// <summary>
-    /// The list of line items is empty.
-    /// </summary>
-    ITEMSEMPTY,
+    INVALIDITEM,
 
     /// <summary>
     /// Current transfer status does not support this operation.
@@ -23,14 +18,9 @@ public enum InventoryTransferMarkAsReadyToShipUserErrorCode
     INVALIDTRANSFERSTATUS,
 
     /// <summary>
-    /// A location is required for this operation.
+    /// The list of line items is empty.
     /// </summary>
-    LOCATIONREQUIRED,
-
-    /// <summary>
-    /// One or more items are not valid.
-    /// </summary>
-    INVALIDITEM,
+    ITEMSEMPTY,
 
     /// <summary>
     /// The location selected is not active.
@@ -40,6 +30,16 @@ public enum InventoryTransferMarkAsReadyToShipUserErrorCode
     /// <summary>
     /// The location selected can't be found.
     /// </summary>
-    LOCATIONNOTFOUND
+    LOCATIONNOTFOUND,
+
+    /// <summary>
+    /// A location is required for this operation.
+    /// </summary>
+    LOCATIONREQUIRED,
+
+    /// <summary>
+    /// The transfer was not found.
+    /// </summary>
+    TRANSFERNOTFOUND
 
 }
