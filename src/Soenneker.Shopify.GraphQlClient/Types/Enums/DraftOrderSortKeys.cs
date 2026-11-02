@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum DraftOrderSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `customer_name` value.
     /// </summary>
     CUSTOMERNAME,

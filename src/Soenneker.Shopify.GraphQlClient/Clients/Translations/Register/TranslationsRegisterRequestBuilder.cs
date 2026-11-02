@@ -22,7 +22,7 @@ public sealed partial class TranslationsRegisterRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<TranslationsRegisterData>> Execute(TranslationsRegisterVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation TranslationsRegister($resourceId: ID!, $translations: [TranslationInput!]!) { translationsRegister(resourceId: $resourceId, translations: $translations) { translations { key locale market { enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation TranslationsRegister($resourceId: ID!, $translations: [TranslationInput!]!) { translationsRegister(resourceId: $resourceId, translations: $translations) { translations { key locale market { createdAt enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
         return _graphQlClient.Execute<TranslationsRegisterData>(gqlQuery, request, cancellationToken);
     }
 

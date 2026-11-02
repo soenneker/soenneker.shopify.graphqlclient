@@ -22,7 +22,7 @@ public sealed partial class MarketLocalizationsRegisterRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketLocalizationsRegisterData>> Execute(MarketLocalizationsRegisterVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketLocalizationsRegister($resourceId: ID!, $marketLocalizations: [MarketLocalizationRegisterInput!]!) { marketLocalizationsRegister(resourceId: $resourceId, marketLocalizations: $marketLocalizations) { marketLocalizations { key market { enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketLocalizationsRegister($resourceId: ID!, $marketLocalizations: [MarketLocalizationRegisterInput!]!) { marketLocalizationsRegister(resourceId: $resourceId, marketLocalizations: $marketLocalizations) { marketLocalizations { key market { createdAt enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketLocalizationsRegisterData>(gqlQuery, request, cancellationToken);
     }
 

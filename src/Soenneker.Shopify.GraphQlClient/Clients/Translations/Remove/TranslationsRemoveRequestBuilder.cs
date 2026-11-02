@@ -22,7 +22,7 @@ public sealed partial class TranslationsRemoveRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<TranslationsRemoveData>> Execute(TranslationsRemoveVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation TranslationsRemove($resourceId: ID!, $translationKeys: [String!]!, $locales: [String!]!, $marketIds: [ID!]) { translationsRemove(resourceId: $resourceId, translationKeys: $translationKeys, locales: $locales, marketIds: $marketIds) { translations { key locale market { enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation TranslationsRemove($resourceId: ID!, $translationKeys: [String!]!, $locales: [String!]!, $marketIds: [ID!]) { translationsRemove(resourceId: $resourceId, translationKeys: $translationKeys, locales: $locales, marketIds: $marketIds) { translations { key locale market { createdAt enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
         return _graphQlClient.Execute<TranslationsRemoveData>(gqlQuery, request, cancellationToken);
     }
 

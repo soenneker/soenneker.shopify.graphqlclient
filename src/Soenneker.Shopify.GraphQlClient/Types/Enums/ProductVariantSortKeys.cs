@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum ProductVariantSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `full_title` value.
     /// </summary>
     FULLTITLE,

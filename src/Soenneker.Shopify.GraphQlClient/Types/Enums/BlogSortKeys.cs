@@ -8,6 +8,11 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum BlogSortKeys
 {
     /// <summary>
+    /// Sort by the `created_at` value.
+    /// </summary>
+    CREATEDAT,
+
+    /// <summary>
     /// Sort by the `handle` value.
     /// </summary>
     HANDLE,

@@ -8,567 +8,567 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum ShopifyPaymentsTransactionType
 {
     /// <summary>
-    /// The ach_bank_failure_debit_fee transaction type.
+    /// Deducts a fee from the balance when a debit from the merchant's bank account fails.
     /// </summary>
     ACHBANKFAILUREDEBITFEE,
 
     /// <summary>
-    /// The ach_bank_failure_debit_reversal_fee transaction type.
+    /// Reverses an `ACH_BANK_FAILURE_DEBIT_FEE` transaction.
     /// </summary>
     ACHBANKFAILUREDEBITREVERSALFEE,
 
     /// <summary>
-    /// The ads_publisher_credit transaction type.
+    /// Adds an ads publisher credit to the balance.
     /// </summary>
     ADSPUBLISHERCREDIT,
 
     /// <summary>
-    /// The ads_publisher_credit_reversal transaction type.
+    /// Reverses an `ADS_PUBLISHER_CREDIT` transaction.
     /// </summary>
     ADSPUBLISHERCREDITREVERSAL,
 
     /// <summary>
-    /// The chargeback_protection_credit transaction type.
+    /// Credits the disputed amount and chargeback fee when Shopify Fraud Protect covers a fraudulent chargeback on a protected order.
     /// </summary>
     CHARGEBACKPROTECTIONCREDIT,
 
     /// <summary>
-    /// The chargeback_protection_credit_reversal transaction type.
+    /// Reverses a `CHARGEBACK_PROTECTION_CREDIT` transaction.
     /// </summary>
     CHARGEBACKPROTECTIONCREDITREVERSAL,
 
     /// <summary>
-    /// The chargeback_protection_debit transaction type.
+    /// Takes back a Fraud Protect reimbursement after the chargeback is won, because the disputed amount is returned to the balance.
     /// </summary>
     CHARGEBACKPROTECTIONDEBIT,
 
     /// <summary>
-    /// The chargeback_protection_debit_reversal transaction type.
+    /// Reverses a `CHARGEBACK_PROTECTION_DEBIT` transaction.
     /// </summary>
     CHARGEBACKPROTECTIONDEBITREVERSAL,
 
     /// <summary>
-    /// The collections_credit transaction type.
+    /// Adds funds to the balance as a collections credit.
     /// </summary>
     COLLECTIONSCREDIT,
 
     /// <summary>
-    /// The collections_credit_reversal transaction type.
+    /// Reverses a `COLLECTIONS_CREDIT` transaction.
     /// </summary>
     COLLECTIONSCREDITREVERSAL,
 
     /// <summary>
-    /// The promotion_credit transaction type.
+    /// Adds a promotional credit from Shopify to the balance.
     /// </summary>
     PROMOTIONCREDIT,
 
     /// <summary>
-    /// The promotion_credit_reversal transaction type.
+    /// Reverses a `PROMOTION_CREDIT` transaction.
     /// </summary>
     PROMOTIONCREDITREVERSAL,
 
     /// <summary>
-    /// The anomaly_credit transaction type.
+    /// Adds funds to the balance to correct a financial anomaly.
     /// </summary>
     ANOMALYCREDIT,
 
     /// <summary>
-    /// The anomaly_credit_reversal transaction type.
+    /// Reverses an `ANOMALY_CREDIT` transaction.
     /// </summary>
     ANOMALYCREDITREVERSAL,
 
     /// <summary>
-    /// The anomaly_debit transaction type.
+    /// Deducts funds from the balance to correct a financial anomaly.
     /// </summary>
     ANOMALYDEBIT,
 
     /// <summary>
-    /// The anomaly_debit_reversal transaction type.
+    /// Reverses an `ANOMALY_DEBIT` transaction.
     /// </summary>
     ANOMALYDEBITREVERSAL,
 
     /// <summary>
-    /// The vat_refund_credit transaction type.
+    /// Adds a VAT refund to the balance.
     /// </summary>
     VATREFUNDCREDIT,
 
     /// <summary>
-    /// The vat_refund_credit_reversal transaction type.
+    /// Reverses a `VAT_REFUND_CREDIT` transaction.
     /// </summary>
     VATREFUNDCREDITREVERSAL,
 
     /// <summary>
-    /// The channel_credit transaction type.
+    /// Adds funds to the balance as a credit from a sales channel.
     /// </summary>
     CHANNELCREDIT,
 
     /// <summary>
-    /// The channel_credit_reversal transaction type.
+    /// Reverses a `CHANNEL_CREDIT` transaction.
     /// </summary>
     CHANNELCREDITREVERSAL,
 
     /// <summary>
-    /// The channel_transfer_credit transaction type.
+    /// Adds funds to the balance for a transfer from a sales channel.
     /// </summary>
     CHANNELTRANSFERCREDIT,
 
     /// <summary>
-    /// The channel_transfer_credit_reversal transaction type.
+    /// Reverses a `CHANNEL_TRANSFER_CREDIT` transaction.
     /// </summary>
     CHANNELTRANSFERCREDITREVERSAL,
 
     /// <summary>
-    /// The channel_transfer_debit transaction type.
+    /// Deducts funds from the balance for a transfer to a sales channel.
     /// </summary>
     CHANNELTRANSFERDEBIT,
 
     /// <summary>
-    /// The channel_transfer_debit_reversal transaction type.
+    /// Reverses a `CHANNEL_TRANSFER_DEBIT` transaction.
     /// </summary>
     CHANNELTRANSFERDEBITREVERSAL,
 
     /// <summary>
-    /// The channel_promotion_credit transaction type.
+    /// Adds promotional funds from a sales channel to the balance.
     /// </summary>
     CHANNELPROMOTIONCREDIT,
 
     /// <summary>
-    /// The channel_promotion_credit_reversal transaction type.
+    /// Reverses a `CHANNEL_PROMOTION_CREDIT` transaction.
     /// </summary>
     CHANNELPROMOTIONCREDITREVERSAL,
 
     /// <summary>
-    /// The marketplace_fee_credit transaction type.
+    /// Adds funds to the balance to adjust a marketplace fee.
     /// </summary>
     MARKETPLACEFEECREDIT,
 
     /// <summary>
-    /// The marketplace_fee_credit_reversal transaction type.
+    /// Reverses a `MARKETPLACE_FEE_CREDIT` transaction.
     /// </summary>
     MARKETPLACEFEECREDITREVERSAL,
 
     /// <summary>
-    /// The merchant_goodwill_credit transaction type.
+    /// Adds a goodwill credit from Shopify to the balance.
     /// </summary>
     MERCHANTGOODWILLCREDIT,
 
     /// <summary>
-    /// The merchant_goodwill_credit_reversal transaction type.
+    /// Reverses a `MERCHANT_GOODWILL_CREDIT` transaction.
     /// </summary>
     MERCHANTGOODWILLCREDITREVERSAL,
 
     /// <summary>
-    /// The tax_adjustment_debit transaction type.
+    /// Deducts marketplace tax from the balance through a tax adjustment.
     /// </summary>
     TAXADJUSTMENTDEBIT,
 
     /// <summary>
-    /// The tax_adjustment_debit_reversal transaction type.
+    /// Reverses a `TAX_ADJUSTMENT_DEBIT` transaction.
     /// </summary>
     TAXADJUSTMENTDEBITREVERSAL,
 
     /// <summary>
-    /// The tax_adjustment_credit transaction type.
+    /// Adds funds to the balance when a previously collected marketplace tax adjustment is reversed.
     /// </summary>
     TAXADJUSTMENTCREDIT,
 
     /// <summary>
-    /// The tax_adjustment_credit_reversal transaction type.
+    /// Reverses a `TAX_ADJUSTMENT_CREDIT` transaction.
     /// </summary>
     TAXADJUSTMENTCREDITREVERSAL,
 
     /// <summary>
-    /// The billing_debit transaction type.
+    /// Deducts a Shopify bill charge from the balance, such as a theme purchased with the balance.
     /// </summary>
     BILLINGDEBIT,
 
     /// <summary>
-    /// The billing_debit_reversal transaction type.
+    /// Reverses a `BILLING_DEBIT` transaction, such as when a theme purchased with the balance is refunded.
     /// </summary>
     BILLINGDEBITREVERSAL,
 
     /// <summary>
-    /// The shop_cash_credit transaction type.
+    /// The Shop Cash portion of an order. The customer paid with Shop Cash, and that amount is added to the balance.
     /// </summary>
     SHOPCASHCREDIT,
 
     /// <summary>
-    /// The shop_cash_credit_reversal transaction type.
+    /// Reverses a `SHOP_CASH_CREDIT` transaction.
     /// </summary>
     SHOPCASHCREDITREVERSAL,
 
     /// <summary>
-    /// The shop_cash_billing_debit transaction type.
+    /// Deducts a Shop Cash billing charge from the balance.
     /// </summary>
     SHOPCASHBILLINGDEBIT,
 
     /// <summary>
-    /// The shop_cash_billing_debit_reversal transaction type.
+    /// Reverses a `SHOP_CASH_BILLING_DEBIT` transaction.
     /// </summary>
     SHOPCASHBILLINGDEBITREVERSAL,
 
     /// <summary>
-    /// The shop_cash_refund_debit transaction type.
+    /// Deducts a Shop Cash refund from the balance when Shop Cash used on an order is returned to the customer.
     /// </summary>
     SHOPCASHREFUNDDEBIT,
 
     /// <summary>
-    /// The shop_cash_refund_debit_reversal transaction type.
+    /// Reverses a `SHOP_CASH_REFUND_DEBIT` transaction.
     /// </summary>
     SHOPCASHREFUNDDEBITREVERSAL,
 
     /// <summary>
-    /// The shop_cash_campaign_billing_debit transaction type.
+    /// A Shop Campaign charge for an order placed with a campaign offer before January 2026. Later campaign costs are charged on the Shopify bill instead.
     /// </summary>
     SHOPCASHCAMPAIGNBILLINGDEBIT,
 
     /// <summary>
-    /// The shop_cash_campaign_billing_debit_reversal transaction type.
+    /// Reverses a `SHOP_CASH_CAMPAIGN_BILLING_DEBIT` transaction.
     /// </summary>
     SHOPCASHCAMPAIGNBILLINGDEBITREVERSAL,
 
     /// <summary>
-    /// The shop_cash_campaign_billing_credit transaction type.
+    /// A credit for a Shop Campaign charge, for campaign activity before January 2026.
     /// </summary>
     SHOPCASHCAMPAIGNBILLINGCREDIT,
 
     /// <summary>
-    /// The shop_cash_campaign_billing_credit_reversal transaction type.
+    /// Reverses a `SHOP_CASH_CAMPAIGN_BILLING_CREDIT` transaction.
     /// </summary>
     SHOPCASHCAMPAIGNBILLINGCREDITREVERSAL,
 
     /// <summary>
-    /// The seller_protection_credit transaction type.
+    /// Credits the disputed amount and chargeback fee when Shopify Protect covers a fraudulent chargeback on a protected Shop Pay order.
     /// </summary>
     SELLERPROTECTIONCREDIT,
 
     /// <summary>
-    /// The seller_protection_credit_reversal transaction type.
+    /// Reverses a `SELLER_PROTECTION_CREDIT` transaction.
     /// </summary>
     SELLERPROTECTIONCREDITREVERSAL,
 
     /// <summary>
-    /// The shopify_collective_debit transaction type.
+    /// Deducts the cost of Shopify Collective products from a retailer's balance so that the supplier can be paid.
     /// </summary>
     SHOPIFYCOLLECTIVEDEBIT,
 
     /// <summary>
-    /// The shopify_collective_debit_reversal transaction type.
+    /// Reverses a `SHOPIFY_COLLECTIVE_DEBIT` transaction.
     /// </summary>
     SHOPIFYCOLLECTIVEDEBITREVERSAL,
 
     /// <summary>
-    /// The shopify_collective_credit transaction type.
+    /// Pays a Shopify Collective supplier for products that a retailer sold, after the supplier fulfills the order.
     /// </summary>
     SHOPIFYCOLLECTIVECREDIT,
 
     /// <summary>
-    /// The shopify_collective_credit_reversal transaction type.
+    /// Reverses a `SHOPIFY_COLLECTIVE_CREDIT` transaction.
     /// </summary>
     SHOPIFYCOLLECTIVECREDITREVERSAL,
 
     /// <summary>
-    /// The lending_debit transaction type.
+    /// Deducts funds from the balance as a general lending debit that isn't tied to a specific lending product. Legacy.
     /// </summary>
     LENDINGDEBIT,
 
     /// <summary>
-    /// The lending_debit_reversal transaction type.
+    /// Reverses a `LENDING_DEBIT` transaction.
     /// </summary>
     LENDINGDEBITREVERSAL,
 
     /// <summary>
-    /// The lending_credit transaction type.
+    /// Adds funds to the balance as a general lending credit that isn't tied to a specific lending product. Legacy.
     /// </summary>
     LENDINGCREDIT,
 
     /// <summary>
-    /// The lending_credit_reversal transaction type.
+    /// Reverses a `LENDING_CREDIT` transaction.
     /// </summary>
     LENDINGCREDITREVERSAL,
 
     /// <summary>
-    /// The lending_capital_remittance transaction type.
+    /// Deducts a Shopify Capital repayment (remittance) from the balance.
     /// </summary>
     LENDINGCAPITALREMITTANCE,
 
     /// <summary>
-    /// The lending_capital_remittance_reversal transaction type.
+    /// Reverses a `LENDING_CAPITAL_REMITTANCE` transaction.
     /// </summary>
     LENDINGCAPITALREMITTANCEREVERSAL,
 
     /// <summary>
-    /// The lending_credit_remittance transaction type.
+    /// Deducts a Shopify Credit repayment (remittance) from the balance.
     /// </summary>
     LENDINGCREDITREMITTANCE,
 
     /// <summary>
-    /// The lending_credit_remittance_reversal transaction type.
+    /// Reverses a `LENDING_CREDIT_REMITTANCE` transaction.
     /// </summary>
     LENDINGCREDITREMITTANCEREVERSAL,
 
     /// <summary>
-    /// The lending_capital_refund transaction type.
+    /// Returns all or part of a `LENDING_CAPITAL_REMITTANCE` to the balance when Shopify Capital refunds a remittance it collected.
     /// </summary>
     LENDINGCAPITALREFUND,
 
     /// <summary>
-    /// The lending_capital_refund_reversal transaction type.
+    /// Reverses a `LENDING_CAPITAL_REFUND` transaction.
     /// </summary>
     LENDINGCAPITALREFUNDREVERSAL,
 
     /// <summary>
-    /// The lending_credit_refund transaction type.
+    /// Returns a Shopify Credit remittance to the balance when it's refunded.
     /// </summary>
     LENDINGCREDITREFUND,
 
     /// <summary>
-    /// The lending_credit_refund_reversal transaction type.
+    /// Reverses a `LENDING_CREDIT_REFUND` transaction.
     /// </summary>
     LENDINGCREDITREFUNDREVERSAL,
 
     /// <summary>
-    /// The balance_transfer_inbound transaction type.
+    /// Moves funds from a Shopify Balance account into the Shopify Payments balance.
     /// </summary>
     BALANCETRANSFERINBOUND,
 
     /// <summary>
-    /// The balance_transfer_outbound transaction type.
+    /// Moves funds from the Shopify Payments balance into a Shopify Balance account.
     /// </summary>
     BALANCETRANSFEROUTBOUND,
 
     /// <summary>
-    /// The markets_pro_credit transaction type.
+    /// Adds funds to the balance for a channel-billed Managed Markets transaction.
     /// </summary>
     MARKETSPROCREDIT,
 
     /// <summary>
-    /// The customs_duty_adjustment transaction type.
+    /// Corrects or reverses a previously recorded `CUSTOMS_DUTY` transaction. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     CUSTOMSDUTYADJUSTMENT,
 
     /// <summary>
-    /// The import_tax_adjustment transaction type.
+    /// Corrects or reverses a previously recorded `IMPORT_TAX` transaction. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     IMPORTTAXADJUSTMENT,
 
     /// <summary>
-    /// The shipping_label_adjustment transaction type.
+    /// Adjusts the cost of a Managed Markets shipping label after its final cost is reconciled. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     SHIPPINGLABELADJUSTMENT,
 
     /// <summary>
-    /// The shipping_label_adjustment_base transaction type.
+    /// Adjusts the base shipping cost of a Managed Markets shipping label. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     SHIPPINGLABELADJUSTMENTBASE,
 
     /// <summary>
-    /// The shipping_label_adjustment_surcharge transaction type.
+    /// Adjusts a surcharge on a Managed Markets shipping label. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     SHIPPINGLABELADJUSTMENTSURCHARGE,
 
     /// <summary>
-    /// The shipping_return_to_origin_adjustment transaction type.
+    /// Deducts a carrier charge when a Managed Markets shipment is returned to its origin, such as when the customer refuses delivery.
     /// </summary>
     SHIPPINGRETURNTOORIGINADJUSTMENT,
 
     /// <summary>
-    /// The shipping_other_carrier_charge_adjustment transaction type.
+    /// Deducts an additional carrier charge for a Managed Markets shipment.
     /// </summary>
     SHIPPINGOTHERCARRIERCHARGEADJUSTMENT,
 
     /// <summary>
-    /// The charge_adjustment transaction type.
+    /// Adjusts a previously recorded charge. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     CHARGEADJUSTMENT,
 
     /// <summary>
-    /// The refund_adjustment transaction type.
+    /// Adjusts a previously recorded refund. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     REFUNDADJUSTMENT,
 
     /// <summary>
-    /// The chargeback_fee transaction type.
+    /// The fee that the cardholder's bank charges when a customer files a chargeback.
     /// </summary>
     CHARGEBACKFEE,
 
     /// <summary>
-    /// The chargeback_fee_refund transaction type.
+    /// Returns a `CHARGEBACK_FEE` to the balance when the fee is refunded.
     /// </summary>
     CHARGEBACKFEEREFUND,
 
     /// <summary>
-    /// The transfer transaction type.
+    /// A payout from the balance to the merchant's bank account, or a withdrawal from the bank account into the balance. The amount's sign shows the direction.
     /// </summary>
     TRANSFER,
 
     /// <summary>
-    /// The transfer_failure transaction type.
+    /// Reverses a `TRANSFER` that failed, moving the funds back to where they came from.
     /// </summary>
     TRANSFERFAILURE,
 
     /// <summary>
-    /// The transfer_cancel transaction type.
+    /// Reverses a `TRANSFER` that was canceled, moving the funds back to where they came from.
     /// </summary>
     TRANSFERCANCEL,
 
     /// <summary>
-    /// The reserved_funds_withdrawal transaction type.
+    /// Moves funds from the balance into a reserve that Shopify holds on the account.
     /// </summary>
     RESERVEDFUNDSWITHDRAWAL,
 
     /// <summary>
-    /// The reserved_funds_reversal transaction type.
+    /// Releases funds from a reserve back to the balance.
     /// </summary>
     RESERVEDFUNDSREVERSAL,
 
     /// <summary>
-    /// The risk_reversal transaction type.
+    /// Returns funds withheld by a `RISK_WITHDRAWAL` to the balance.
     /// </summary>
     RISKREVERSAL,
 
     /// <summary>
-    /// The risk_withdrawal transaction type.
+    /// Withholds the amount of a potentially fraudulent order from the balance when its payout is already pending.
     /// </summary>
     RISKWITHDRAWAL,
 
     /// <summary>
-    /// The referral_fee transaction type.
+    /// Deducts a referral fee for an order from the balance.
     /// </summary>
     REFERRALFEE,
 
     /// <summary>
-    /// The referral_fee_tax transaction type.
+    /// Deducts the tax on a `REFERRAL_FEE` from the balance.
     /// </summary>
     REFERRALFEETAX,
 
     /// <summary>
-    /// The merchant_to_merchant_debit transaction type.
+    /// Deducts funds from the balance for a payment to another merchant. Legacy Shopify Collective type.
     /// </summary>
     MERCHANTTOMERCHANTDEBIT,
 
     /// <summary>
-    /// The merchant_to_merchant_debit_reversal transaction type.
+    /// Reverses a `MERCHANT_TO_MERCHANT_DEBIT` transaction.
     /// </summary>
     MERCHANTTOMERCHANTDEBITREVERSAL,
 
     /// <summary>
-    /// The merchant_to_merchant_credit transaction type.
+    /// Adds funds to the balance from another merchant. Legacy Shopify Collective type.
     /// </summary>
     MERCHANTTOMERCHANTCREDIT,
 
     /// <summary>
-    /// The merchant_to_merchant_credit_reversal transaction type.
+    /// Reverses a `MERCHANT_TO_MERCHANT_CREDIT` transaction.
     /// </summary>
     MERCHANTTOMERCHANTCREDITREVERSAL,
 
     /// <summary>
-    /// The shopify_source_debit transaction type.
+    /// Deducts funds from the balance for a supplier transaction. Legacy Shopify Collective type.
     /// </summary>
     SHOPIFYSOURCEDEBIT,
 
     /// <summary>
-    /// The shopify_source_debit_reversal transaction type.
+    /// Reverses a `SHOPIFY_SOURCE_DEBIT` transaction.
     /// </summary>
     SHOPIFYSOURCEDEBITREVERSAL,
 
     /// <summary>
-    /// The shopify_source_credit transaction type.
+    /// Adds funds to the balance for a supplier transaction. Legacy Shopify Collective type.
     /// </summary>
     SHOPIFYSOURCECREDIT,
 
     /// <summary>
-    /// The shopify_source_credit_reversal transaction type.
+    /// Reverses a `SHOPIFY_SOURCE_CREDIT` transaction.
     /// </summary>
     SHOPIFYSOURCECREDITREVERSAL,
 
     /// <summary>
-    /// The charge transaction type.
+    /// A customer payment for an order, processed through Shopify Payments and added to the balance.
     /// </summary>
     CHARGE,
 
     /// <summary>
-    /// The refund transaction type.
+    /// Deducts a refund to a customer from the balance.
     /// </summary>
     REFUND,
 
     /// <summary>
-    /// The refund_failure transaction type.
+    /// Returns funds to the balance when a refund to a customer fails.
     /// </summary>
     REFUNDFAILURE,
 
     /// <summary>
-    /// The application_fee_refund transaction type.
+    /// Returns fees to the balance for an order that was refunded.
     /// </summary>
     APPLICATIONFEEREFUND,
 
     /// <summary>
-    /// The adjustment transaction type.
+    /// A manual or system adjustment to the Shopify Payments balance that no more specific type covers. In API versions where a newer transaction type isn't available yet, that type is returned as `ADJUSTMENT`.
     /// </summary>
     ADJUSTMENT,
 
     /// <summary>
-    /// The dispute_withdrawal transaction type.
+    /// Withdraws the disputed amount from the balance when a customer's bank opens a chargeback.
     /// </summary>
     DISPUTEWITHDRAWAL,
 
     /// <summary>
-    /// The dispute_reversal transaction type.
+    /// Adjusts the balance after a chargeback is resolved. It usually returns all or part of the disputed amount. In rare cases it's negative and deducts an additional amount.
     /// </summary>
     DISPUTEREVERSAL,
 
     /// <summary>
-    /// The shipping_label transaction type.
+    /// Deducts the cost of a shipping label bought for a Managed Markets shipment.
     /// </summary>
     SHIPPINGLABEL,
 
     /// <summary>
-    /// The customs_duty transaction type.
+    /// Customs duty for a Managed Markets order. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     CUSTOMSDUTY,
 
     /// <summary>
-    /// The import_tax transaction type.
+    /// Import tax for a Managed Markets order. Depending on its sign, it adds to or deducts from the balance.
     /// </summary>
     IMPORTTAX,
 
     /// <summary>
-    /// The chargeback_hold transaction type.
+    /// Holds disputed funds from the available balance while a chargeback is open.
     /// </summary>
     CHARGEBACKHOLD,
 
     /// <summary>
-    /// The chargeback_hold_release transaction type.
+    /// Releases funds held by a `CHARGEBACK_HOLD` back to the available balance.
     /// </summary>
     CHARGEBACKHOLDRELEASE,
 
     /// <summary>
-    /// The reserved_funds transaction type.
+    /// Moves funds into or out of a reserve. A hold reduces the available balance, and a release restores it.
     /// </summary>
     RESERVEDFUNDS,
 
     /// <summary>
-    /// The stripe_fee transaction type.
+    /// Deducts a fee that Stripe charges directly to the account for its services. Payment processing fees aren't recorded here; they're part of a `CHARGE` transaction's fee.
     /// </summary>
     STRIPEFEE,
 
     /// <summary>
-    /// The transfer_refund transaction type.
+    /// Returns funds to the balance when a transfer is refunded.
     /// </summary>
     TRANSFERREFUND,
 
     /// <summary>
-    /// The advance transaction type.
+    /// Funds that Shopify advances to the balance before the normal payout schedule, against payments that are expected to be paid out later.
     /// </summary>
     ADVANCE,
 
     /// <summary>
-    /// The advance funding transaction type.
+    /// The other half of an `ADVANCE`. Deducts the advanced amount from the pending funds it was advanced against, so the two net to zero.
     /// </summary>
     ADVANCEFUNDING,
 
     /// <summary>
-    /// The tax refund transaction type.
+    /// Adds refunded import tax for a Managed Markets order to the balance.
     /// </summary>
     IMPORTTAXREFUND
 

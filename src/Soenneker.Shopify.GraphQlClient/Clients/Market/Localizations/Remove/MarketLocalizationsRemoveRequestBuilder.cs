@@ -22,7 +22,7 @@ public sealed partial class MarketLocalizationsRemoveRequestBuilder
     /// </summary>
     public ValueTask<GraphQlResponse<MarketLocalizationsRemoveData>> Execute(MarketLocalizationsRemoveVariables request, CancellationToken cancellationToken = default)
     {
-        const string gqlQuery = @"mutation MarketLocalizationsRemove($resourceId: ID!, $marketLocalizationKeys: [String!]!, $marketIds: [ID!]!) { marketLocalizationsRemove(resourceId: $resourceId, marketLocalizationKeys: $marketLocalizationKeys, marketIds: $marketIds) { marketLocalizations { key market { enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
+        const string gqlQuery = @"mutation MarketLocalizationsRemove($resourceId: ID!, $marketLocalizationKeys: [String!]!, $marketIds: [ID!]!) { marketLocalizationsRemove(resourceId: $resourceId, marketLocalizationKeys: $marketLocalizationKeys, marketIds: $marketIds) { marketLocalizations { key market { createdAt enabled handle id name primary status type } outdated updatedAt value } userErrors { code field message } } }";
         return _graphQlClient.Execute<MarketLocalizationsRemoveData>(gqlQuery, request, cancellationToken);
     }
 

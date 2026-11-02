@@ -3880,6 +3880,10 @@ The set of valid sort keys for the Blog query.
 """
 enum BlogSortKeys {
   """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
+  """
   Sort by the `handle` value.
   """
   HANDLE
@@ -25910,6 +25914,10 @@ The set of valid sort keys for the DraftOrder query.
 """
 enum DraftOrderSortKeys {
   """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
+  """
   Sort by the `customer_name` value.
   """
   CUSTOMER_NAME
@@ -34366,6 +34374,10 @@ type InventoryShipmentLineItem implements Node {
   """
   acceptedQuantity: Int!
   """
+  The date and time the shipment line item was created.
+  """
+  createdAt: DateTime!
+  """
   A globally-unique ID.
   """
   id: ID!
@@ -38841,6 +38853,10 @@ type Market implements HasMetafieldDefinitions & HasMetafields & Node {
   """
   conditions: MarketConditions
   """
+  The date and time the market was created.
+  """
+  createdAt: DateTime!
+  """
   The market’s currency settings.
   """
   currencySettings: MarketCurrencySettings
@@ -42831,6 +42847,10 @@ input MenuItemUpdateInput {
 The set of valid sort keys for the Menu query.
 """
 enum MenuSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -49985,6 +50005,11 @@ type Mutation {
   You can create both full and partial refunds, and optionally allow over-refunding in specific
   cases.
   
+  If the order has an existing
+  [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+  calling this mutation can reduce the written-off amount automatically when it reduces the order total
+  before write-offs below the remaining written-off amount.
+  
   After creating a refund, you can track its status and details through the order's
   [`refunds`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.refunds)
   field. The refund is associated with the order and can be used for reporting and reconciliation purposes.
@@ -55579,6 +55604,10 @@ type PageInfo {
 The set of valid sort keys for the Page query.
 """
 enum PageSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -63174,6 +63203,10 @@ input ProductVariantSetInput {
 The set of valid sort keys for the ProductVariant query.
 """
 enum ProductVariantSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `full_title` value.
   """
@@ -72275,6 +72308,10 @@ The set of valid sort keys for the ShipmentLineItem query.
 """
 enum ShipmentLineItemSortKeys {
   """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
+  """
   Sort by the `id` value.
   """
   ID
@@ -75542,455 +75579,455 @@ The possible types of transactions.
 """
 enum ShopifyPaymentsTransactionType {
   """
-  The ach_bank_failure_debit_fee transaction type.
+  Deducts a fee from the balance when a debit from the merchant's bank account fails.
   """
   ACH_BANK_FAILURE_DEBIT_FEE
   """
-  The ach_bank_failure_debit_reversal_fee transaction type.
+  Reverses an `ACH_BANK_FAILURE_DEBIT_FEE` transaction.
   """
   ACH_BANK_FAILURE_DEBIT_REVERSAL_FEE
   """
-  The ads_publisher_credit transaction type.
+  Adds an ads publisher credit to the balance.
   """
   ADS_PUBLISHER_CREDIT
   """
-  The ads_publisher_credit_reversal transaction type.
+  Reverses an `ADS_PUBLISHER_CREDIT` transaction.
   """
   ADS_PUBLISHER_CREDIT_REVERSAL
   """
-  The chargeback_protection_credit transaction type.
+  Credits the disputed amount and chargeback fee when Shopify Fraud Protect covers a fraudulent chargeback on a protected order.
   """
   CHARGEBACK_PROTECTION_CREDIT
   """
-  The chargeback_protection_credit_reversal transaction type.
+  Reverses a `CHARGEBACK_PROTECTION_CREDIT` transaction.
   """
   CHARGEBACK_PROTECTION_CREDIT_REVERSAL
   """
-  The chargeback_protection_debit transaction type.
+  Takes back a Fraud Protect reimbursement after the chargeback is won, because the disputed amount is returned to the balance.
   """
   CHARGEBACK_PROTECTION_DEBIT
   """
-  The chargeback_protection_debit_reversal transaction type.
+  Reverses a `CHARGEBACK_PROTECTION_DEBIT` transaction.
   """
   CHARGEBACK_PROTECTION_DEBIT_REVERSAL
   """
-  The collections_credit transaction type.
+  Adds funds to the balance as a collections credit.
   """
   COLLECTIONS_CREDIT
   """
-  The collections_credit_reversal transaction type.
+  Reverses a `COLLECTIONS_CREDIT` transaction.
   """
   COLLECTIONS_CREDIT_REVERSAL
   """
-  The promotion_credit transaction type.
+  Adds a promotional credit from Shopify to the balance.
   """
   PROMOTION_CREDIT
   """
-  The promotion_credit_reversal transaction type.
+  Reverses a `PROMOTION_CREDIT` transaction.
   """
   PROMOTION_CREDIT_REVERSAL
   """
-  The anomaly_credit transaction type.
+  Adds funds to the balance to correct a financial anomaly.
   """
   ANOMALY_CREDIT
   """
-  The anomaly_credit_reversal transaction type.
+  Reverses an `ANOMALY_CREDIT` transaction.
   """
   ANOMALY_CREDIT_REVERSAL
   """
-  The anomaly_debit transaction type.
+  Deducts funds from the balance to correct a financial anomaly.
   """
   ANOMALY_DEBIT
   """
-  The anomaly_debit_reversal transaction type.
+  Reverses an `ANOMALY_DEBIT` transaction.
   """
   ANOMALY_DEBIT_REVERSAL
   """
-  The vat_refund_credit transaction type.
+  Adds a VAT refund to the balance.
   """
   VAT_REFUND_CREDIT
   """
-  The vat_refund_credit_reversal transaction type.
+  Reverses a `VAT_REFUND_CREDIT` transaction.
   """
   VAT_REFUND_CREDIT_REVERSAL
   """
-  The channel_credit transaction type.
+  Adds funds to the balance as a credit from a sales channel.
   """
   CHANNEL_CREDIT
   """
-  The channel_credit_reversal transaction type.
+  Reverses a `CHANNEL_CREDIT` transaction.
   """
   CHANNEL_CREDIT_REVERSAL
   """
-  The channel_transfer_credit transaction type.
+  Adds funds to the balance for a transfer from a sales channel.
   """
   CHANNEL_TRANSFER_CREDIT
   """
-  The channel_transfer_credit_reversal transaction type.
+  Reverses a `CHANNEL_TRANSFER_CREDIT` transaction.
   """
   CHANNEL_TRANSFER_CREDIT_REVERSAL
   """
-  The channel_transfer_debit transaction type.
+  Deducts funds from the balance for a transfer to a sales channel.
   """
   CHANNEL_TRANSFER_DEBIT
   """
-  The channel_transfer_debit_reversal transaction type.
+  Reverses a `CHANNEL_TRANSFER_DEBIT` transaction.
   """
   CHANNEL_TRANSFER_DEBIT_REVERSAL
   """
-  The channel_promotion_credit transaction type.
+  Adds promotional funds from a sales channel to the balance.
   """
   CHANNEL_PROMOTION_CREDIT
   """
-  The channel_promotion_credit_reversal transaction type.
+  Reverses a `CHANNEL_PROMOTION_CREDIT` transaction.
   """
   CHANNEL_PROMOTION_CREDIT_REVERSAL
   """
-  The marketplace_fee_credit transaction type.
+  Adds funds to the balance to adjust a marketplace fee.
   """
   MARKETPLACE_FEE_CREDIT
   """
-  The marketplace_fee_credit_reversal transaction type.
+  Reverses a `MARKETPLACE_FEE_CREDIT` transaction.
   """
   MARKETPLACE_FEE_CREDIT_REVERSAL
   """
-  The merchant_goodwill_credit transaction type.
+  Adds a goodwill credit from Shopify to the balance.
   """
   MERCHANT_GOODWILL_CREDIT
   """
-  The merchant_goodwill_credit_reversal transaction type.
+  Reverses a `MERCHANT_GOODWILL_CREDIT` transaction.
   """
   MERCHANT_GOODWILL_CREDIT_REVERSAL
   """
-  The tax_adjustment_debit transaction type.
+  Deducts marketplace tax from the balance through a tax adjustment.
   """
   TAX_ADJUSTMENT_DEBIT
   """
-  The tax_adjustment_debit_reversal transaction type.
+  Reverses a `TAX_ADJUSTMENT_DEBIT` transaction.
   """
   TAX_ADJUSTMENT_DEBIT_REVERSAL
   """
-  The tax_adjustment_credit transaction type.
+  Adds funds to the balance when a previously collected marketplace tax adjustment is reversed.
   """
   TAX_ADJUSTMENT_CREDIT
   """
-  The tax_adjustment_credit_reversal transaction type.
+  Reverses a `TAX_ADJUSTMENT_CREDIT` transaction.
   """
   TAX_ADJUSTMENT_CREDIT_REVERSAL
   """
-  The billing_debit transaction type.
+  Deducts a Shopify bill charge from the balance, such as a theme purchased with the balance.
   """
   BILLING_DEBIT
   """
-  The billing_debit_reversal transaction type.
+  Reverses a `BILLING_DEBIT` transaction, such as when a theme purchased with the balance is refunded.
   """
   BILLING_DEBIT_REVERSAL
   """
-  The shop_cash_credit transaction type.
+  The Shop Cash portion of an order. The customer paid with Shop Cash, and that amount is added to the balance.
   """
   SHOP_CASH_CREDIT
   """
-  The shop_cash_credit_reversal transaction type.
+  Reverses a `SHOP_CASH_CREDIT` transaction.
   """
   SHOP_CASH_CREDIT_REVERSAL
   """
-  The shop_cash_billing_debit transaction type.
+  Deducts a Shop Cash billing charge from the balance.
   """
   SHOP_CASH_BILLING_DEBIT
   """
-  The shop_cash_billing_debit_reversal transaction type.
+  Reverses a `SHOP_CASH_BILLING_DEBIT` transaction.
   """
   SHOP_CASH_BILLING_DEBIT_REVERSAL
   """
-  The shop_cash_refund_debit transaction type.
+  Deducts a Shop Cash refund from the balance when Shop Cash used on an order is returned to the customer.
   """
   SHOP_CASH_REFUND_DEBIT
   """
-  The shop_cash_refund_debit_reversal transaction type.
+  Reverses a `SHOP_CASH_REFUND_DEBIT` transaction.
   """
   SHOP_CASH_REFUND_DEBIT_REVERSAL
   """
-  The shop_cash_campaign_billing_debit transaction type.
+  A Shop Campaign charge for an order placed with a campaign offer before January 2026. Later campaign costs are charged on the Shopify bill instead.
   """
   SHOP_CASH_CAMPAIGN_BILLING_DEBIT
   """
-  The shop_cash_campaign_billing_debit_reversal transaction type.
+  Reverses a `SHOP_CASH_CAMPAIGN_BILLING_DEBIT` transaction.
   """
   SHOP_CASH_CAMPAIGN_BILLING_DEBIT_REVERSAL
   """
-  The shop_cash_campaign_billing_credit transaction type.
+  A credit for a Shop Campaign charge, for campaign activity before January 2026.
   """
   SHOP_CASH_CAMPAIGN_BILLING_CREDIT
   """
-  The shop_cash_campaign_billing_credit_reversal transaction type.
+  Reverses a `SHOP_CASH_CAMPAIGN_BILLING_CREDIT` transaction.
   """
   SHOP_CASH_CAMPAIGN_BILLING_CREDIT_REVERSAL
   """
-  The seller_protection_credit transaction type.
+  Credits the disputed amount and chargeback fee when Shopify Protect covers a fraudulent chargeback on a protected Shop Pay order.
   """
   SELLER_PROTECTION_CREDIT
   """
-  The seller_protection_credit_reversal transaction type.
+  Reverses a `SELLER_PROTECTION_CREDIT` transaction.
   """
   SELLER_PROTECTION_CREDIT_REVERSAL
   """
-  The shopify_collective_debit transaction type.
+  Deducts the cost of Shopify Collective products from a retailer's balance so that the supplier can be paid.
   """
   SHOPIFY_COLLECTIVE_DEBIT
   """
-  The shopify_collective_debit_reversal transaction type.
+  Reverses a `SHOPIFY_COLLECTIVE_DEBIT` transaction.
   """
   SHOPIFY_COLLECTIVE_DEBIT_REVERSAL
   """
-  The shopify_collective_credit transaction type.
+  Pays a Shopify Collective supplier for products that a retailer sold, after the supplier fulfills the order.
   """
   SHOPIFY_COLLECTIVE_CREDIT
   """
-  The shopify_collective_credit_reversal transaction type.
+  Reverses a `SHOPIFY_COLLECTIVE_CREDIT` transaction.
   """
   SHOPIFY_COLLECTIVE_CREDIT_REVERSAL
   """
-  The lending_debit transaction type.
+  Deducts funds from the balance as a general lending debit that isn't tied to a specific lending product. Legacy.
   """
   LENDING_DEBIT
   """
-  The lending_debit_reversal transaction type.
+  Reverses a `LENDING_DEBIT` transaction.
   """
   LENDING_DEBIT_REVERSAL
   """
-  The lending_credit transaction type.
+  Adds funds to the balance as a general lending credit that isn't tied to a specific lending product. Legacy.
   """
   LENDING_CREDIT
   """
-  The lending_credit_reversal transaction type.
+  Reverses a `LENDING_CREDIT` transaction.
   """
   LENDING_CREDIT_REVERSAL
   """
-  The lending_capital_remittance transaction type.
+  Deducts a Shopify Capital repayment (remittance) from the balance.
   """
   LENDING_CAPITAL_REMITTANCE
   """
-  The lending_capital_remittance_reversal transaction type.
+  Reverses a `LENDING_CAPITAL_REMITTANCE` transaction.
   """
   LENDING_CAPITAL_REMITTANCE_REVERSAL
   """
-  The lending_credit_remittance transaction type.
+  Deducts a Shopify Credit repayment (remittance) from the balance.
   """
   LENDING_CREDIT_REMITTANCE
   """
-  The lending_credit_remittance_reversal transaction type.
+  Reverses a `LENDING_CREDIT_REMITTANCE` transaction.
   """
   LENDING_CREDIT_REMITTANCE_REVERSAL
   """
-  The lending_capital_refund transaction type.
+  Returns all or part of a `LENDING_CAPITAL_REMITTANCE` to the balance when Shopify Capital refunds a remittance it collected.
   """
   LENDING_CAPITAL_REFUND
   """
-  The lending_capital_refund_reversal transaction type.
+  Reverses a `LENDING_CAPITAL_REFUND` transaction.
   """
   LENDING_CAPITAL_REFUND_REVERSAL
   """
-  The lending_credit_refund transaction type.
+  Returns a Shopify Credit remittance to the balance when it's refunded.
   """
   LENDING_CREDIT_REFUND
   """
-  The lending_credit_refund_reversal transaction type.
+  Reverses a `LENDING_CREDIT_REFUND` transaction.
   """
   LENDING_CREDIT_REFUND_REVERSAL
   """
-  The balance_transfer_inbound transaction type.
+  Moves funds from a Shopify Balance account into the Shopify Payments balance.
   """
   BALANCE_TRANSFER_INBOUND
   """
-  The balance_transfer_outbound transaction type.
+  Moves funds from the Shopify Payments balance into a Shopify Balance account.
   """
   BALANCE_TRANSFER_OUTBOUND
   """
-  The markets_pro_credit transaction type.
+  Adds funds to the balance for a channel-billed Managed Markets transaction.
   """
   MARKETS_PRO_CREDIT
   """
-  The customs_duty_adjustment transaction type.
+  Corrects or reverses a previously recorded `CUSTOMS_DUTY` transaction. Depending on its sign, it adds to or deducts from the balance.
   """
   CUSTOMS_DUTY_ADJUSTMENT
   """
-  The import_tax_adjustment transaction type.
+  Corrects or reverses a previously recorded `IMPORT_TAX` transaction. Depending on its sign, it adds to or deducts from the balance.
   """
   IMPORT_TAX_ADJUSTMENT
   """
-  The shipping_label_adjustment transaction type.
+  Adjusts the cost of a Managed Markets shipping label after its final cost is reconciled. Depending on its sign, it adds to or deducts from the balance.
   """
   SHIPPING_LABEL_ADJUSTMENT
   """
-  The shipping_label_adjustment_base transaction type.
+  Adjusts the base shipping cost of a Managed Markets shipping label. Depending on its sign, it adds to or deducts from the balance.
   """
   SHIPPING_LABEL_ADJUSTMENT_BASE
   """
-  The shipping_label_adjustment_surcharge transaction type.
+  Adjusts a surcharge on a Managed Markets shipping label. Depending on its sign, it adds to or deducts from the balance.
   """
   SHIPPING_LABEL_ADJUSTMENT_SURCHARGE
   """
-  The shipping_return_to_origin_adjustment transaction type.
+  Deducts a carrier charge when a Managed Markets shipment is returned to its origin, such as when the customer refuses delivery.
   """
   SHIPPING_RETURN_TO_ORIGIN_ADJUSTMENT
   """
-  The shipping_other_carrier_charge_adjustment transaction type.
+  Deducts an additional carrier charge for a Managed Markets shipment.
   """
   SHIPPING_OTHER_CARRIER_CHARGE_ADJUSTMENT
   """
-  The charge_adjustment transaction type.
+  Adjusts a previously recorded charge. Depending on its sign, it adds to or deducts from the balance.
   """
   CHARGE_ADJUSTMENT
   """
-  The refund_adjustment transaction type.
+  Adjusts a previously recorded refund. Depending on its sign, it adds to or deducts from the balance.
   """
   REFUND_ADJUSTMENT
   """
-  The chargeback_fee transaction type.
+  The fee that the cardholder's bank charges when a customer files a chargeback.
   """
   CHARGEBACK_FEE
   """
-  The chargeback_fee_refund transaction type.
+  Returns a `CHARGEBACK_FEE` to the balance when the fee is refunded.
   """
   CHARGEBACK_FEE_REFUND
   """
-  The transfer transaction type.
+  A payout from the balance to the merchant's bank account, or a withdrawal from the bank account into the balance. The amount's sign shows the direction.
   """
   TRANSFER
   """
-  The transfer_failure transaction type.
+  Reverses a `TRANSFER` that failed, moving the funds back to where they came from.
   """
   TRANSFER_FAILURE
   """
-  The transfer_cancel transaction type.
+  Reverses a `TRANSFER` that was canceled, moving the funds back to where they came from.
   """
   TRANSFER_CANCEL
   """
-  The reserved_funds_withdrawal transaction type.
+  Moves funds from the balance into a reserve that Shopify holds on the account.
   """
   RESERVED_FUNDS_WITHDRAWAL
   """
-  The reserved_funds_reversal transaction type.
+  Releases funds from a reserve back to the balance.
   """
   RESERVED_FUNDS_REVERSAL
   """
-  The risk_reversal transaction type.
+  Returns funds withheld by a `RISK_WITHDRAWAL` to the balance.
   """
   RISK_REVERSAL
   """
-  The risk_withdrawal transaction type.
+  Withholds the amount of a potentially fraudulent order from the balance when its payout is already pending.
   """
   RISK_WITHDRAWAL
   """
-  The referral_fee transaction type.
+  Deducts a referral fee for an order from the balance.
   """
   REFERRAL_FEE
   """
-  The referral_fee_tax transaction type.
+  Deducts the tax on a `REFERRAL_FEE` from the balance.
   """
   REFERRAL_FEE_TAX
   """
-  The merchant_to_merchant_debit transaction type.
+  Deducts funds from the balance for a payment to another merchant. Legacy Shopify Collective type.
   """
   MERCHANT_TO_MERCHANT_DEBIT
   """
-  The merchant_to_merchant_debit_reversal transaction type.
+  Reverses a `MERCHANT_TO_MERCHANT_DEBIT` transaction.
   """
   MERCHANT_TO_MERCHANT_DEBIT_REVERSAL
   """
-  The merchant_to_merchant_credit transaction type.
+  Adds funds to the balance from another merchant. Legacy Shopify Collective type.
   """
   MERCHANT_TO_MERCHANT_CREDIT
   """
-  The merchant_to_merchant_credit_reversal transaction type.
+  Reverses a `MERCHANT_TO_MERCHANT_CREDIT` transaction.
   """
   MERCHANT_TO_MERCHANT_CREDIT_REVERSAL
   """
-  The shopify_source_debit transaction type.
+  Deducts funds from the balance for a supplier transaction. Legacy Shopify Collective type.
   """
   SHOPIFY_SOURCE_DEBIT
   """
-  The shopify_source_debit_reversal transaction type.
+  Reverses a `SHOPIFY_SOURCE_DEBIT` transaction.
   """
   SHOPIFY_SOURCE_DEBIT_REVERSAL
   """
-  The shopify_source_credit transaction type.
+  Adds funds to the balance for a supplier transaction. Legacy Shopify Collective type.
   """
   SHOPIFY_SOURCE_CREDIT
   """
-  The shopify_source_credit_reversal transaction type.
+  Reverses a `SHOPIFY_SOURCE_CREDIT` transaction.
   """
   SHOPIFY_SOURCE_CREDIT_REVERSAL
   """
-  The charge transaction type.
+  A customer payment for an order, processed through Shopify Payments and added to the balance.
   """
   CHARGE
   """
-  The refund transaction type.
+  Deducts a refund to a customer from the balance.
   """
   REFUND
   """
-  The refund_failure transaction type.
+  Returns funds to the balance when a refund to a customer fails.
   """
   REFUND_FAILURE
   """
-  The application_fee_refund transaction type.
+  Returns fees to the balance for an order that was refunded.
   """
   APPLICATION_FEE_REFUND
   """
-  The adjustment transaction type.
+  A manual or system adjustment to the Shopify Payments balance that no more specific type covers. In API versions where a newer transaction type isn't available yet, that type is returned as `ADJUSTMENT`.
   """
   ADJUSTMENT
   """
-  The dispute_withdrawal transaction type.
+  Withdraws the disputed amount from the balance when a customer's bank opens a chargeback.
   """
   DISPUTE_WITHDRAWAL
   """
-  The dispute_reversal transaction type.
+  Adjusts the balance after a chargeback is resolved. It usually returns all or part of the disputed amount. In rare cases it's negative and deducts an additional amount.
   """
   DISPUTE_REVERSAL
   """
-  The shipping_label transaction type.
+  Deducts the cost of a shipping label bought for a Managed Markets shipment.
   """
   SHIPPING_LABEL
   """
-  The customs_duty transaction type.
+  Customs duty for a Managed Markets order. Depending on its sign, it adds to or deducts from the balance.
   """
   CUSTOMS_DUTY
   """
-  The import_tax transaction type.
+  Import tax for a Managed Markets order. Depending on its sign, it adds to or deducts from the balance.
   """
   IMPORT_TAX
   """
-  The chargeback_hold transaction type.
+  Holds disputed funds from the available balance while a chargeback is open.
   """
   CHARGEBACK_HOLD
   """
-  The chargeback_hold_release transaction type.
+  Releases funds held by a `CHARGEBACK_HOLD` back to the available balance.
   """
   CHARGEBACK_HOLD_RELEASE
   """
-  The reserved_funds transaction type.
+  Moves funds into or out of a reserve. A hold reduces the available balance, and a release restores it.
   """
   RESERVED_FUNDS
   """
-  The stripe_fee transaction type.
+  Deducts a fee that Stripe charges directly to the account for its services. Payment processing fees aren't recorded here; they're part of a `CHARGE` transaction's fee.
   """
   STRIPE_FEE
   """
-  The transfer_refund transaction type.
+  Returns funds to the balance when a transfer is refunded.
   """
   TRANSFER_REFUND
   """
-  The advance transaction type.
+  Funds that Shopify advances to the balance before the normal payout schedule, against payments that are expected to be paid out later.
   """
   ADVANCE
   """
-  The advance funding transaction type.
+  The other half of an `ADVANCE`. Deducts the advanced amount from the pending funds it was advanced against, so the two net to zero.
   """
   ADVANCE_FUNDING
   """
-  The tax refund transaction type.
+  Adds refunded import tax for a Managed Markets order to the balance.
   """
   IMPORT_TAX_REFUND
 }
@@ -83751,6 +83788,10 @@ input UrlRedirectInput {
 The set of valid sort keys for the UrlRedirect query.
 """
 enum UrlRedirectSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """

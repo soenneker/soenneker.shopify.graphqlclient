@@ -28,6 +28,11 @@ public sealed partial class RefundCreateData
     /// You can create both full and partial refunds, and optionally allow over-refunding in specific
     /// cases.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
+    /// 
     /// After creating a refund, you can track its status and details through the order's
     /// [`refunds`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.refunds)
     /// field. The refund is associated with the order and can be used for reporting and reconciliation purposes.
