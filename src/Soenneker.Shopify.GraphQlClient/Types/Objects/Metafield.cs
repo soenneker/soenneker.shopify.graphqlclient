@@ -26,7 +26,7 @@ public sealed partial class Metafield : HasCompareDigest, LegacyInteroperability
     public DateTimeOffset CreatedAt { get; init; }
 
     /// <summary>
-    /// The metafield definition that the metafield belongs to, if any.
+    /// The metafield definition that the metafield belongs to, if any. Returns `null` when the metafield's value doesn't pass validation against the definition with the same namespace and key. To list those metafields, query the definition's `metafields` connection with `validationStatus: INVALID`.
     /// </summary>
     [JsonPropertyName("definition")]
     public MetafieldDefinition? Definition { get; init; }
