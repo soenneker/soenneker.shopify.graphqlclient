@@ -3047,6 +3047,12 @@ public sealed partial class Mutation
     /// 
     /// To modify pricing on specific line items, use this mutation after starting an order edit with the [`orderEditBegin`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderEditBegin) mutation. The changes remain staged until you commit them with the [`orderEditCommit`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderEditCommit) mutation.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// mutations such as this one, which reduce the order total, can reduce the written-off amount
+    /// automatically when the edit is committed and the order total before write-offs falls below the
+    /// remaining written-off amount.
+    /// 
     /// Learn more about [editing existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditAddLineItemDiscount")]
@@ -3089,6 +3095,11 @@ public sealed partial class Mutation
     /// 
     /// You can only edit unfulfilled line items. If an edit changes the total order value, then the customer might need to pay a balance or receive a refund.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// committing an edit which reduces the order total can reduce the written-off amount automatically when
+    /// the order total before write-offs falls below the remaining written-off amount.
+    /// 
     /// Learn more about [editing existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditCommit")]
@@ -3107,7 +3118,7 @@ public sealed partial class Mutation
     public OrderEditRemoveLineItemDiscountPayload? OrderEditRemoveLineItemDiscount { get; init; }
 
     /// <summary>
-    /// Removes a shipping line from an existing order. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
+    /// Removes a shipping line from an existing order. If the order has an existing [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance), mutations such as this one, which reduce the order total, can reduce the written-off amount automatically when the edit is committed and the order total before write-offs falls below the remaining written-off amount. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
     /// </summary>
     [JsonPropertyName("orderEditRemoveShippingLine")]
     public OrderEditRemoveShippingLinePayload? OrderEditRemoveShippingLine { get; init; }
@@ -3117,13 +3128,19 @@ public sealed partial class Mutation
     /// 
     /// Setting the quantity to zero effectively removes the line item from the order. The item still exists as a data structure with zero quantity. When decreasing quantities, you can optionally restock the removed items to inventory by setting the `restock` parameter to `true`.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// mutations such as this one, which reduce the order total, can reduce the written-off amount
+    /// automatically when the edit is committed and the order total before write-offs falls below the
+    /// remaining written-off amount.
+    /// 
     /// Learn more about [editing workflows for existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditSetQuantity")]
     public OrderEditSetQuantityPayload? OrderEditSetQuantity { get; init; }
 
     /// <summary>
-    /// Updates a manual line level discount on the current order edit. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
+    /// Updates a manual line level discount on the current order edit. If the order has an existing [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance), mutations such as this one, which reduce the order total, can reduce the written-off amount automatically when the edit is committed and the order total before write-offs falls below the remaining written-off amount. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
     /// </summary>
     [JsonPropertyName("orderEditUpdateDiscount")]
     public OrderEditUpdateDiscountPayload? OrderEditUpdateDiscount { get; init; }
@@ -4149,6 +4166,11 @@ public sealed partial class Mutation
     /// Approves a customer's return request.
     /// If this mutation is successful, then the `Return.status` field of the
     /// approved return is set to `OPEN`.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnApproveRequest")]
     public ReturnApproveRequestPayload? ReturnApproveRequest { get; init; }
@@ -4157,6 +4179,11 @@ public sealed partial class Mutation
     /// Cancels a return and restores the items back to being fulfilled.
     /// Canceling a return is only available before any work has been done
     /// on the return (such as an inspection or refund).
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnCancel")]
     public ReturnCancelPayload? ReturnCancel { get; init; }
@@ -4187,6 +4214,11 @@ public sealed partial class Mutation
     /// and enables you to create a [reverse delivery](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-deliveries)
     /// for the reverse fulfillment order
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
+    /// 
     /// After you've created a return, use the
     /// [`return`](https://shopify.dev/docs/api/admin-graphql/latest/queries/return) query to retrieve the
     /// return by its ID. Learn more about providing a
@@ -4215,6 +4247,11 @@ public sealed partial class Mutation
     /// 
     /// For returned items, you specify how to handle them through dispositions such as restocking or disposal. The mutation creates [`FulfillmentOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentOrder) objects for exchange items and records all transactions in the merchant's financial reports. You can optionally issue refunds through financial transfers, apply refund duties, and refund shipping costs.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
+    /// 
     /// Learn more about [processing returns](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/build-return-management).
     /// </summary>
     [JsonPropertyName("returnProcess")]
@@ -4222,6 +4259,11 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Creates a refund for items being returned when the return status is `OPEN` or `CLOSED`. This mutation processes the financial aspects of a return by refunding line items, shipping costs, and duties back to the customer.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnRefund")]
     public ReturnRefundPayload? ReturnRefund { get; init; }

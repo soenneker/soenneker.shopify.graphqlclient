@@ -14,6 +14,11 @@ public sealed partial class ReturnProcessData
     /// 
     /// For returned items, you specify how to handle them through dispositions such as restocking or disposal. The mutation creates [`FulfillmentOrder`](https://shopify.dev/docs/api/admin-graphql/latest/objects/FulfillmentOrder) objects for exchange items and records all transactions in the merchant's financial reports. You can optionally issue refunds through financial transfers, apply refund duties, and refund shipping costs.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
+    /// 
     /// Learn more about [processing returns](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/build-return-management).
     /// </summary>
     [JsonPropertyName("returnProcess")]

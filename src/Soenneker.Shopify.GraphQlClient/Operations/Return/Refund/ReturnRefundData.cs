@@ -11,6 +11,11 @@ public sealed partial class ReturnRefundData
 {
     /// <summary>
     /// Creates a refund for items being returned when the return status is `OPEN` or `CLOSED`. This mutation processes the financial aspects of a return by refunding line items, shipping costs, and duties back to the customer.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnRefund")]
     public ReturnRefundPayload? ReturnRefund { get; init; }

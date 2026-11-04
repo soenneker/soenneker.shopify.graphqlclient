@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class OrderEditRemoveShippingLineData
 {
     /// <summary>
-    /// Removes a shipping line from an existing order. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
+    /// Removes a shipping line from an existing order. If the order has an existing [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance), mutations such as this one, which reduce the order total, can reduce the written-off amount automatically when the edit is committed and the order total before write-offs falls below the remaining written-off amount. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
     /// </summary>
     [JsonPropertyName("orderEditRemoveShippingLine")]
     public OrderEditRemoveShippingLinePayload? OrderEditRemoveShippingLine { get; init; }

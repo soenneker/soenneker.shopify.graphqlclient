@@ -13,6 +13,11 @@ public sealed partial class ReturnApproveRequestData
     /// Approves a customer's return request.
     /// If this mutation is successful, then the `Return.status` field of the
     /// approved return is set to `OPEN`.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnApproveRequest")]
     public ReturnApproveRequestPayload? ReturnApproveRequest { get; init; }

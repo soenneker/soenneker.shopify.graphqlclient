@@ -8,24 +8,14 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryTransferSetItemsUserErrorCode
 {
     /// <summary>
-    /// The transfer was not found.
+    /// Bundled items cannot be used for this operation.
     /// </summary>
-    TRANSFERNOTFOUND,
+    BUNDLEDITEM,
 
     /// <summary>
-    /// Current transfer status does not support this operation.
+    /// A single item can't be listed twice.
     /// </summary>
-    INVALIDTRANSFERSTATUS,
-
-    /// <summary>
-    /// The location selected can't be found.
-    /// </summary>
-    LOCATIONNOTFOUND,
-
-    /// <summary>
-    /// The location selected is not active.
-    /// </summary>
-    LOCATIONNOTACTIVE,
+    DUPLICATEITEM,
 
     /// <summary>
     /// This request is currently in progress, please try again.
@@ -33,29 +23,14 @@ public enum InventoryTransferSetItemsUserErrorCode
     IDEMPOTENCYCONCURRENTREQUEST,
 
     /// <summary>
-    /// A previous request with this idempotency key failed. Retry with a new idempotency key.
-    /// </summary>
-    IDEMPOTENCYPREVIOUSATTEMPTFAILED,
-
-    /// <summary>
     /// The same idempotency key cannot be used with different operation parameters.
     /// </summary>
     IDEMPOTENCYKEYPARAMETERMISMATCH,
 
     /// <summary>
-    /// Bundled items cannot be used for this operation.
+    /// A previous request with this idempotency key failed. Retry with a new idempotency key.
     /// </summary>
-    BUNDLEDITEM,
-
-    /// <summary>
-    /// The item does not track inventory.
-    /// </summary>
-    UNTRACKEDITEM,
-
-    /// <summary>
-    /// The item was not found.
-    /// </summary>
-    ITEMNOTFOUND,
+    IDEMPOTENCYPREVIOUSATTEMPTFAILED,
 
     /// <summary>
     /// The quantity is invalid.
@@ -63,9 +38,34 @@ public enum InventoryTransferSetItemsUserErrorCode
     INVALIDQUANTITY,
 
     /// <summary>
-    /// A single item can't be listed twice.
+    /// Current transfer status does not support this operation.
     /// </summary>
-    DUPLICATEITEM,
+    INVALIDTRANSFERSTATUS,
+
+    /// <summary>
+    /// The item was not found.
+    /// </summary>
+    ITEMNOTFOUND,
+
+    /// <summary>
+    /// The location selected is not active.
+    /// </summary>
+    LOCATIONNOTACTIVE,
+
+    /// <summary>
+    /// The transfer was not found.
+    /// </summary>
+    TRANSFERNOTFOUND,
+
+    /// <summary>
+    /// The item does not track inventory.
+    /// </summary>
+    UNTRACKEDITEM,
+
+    /// <summary>
+    /// The location selected can't be found.
+    /// </summary>
+    LOCATIONNOTFOUND,
 
     /// <summary>
     /// The item is not stocked at the intended location.

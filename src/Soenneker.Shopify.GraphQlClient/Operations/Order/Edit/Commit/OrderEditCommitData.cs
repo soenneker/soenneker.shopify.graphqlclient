@@ -16,6 +16,11 @@ public sealed partial class OrderEditCommitData
     /// 
     /// You can only edit unfulfilled line items. If an edit changes the total order value, then the customer might need to pay a balance or receive a refund.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// committing an edit which reduces the order total can reduce the written-off amount automatically when
+    /// the order total before write-offs falls below the remaining written-off amount.
+    /// 
     /// Learn more about [editing existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditCommit")]

@@ -8,13 +8,13 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryShipmentDeleteUserErrorCode
 {
     /// <summary>
-    /// The shipment was not found.
-    /// </summary>
-    SHIPMENTNOTFOUND,
-
-    /// <summary>
     /// Current shipment status does not support this operation.
     /// </summary>
-    INVALIDSHIPMENTSTATUS
+    INVALIDSHIPMENTSTATUS,
+
+    /// <summary>
+    /// The shipment was not found.
+    /// </summary>
+    SHIPMENTNOTFOUND
 
 }

@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class OrderEditUpdateDiscountData
 {
     /// <summary>
-    /// Updates a manual line level discount on the current order edit. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
+    /// Updates a manual line level discount on the current order edit. If the order has an existing [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance), mutations such as this one, which reduce the order total, can reduce the written-off amount automatically when the edit is committed and the order total before write-offs falls below the remaining written-off amount. For more information on how to use the GraphQL Admin API to edit an existing order, refer to [Edit existing orders](https://shopify.dev/apps/fulfillment/order-management-apps/order-editing).
     /// </summary>
     [JsonPropertyName("orderEditUpdateDiscount")]
     public OrderEditUpdateDiscountPayload? OrderEditUpdateDiscount { get; init; }

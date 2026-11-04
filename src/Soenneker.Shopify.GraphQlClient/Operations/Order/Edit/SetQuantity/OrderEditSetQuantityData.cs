@@ -14,6 +14,12 @@ public sealed partial class OrderEditSetQuantityData
     /// 
     /// Setting the quantity to zero effectively removes the line item from the order. The item still exists as a data structure with zero quantity. When decreasing quantities, you can optionally restock the removed items to inventory by setting the `restock` parameter to `true`.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// mutations such as this one, which reduce the order total, can reduce the written-off amount
+    /// automatically when the edit is committed and the order total before write-offs falls below the
+    /// remaining written-off amount.
+    /// 
     /// Learn more about [editing workflows for existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditSetQuantity")]

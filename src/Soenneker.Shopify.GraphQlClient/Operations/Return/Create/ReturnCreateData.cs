@@ -28,6 +28,11 @@ public sealed partial class ReturnCreateData
     /// and enables you to create a [reverse delivery](https://shopify.dev/docs/apps/build/orders-fulfillment/returns-apps/manage-reverse-deliveries)
     /// for the reverse fulfillment order
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
+    /// 
     /// After you've created a return, use the
     /// [`return`](https://shopify.dev/docs/api/admin-graphql/latest/queries/return) query to retrieve the
     /// return by its ID. Learn more about providing a

@@ -14,6 +14,12 @@ public sealed partial class OrderEditAddLineItemDiscountData
     /// 
     /// To modify pricing on specific line items, use this mutation after starting an order edit with the [`orderEditBegin`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderEditBegin) mutation. The changes remain staged until you commit them with the [`orderEditCommit`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderEditCommit) mutation.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// mutations such as this one, which reduce the order total, can reduce the written-off amount
+    /// automatically when the edit is committed and the order total before write-offs falls below the
+    /// remaining written-off amount.
+    /// 
     /// Learn more about [editing existing orders](https://shopify.dev/docs/apps/build/orders-fulfillment/order-management-apps/edit-orders).
     /// </summary>
     [JsonPropertyName("orderEditAddLineItemDiscount")]

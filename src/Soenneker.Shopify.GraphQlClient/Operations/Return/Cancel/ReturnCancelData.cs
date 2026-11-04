@@ -13,6 +13,11 @@ public sealed partial class ReturnCancelData
     /// Cancels a return and restores the items back to being fulfilled.
     /// Canceling a return is only available before any work has been done
     /// on the return (such as an inspection or refund).
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnCancel")]
     public ReturnCancelPayload? ReturnCancel { get; init; }

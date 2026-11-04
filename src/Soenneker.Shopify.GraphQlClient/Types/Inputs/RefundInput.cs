@@ -78,7 +78,7 @@ public sealed partial class RefundInput
     public OrderAdjustmentInputDiscrepancyReason? DiscrepancyReason { get; init; }
 
     /// <summary>
-    /// Whether to allow the total refunded amount to surpass the amount paid for the order.
+    /// Whether refunds to the original payment method can cause the total refunded amount, including previously issued store credit, to exceed the amount paid for the order. Refunds issued as store credit can't exceed the amount paid.
     /// </summary>
     [JsonPropertyName("allowOverRefunding")]
     public bool? AllowOverRefunding { get; init; }
