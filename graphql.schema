@@ -73884,7 +73884,7 @@ type ShopPlan {
   """
   partnerDevelopment: Boolean!
   """
-  The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Staff Business, Starter, and Trial.
+  The public display name of the shop's billing plan. Possible values are: Advanced, Agentic, Agentic Enterprise, Basic, Development, Grow, Inactive, Lite, Other, Paused, Plus, Plus Trial, Retail, Shop Component, Shop Component Plus, Staff Business, Starter, and Trial.
   """
   publicDisplayName: String!
   """
