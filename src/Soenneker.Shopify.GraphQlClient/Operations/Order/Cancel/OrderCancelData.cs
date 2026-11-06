@@ -28,6 +28,11 @@ public sealed partial class OrderCancelData
     /// or issuing store credit. If a payment was only authorized (temporarily held) but not yet charged,
     /// that hold will be automatically released when the order is cancelled, even if you choose not to refund other payments.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when the cancellation includes a
+    /// refund that reduces the order total before write-offs below the remaining written-off amount.
+    /// 
     /// The mutation supports different cancellation reasons: customer requests, payment declines, fraud,
     /// inventory issues, staff errors, or other unspecified reasons. Each cancellation can include optional
     /// staff notes for internal documentation (notes aren't visible to customers).

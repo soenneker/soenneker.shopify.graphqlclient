@@ -13,6 +13,12 @@ public sealed partial class OrderUpdateData
     /// Updates the attributes of an order, such as the customer's email, the shipping address for the order,
     /// tags, and [metafields](https://shopify.dev/docs/apps/build/custom-data) associated with the order.
     /// 
+    /// In API version 2026-10 and later, if the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when a shipping address change
+    /// recalculates taxes and this reduces the order total before write-offs below the remaining written-off
+    /// amount.
+    /// 
     /// If you need to make significant updates to an order, such as adding or removing line items, changing
     /// quantities, or modifying discounts, then use
     /// the [`orderEditBegin`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/orderEditBegin)

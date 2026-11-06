@@ -256,7 +256,7 @@ public sealed partial class Order : CommentEventSubject, HasEvents, HasLocalizat
     public List<Attribute> CustomAttributes { get; init; } = [];
 
     /// <summary>
-    /// The customer who placed an order. Returns `null` if an order was created through a checkout without customer authentication, such as a guest checkout.
+    /// The customer associated with the order. Guest checkout orders can have an associated customer without customer authentication. Returns null if the order has no associated customer.
     /// Learn more about [customer accounts](https://help.shopify.com/manual/customers/customer-accounts).
     /// </summary>
     [JsonPropertyName("customer")]

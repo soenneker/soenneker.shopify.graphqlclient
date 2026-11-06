@@ -48976,6 +48976,11 @@ type Mutation {
   or issuing store credit. If a payment was only authorized (temporarily held) but not yet charged,
   that hold will be automatically released when the order is cancelled, even if you choose not to refund other payments.
   
+  If the order has an existing
+  [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+  calling this mutation can reduce the written-off amount automatically when the cancellation includes a
+  refund that reduces the order total before write-offs below the remaining written-off amount.
+  
   The mutation supports different cancellation reasons: customer requests, payment declines, fraud,
   inventory issues, staff errors, or other unspecified reasons. Each cancellation can include optional
   staff notes for internal documentation (notes aren't visible to customers).
@@ -49244,6 +49249,12 @@ type Mutation {
   """
   Updates the attributes of an order, such as the customer's email, the shipping address for the order,
   tags, and [metafields](https://shopify.dev/docs/apps/build/custom-data) associated with the order.
+  
+  In API version 2026-10 and later, if the order has an existing
+  [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+  calling this mutation can reduce the written-off amount automatically when a shipping address change
+  recalculates taxes and this reduces the order total before write-offs below the remaining written-off
+  amount.
   
   If you need to make significant updates to an order, such as adding or removing line items, changing
   quantities, or modifying discounts, then use
@@ -50066,6 +50077,11 @@ type Mutation {
   refundCreate(input: RefundInput!): RefundCreatePayload
   """
   Removes return and/or exchange lines from a return.
+  
+  If the order has an existing
+  [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+  calling this mutation can reduce the written-off amount automatically when it reduces the order total
+  before write-offs below the remaining written-off amount.
   """
   removeFromReturn(returnId: ID!, returnLineItems: [ReturnLineItemRemoveFromReturnInput!], exchangeLineItems: [ExchangeLineItemRemoveFromReturnInput!]): RemoveFromReturnPayload
   """
@@ -50134,6 +50150,12 @@ type Mutation {
   returnDeclineRequest(input: ReturnDeclineRequestInput!): ReturnDeclineRequestPayload
   """
   Removes return lines from a return.
+  
+  If the order has an existing
+  [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+  calling this mutation can reduce the written-off amount automatically when removing return lines also
+  removes restocking or return shipping fees and this reduces the order total before write-offs below
+  the remaining written-off amount.
   """
   returnLineItemRemoveFromReturn(returnId: ID!, returnLineItems: [ReturnLineItemRemoveFromReturnInput!]!): ReturnLineItemRemoveFromReturnPayload @deprecated(reason: "Use \u0060removeFromReturn\u0060 instead.")
   """
@@ -51645,7 +51667,7 @@ type Order implements CommentEventSubject & HasEvents & HasLocalizationExtension
   """
   customAttributes: [Attribute!]!
   """
-  The customer who placed an order. Returns `null` if an order was created through a checkout without customer authentication, such as a guest checkout.
+  The customer associated with the order. Guest checkout orders can have an associated customer without customer authentication. Returns null if the order has no associated customer.
   Learn more about [customer accounts](https://help.shopify.com/manual/customers/customer-accounts).
   """
   customer: Customer
@@ -64593,6 +64615,10 @@ input QuantityPriceBreakInput {
 The set of valid sort keys for the QuantityPriceBreak query.
 """
 enum QuantityPriceBreakSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -84060,6 +84086,10 @@ type ValidationEdge {
 The set of valid sort keys for the Validation query.
 """
 enum ValidationSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """

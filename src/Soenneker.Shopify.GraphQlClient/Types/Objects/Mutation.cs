@@ -2886,6 +2886,11 @@ public sealed partial class Mutation
     /// or issuing store credit. If a payment was only authorized (temporarily held) but not yet charged,
     /// that hold will be automatically released when the order is cancelled, even if you choose not to refund other payments.
     /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when the cancellation includes a
+    /// refund that reduces the order total before write-offs below the remaining written-off amount.
+    /// 
     /// The mutation supports different cancellation reasons: customer requests, payment declines, fraud,
     /// inventory issues, staff errors, or other unspecified reasons. Each cancellation can include optional
     /// staff notes for internal documentation (notes aren't visible to customers).
@@ -3204,6 +3209,12 @@ public sealed partial class Mutation
     /// <summary>
     /// Updates the attributes of an order, such as the customer's email, the shipping address for the order,
     /// tags, and [metafields](https://shopify.dev/docs/apps/build/custom-data) associated with the order.
+    /// 
+    /// In API version 2026-10 and later, if the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when a shipping address change
+    /// recalculates taxes and this reduces the order total before write-offs below the remaining written-off
+    /// amount.
     /// 
     /// If you need to make significant updates to an order, such as adding or removing line items, changing
     /// quantities, or modifying discounts, then use
@@ -4158,6 +4169,11 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Removes return and/or exchange lines from a return.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when it reduces the order total
+    /// before write-offs below the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("removeFromReturn")]
     public RemoveFromReturnPayload? RemoveFromReturn { get; init; }
@@ -4238,6 +4254,12 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Removes return lines from a return.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when removing return lines also
+    /// removes restocking or return shipping fees and this reduces the order total before write-offs below
+    /// the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnLineItemRemoveFromReturn")]
     public ReturnLineItemRemoveFromReturnPayload? ReturnLineItemRemoveFromReturn { get; init; }

@@ -11,6 +11,12 @@ public sealed partial class ReturnLineItemRemoveFromReturnData
 {
     /// <summary>
     /// Removes return lines from a return.
+    /// 
+    /// If the order has an existing
+    /// [write-off](https://help.shopify.com/manual/fulfillment/managing-orders/payments/waive-balance),
+    /// calling this mutation can reduce the written-off amount automatically when removing return lines also
+    /// removes restocking or return shipping fees and this reduces the order total before write-offs below
+    /// the remaining written-off amount.
     /// </summary>
     [JsonPropertyName("returnLineItemRemoveFromReturn")]
     public ReturnLineItemRemoveFromReturnPayload? ReturnLineItemRemoveFromReturn { get; init; }
