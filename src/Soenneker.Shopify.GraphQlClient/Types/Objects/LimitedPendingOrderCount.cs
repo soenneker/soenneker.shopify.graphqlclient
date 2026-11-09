@@ -17,7 +17,7 @@ public sealed partial class LimitedPendingOrderCount
     public bool AtMax { get; init; }
 
     /// <summary>
-    /// The number of pendings orders on the shop.
+    /// The number of pending orders on the shop.
     /// Limited to a maximum of 10000.
     /// </summary>
     [JsonPropertyName("count")]

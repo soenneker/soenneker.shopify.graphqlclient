@@ -16,7 +16,7 @@ public sealed partial class DeliverySetting
     public DeliveryLegacyModeBlocked LegacyModeBlocked { get; init; } = null!;
 
     /// <summary>
-    /// Enables legacy compatability mode for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
+    /// Enables legacy compatibility mode for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
     /// </summary>
     [JsonPropertyName("legacyModeProfiles")]
     public bool LegacyModeProfiles { get; init; }

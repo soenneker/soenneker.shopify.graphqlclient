@@ -17,7 +17,7 @@ public sealed partial class OrderAgreement : SalesAgreement
     public App? App { get; init; }
 
     /// <summary>
-    /// The date and time at which the agreement occured.
+    /// The date and time at which the agreement occurred.
     /// </summary>
     [JsonPropertyName("happenedAt")]
     public DateTimeOffset HappenedAt { get; init; }
@@ -35,7 +35,7 @@ public sealed partial class OrderAgreement : SalesAgreement
     public Order Order { get; init; } = null!;
 
     /// <summary>
-    /// The reason the agremeent was created.
+    /// The reason the agreement was created.
     /// </summary>
     [JsonPropertyName("reason")]
     public OrderActionType Reason { get; init; }

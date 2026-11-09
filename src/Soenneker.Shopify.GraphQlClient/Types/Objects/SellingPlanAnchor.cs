@@ -51,7 +51,7 @@ public sealed partial class SellingPlanAnchor
     public int? Month { get; init; }
 
     /// <summary>
-    /// Represents the anchor type, it can be one one of WEEKDAY, MONTHDAY, YEARDAY.
+    /// Represents the anchor type, it can be one of WEEKDAY, MONTHDAY, YEARDAY.
     /// </summary>
     [JsonPropertyName("type")]
     public SellingPlanAnchorType Type { get; init; }

@@ -18,7 +18,7 @@ public enum FulfillmentServiceType
     MANUAL,
 
     /// <summary>
-    /// Fullfillment by a third-party fulfillment service.
+    /// Fulfillment by a third-party fulfillment service.
     /// </summary>
     THIRDPARTY
 

@@ -23,7 +23,7 @@ public sealed partial class QuantityPriceBreak : Node
     public int MinimumQuantity { get; init; }
 
     /// <summary>
-    /// The price of variant after reaching the minimum quanity.
+    /// The price of variant after reaching the minimum quantity.
     /// </summary>
     [JsonPropertyName("price")]
     public MoneyV2 Price { get; init; } = null!;

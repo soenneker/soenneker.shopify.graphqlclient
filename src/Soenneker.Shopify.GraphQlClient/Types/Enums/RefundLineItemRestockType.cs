@@ -18,7 +18,7 @@ public enum RefundLineItemRestockType
     CANCEL,
 
     /// <summary>
-    /// Deprecated. The refund line item was restocked, without specifically beingidentified as a return or cancelation. This value is not accepted when creating new refunds.
+    /// Deprecated. The refund line item was restocked, without specifically being identified as a return or cancelation. This value is not accepted when creating new refunds.
     /// </summary>
     LEGACYRESTOCK,
 

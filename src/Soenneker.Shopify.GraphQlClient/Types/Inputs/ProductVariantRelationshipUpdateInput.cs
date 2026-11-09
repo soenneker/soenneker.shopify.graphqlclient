@@ -23,13 +23,13 @@ public sealed partial class ProductVariantRelationshipUpdateInput
     public string? ParentProductId { get; init; }
 
     /// <summary>
-    /// The product variants and associated quantitites to add to the product variant.
+    /// The product variants and associated quantities to add to the product variant.
     /// </summary>
     [JsonPropertyName("productVariantRelationshipsToCreate")]
     public List<ProductVariantGroupRelationshipInput>? ProductVariantRelationshipsToCreate { get; init; }
 
     /// <summary>
-    /// The product variants and associated quantitites to update in specified product variant.
+    /// The product variants and associated quantities to update in specified product variant.
     /// </summary>
     [JsonPropertyName("productVariantRelationshipsToUpdate")]
     public List<ProductVariantGroupRelationshipInput>? ProductVariantRelationshipsToUpdate { get; init; }

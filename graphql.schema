@@ -712,7 +712,7 @@ type AdditionalFeeSale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -754,7 +754,7 @@ type AdjustmentSale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -3419,7 +3419,7 @@ Order events can be divided into the following categories:
 - *Capture*: Includes whether the capture succeeded, failed, or is pending.
 - *Email*: Includes confirmation or cancellation of the order, as well as shipping.
 - *Fulfillment*: Includes whether the fulfillment succeeded, failed, or is pending. Also includes cancellation, restocking, and fulfillment updates.
-- *Order*: Includess the placement, confirmation, closing, re-opening, and cancellation of the order.
+- *Order*: Includes the placement, confirmation, closing, re-opening, and cancellation of the order.
 - *Refund*: Includes whether the refund succeeded, failed, or is pending.
 - *Sale*: Includes whether the sale succeeded, failed, or is pending.
 - *Void*: Includes whether the void succeeded, failed, or is pending.
@@ -3455,7 +3455,7 @@ Order events can be divided into the following categories:
 """
 type BasicEvent implements Event & Node {
   """
-  The action that occured.
+  The action that occurred.
   """
   action: String!
   """
@@ -4928,7 +4928,7 @@ type CalculatedDraftOrder {
   """
   subtotalPriceSet: MoneyBag!
   """
-  The list of of taxes lines charged for each line item and shipping line.
+  The list of taxes lines charged for each line item and shipping line.
   """
   taxLines: [TaxLine!]!
   """
@@ -10455,7 +10455,7 @@ enum CollectionRuleColumn {
   """
   An attribute evaluated based on the `compare_at_price` attribute of the product's variants.
   With `is_set` relation, the rule matches products with at least one variant with `compare_at_price` set.
-  With `is_not_set` relation, the rule matches matches products with at least one variant with `compare_at_price` not set.
+  With `is_not_set` relation, the rule matches products with at least one variant with `compare_at_price` not set.
   """
   IS_PRICE_REDUCED
   """
@@ -11105,7 +11105,7 @@ enum CombinedListingUpdateUserErrorCode {
   """
   PRODUCT_IS_ALREADY_A_CHILD
   """
-  Failed to remove mebmership due to invalid input.
+  Failed to remove membership due to invalid input.
   """
   PRODUCT_MEMBERSHIP_NOT_FOUND
   """
@@ -11346,7 +11346,7 @@ The comment includes information like the [`StaffMember`](https://shopify.dev/do
 """
 type CommentEvent implements Event & Node {
   """
-  The action that occured.
+  The action that occurred.
   """
   action: String!
   """
@@ -19017,7 +19017,7 @@ The read timeout for rate requests are dynamic, based on the number of requests 
 | Over 3000     | 3s         |
 
 > Note:
-> These values are upper limits and should not be interpretted as a goal to develop towards. Shopify is constantly evaluating the performance of the platform and working towards improving resilience as well as app capabilities. As such, these numbers may be adjusted outside of our normal versioning timelines.
+> These values are upper limits and should not be interpreted as a goal to develop towards. Shopify is constantly evaluating the performance of the platform and working towards improving resilience as well as app capabilities. As such, these numbers may be adjusted outside of our normal versioning timelines.
 
 ## Server-side caching of requests
 Shopify provides server-side caching to reduce the number of requests it makes. Any shipping rate request that identically matches the following fields will be retrieved from Shopify's cache of the initial response:
@@ -20684,7 +20684,7 @@ type DeliverySetting {
   """
   legacyModeBlocked: DeliveryLegacyModeBlocked!
   """
-  Enables legacy compatability mode for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
+  Enables legacy compatibility mode for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
   """
   legacyModeProfiles: Boolean!
 }
@@ -20694,7 +20694,7 @@ The input fields for shop-level delivery settings.
 """
 input DeliverySettingInput {
   """
-  Whether legacy compatability mode is enabled for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
+  Whether legacy compatibility mode is enabled for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
   """
   legacyModeProfiles: Boolean
 }
@@ -24884,7 +24884,7 @@ type DraftOrder implements CommentEventSubject & HasEvents & HasLocalizationExte
   """
   taxExempt: Boolean!
   """
-  The list of of taxes lines charged for each line item and shipping line.
+  The list of taxes lines charged for each line item and shipping line.
   """
   taxLines: [TaxLine!]!
   """
@@ -26067,7 +26067,7 @@ type DutySale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -26229,7 +26229,7 @@ enum ErrorsWebPixelUserErrorCode {
   """
   INVALID_SETTINGS
   """
-  An error occurred and the web pixel couldnt be deleted.
+  An error occurred and the web pixel couldn't be deleted.
   """
   UNABLE_TO_DELETE @deprecated(reason: "\u0060UNABLE_TO_DELETE\u0060 is deprecated. Use \u0060UNEXPECTED_ERROR\u0060 instead.")
   """
@@ -26260,7 +26260,7 @@ addition of a product.
 """
 interface Event {
   """
-  The action that occured.
+  The action that occurred.
   """
   action: String!
   """
@@ -26768,7 +26768,7 @@ type ExchangeV2LineItem {
   """
   fulfillmentService: FulfillmentService
   """
-  Indiciates if this line item is a gift card.
+  Indicates if this line item is a gift card.
   """
   giftCard: Boolean!
   """
@@ -26976,7 +26976,7 @@ type FeeSale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -29048,7 +29048,7 @@ type FulfillmentOrderAssignedLocation {
 }
 
 """
-The assigment status to be used to filter fulfillment orders.
+The assignment status to be used to filter fulfillment orders.
 """
 enum FulfillmentOrderAssignmentStatus {
   """
@@ -30608,7 +30608,7 @@ enum FulfillmentServiceType {
   """
   MANUAL
   """
-  Fullfillment by a third-party fulfillment service.
+  Fulfillment by a third-party fulfillment service.
   """
   THIRD_PARTY
 }
@@ -31585,7 +31585,7 @@ type GiftCardSale implements Sale {
   """
   lineItem: LineItem!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -34744,13 +34744,13 @@ Possible error codes that can be returned by `InventoryShipmentSetTrackingUserEr
 """
 enum InventoryShipmentSetTrackingUserErrorCode {
   """
-  The shipment was not found.
-  """
-  SHIPMENT_NOT_FOUND
-  """
   The URL is invalid.
   """
   INVALID_URL
+  """
+  The shipment was not found.
+  """
+  SHIPMENT_NOT_FOUND
 }
 
 """
@@ -35433,10 +35433,6 @@ enum InventoryTransferDuplicateUserErrorCode {
   """
   TRANSFER_NOT_FOUND
   """
-  The quantity is invalid.
-  """
-  INVALID_QUANTITY
-  """
   This request is currently in progress, please try again.
   """
   IDEMPOTENCY_CONCURRENT_REQUEST
@@ -35448,6 +35444,10 @@ enum InventoryTransferDuplicateUserErrorCode {
   The same idempotency key cannot be used with different operation parameters.
   """
   IDEMPOTENCY_KEY_PARAMETER_MISMATCH
+  """
+  The quantity is invalid.
+  """
+  INVALID_QUANTITY
 }
 
 """
@@ -36643,7 +36643,7 @@ type LimitedPendingOrderCount {
   """
   atMax: Boolean!
   """
-  The number of pendings orders on the shop.
+  The number of pending orders on the shop.
   Limited to a maximum of 10000.
   """
   count: Int!
@@ -41422,7 +41422,7 @@ type MarketingEngagement {
   """
   impressionsCount: Int
   """
-  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
+  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occurredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occurredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
   """
   isCumulative: Boolean! @deprecated(reason: "Cumulative metrics are being phased out. Send non-cumulative engagement metrics instead (values aggregated over the single day indicated in \u0060occurredOn\u0060, with \u0060isCumulative: false\u0060). Existing activities that have been sending cumulative metrics can migrate to non-cumulative at any time.")
   """
@@ -41558,7 +41558,7 @@ input MarketingEngagementInput {
   """
   adSpend: MoneyInput
   """
-  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occuredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occuredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
+  Specifies how the provided metrics have been aggregated. Cumulative metrics are aggregated from the first day of reporting up to and including `occurredOn`. Non-cumulative metrics are aggregated over the single day indicated in `occurredOn`. Cumulative metrics will monotonically increase in time as each record includes the previous day's values, and so on. Non-cumulative metrics are required going forward; cumulative metrics are deprecated.
   """
   isCumulative: Boolean!
   """
@@ -42055,7 +42055,7 @@ Error types for media.
 """
 enum MediaErrorCode {
   """
-  Media error has occured for unknown reason.
+  Media error has occurred for unknown reason.
   """
   UNKNOWN
   """
@@ -45972,7 +45972,7 @@ type MetaobjectThumbnail {
   """
   file: File
   """
-  The hexadecimal color code to be used for respresenting this metaobject.
+  The hexadecimal color code to be used for representing this metaobject.
   """
   hex: String
 }
@@ -46217,6 +46217,10 @@ enum MetaobjectUserErrorCode {
 The set of valid sort keys for the MethodDefinition query.
 """
 enum MethodDefinitionSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -50022,7 +50026,7 @@ type Mutation {
   quantityPricingByVariantUpdate(priceListId: ID!, input: QuantityPricingByVariantUpdateInput!): QuantityPricingByVariantUpdatePayload
   """
   Creates or updates existing quantity rules on a price list.
-  You can use the `quantityRulesAdd` mutation to set order level minimums, maximumums and increments for specific product variants.
+  You can use the `quantityRulesAdd` mutation to set order level minimums, maximums and increments for specific product variants.
   """
   quantityRulesAdd(priceListId: ID!, quantityRules: [QuantityRuleInput!]!): QuantityRulesAddPayload
   """
@@ -50349,7 +50353,7 @@ type Mutation {
   """
   shopifyPaymentsPayoutAlternateCurrencyCreate(accountId: ID, currency: CurrencyCode!): ShopifyPaymentsPayoutAlternateCurrencyCreatePayload
   """
-  Generates the URL and signed paramaters needed to upload an asset to Shopify.
+  Generates the URL and signed parameters needed to upload an asset to Shopify.
   """
   stagedUploadTargetGenerate(input: StagedUploadTargetGenerateInput!): StagedUploadTargetGeneratePayload @deprecated(reason: "Use \u0060stagedUploadsCreate\u0060 instead.")
   """
@@ -52353,7 +52357,7 @@ type OrderAgreement implements SalesAgreement {
   """
   app: App
   """
-  The date and time at which the agreement occured.
+  The date and time at which the agreement occurred.
   """
   happenedAt: DateTime!
   """
@@ -52365,7 +52369,7 @@ type OrderAgreement implements SalesAgreement {
   """
   order: Order!
   """
-  The reason the agremeent was created.
+  The reason the agreement was created.
   """
   reason: OrderActionType!
   """
@@ -53551,7 +53555,7 @@ enum OrderCustomerRemoveUserErrorCode {
   """
   INVALID
   """
-  An error ocurred while saving the order.
+  An error occurred while saving the order.
   """
   NOT_SAVED
 }
@@ -53601,7 +53605,7 @@ enum OrderCustomerSetUserErrorCode {
   """
   INVALID
   """
-  An error ocurred while saving the order.
+  An error occurred while saving the order.
   """
   NOT_SAVED
   """
@@ -53919,7 +53923,7 @@ type OrderEditAgreement implements SalesAgreement {
   """
   app: App
   """
-  The date and time at which the agreement occured.
+  The date and time at which the agreement occurred.
   """
   happenedAt: DateTime!
   """
@@ -53927,7 +53931,7 @@ type OrderEditAgreement implements SalesAgreement {
   """
   id: ID!
   """
-  The reason the agremeent was created.
+  The reason the agreement was created.
   """
   reason: OrderActionType!
   """
@@ -53985,7 +53989,7 @@ type OrderEditCommitPayload {
   """
   order: Order
   """
-  Messages to display to the user after the staged changes are commmitted.
+  Messages to display to the user after the staged changes are committed.
   """
   successMessages: [String!]
   """
@@ -56765,7 +56769,7 @@ input PriceInput {
   """
   calculation: PriceCalculationType
   """
-  The price of the parent product variant. This will be be used if calcualtion is set to 'FIXED'.
+  The price of the parent product variant. This will be used if calculation is set to 'FIXED'.
   """
   price: Money
 }
@@ -61850,7 +61854,7 @@ type ProductSale implements Sale {
   """
   lineItem: LineItem!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -63172,11 +63176,11 @@ input ProductVariantRelationshipUpdateInput {
   """
   parentProductId: ID
   """
-  The product variants and associated quantitites to add to the product variant.
+  The product variants and associated quantities to add to the product variant.
   """
   productVariantRelationshipsToCreate: [ProductVariantGroupRelationshipInput!] = null
   """
-  The product variants and associated quantitites to update in specified product variant.
+  The product variants and associated quantities to update in specified product variant.
   """
   productVariantRelationshipsToUpdate: [ProductVariantGroupRelationshipInput!] = null
   """
@@ -64548,7 +64552,7 @@ type QuantityPriceBreak implements Node {
   """
   minimumQuantity: Int!
   """
-  The price of variant after reaching the minimum quanity.
+  The price of variant after reaching the minimum quantity.
   """
   price: MoneyV2!
   """
@@ -64732,15 +64736,15 @@ enum QuantityPricingByVariantUserErrorCode {
   """
   QUANTITY_PRICE_BREAK_ADD_FAILED_TO_SAVE
   """
-  Quantity price break miniumum is less than the quantity rule minimum.
+  Quantity price break minimum is less than the quantity rule minimum.
   """
   QUANTITY_PRICE_BREAK_ADD_MIN_LOWER_THAN_QUANTITY_RULES_MIN
   """
-  Quantity price break miniumum is higher than the quantity rule maximum.
+  Quantity price break minimum is higher than the quantity rule maximum.
   """
   QUANTITY_PRICE_BREAK_ADD_MIN_HIGHER_THAN_QUANTITY_RULES_MAX
   """
-  Quantity price break miniumum is not multiple of the quantity rule increment.
+  Quantity price break minimum is not multiple of the quantity rule increment.
   """
   QUANTITY_PRICE_BREAK_ADD_MIN_NOT_A_MULTIPLE_OF_QUANTITY_RULES_INCREMENT
   """
@@ -66076,7 +66080,7 @@ type QueryRoot {
   """
   paymentTermsTemplates(paymentTermsType: PaymentTermsType): [PaymentTermsTemplate!]!
   """
-  The number of pendings orders. Limited to a maximum of 10000.
+  The number of pending orders. Limited to a maximum of 10000.
   """
   pendingOrdersCount: Count
   """
@@ -66783,7 +66787,7 @@ type RefundAgreement implements SalesAgreement {
   """
   app: App
   """
-  The date and time at which the agreement occured.
+  The date and time at which the agreement occurred.
   """
   happenedAt: DateTime!
   """
@@ -66791,7 +66795,7 @@ type RefundAgreement implements SalesAgreement {
   """
   id: ID!
   """
-  The reason the agremeent was created.
+  The reason the agreement was created.
   """
   reason: OrderActionType!
   """
@@ -67077,7 +67081,7 @@ enum RefundLineItemRestockType {
   """
   CANCEL
   """
-  Deprecated. The refund line item was restocked, without specifically beingidentified as a return or cancelation. This value is not accepted when creating new refunds.
+  Deprecated. The refund line item was restocked, without specifically being identified as a return or cancelation. This value is not accepted when creating new refunds.
   """
   LEGACY_RESTOCK
   """
@@ -67746,7 +67750,7 @@ type ReturnAgreement implements SalesAgreement {
   """
   app: App
   """
-  The date and time at which the agreement occured.
+  The date and time at which the agreement occurred.
   """
   happenedAt: DateTime!
   """
@@ -67754,7 +67758,7 @@ type ReturnAgreement implements SalesAgreement {
   """
   id: ID!
   """
-  The reason the agremeent was created.
+  The reason the agreement was created.
   """
   reason: OrderActionType!
   """
@@ -69498,7 +69502,7 @@ interface Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -69672,7 +69676,7 @@ interface SalesAgreement {
   """
   app: App
   """
-  The date and time at which the agreement occured.
+  The date and time at which the agreement occurred.
   """
   happenedAt: DateTime!
   """
@@ -69680,7 +69684,7 @@ interface SalesAgreement {
   """
   id: ID!
   """
-  The reason the agremeent was created.
+  The reason the agreement was created.
   """
   reason: OrderActionType!
   """
@@ -70403,7 +70407,7 @@ type SegmentEnumFilter implements SegmentFilter {
 }
 
 """
-A filter that's used to segment customers based on the date that an event occured. For example, the `product_bought` event filter allows you to segment customers based on what products they've bought.
+A filter that's used to segment customers based on the date that an event occurred. For example, the `product_bought` event filter allows you to segment customers based on what products they've bought.
 """
 type SegmentEventFilter implements SegmentFilter {
   """
@@ -70911,7 +70915,7 @@ type SellingPlanAnchor {
   """
   month: Int
   """
-  Represents the anchor type, it can be one one of WEEKDAY, MONTHDAY, YEARDAY.
+  Represents the anchor type, it can be one of WEEKDAY, MONTHDAY, YEARDAY.
   """
   type: SellingPlanAnchorType!
 }
@@ -71261,7 +71265,7 @@ enum SellingPlanFixedDeliveryPolicyIntent {
 }
 
 """
-The fulfillment or delivery behavior of the first fulfillment when the orderis placed before the anchor.
+The fulfillment or delivery behavior of the first fulfillment when the order is placed before the anchor.
 """
 enum SellingPlanFixedDeliveryPolicyPreAnchorBehavior {
   """
@@ -72228,7 +72232,7 @@ enum SellingPlanRecurringDeliveryPolicyIntent {
 }
 
 """
-The fulfillment or delivery behaviors of the first fulfillment when the orderis placed before the anchor.
+The fulfillment or delivery behaviors of the first fulfillment when the order is placed before the anchor.
 """
 enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior {
   """
@@ -72572,7 +72576,7 @@ type ShippingLineSale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -72886,7 +72890,7 @@ type Shop implements HasMetafieldDefinitions & HasMetafields & HasPublishedTrans
   """
   inventoryItems(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, query: String): InventoryItemConnection! @deprecated(reason: "Use \u0060QueryRoot.inventoryItems\u0060 instead.")
   """
-  The number of pendings orders on the shop.
+  The number of pending orders on the shop.
   Limited to a maximum of 10000.
   """
   limitedPendingOrderCount: LimitedPendingOrderCount! @deprecated(reason: "Use \u0060QueryRoot.pendingOrdersCount\u0060 instead.")
@@ -72986,7 +72990,7 @@ type Shop implements HasMetafieldDefinitions & HasMetafields & HasPublishedTrans
   """
   publicationCount: Int! @deprecated(reason: "Use \u0060QueryRoot.publicationsCount\u0060 instead.")
   """
-  The shop's limits for specific resources. For example, the maximum number ofvariants allowed per product, or the maximum number of locations allowed.
+  The shop's limits for specific resources. For example, the maximum number of variants allowed per product, or the maximum number of locations allowed.
   """
   resourceLimits: ShopResourceLimits!
   """
@@ -72998,7 +73002,7 @@ type Shop implements HasMetafieldDefinitions & HasMetafields & HasPublishedTrans
   """
   search(query: String!, types: [SearchResultType!], first: Int!, after: String): SearchResultConnection!
   """
-  The list of search filter options for the shop. These can be used to filter productvisibility for the shop.
+  The list of search filter options for the shop. These can be used to filter product visibility for the shop.
   """
   searchFilters: SearchFilterOptions!
   """
@@ -74401,7 +74405,7 @@ type ShopifyPaymentsBalanceTransaction implements Node {
   """
   associatedOrder: ShopifyPaymentsAssociatedOrder
   """
-  Payout assoicated with the transaction.
+  Payout associated with the transaction.
   """
   associatedPayout: ShopifyPaymentsBalanceTransactionAssociatedPayout!
   """
@@ -74432,7 +74436,7 @@ type ShopifyPaymentsBalanceTransaction implements Node {
   """
   sourceType: ShopifyPaymentsSourceType
   """
-  Wether the tranaction was created in test mode.
+  Whether the transaction was created in test mode.
   """
   test: Boolean!
   """
@@ -77241,7 +77245,7 @@ type StoreCreditAccountCreditTransaction implements Node & StoreCreditAccountTra
   """
   The remaining amount of the credit.
   The remaining amount will decrease when a debit spends this credit. It may also increase if that debit is subsequently reverted.
-  In the event that the credit expires, the remaining amount will represent the amount that remained as the expiry ocurred.
+  In the event that the credit expires, the remaining amount will represent the amount that remained as the expiry occurred.
   """
   remainingAmount: MoneyV2!
 }
@@ -79373,7 +79377,7 @@ enum SubscriptionContractSubscriptionStatus {
   """
   CANCELLED
   """
-  The contract has ended per the expected circumstances. All billing and deliverycycles of the subscriptions were executed.
+  The contract has ended per the expected circumstances. All billing and delivery cycles of the subscriptions were executed.
   """
   EXPIRED
   """
@@ -81839,7 +81843,7 @@ type Taxonomy {
   If a `search` argument is provided, then all categories that match the search query globally are returned.
   If a `children_of` argument is provided, then all children of the specified category are returned.
   If a `siblings_of` argument is provided, then all siblings of the specified category are returned.
-  If a `decendents_of` argument is provided, then all descendents of the specified category are returned.
+  If a `descendants_of` argument is provided, then all descendents of the specified category are returned.
   If no arguments are provided, then all the top-level categories of the taxonomy are returned.
   """
   categories(search: String, childrenOf: ID, siblingsOf: ID, descendantsOf: ID, first: Int, after: String, last: Int, before: String): TaxonomyCategoryConnection!
@@ -82507,7 +82511,7 @@ type TipSale implements Sale {
   """
   lineItem: LineItem!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -83372,7 +83376,7 @@ type UnknownSale implements Sale {
   """
   id: ID!
   """
-  The line type assocated with the sale.
+  The line type associated with the sale.
   """
   lineType: SaleLineType!
   """
@@ -85301,7 +85305,7 @@ enum WebhookSubscriptionTopic {
   """
   TAX_SERVICES_CREATE
   """
-  The webhook topic for `tax_services/update` events. Occurs whenver a tax service is updated. Requires the `read_taxes` scope.
+  The webhook topic for `tax_services/update` events. Occurs whenever a tax service is updated. Requires the `read_taxes` scope.
   """
   TAX_SERVICES_UPDATE
   """
@@ -85457,7 +85461,7 @@ enum WebhookSubscriptionTopic {
   """
   SUBSCRIPTION_BILLING_ATTEMPTS_FAILURE
   """
-  The webhook topic for `subscription_billing_attempts/challenged` events. Occurs when the financial instutition challenges the subscripttion billing attempt charge as per 3D Secure. Requires the `read_own_subscription_contracts` scope.
+  The webhook topic for `subscription_billing_attempts/challenged` events. Occurs when the financial institution challenges the subscription billing attempt charge as per 3D Secure. Requires the `read_own_subscription_contracts` scope.
   """
   SUBSCRIPTION_BILLING_ATTEMPTS_CHALLENGED
   """

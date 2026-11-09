@@ -238,7 +238,7 @@ public sealed partial class Shop : HasMetafieldDefinitions, HasMetafields, HasPu
     public InventoryItemConnection InventoryItems { get; init; } = null!;
 
     /// <summary>
-    /// The number of pendings orders on the shop.
+    /// The number of pending orders on the shop.
     /// Limited to a maximum of 10000.
     /// </summary>
     [JsonPropertyName("limitedPendingOrderCount")]
@@ -386,7 +386,7 @@ public sealed partial class Shop : HasMetafieldDefinitions, HasMetafields, HasPu
     public int PublicationCount { get; init; }
 
     /// <summary>
-    /// The shop's limits for specific resources. For example, the maximum number ofvariants allowed per product, or the maximum number of locations allowed.
+    /// The shop's limits for specific resources. For example, the maximum number of variants allowed per product, or the maximum number of locations allowed.
     /// </summary>
     [JsonPropertyName("resourceLimits")]
     public ShopResourceLimits ResourceLimits { get; init; } = null!;
@@ -404,7 +404,7 @@ public sealed partial class Shop : HasMetafieldDefinitions, HasMetafields, HasPu
     public SearchResultConnection Search { get; init; } = null!;
 
     /// <summary>
-    /// The list of search filter options for the shop. These can be used to filter productvisibility for the shop.
+    /// The list of search filter options for the shop. These can be used to filter product visibility for the shop.
     /// </summary>
     [JsonPropertyName("searchFilters")]
     public SearchFilterOptions SearchFilters { get; init; } = null!;

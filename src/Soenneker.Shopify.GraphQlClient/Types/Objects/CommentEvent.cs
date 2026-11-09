@@ -14,7 +14,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CommentEvent : Event, Node
 {
     /// <summary>
-    /// The action that occured.
+    /// The action that occurred.
     /// </summary>
     [JsonPropertyName("action")]
     public string Action { get; init; } = null!;

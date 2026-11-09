@@ -13,11 +13,6 @@ public enum InventoryTransferDuplicateUserErrorCode
     TRANSFERNOTFOUND,
 
     /// <summary>
-    /// The quantity is invalid.
-    /// </summary>
-    INVALIDQUANTITY,
-
-    /// <summary>
     /// This request is currently in progress, please try again.
     /// </summary>
     IDEMPOTENCYCONCURRENTREQUEST,
@@ -30,6 +25,11 @@ public enum InventoryTransferDuplicateUserErrorCode
     /// <summary>
     /// The same idempotency key cannot be used with different operation parameters.
     /// </summary>
-    IDEMPOTENCYKEYPARAMETERMISMATCH
+    IDEMPOTENCYKEYPARAMETERMISMATCH,
+
+    /// <summary>
+    /// The quantity is invalid.
+    /// </summary>
+    INVALIDQUANTITY
 
 }

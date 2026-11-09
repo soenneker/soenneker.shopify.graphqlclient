@@ -146,7 +146,7 @@ public sealed partial class CalculatedDraftOrder
     public MoneyBag SubtotalPriceSet { get; init; } = null!;
 
     /// <summary>
-    /// The list of of taxes lines charged for each line item and shipping line.
+    /// The list of taxes lines charged for each line item and shipping line.
     /// </summary>
     [JsonPropertyName("taxLines")]
     public List<TaxLine> TaxLines { get; init; } = [];

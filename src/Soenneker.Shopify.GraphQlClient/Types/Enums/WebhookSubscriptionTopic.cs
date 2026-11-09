@@ -509,7 +509,7 @@ public enum WebhookSubscriptionTopic
     TAXSERVICESCREATE,
 
     /// <summary>
-    /// The webhook topic for `tax_services/update` events. Occurs whenver a tax service is updated. Requires the `read_taxes` scope.
+    /// The webhook topic for `tax_services/update` events. Occurs whenever a tax service is updated. Requires the `read_taxes` scope.
     /// </summary>
     TAXSERVICESUPDATE,
 
@@ -704,7 +704,7 @@ public enum WebhookSubscriptionTopic
     SUBSCRIPTIONBILLINGATTEMPTSFAILURE,
 
     /// <summary>
-    /// The webhook topic for `subscription_billing_attempts/challenged` events. Occurs when the financial instutition challenges the subscripttion billing attempt charge as per 3D Secure. Requires the `read_own_subscription_contracts` scope.
+    /// The webhook topic for `subscription_billing_attempts/challenged` events. Occurs when the financial institution challenges the subscription billing attempt charge as per 3D Secure. Requires the `read_own_subscription_contracts` scope.
     /// </summary>
     SUBSCRIPTIONBILLINGATTEMPTSCHALLENGED,
 

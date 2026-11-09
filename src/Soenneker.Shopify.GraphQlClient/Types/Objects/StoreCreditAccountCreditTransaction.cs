@@ -62,7 +62,7 @@ public sealed partial class StoreCreditAccountCreditTransaction : Node, StoreCre
     /// <summary>
     /// The remaining amount of the credit.
     /// The remaining amount will decrease when a debit spends this credit. It may also increase if that debit is subsequently reverted.
-    /// In the event that the credit expires, the remaining amount will represent the amount that remained as the expiry ocurred.
+    /// In the event that the credit expires, the remaining amount will represent the amount that remained as the expiry occurred.
     /// </summary>
     [JsonPropertyName("remainingAmount")]
     public MoneyV2 RemainingAmount { get; init; } = null!;

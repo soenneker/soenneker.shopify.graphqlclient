@@ -148,7 +148,7 @@ public enum CombinedListingUpdateUserErrorCode
     PRODUCTISALREADYACHILD,
 
     /// <summary>
-    /// Failed to remove mebmership due to invalid input.
+    /// Failed to remove membership due to invalid input.
     /// </summary>
     PRODUCTMEMBERSHIPNOTFOUND,
 

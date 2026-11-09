@@ -17,7 +17,7 @@ public sealed partial class OrderEditCommitPayload
     public Order? Order { get; init; }
 
     /// <summary>
-    /// Messages to display to the user after the staged changes are commmitted.
+    /// Messages to display to the user after the staged changes are committed.
     /// </summary>
     [JsonPropertyName("successMessages")]
     public List<string>? SuccessMessages { get; init; }

@@ -53,7 +53,7 @@ public enum CollectionRuleColumn
     /// <summary>
     /// An attribute evaluated based on the `compare_at_price` attribute of the product's variants.
     /// With `is_set` relation, the rule matches products with at least one variant with `compare_at_price` set.
-    /// With `is_not_set` relation, the rule matches matches products with at least one variant with `compare_at_price` not set.
+    /// With `is_not_set` relation, the rule matches products with at least one variant with `compare_at_price` not set.
     /// </summary>
     ISPRICEREDUCED,
 

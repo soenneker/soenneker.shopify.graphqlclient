@@ -20,7 +20,7 @@ public interface Sale
     string Id { get; }
 
     /// <summary>
-    /// The line type assocated with the sale.
+    /// The line type associated with the sale.
     /// </summary>
     SaleLineType LineType { get; }
 

@@ -18,7 +18,7 @@ public enum OrderCustomerRemoveUserErrorCode
     INVALID,
 
     /// <summary>
-    /// An error ocurred while saving the order.
+    /// An error occurred while saving the order.
     /// </summary>
     NOTSAVED
 

@@ -27,7 +27,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// - *Capture*: Includes whether the capture succeeded, failed, or is pending.
 /// - *Email*: Includes confirmation or cancellation of the order, as well as shipping.
 /// - *Fulfillment*: Includes whether the fulfillment succeeded, failed, or is pending. Also includes cancellation, restocking, and fulfillment updates.
-/// - *Order*: Includess the placement, confirmation, closing, re-opening, and cancellation of the order.
+/// - *Order*: Includes the placement, confirmation, closing, re-opening, and cancellation of the order.
 /// - *Refund*: Includes whether the refund succeeded, failed, or is pending.
 /// - *Sale*: Includes whether the sale succeeded, failed, or is pending.
 /// - *Void*: Includes whether the void succeeded, failed, or is pending.
@@ -64,7 +64,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class BasicEvent : Event, Node
 {
     /// <summary>
-    /// The action that occured.
+    /// The action that occurred.
     /// </summary>
     [JsonPropertyName("action")]
     public string Action { get; init; } = null!;

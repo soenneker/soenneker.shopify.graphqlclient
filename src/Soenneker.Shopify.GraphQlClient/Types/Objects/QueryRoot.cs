@@ -1376,7 +1376,7 @@ public sealed partial class QueryRoot
     public List<PaymentTermsTemplate> PaymentTermsTemplates { get; init; } = [];
 
     /// <summary>
-    /// The number of pendings orders. Limited to a maximum of 10000.
+    /// The number of pending orders. Limited to a maximum of 10000.
     /// </summary>
     [JsonPropertyName("pendingOrdersCount")]
     public Count? PendingOrdersCount { get; init; }

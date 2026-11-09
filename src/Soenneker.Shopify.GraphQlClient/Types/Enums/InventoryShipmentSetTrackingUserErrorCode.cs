@@ -8,13 +8,13 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryShipmentSetTrackingUserErrorCode
 {
     /// <summary>
-    /// The shipment was not found.
-    /// </summary>
-    SHIPMENTNOTFOUND,
-
-    /// <summary>
     /// The URL is invalid.
     /// </summary>
-    INVALIDURL
+    INVALIDURL,
+
+    /// <summary>
+    /// The shipment was not found.
+    /// </summary>
+    SHIPMENTNOTFOUND
 
 }

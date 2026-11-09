@@ -8,7 +8,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum MediaErrorCode
 {
     /// <summary>
-    /// Media error has occured for unknown reason.
+    /// Media error has occurred for unknown reason.
     /// </summary>
     UNKNOWN,
 

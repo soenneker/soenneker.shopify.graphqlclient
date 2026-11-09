@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class DeliverySettingInput
 {
     /// <summary>
-    /// Whether legacy compatability mode is enabled for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
+    /// Whether legacy compatibility mode is enabled for the multi-location delivery profiles feature. Note: this field is effectively deprecated and will be removed in a future version of the API.
     /// </summary>
     [JsonPropertyName("legacyModeProfiles")]
     public bool? LegacyModeProfiles { get; init; }

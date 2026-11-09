@@ -41,7 +41,7 @@ public sealed partial class ExchangeV2LineItem
     public FulfillmentService? FulfillmentService { get; init; }
 
     /// <summary>
-    /// Indiciates if this line item is a gift card.
+    /// Indicates if this line item is a gift card.
     /// </summary>
     [JsonPropertyName("giftCard")]
     public bool GiftCard { get; init; }

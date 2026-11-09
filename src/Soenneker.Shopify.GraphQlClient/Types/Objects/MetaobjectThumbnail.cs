@@ -16,7 +16,7 @@ public sealed partial class MetaobjectThumbnail
     public File? File { get; init; }
 
     /// <summary>
-    /// The hexadecimal color code to be used for respresenting this metaobject.
+    /// The hexadecimal color code to be used for representing this metaobject.
     /// </summary>
     [JsonPropertyName("hex")]
     public string? Hex { get; init; }

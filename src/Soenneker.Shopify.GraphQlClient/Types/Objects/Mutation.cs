@@ -4108,7 +4108,7 @@ public sealed partial class Mutation
 
     /// <summary>
     /// Creates or updates existing quantity rules on a price list.
-    /// You can use the `quantityRulesAdd` mutation to set order level minimums, maximumums and increments for specific product variants.
+    /// You can use the `quantityRulesAdd` mutation to set order level minimums, maximums and increments for specific product variants.
     /// </summary>
     [JsonPropertyName("quantityRulesAdd")]
     public QuantityRulesAddPayload? QuantityRulesAdd { get; init; }
@@ -4523,7 +4523,7 @@ public sealed partial class Mutation
     public ShopifyPaymentsPayoutAlternateCurrencyCreatePayload? ShopifyPaymentsPayoutAlternateCurrencyCreate { get; init; }
 
     /// <summary>
-    /// Generates the URL and signed paramaters needed to upload an asset to Shopify.
+    /// Generates the URL and signed parameters needed to upload an asset to Shopify.
     /// </summary>
     [JsonPropertyName("stagedUploadTargetGenerate")]
     public StagedUploadTargetGeneratePayload? StagedUploadTargetGenerate { get; init; }

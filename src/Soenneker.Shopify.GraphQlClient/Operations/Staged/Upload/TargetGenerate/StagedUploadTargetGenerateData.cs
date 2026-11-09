@@ -10,7 +10,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class StagedUploadTargetGenerateData
 {
     /// <summary>
-    /// Generates the URL and signed paramaters needed to upload an asset to Shopify.
+    /// Generates the URL and signed parameters needed to upload an asset to Shopify.
     /// </summary>
     [JsonPropertyName("stagedUploadTargetGenerate")]
     public StagedUploadTargetGeneratePayload? StagedUploadTargetGenerate { get; init; }

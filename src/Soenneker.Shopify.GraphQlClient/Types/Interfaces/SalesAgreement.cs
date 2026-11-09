@@ -15,7 +15,7 @@ public interface SalesAgreement
     App? App { get; }
 
     /// <summary>
-    /// The date and time at which the agreement occured.
+    /// The date and time at which the agreement occurred.
     /// </summary>
     DateTimeOffset HappenedAt { get; }
 
@@ -25,7 +25,7 @@ public interface SalesAgreement
     string Id { get; }
 
     /// <summary>
-    /// The reason the agremeent was created.
+    /// The reason the agreement was created.
     /// </summary>
     OrderActionType Reason { get; }
 

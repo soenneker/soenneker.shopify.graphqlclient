@@ -37,7 +37,7 @@ public sealed partial class ShopifyPaymentsBalanceTransaction : Node
     public ShopifyPaymentsAssociatedOrder? AssociatedOrder { get; init; }
 
     /// <summary>
-    /// Payout assoicated with the transaction.
+    /// Payout associated with the transaction.
     /// </summary>
     [JsonPropertyName("associatedPayout")]
     public ShopifyPaymentsBalanceTransactionAssociatedPayout AssociatedPayout { get; init; } = null!;
@@ -82,7 +82,7 @@ public sealed partial class ShopifyPaymentsBalanceTransaction : Node
     public ShopifyPaymentsSourceType? SourceType { get; init; }
 
     /// <summary>
-    /// Wether the tranaction was created in test mode.
+    /// Whether the transaction was created in test mode.
     /// </summary>
     [JsonPropertyName("test")]
     public bool Test { get; init; }

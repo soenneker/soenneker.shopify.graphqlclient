@@ -48,17 +48,17 @@ public enum QuantityPricingByVariantUserErrorCode
     QUANTITYPRICEBREAKADDFAILEDTOSAVE,
 
     /// <summary>
-    /// Quantity price break miniumum is less than the quantity rule minimum.
+    /// Quantity price break minimum is less than the quantity rule minimum.
     /// </summary>
     QUANTITYPRICEBREAKADDMINLOWERTHANQUANTITYRULESMIN,
 
     /// <summary>
-    /// Quantity price break miniumum is higher than the quantity rule maximum.
+    /// Quantity price break minimum is higher than the quantity rule maximum.
     /// </summary>
     QUANTITYPRICEBREAKADDMINHIGHERTHANQUANTITYRULESMAX,
 
     /// <summary>
-    /// Quantity price break miniumum is not multiple of the quantity rule increment.
+    /// Quantity price break minimum is not multiple of the quantity rule increment.
     /// </summary>
     QUANTITYPRICEBREAKADDMINNOTAMULTIPLEOFQUANTITYRULESINCREMENT,
 

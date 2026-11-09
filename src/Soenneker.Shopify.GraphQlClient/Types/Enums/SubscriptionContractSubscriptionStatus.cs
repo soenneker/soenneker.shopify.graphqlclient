@@ -23,7 +23,7 @@ public enum SubscriptionContractSubscriptionStatus
     CANCELLED,
 
     /// <summary>
-    /// The contract has ended per the expected circumstances. All billing and deliverycycles of the subscriptions were executed.
+    /// The contract has ended per the expected circumstances. All billing and delivery cycles of the subscriptions were executed.
     /// </summary>
     EXPIRED,
 

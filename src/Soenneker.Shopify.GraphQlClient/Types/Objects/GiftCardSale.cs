@@ -29,7 +29,7 @@ public sealed partial class GiftCardSale : Sale
     public LineItem LineItem { get; init; } = null!;
 
     /// <summary>
-    /// The line type assocated with the sale.
+    /// The line type associated with the sale.
     /// </summary>
     [JsonPropertyName("lineType")]
     public SaleLineType LineType { get; init; }

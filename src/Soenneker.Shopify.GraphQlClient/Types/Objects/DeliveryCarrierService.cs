@@ -175,7 +175,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// | Over 3000     | 3s         |
 /// 
 /// &gt; Note:
-/// &gt; These values are upper limits and should not be interpretted as a goal to develop towards. Shopify is constantly evaluating the performance of the platform and working towards improving resilience as well as app capabilities. As such, these numbers may be adjusted outside of our normal versioning timelines.
+/// &gt; These values are upper limits and should not be interpreted as a goal to develop towards. Shopify is constantly evaluating the performance of the platform and working towards improving resilience as well as app capabilities. As such, these numbers may be adjusted outside of our normal versioning timelines.
 /// 
 /// ## Server-side caching of requests
 /// Shopify provides server-side caching to reduce the number of requests it makes. Any shipping rate request that identically matches the following fields will be retrieved from Shopify's cache of the initial response:

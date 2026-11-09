@@ -11,7 +11,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public interface Event
 {
     /// <summary>
-    /// The action that occured.
+    /// The action that occurred.
     /// </summary>
     string Action { get; }
 

@@ -11,7 +11,7 @@ public sealed partial class QuantityRulesAddData
 {
     /// <summary>
     /// Creates or updates existing quantity rules on a price list.
-    /// You can use the `quantityRulesAdd` mutation to set order level minimums, maximumums and increments for specific product variants.
+    /// You can use the `quantityRulesAdd` mutation to set order level minimums, maximums and increments for specific product variants.
     /// </summary>
     [JsonPropertyName("quantityRulesAdd")]
     public QuantityRulesAddPayload? QuantityRulesAdd { get; init; }

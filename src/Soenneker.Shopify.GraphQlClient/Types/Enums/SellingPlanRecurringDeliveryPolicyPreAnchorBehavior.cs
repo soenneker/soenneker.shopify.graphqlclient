@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The fulfillment or delivery behaviors of the first fulfillment when the orderis placed before the anchor.
+/// The fulfillment or delivery behaviors of the first fulfillment when the order is placed before the anchor.
 /// </summary>
 public enum SellingPlanRecurringDeliveryPolicyPreAnchorBehavior
 {

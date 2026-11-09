@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// A filter that's used to segment customers based on the date that an event occured. For example, the `product_bought` event filter allows you to segment customers based on what products they've bought.
+/// A filter that's used to segment customers based on the date that an event occurred. For example, the `product_bought` event filter allows you to segment customers based on what products they've bought.
 /// </summary>
 public sealed partial class SegmentEventFilter : SegmentFilter
 {

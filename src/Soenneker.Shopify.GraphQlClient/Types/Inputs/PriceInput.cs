@@ -17,7 +17,7 @@ public sealed partial class PriceInput
     public PriceCalculationType? Calculation { get; init; }
 
     /// <summary>
-    /// The price of the parent product variant. This will be be used if calcualtion is set to 'FIXED'.
+    /// The price of the parent product variant. This will be used if calculation is set to 'FIXED'.
     /// </summary>
     [JsonPropertyName("price")]
     public string? Price { get; init; }

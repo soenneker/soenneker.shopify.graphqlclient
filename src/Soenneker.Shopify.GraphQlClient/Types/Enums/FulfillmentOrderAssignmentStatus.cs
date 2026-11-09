@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The assigment status to be used to filter fulfillment orders.
+/// The assignment status to be used to filter fulfillment orders.
 /// </summary>
 public enum FulfillmentOrderAssignmentStatus
 {

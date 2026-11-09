@@ -28,7 +28,7 @@ public enum ErrorsWebPixelUserErrorCode
     INVALIDSETTINGS,
 
     /// <summary>
-    /// An error occurred and the web pixel couldnt be deleted.
+    /// An error occurred and the web pixel couldn't be deleted.
     /// </summary>
     UNABLETODELETE,
 
