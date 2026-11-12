@@ -18,7 +18,7 @@ public enum CustomerState
     DISABLED,
 
     /// <summary>
-    /// The customer has created an account.
+    /// The customer has created a legacy customer account, or has signed in to the shop's customer accounts.
     /// </summary>
     ENABLED,
 

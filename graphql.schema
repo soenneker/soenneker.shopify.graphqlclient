@@ -15507,7 +15507,8 @@ type Customer implements CommentEventSubject & HasEvents & HasMetafieldDefinitio
   """
   The state of the customer's account with the shop.
   
-  Please note that this only meaningful when Classic Customer Accounts is active.
+  With legacy customer accounts, the state follows the account invite and activation. With customer
+  accounts, signing in changes the state to `ENABLED`.
   """
   state: CustomerState!
   """
@@ -18312,7 +18313,7 @@ enum CustomerState {
   """
   DISABLED
   """
-  The customer has created an account.
+  The customer has created a legacy customer account, or has signed in to the shop's customer accounts.
   """
   ENABLED
   """
@@ -18919,9 +18920,9 @@ When adding a carrier service to a store, you need to provide a POST endpoint ro
     "currency": "USD",
     "locale": "en",
     "order_totals": {
-      "subtotal_price": "1999",
-      "total_price": "2199",
-      "discount_amount": "150"
+      "subtotal_price": 1999,
+      "total_price": 1849,
+      "discount_amount": 150
     },
     "customer": {
       "id": 207119551,
@@ -18981,6 +18982,20 @@ The `address3`, `fax`, `address_type`, and `company_name` fields are returned by
 * `country`
 
 Other values remain as `null` and are not sent to the callback URL.
+
+### Order totals
+
+When Shopify has the cart's totals, the request includes an `order_totals` object. Each amount is an integer in the smallest unit of the shop's currency (for example, cents), so `1999` is 19.99.
+
+The totals cover the cart's merchandise, not the `items` in this request, so don't expect them to add up to the `items` prices. They can include items that aren't listed in `items`, such as items that don't require shipping, or items in another rate request when Shopify splits the cart by origin location or shipping profile. At checkout, none of the amounts include shipping, and the fields mean the following:
+
+| Field             | Description                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `subtotal_price`  | The total price of the cart's merchandise, before discounts. Gift cards aren't included. When a checkout splits items between shipping and pickup, the pickup items aren't counted.            |
+| `discount_amount` | The total of the discounts applied to the cart's merchandise, or `0` when no discounts apply. In a checkout split between shipping and pickup, this can include discounts on the pickup items. |
+| `total_price`     | `subtotal_price` minus `discount_amount`, but never less than `0`.                                                                                                                             |
+
+Shopify calculates these totals differently when an existing order is edited. For example, `subtotal_price` can then include shipping and taxes.
 
 ### Response fields
 
@@ -69536,15 +69551,15 @@ interface Sale {
 }
 
 """
-The possible order action types for a sale.
+The action taken on a sale record. The action type describes the business action, not its accounting treatment. Use the sale's line type and details to determine how to account for the entry. For write-offs, the `WRITE_OFF` line type identifies the entry as a write-off, and its classification, such as `WAIVED`, describes the type of write-off.
 """
 enum SaleActionType {
   """
-  A purchase or charge.
+  A purchase, charge, or write-off creation. Creating a write-off reduces the amount the buyer owes.
   """
   ORDER
   """
-  A removal or return.
+  A removal, return, or write-off reversal. Reversing a write-off restores the amount the buyer owes.
   """
   RETURN
   """
@@ -85018,7 +85033,7 @@ enum WebhookSubscriptionTopic {
   """
   CUSTOMERS_DISABLE
   """
-  The webhook topic for `customers/enable` events. Occurs whenever a customer account is enabled. Requires the `read_customers` scope.
+  The webhook topic for `customers/enable` events. Occurs whenever a customer account is enabled, including first sign-ins. Requires the `read_customers` scope.
   """
   CUSTOMERS_ENABLE
   """
@@ -85081,14 +85096,6 @@ enum WebhookSubscriptionTopic {
   The webhook topic for `fulfillments/update` events. Occurs whenever a fulfillment is updated. Requires at least one of the following scopes: read_fulfillments, read_marketplace_orders.
   """
   FULFILLMENTS_UPDATE
-  """
-  The webhook topic for `attributed_sessions/first` events. Occurs whenever an order with a "first" attributed session is attributed. Requires the `read_marketing_events` scope.
-  """
-  ATTRIBUTED_SESSIONS_FIRST
-  """
-  The webhook topic for `attributed_sessions/last` events. Occurs whenever an order with a "last" attributed session is attributed. Requires the `read_marketing_events` scope.
-  """
-  ATTRIBUTED_SESSIONS_LAST
   """
   The webhook topic for `order_transactions/create` events. Occurs when a order transaction is created or when it's status is updated. Only occurs for transactions with a status of success, failure or error. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders.
   """

@@ -77,9 +77,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 ///     "currency": "USD",
 ///     "locale": "en",
 ///     "order_totals": {
-///       "subtotal_price": "1999",
-///       "total_price": "2199",
-///       "discount_amount": "150"
+///       "subtotal_price": 1999,
+///       "total_price": 1849,
+///       "discount_amount": 150
 ///     },
 ///     "customer": {
 ///       "id": 207119551,
@@ -139,6 +139,20 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// * `country`
 /// 
 /// Other values remain as `null` and are not sent to the callback URL.
+/// 
+/// ### Order totals
+/// 
+/// When Shopify has the cart's totals, the request includes an `order_totals` object. Each amount is an integer in the smallest unit of the shop's currency (for example, cents), so `1999` is 19.99.
+/// 
+/// The totals cover the cart's merchandise, not the `items` in this request, so don't expect them to add up to the `items` prices. They can include items that aren't listed in `items`, such as items that don't require shipping, or items in another rate request when Shopify splits the cart by origin location or shipping profile. At checkout, none of the amounts include shipping, and the fields mean the following:
+/// 
+/// | Field             | Description                                                                                                                                                                                    |
+/// | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+/// | `subtotal_price`  | The total price of the cart's merchandise, before discounts. Gift cards aren't included. When a checkout splits items between shipping and pickup, the pickup items aren't counted.            |
+/// | `discount_amount` | The total of the discounts applied to the cart's merchandise, or `0` when no discounts apply. In a checkout split between shipping and pickup, this can include discounts on the pickup items. |
+/// | `total_price`     | `subtotal_price` minus `discount_amount`, but never less than `0`.                                                                                                                             |
+/// 
+/// Shopify calculates these totals differently when an existing order is edited. For example, `subtotal_price` can then include shipping and taxes.
 /// 
 /// ### Response fields
 /// 

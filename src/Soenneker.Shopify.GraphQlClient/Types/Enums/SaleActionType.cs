@@ -3,17 +3,17 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// The possible order action types for a sale.
+/// The action taken on a sale record. The action type describes the business action, not its accounting treatment. Use the sale's line type and details to determine how to account for the entry. For write-offs, the `WRITE_OFF` line type identifies the entry as a write-off, and its classification, such as `WAIVED`, describes the type of write-off.
 /// </summary>
 public enum SaleActionType
 {
     /// <summary>
-    /// A purchase or charge.
+    /// A purchase, charge, or write-off creation. Creating a write-off reduces the amount the buyer owes.
     /// </summary>
     ORDER,
 
     /// <summary>
-    /// A removal or return.
+    /// A removal, return, or write-off reversal. Reversing a write-off restores the amount the buyer owes.
     /// </summary>
     RETURN,
 

@@ -151,7 +151,7 @@ public enum WebhookSubscriptionTopic
     CUSTOMERSDISABLE,
 
     /// <summary>
-    /// The webhook topic for `customers/enable` events. Occurs whenever a customer account is enabled. Requires the `read_customers` scope.
+    /// The webhook topic for `customers/enable` events. Occurs whenever a customer account is enabled, including first sign-ins. Requires the `read_customers` scope.
     /// </summary>
     CUSTOMERSENABLE,
 
@@ -229,16 +229,6 @@ public enum WebhookSubscriptionTopic
     /// The webhook topic for `fulfillments/update` events. Occurs whenever a fulfillment is updated. Requires at least one of the following scopes: read_fulfillments, read_marketplace_orders.
     /// </summary>
     FULFILLMENTSUPDATE,
-
-    /// <summary>
-    /// The webhook topic for `attributed_sessions/first` events. Occurs whenever an order with a "first" attributed session is attributed. Requires the `read_marketing_events` scope.
-    /// </summary>
-    ATTRIBUTEDSESSIONSFIRST,
-
-    /// <summary>
-    /// The webhook topic for `attributed_sessions/last` events. Occurs whenever an order with a "last" attributed session is attributed. Requires the `read_marketing_events` scope.
-    /// </summary>
-    ATTRIBUTEDSESSIONSLAST,
 
     /// <summary>
     /// The webhook topic for `order_transactions/create` events. Occurs when a order transaction is created or when it's status is updated. Only occurs for transactions with a status of success, failure or error. Requires at least one of the following scopes: read_orders, read_marketplace_orders, read_buyer_membership_orders.

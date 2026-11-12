@@ -247,7 +247,8 @@ public sealed partial class Customer : CommentEventSubject, HasEvents, HasMetafi
     /// <summary>
     /// The state of the customer's account with the shop.
     /// 
-    /// Please note that this only meaningful when Classic Customer Accounts is active.
+    /// With legacy customer accounts, the state follows the account invite and activation. With customer
+    /// accounts, signing in changes the state to `ENABLED`.
     /// </summary>
     [JsonPropertyName("state")]
     public CustomerState State { get; init; }
