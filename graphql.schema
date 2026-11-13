@@ -26481,15 +26481,15 @@ enum EventSubjectType {
   """
   A DiscountAutomaticBxgy resource generated the event.
   """
-  DISCOUNT_AUTOMATIC_BXGY
+  DISCOUNT_AUTOMATIC_BXGY @deprecated(reason: "Use \u0060DISCOUNT_NODE\u0060 instead.")
   """
   A DiscountAutomaticNode resource generated the event.
   """
-  DISCOUNT_AUTOMATIC_NODE
+  DISCOUNT_AUTOMATIC_NODE @deprecated(reason: "Use \u0060DISCOUNT_NODE\u0060 instead.")
   """
   A DiscountCodeNode resource generated the event.
   """
-  DISCOUNT_CODE_NODE
+  DISCOUNT_CODE_NODE @deprecated(reason: "Use \u0060DISCOUNT_NODE\u0060 instead.")
   """
   A DiscountNode resource generated the event.
   """
@@ -26497,7 +26497,7 @@ enum EventSubjectType {
   """
   A PriceRule resource generated the event.
   """
-  PRICE_RULE
+  PRICE_RULE @deprecated(reason: "Use \u0060DISCOUNT_NODE\u0060 instead.")
   """
   A Order resource generated the event.
   """
