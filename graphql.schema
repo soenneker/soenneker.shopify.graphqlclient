@@ -20140,6 +20140,8 @@ A shipping profile that defines shipping rates for specific [`Product`](https://
 
 Profiles can associate with [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) objects to provide custom shipping rules for subscriptions, such as free shipping or restricted delivery zones. The default profile applies to all products that aren't assigned to other profiles.
 
+**Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. Shipping options from merchant-managed delivery profiles are still saved on a shop, but these rates may differ from what buyers pay and should not be relied on. Read the current shipping configuration from the [`Market`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Market) object's `delivery.shipping` field instead. The `marketDrivenShipping` check and the `Market.delivery` field require API version 2026-07 or later.
+
 Learn more about [building delivery profiles](https://shopify.dev/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
 """
 type DeliveryProfile implements Node {
@@ -20188,7 +20190,7 @@ type DeliveryProfile implements Node {
   """
   profileItems(first: Int, after: String, last: Int, before: String, reverse: Boolean = false, sortKey: ProfileItemSortKeys = ID @deprecated(reason: "Profile item sorting is no longer supported.")): DeliveryProfileItemConnection!
   """
-  The location groups and associated zones using this profile.
+  The location groups and associated zones using this profile. If the shop uses market-driven shipping and this is a merchant-managed profile, these zones and rates don't affect checkout and can differ from what buyers pay.
   """
   profileLocationGroups(locationGroupId: ID): [DeliveryProfileLocationGroup!]!
   """
@@ -47593,6 +47595,10 @@ type Mutation {
   
   A delivery profile groups products with their shipping zones and rates. You can associate profiles with [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) objects to customize shipping for subscriptions and pre-orders. Each profile contains [`DeliveryProfileLocationGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryProfileLocationGroup) objects that specify which [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects ship to which [`DeliveryZone`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryZone) objects with specific [`DeliveryMethodDefinition`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryMethodDefinition) objects and rates.
   
+  **Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. A merchant-managed profile that you create is still saved, but its zones and rates have no effect on checkout while the merchant is using market-driven shipping. They apply again if the shop reverts to the legacy shipping profile system and stops using market-driven shipping. To set shipping options for a market-driven shipping shop, use [`marketUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/marketUpdate) or [`marketCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/marketCreate) and set the `delivery.shipping` input, or target an app-owned delivery profile. The `marketDrivenShipping` check and the `delivery` input on `marketUpdate` and `marketCreate` require API version 2026-07 or later.
+  
+  **Product and variant assignment still takes effect:** Associating a product, variant or selling plan group moves it out of its current profile, including a profile that an app manages. That can change the rates buyers see at checkout.
+  
   Learn more about [building delivery profiles](https://shopify.dev/docs/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
   """
   deliveryProfileCreate(profile: DeliveryProfileInput!): DeliveryProfileCreatePayload
@@ -47606,6 +47612,10 @@ type Mutation {
   Modify location groups to control which fulfillment [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects serve specific geographic areas. Add or remove shipping zones with custom countries and provinces. Create or update shipping methods with rate definitions and delivery conditions. Associate or dissociate [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects and [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) objects to determine which products use this profile's shipping rules.
   
   The mutation supports partial updates through dedicated input fields for creating, updating, and deleting specific components without affecting the entire profile structure.
+  
+  **Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. Changes to the zones, rates, method definitions and conditions of these profiles are still saved, but they have no effect on checkout while the merchant is using market-driven shipping. The changes apply again if the shop reverts to the legacy shipping profile system and stops using market-driven shipping. To modify shipping options for market-driven shipping shop, use [`marketUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/marketUpdate) and set the `delivery.shipping` input, or target an app-owned delivery profile. The `marketDrivenShipping` check and the `delivery` input on `marketUpdate` require API version 2026-07 or later.
+  
+  **Product and variant assignment still takes effect:** Associating a product, variant or selling plan group moves it out of its current profile, including a profile that an app manages. That can change the rates buyers see at checkout.
   
   Learn more about [building delivery profiles](https://shopify.dev/docs/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
   """
@@ -65600,6 +65610,8 @@ type QueryRoot {
   """
   Retrieves a [`DeliveryProfile`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryProfile) by ID. Delivery profiles group shipping settings for specific [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) objects that ship from selected [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects to [delivery zones](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryZone with defined rates.
   
+  If the shop uses market-driven shipping, checkout ignores the zones and rates on merchant-managed profiles, so they can differ from what buyers pay. See [`DeliveryProfile`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryProfile) for details.
+  
   Learn more about [delivery profiles](https://shopify.dev/docs/apps/build/purchase-options/deferred/delivery-and-deferment#whats-a-delivery-profile).
   """
   deliveryProfile(id: ID!): DeliveryProfile
@@ -65607,6 +65619,8 @@ type QueryRoot {
   Returns a paginated list of [`DeliveryProfile`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryProfile) objects for the shop. Delivery profiles group [`Product`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) and [`ProductVariant`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant) objects that share shipping rates and zones.
   
   Each profile contains [`DeliveryLocationGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryLocationGroup) objects that organize fulfillment [`Location`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Location) objects and their associated delivery zones. [`DeliveryZone`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryZone) objects define geographic regions with specific shipping methods and rates. Use the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter to exclude profiles that third-party apps manage.
+  
+  If the shop uses market-driven shipping, checkout ignores the zones and rates on merchant-managed profiles, so they can differ from what buyers pay. See [`DeliveryProfile`](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryProfile) for details.
   
   Learn more about [delivery profiles](https://shopify.dev/docs/apps/build/purchase-options/deferred/delivery-and-deferment#whats-a-delivery-profile).
   """

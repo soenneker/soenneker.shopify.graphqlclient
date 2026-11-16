@@ -11,6 +11,8 @@ namespace Soenneker.Shopify.GraphQlClient;
 /// 
 /// Profiles can associate with [`SellingPlanGroup`](https://shopify.dev/docs/api/admin-graphql/latest/objects/SellingPlanGroup) objects to provide custom shipping rules for subscriptions, such as free shipping or restricted delivery zones. The default profile applies to all products that aren't assigned to other profiles.
 /// 
+/// **Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. Shipping options from merchant-managed delivery profiles are still saved on a shop, but these rates may differ from what buyers pay and should not be relied on. Read the current shipping configuration from the [`Market`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Market) object's `delivery.shipping` field instead. The `marketDrivenShipping` check and the `Market.delivery` field require API version 2026-07 or later.
+/// 
 /// Learn more about [building delivery profiles](https://shopify.dev/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
 /// </summary>
 public sealed partial class DeliveryProfile : Node
@@ -82,7 +84,7 @@ public sealed partial class DeliveryProfile : Node
     public DeliveryProfileItemConnection ProfileItems { get; init; } = null!;
 
     /// <summary>
-    /// The location groups and associated zones using this profile.
+    /// The location groups and associated zones using this profile. If the shop uses market-driven shipping and this is a merchant-managed profile, these zones and rates don't affect checkout and can differ from what buyers pay.
     /// </summary>
     [JsonPropertyName("profileLocationGroups")]
     public List<DeliveryProfileLocationGroup> ProfileLocationGroups { get; init; } = [];

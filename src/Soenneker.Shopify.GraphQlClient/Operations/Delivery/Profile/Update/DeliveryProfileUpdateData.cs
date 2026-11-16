@@ -16,6 +16,10 @@ public sealed partial class DeliveryProfileUpdateData
     /// 
     /// The mutation supports partial updates through dedicated input fields for creating, updating, and deleting specific components without affecting the entire profile structure.
     /// 
+    /// **Shops that use market-driven shipping:** If the shop uses market-driven shipping (check it with `shop { features { marketDrivenShipping } }`, see [`ShopFeatures.marketDrivenShipping`](https://shopify.dev/docs/api/admin-graphql/latest/objects/ShopFeatures)), checkout combines the shipping rates and options from the shop's market configuration and app-owned delivery profiles. Zones and rates from merchant-managed delivery profiles are ignored. In practice, merchant-managed profiles are the profiles that the [`merchantOwnedOnly`](https://shopify.dev/docs/api/admin-graphql/latest/queries/deliveryProfiles#arguments-merchantOwnedOnly) filter returns. Changes to the zones, rates, method definitions and conditions of these profiles are still saved, but they have no effect on checkout while the merchant is using market-driven shipping. The changes apply again if the shop reverts to the legacy shipping profile system and stops using market-driven shipping. To modify shipping options for market-driven shipping shop, use [`marketUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/marketUpdate) and set the `delivery.shipping` input, or target an app-owned delivery profile. The `marketDrivenShipping` check and the `delivery` input on `marketUpdate` require API version 2026-07 or later.
+    /// 
+    /// **Product and variant assignment still takes effect:** Associating a product, variant or selling plan group moves it out of its current profile, including a profile that an app manages. That can change the rates buyers see at checkout.
+    /// 
     /// Learn more about [building delivery profiles](https://shopify.dev/docs/apps/build/purchase-options/deferred/delivery-and-deferment/build-delivery-profiles).
     /// </summary>
     [JsonPropertyName("deliveryProfileUpdate")]
