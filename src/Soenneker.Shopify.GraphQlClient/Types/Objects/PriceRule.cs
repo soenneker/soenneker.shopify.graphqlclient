@@ -224,7 +224,7 @@ public sealed partial class PriceRule : CommentEventSubject, HasEvents, LegacyIn
     public int UsageCount { get; init; }
 
     /// <summary>
-    /// The maximum number of times that the price rule can be used in total.
+    /// The maximum number of times that each discount code of the price rule can be used, counted across all customers.
     /// </summary>
     [JsonPropertyName("usageLimit")]
     public int? UsageLimit { get; init; }

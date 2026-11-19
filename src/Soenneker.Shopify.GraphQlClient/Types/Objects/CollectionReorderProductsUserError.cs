@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// Errors related to order customer removal.
+/// An error that happens when `collectionReorderProducts` can't reorder the products of a collection.
 /// </summary>
 public sealed partial class CollectionReorderProductsUserError : DisplayableError
 {

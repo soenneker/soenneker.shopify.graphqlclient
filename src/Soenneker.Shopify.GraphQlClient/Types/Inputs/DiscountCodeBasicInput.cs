@@ -64,7 +64,8 @@ public sealed partial class DiscountCodeBasicInput
     public DiscountCustomerSelectionInput? CustomerSelection { get; init; }
 
     /// <summary>
-    /// The maximum number of times the discount can be redeemed.
+    /// The maximum number of times that each code can be redeemed, counted across all customers.
+    /// To limit each customer to one use, set `appliesOncePerCustomer` to `true`.
     /// For unlimited usage, specify `null`.
     /// </summary>
     [JsonPropertyName("usageLimit")]

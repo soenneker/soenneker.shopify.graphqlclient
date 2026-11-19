@@ -10342,7 +10342,7 @@ type CollectionReorderProductsPayload {
 }
 
 """
-Errors related to order customer removal.
+An error that happens when `collectionReorderProducts` can't reorder the products of a collection.
 """
 type CollectionReorderProductsUserError implements DisplayableError {
   """
@@ -10663,6 +10663,10 @@ type CollectionRuleTextCondition {
 The set of valid sort keys for the Collection query.
 """
 enum CollectionSortKeys {
+  """
+  Sort by the `created_at` value.
+  """
+  CREATED_AT
   """
   Sort by the `id` value.
   """
@@ -22278,7 +22282,7 @@ type DiscountCodeApp {
   """
   updatedAt: DateTime!
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -22341,7 +22345,8 @@ input DiscountCodeAppInput {
   """
   customerSelection: DiscountCustomerSelectionInput @deprecated(reason: "Use \u0060context\u0060 instead.")
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
+  To limit each customer to one use, set `appliesOncePerCustomer` to `true`.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -22558,7 +22563,7 @@ type DiscountCodeBasic {
   """
   updatedAt: DateTime!
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -22622,7 +22627,8 @@ input DiscountCodeBasicInput {
   """
   customerSelection: DiscountCustomerSelectionInput @deprecated(reason: "Use \u0060context\u0060 instead.")
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
+  To limit each customer to one use, set `appliesOncePerCustomer` to `true`.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -22823,7 +22829,7 @@ type DiscountCodeBxgy {
   """
   updatedAt: DateTime!
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -22894,7 +22900,8 @@ input DiscountCodeBxgyInput {
   """
   customerSelection: DiscountCustomerSelectionInput @deprecated(reason: "Use \u0060context\u0060 instead.")
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
+  To limit each customer to one use, set `appliesOncePerCustomer` to `true`.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -23116,7 +23123,7 @@ type DiscountCodeFreeShipping {
   """
   updatedAt: DateTime!
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -23178,7 +23185,8 @@ input DiscountCodeFreeShippingInput {
   """
   customerSelection: DiscountCustomerSelectionInput @deprecated(reason: "Use \u0060context\u0060 instead.")
   """
-  The maximum number of times the discount can be redeemed.
+  The maximum number of times that each code can be redeemed, counted across all customers.
+  To limit each customer to one use, set `appliesOncePerCustomer` to `true`.
   For unlimited usage, specify `null`.
   """
   usageLimit: Int
@@ -34013,57 +34021,61 @@ Possible error codes that can be returned by `InventoryShipmentAddItemsUserError
 """
 enum InventoryShipmentAddItemsUserErrorCode {
   """
-  The location selected can't be found.
+  Bundled items cannot be used for this operation.
   """
-  LOCATION_NOT_FOUND
-  """
-  Current shipment status does not support this operation.
-  """
-  INVALID_SHIPMENT_STATUS
+  BUNDLED_ITEM
   """
   A single item can't be listed twice.
   """
   DUPLICATE_ITEM
   """
-  The quantity is invalid.
-  """
-  INVALID_QUANTITY
-  """
-  The item was not found.
-  """
-  ITEM_NOT_FOUND
-  """
-  The item is not stocked at the intended location.
-  """
-  INVENTORY_STATE_NOT_ACTIVE
-  """
-  The item does not track inventory.
-  """
-  UNTRACKED_ITEM
-  """
-  The shipment was not found.
-  """
-  SHIPMENT_NOT_FOUND
-  """
-  The location selected is not active.
-  """
-  LOCATION_NOT_ACTIVE
-  """
-  Failed to activate inventory at location.
-  """
-  ACTIVATION_FAILED
-  """
   This request is currently in progress, please try again.
   """
   IDEMPOTENCY_CONCURRENT_REQUEST
+  """
+  The same idempotency key cannot be used with different operation parameters.
+  """
+  IDEMPOTENCY_KEY_PARAMETER_MISMATCH
   """
   A previous request with this idempotency key failed. Retry with a new idempotency key.
   """
   IDEMPOTENCY_PREVIOUS_ATTEMPT_FAILED
   """
-  The same idempotency key cannot be used with different operation parameters.
+  The quantity is invalid.
   """
-  IDEMPOTENCY_KEY_PARAMETER_MISMATCH
+  INVALID_QUANTITY
+  """
+  Current shipment status does not support this operation.
+  """
+  INVALID_SHIPMENT_STATUS
+  """
+  The item was not found.
+  """
+  ITEM_NOT_FOUND
+  """
+  The location selected is not active.
+  """
+  LOCATION_NOT_ACTIVE
+  """
+  The shipment was not found.
+  """
+  SHIPMENT_NOT_FOUND
+  """
+  The item does not track inventory.
+  """
+  UNTRACKED_ITEM
+  """
+  The location selected can't be found.
+  """
+  LOCATION_NOT_FOUND
+  """
+  Failed to activate inventory at location.
+  """
+  ACTIVATION_FAILED
+  """
+  The item is not stocked at the intended location.
+  """
+  INVENTORY_STATE_NOT_ACTIVE
 }
 
 """
@@ -47099,23 +47111,9 @@ type Mutation {
   """
   collectionRemoveProducts(id: ID!, productIds: [ID!]!): CollectionRemoveProductsPayload @deprecated(reason: "Use \u0060collectionUpdate\u0060 with inclusions.selectionsToRemove instead.")
   """
-  Asynchronously reorders products within a specified collection. Instead of returning an updated collection, this mutation returns a job, which should be [polled](https://shopify.dev/api/admin-graphql/latest/queries/job). The [`Collection.sortOrder`](https://shopify.dev/api/admin-graphql/latest/objects/Collection#field-collection-sortorder) must be `MANUAL`.
+  Asynchronously reorders the products of a manually sorted collection. Instead of returning an updated collection, this mutation returns a job, which should be [polled](https://shopify.dev/api/admin-graphql/latest/queries/job). The [`Collection.sortOrder`](https://shopify.dev/api/admin-graphql/latest/objects/Collection#field-collection-sortorder) must be `MANUAL`.
   
-  How to use this mutation:
-  - Provide only the products that actually moved in the `moves` list; do not send the entire product list. For example: to move the product at index 1 to index N, send a single move for that product with `newPosition: N`.
-  - Each move is applied sequentially in the order provided.
-  - `newPosition` is a zero-based index within the collection at the moment the move is applied (after any prior moves in the list).
-  - Products not included in `moves` keep their relative order, aside from any displacement caused by the moves.
-  - If `newPosition` is greater than or equal to the number of products, the product is placed at the end.
-  
-  Example:
-  - Initial order: [A, B, C, D, E] (indices 0..4)
-  - Moves (applied in order):
-    - E -> newPosition: 1
-    - C -> newPosition: 4
-  - Result: [A, E, B, D, C]
-  
-  Displaced products will have their position altered in a consistent manner with no gaps.
+  Positions are zero-based indexes in the collection's list of products. Products that the request doesn't list keep their relative order, and the reorder leaves no gaps. The description of each argument that reorders products says how it places them.
   """
   collectionReorderProducts(id: ID!, moves: [MoveInput!]!): CollectionReorderProductsPayload
   """
@@ -57655,7 +57653,7 @@ type PriceRule implements CommentEventSubject & HasEvents & LegacyInteroperabili
   """
   usageCount: Int!
   """
-  The maximum number of times that the price rule can be used in total.
+  The maximum number of times that each discount code of the price rule can be used, counted across all customers.
   """
   usageLimit: Int
   """

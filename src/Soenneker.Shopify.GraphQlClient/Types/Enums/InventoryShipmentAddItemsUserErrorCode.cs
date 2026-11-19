@@ -8,14 +8,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 public enum InventoryShipmentAddItemsUserErrorCode
 {
     /// <summary>
-    /// The location selected can't be found.
+    /// Bundled items cannot be used for this operation.
     /// </summary>
-    LOCATIONNOTFOUND,
-
-    /// <summary>
-    /// Current shipment status does not support this operation.
-    /// </summary>
-    INVALIDSHIPMENTSTATUS,
+    BUNDLEDITEM,
 
     /// <summary>
     /// A single item can't be listed twice.
@@ -23,44 +18,14 @@ public enum InventoryShipmentAddItemsUserErrorCode
     DUPLICATEITEM,
 
     /// <summary>
-    /// The quantity is invalid.
-    /// </summary>
-    INVALIDQUANTITY,
-
-    /// <summary>
-    /// The item was not found.
-    /// </summary>
-    ITEMNOTFOUND,
-
-    /// <summary>
-    /// The item is not stocked at the intended location.
-    /// </summary>
-    INVENTORYSTATENOTACTIVE,
-
-    /// <summary>
-    /// The item does not track inventory.
-    /// </summary>
-    UNTRACKEDITEM,
-
-    /// <summary>
-    /// The shipment was not found.
-    /// </summary>
-    SHIPMENTNOTFOUND,
-
-    /// <summary>
-    /// The location selected is not active.
-    /// </summary>
-    LOCATIONNOTACTIVE,
-
-    /// <summary>
-    /// Failed to activate inventory at location.
-    /// </summary>
-    ACTIVATIONFAILED,
-
-    /// <summary>
     /// This request is currently in progress, please try again.
     /// </summary>
     IDEMPOTENCYCONCURRENTREQUEST,
+
+    /// <summary>
+    /// The same idempotency key cannot be used with different operation parameters.
+    /// </summary>
+    IDEMPOTENCYKEYPARAMETERMISMATCH,
 
     /// <summary>
     /// A previous request with this idempotency key failed. Retry with a new idempotency key.
@@ -68,8 +33,48 @@ public enum InventoryShipmentAddItemsUserErrorCode
     IDEMPOTENCYPREVIOUSATTEMPTFAILED,
 
     /// <summary>
-    /// The same idempotency key cannot be used with different operation parameters.
+    /// The quantity is invalid.
     /// </summary>
-    IDEMPOTENCYKEYPARAMETERMISMATCH
+    INVALIDQUANTITY,
+
+    /// <summary>
+    /// Current shipment status does not support this operation.
+    /// </summary>
+    INVALIDSHIPMENTSTATUS,
+
+    /// <summary>
+    /// The item was not found.
+    /// </summary>
+    ITEMNOTFOUND,
+
+    /// <summary>
+    /// The location selected is not active.
+    /// </summary>
+    LOCATIONNOTACTIVE,
+
+    /// <summary>
+    /// The shipment was not found.
+    /// </summary>
+    SHIPMENTNOTFOUND,
+
+    /// <summary>
+    /// The item does not track inventory.
+    /// </summary>
+    UNTRACKEDITEM,
+
+    /// <summary>
+    /// The location selected can't be found.
+    /// </summary>
+    LOCATIONNOTFOUND,
+
+    /// <summary>
+    /// Failed to activate inventory at location.
+    /// </summary>
+    ACTIVATIONFAILED,
+
+    /// <summary>
+    /// The item is not stocked at the intended location.
+    /// </summary>
+    INVENTORYSTATENOTACTIVE
 
 }

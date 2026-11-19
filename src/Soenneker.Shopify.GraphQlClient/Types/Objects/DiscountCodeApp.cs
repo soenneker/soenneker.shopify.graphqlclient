@@ -196,7 +196,7 @@ public sealed partial class DiscountCodeApp
     public DateTimeOffset UpdatedAt { get; init; }
 
     /// <summary>
-    /// The maximum number of times the discount can be redeemed.
+    /// The maximum number of times that each code can be redeemed, counted across all customers.
     /// For unlimited usage, specify `null`.
     /// </summary>
     [JsonPropertyName("usageLimit")]

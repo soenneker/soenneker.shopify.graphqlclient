@@ -10,23 +10,9 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class CollectionReorderProductsData
 {
     /// <summary>
-    /// Asynchronously reorders products within a specified collection. Instead of returning an updated collection, this mutation returns a job, which should be [polled](https://shopify.dev/api/admin-graphql/latest/queries/job). The [`Collection.sortOrder`](https://shopify.dev/api/admin-graphql/latest/objects/Collection#field-collection-sortorder) must be `MANUAL`.
+    /// Asynchronously reorders the products of a manually sorted collection. Instead of returning an updated collection, this mutation returns a job, which should be [polled](https://shopify.dev/api/admin-graphql/latest/queries/job). The [`Collection.sortOrder`](https://shopify.dev/api/admin-graphql/latest/objects/Collection#field-collection-sortorder) must be `MANUAL`.
     /// 
-    /// How to use this mutation:
-    /// - Provide only the products that actually moved in the `moves` list; do not send the entire product list. For example: to move the product at index 1 to index N, send a single move for that product with `newPosition: N`.
-    /// - Each move is applied sequentially in the order provided.
-    /// - `newPosition` is a zero-based index within the collection at the moment the move is applied (after any prior moves in the list).
-    /// - Products not included in `moves` keep their relative order, aside from any displacement caused by the moves.
-    /// - If `newPosition` is greater than or equal to the number of products, the product is placed at the end.
-    /// 
-    /// Example:
-    /// - Initial order: [A, B, C, D, E] (indices 0..4)
-    /// - Moves (applied in order):
-    ///   - E -&gt; newPosition: 1
-    ///   - C -&gt; newPosition: 4
-    /// - Result: [A, E, B, D, C]
-    /// 
-    /// Displaced products will have their position altered in a consistent manner with no gaps.
+    /// Positions are zero-based indexes in the collection's list of products. Products that the request doesn't list keep their relative order, and the reorder leaves no gaps. The description of each argument that reorders products says how it places them.
     /// </summary>
     [JsonPropertyName("collectionReorderProducts")]
     public CollectionReorderProductsPayload? CollectionReorderProducts { get; init; }
