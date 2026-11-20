@@ -14,7 +14,7 @@ namespace Soenneker.Shopify.GraphQlClient;
 public sealed partial class AbandonedCheckout : Navigable, Node
 {
     /// <summary>
-    /// The URL for the buyer to recover their checkout.
+    /// The URL for the buyer to recover their checkout. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, this field requires access to all four protected customer fields (name, email, phone, and address). If your app doesn't need the recovery URL, then don't select this field. If it does, then [request access](https://shopify.dev/docs/apps/launch/protected-customer-data#request-access-to-protected-customer-data). Apps without that access get an `ACCESS_DENIED` error for this field, which nulls out the surrounding data: list queries such as `abandonedCheckouts` return `data: null`, and a `node` or `nodes` lookup returns `null` for that checkout. A bulk operation that selects this field fails with `ACCESS_DENIED` after its retries.
     /// </summary>
     [JsonPropertyName("abandonedCheckoutUrl")]
     public Uri AbandonedCheckoutUrl { get; init; } = null!;

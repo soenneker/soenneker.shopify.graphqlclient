@@ -46,7 +46,7 @@ public enum WebhookSubscriptionTopic
     CHANNELSDELETE,
 
     /// <summary>
-    /// The webhook topic for `checkouts/create` events. Occurs whenever a checkout is created. Requires the `read_orders` scope.
+    /// The webhook topic for `checkouts/create` events. Occurs whenever a checkout is created. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, `abandoned_checkout_url` is left out of the payload for apps without access to all four protected customer fields (name, email, phone, and address). The rest of the payload is unchanged. Requires the `read_orders` scope.
     /// </summary>
     CHECKOUTSCREATE,
 
@@ -56,7 +56,7 @@ public enum WebhookSubscriptionTopic
     CHECKOUTSDELETE,
 
     /// <summary>
-    /// The webhook topic for `checkouts/update` events. Occurs whenever a checkout is updated. Requires the `read_orders` scope.
+    /// The webhook topic for `checkouts/update` events. Occurs whenever a checkout is updated. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, `abandoned_checkout_url` is left out of the payload for apps without access to all four protected customer fields (name, email, phone, and address). The rest of the payload is unchanged. Requires the `read_orders` scope.
     /// </summary>
     CHECKOUTSUPDATE,
 

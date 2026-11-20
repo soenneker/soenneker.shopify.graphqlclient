@@ -3,7 +3,7 @@
 namespace Soenneker.Shopify.GraphQlClient;
 
 /// <summary>
-/// Represents a percentage price adjustment type.
+/// Represents the type of a price list adjustment.
 /// </summary>
 public enum PriceListAdjustmentType
 {

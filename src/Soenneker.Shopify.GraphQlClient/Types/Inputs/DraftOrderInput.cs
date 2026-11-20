@@ -21,6 +21,8 @@ public sealed partial class DraftOrderInput
     /// <summary>
     /// The list of discount codes that will be attempted to be applied to the draft order.
     /// If the draft isn't eligible for any given discount code it will be skipped during calculation.
+    /// In `draftOrderCreate` and `draftOrderUpdate`, a staff member without the `apply_discounts_to_draft_orders`
+    /// permission can't add a discount code that the draft order doesn't already have.
     /// </summary>
     [JsonPropertyName("discountCodes")]
     public List<string>? DiscountCodes { get; init; }
@@ -29,6 +31,8 @@ public sealed partial class DraftOrderInput
     /// Whether or not to accept automatic discounts on the draft order during calculation.
     /// If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
     /// If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+    /// In `draftOrderCreate` and `draftOrderUpdate`, a staff member without the `apply_discounts_to_draft_orders`
+    /// permission can't set this field to `true` unless the draft order already accepts automatic discounts.
     /// </summary>
     [JsonPropertyName("acceptAutomaticDiscounts")]
     public bool? AcceptAutomaticDiscounts { get; init; }

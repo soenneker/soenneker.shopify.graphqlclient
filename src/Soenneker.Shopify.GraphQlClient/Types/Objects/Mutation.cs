@@ -1620,6 +1620,8 @@ public sealed partial class Mutation
     /// &gt; Note:
     /// &gt; When you create a draft order, you can't [reserve or hold inventory](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states) for the items in the order by default.
     /// &gt; However, you can reserve inventory using the [`reserveInventoryUntil`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/draftOrderCreate#arguments-input.fields.reserveInventoryUntil) input.
+    /// 
+    /// A staff member needs the `apply_discounts_to_draft_orders` permission to add discounts.
     /// </summary>
     [JsonPropertyName("draftOrderCreate")]
     public DraftOrderCreatePayload? DraftOrderCreate { get; init; }
@@ -1663,6 +1665,8 @@ public sealed partial class Mutation
     /// and the draft is updated before the checkout completes. This will not interfere with the checkout and order
     /// creation, but if the link from draft to checkout is broken the draft will remain open even after the order is
     /// created.
+    /// 
+    /// A staff member needs the `apply_discounts_to_draft_orders` permission to add discounts.
     /// </summary>
     [JsonPropertyName("draftOrderUpdate")]
     public DraftOrderUpdatePayload? DraftOrderUpdate { get; init; }

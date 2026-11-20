@@ -26,7 +26,7 @@ The checkout includes a recovery URL that merchants can send to customers to res
 """
 type AbandonedCheckout implements Navigable & Node {
   """
-  The URL for the buyer to recover their checkout.
+  The URL for the buyer to recover their checkout. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, this field requires access to all four protected customer fields (name, email, phone, and address). If your app doesn't need the recovery URL, then don't select this field. If it does, then [request access](https://shopify.dev/docs/apps/launch/protected-customer-data#request-access-to-protected-customer-data). Apps without that access get an `ACCESS_DENIED` error for this field, which nulls out the surrounding data: list queries such as `abandonedCheckouts` return `data: null`, and a `node` or `nodes` lookup returns `null` for that checkout. A bulk operation that selects this field fails with `ACCESS_DENIED` after its retries.
   """
   abandonedCheckoutUrl: URL!
   """
@@ -25347,12 +25347,16 @@ input DraftOrderInput {
   """
   The list of discount codes that will be attempted to be applied to the draft order.
   If the draft isn't eligible for any given discount code it will be skipped during calculation.
+  In `draftOrderCreate` and `draftOrderUpdate`, a staff member without the `apply_discounts_to_draft_orders`
+  permission can't add a discount code that the draft order doesn't already have.
   """
   discountCodes: [String!]
   """
   Whether or not to accept automatic discounts on the draft order during calculation.
   If false, only discount codes and custom draft order discounts (see `appliedDiscount`) will be applied.
   If true, eligible automatic discounts will be applied in addition to discount codes and custom draft order discounts.
+  In `draftOrderCreate` and `draftOrderUpdate`, a staff member without the `apply_discounts_to_draft_orders`
+  permission can't set this field to `true` unless the draft order already accepts automatic discounts.
   """
   acceptAutomaticDiscounts: Boolean
   """
@@ -48001,6 +48005,8 @@ type Mutation {
   > Note:
   > When you create a draft order, you can't [reserve or hold inventory](https://shopify.dev/docs/apps/build/orders-fulfillment/inventory-management-apps#inventory-states) for the items in the order by default.
   > However, you can reserve inventory using the [`reserveInventoryUntil`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/draftOrderCreate#arguments-input.fields.reserveInventoryUntil) input.
+  
+  A staff member needs the `apply_discounts_to_draft_orders` permission to add discounts.
   """
   draftOrderCreate(input: DraftOrderInput!): DraftOrderCreatePayload
   """
@@ -48032,6 +48038,8 @@ type Mutation {
   and the draft is updated before the checkout completes. This will not interfere with the checkout and order
   creation, but if the link from draft to checkout is broken the draft will remain open even after the order is
   created.
+  
+  A staff member needs the `apply_discounts_to_draft_orders` permission to add discounts.
   """
   draftOrderUpdate(id: ID!, input: DraftOrderInput!): DraftOrderUpdatePayload
   """
@@ -56896,7 +56904,7 @@ input PriceListAdjustmentSettingsInput {
 }
 
 """
-Represents a percentage price adjustment type.
+Represents the type of a price list adjustment.
 """
 enum PriceListAdjustmentType {
   """
@@ -84961,7 +84969,7 @@ enum WebhookSubscriptionTopic {
   """
   CHANNELS_DELETE
   """
-  The webhook topic for `checkouts/create` events. Occurs whenever a checkout is created. Requires the `read_orders` scope.
+  The webhook topic for `checkouts/create` events. Occurs whenever a checkout is created. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, `abandoned_checkout_url` is left out of the payload for apps without access to all four protected customer fields (name, email, phone, and address). The rest of the payload is unchanged. Requires the `read_orders` scope.
   """
   CHECKOUTS_CREATE
   """
@@ -84969,7 +84977,7 @@ enum WebhookSubscriptionTopic {
   """
   CHECKOUTS_DELETE
   """
-  The webhook topic for `checkouts/update` events. Occurs whenever a checkout is updated. Requires the `read_orders` scope.
+  The webhook topic for `checkouts/update` events. Occurs whenever a checkout is updated. Starting December 1, 2026 for public apps, and January 1, 2027 for custom apps, `abandoned_checkout_url` is left out of the payload for apps without access to all four protected customer fields (name, email, phone, and address). The rest of the payload is unchanged. Requires the `read_orders` scope.
   """
   CHECKOUTS_UPDATE
   """
