@@ -19,7 +19,9 @@ public sealed partial class FulfillmentTrackingInfo
     /// that Shopify automatically updates the fulfillment's `shipment_status` field in Admin.
     /// 
     /// For tracking companies whose `shipment_status` field is updated automatically, see
-    /// [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
+    /// [Supported carriers for shipment tracking](https://help.shopify.com/manual/fulfillment/fulfilling-orders/single-fulfillment#supported-tracking-carriers) in the Shopify Help Center.
+    /// The Help Center shows carrier names as merchants see them, which can differ from the API values.
+    /// When you send a tracking company, use the name from the list below.
     /// 
     /// ### Supported tracking companies
     /// 
@@ -168,33 +170,6 @@ public sealed partial class FulfillmentTrackingInfo
     ///   * **Turkey**: PTT, Yurtiçi Kargo, Aras Kargo, Sürat Kargo
     ///   * **United States**: GLS, Alliance Air Freight, Pilot Freight, LSO, Old Dominion, Pandion, R+L Carriers, Southwest Air Cargo
     ///   * **South Africa**: Fastway, Skynet.
-    /// 
-    /// ### Tracking companies with automatic tracking updates
-    /// 
-    /// Shopify receives tracking updates for the following tracking companies and automatically updates
-    /// the fulfillment's `shipment_status` field:
-    /// 
-    ///   * Australia Post
-    ///   * Better Trucks
-    ///   * Canada Post
-    ///   * CDL Last Mile
-    ///   * Deutsche Post
-    ///   * DHL eCommerce
-    ///   * DHL Express
-    ///   * FedEx
-    ///   * GLS
-    ///   * GOFO
-    ///   * Lasership
-    ///   * Lone Star Overnight
-    ///   * Mayple
-    ///   * OnTrac
-    ///   * Royal Mail
-    ///   * ShipBob
-    ///   * TForce Final Mile
-    ///   * United Delivery Service
-    ///   * UPS
-    ///   * USPS
-    ///   * Veho.
     /// </summary>
     [JsonPropertyName("company")]
     public string? Company { get; init; }

@@ -53,7 +53,7 @@ public enum LanguageCode
     BM,
 
     /// <summary>
-    /// Bangla.
+    /// Bengali.
     /// </summary>
     BN,
 
@@ -568,7 +568,7 @@ public enum LanguageCode
     SQ,
 
     /// <summary>
-    /// Serbian.
+    /// Serbian (Latin).
     /// </summary>
     SR,
 

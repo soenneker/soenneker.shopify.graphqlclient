@@ -65,7 +65,9 @@ public sealed partial class FulfillmentTrackingInput
     /// The same tracking company will be applied to all tracking numbers specified.
     /// 
     /// For tracking companies whose `shipment_status` field is updated automatically, see
-    /// [Tracking companies with automatic tracking updates](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#tracking-companies-with-automatic-tracking-updates).
+    /// [Supported carriers for shipment tracking](https://help.shopify.com/manual/fulfillment/fulfilling-orders/single-fulfillment#supported-tracking-carriers) in the Shopify Help Center.
+    /// The Help Center shows carrier names as merchants see them, which can differ from the API values.
+    /// When you send a tracking company, use the name from [the list](https://shopify.dev/api/admin-graphql/latest/objects/FulfillmentTrackingInfo#supported-tracking-companies).
     /// 
     /// &gt; Note:
     /// &gt; Send the tracking company name exactly as written in
